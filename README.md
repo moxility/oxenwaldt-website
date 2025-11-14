@@ -1,19 +1,23 @@
-# Astro Starter Kit: Blog
+# Magnus Oxenwaldt - Personal Website
 
-```sh
-npm create astro@latest -- --template blog
-```
+Professional website for Magnus Oxenwaldt, AI & Digital Transformation Leader.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Tech Stack
 
-Features:
+- **Astro 5.x** - Modern static site generator
+- **Tailwind CSS 4.x** - Utility-first CSS framework
+- **TypeScript** - Type-safe development
 
-- ✅ Minimal styling (make it your own!)
+## Features
+
+- ✅ Professional homepage with hero section
+- ✅ About page with detailed bio
+- ✅ Blog with markdown/MDX posts
+- ✅ Responsive design
+- ✅ SEO optimized
 - ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
 - ✅ RSS Feed support
-- ✅ Markdown & MDX support
+- ✅ Sitemap support
 
 ## 🚀 Project Structure
 
