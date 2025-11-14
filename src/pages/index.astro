@@ -1,0 +1,147 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+).slice(0, 3);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body class="bg-gray-50">
+		<Header />
+		<main>
+			<!-- Hero Section -->
+			<section class="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white py-20 px-4">
+				<div class="max-w-4xl mx-auto">
+					<h1 class="text-5xl md:text-6xl font-bold mb-6">
+						Magnus Oxenwaldt
+					</h1>
+					<p class="text-xl md:text-2xl mb-8 text-blue-100">
+						AI & Digital Transformation Leader
+					</p>
+					<p class="text-lg mb-8 text-blue-50 max-w-3xl">
+						With over two decades of experience, I specialize in digital transformation initiatives
+						with a focus on ERP, Customer Engagement, and artificial intelligence integration.
+						Currently Principal Business Consultant at Columbus Global, based in Oslo, Norway.
+					</p>
+					<div class="flex flex-wrap gap-4">
+						<a href="/blog" class="bg-white text-blue-900 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition">
+							Read My Blog
+						</a>
+						<a href="/about" class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition">
+							About Me
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- Featured Areas -->
+			<section class="py-16 px-4">
+				<div class="max-w-6xl mx-auto">
+					<h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Areas of Expertise</h2>
+					<div class="grid md:grid-cols-3 gap-8">
+						<div class="bg-white p-6 rounded-lg shadow-md">
+							<div class="text-4xl mb-4">🤖</div>
+							<h3 class="text-xl font-bold mb-3">Artificial Intelligence</h3>
+							<p class="text-gray-600">
+								AI-driven solutions and integration strategies for enterprise applications
+							</p>
+						</div>
+						<div class="bg-white p-6 rounded-lg shadow-md">
+							<div class="text-4xl mb-4">🚀</div>
+							<h3 class="text-xl font-bold mb-3">Digital Transformation</h3>
+							<p class="text-gray-600">
+								Leading enterprise-wide transformation initiatives and change management
+							</p>
+						</div>
+						<div class="bg-white p-6 rounded-lg shadow-md">
+							<div class="text-4xl mb-4">🏗️</div>
+							<h3 class="text-xl font-bold mb-3">Enterprise Architecture</h3>
+							<p class="text-gray-600">
+								Designing scalable solutions with ERP and customer engagement platforms
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Future Bytes Podcast -->
+			<section class="bg-gray-100 py-16 px-4">
+				<div class="max-w-4xl mx-auto">
+					<h2 class="text-3xl font-bold text-gray-900 mb-6">🎙️ Future Bytes Podcast</h2>
+					<p class="text-lg text-gray-700 mb-6">
+						Host of Future Bytes, exploring AI's positive impact on business.
+						Discover how organizations can harness artificial intelligence to enhance
+						efficiency and foster innovation.
+					</p>
+					<a href="https://open.spotify.com/show/2dUyQaG5wFvCPBkB2ErHKe"
+					   target="_blank"
+					   rel="noopener noreferrer"
+					   class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition">
+						Listen on Spotify
+					</a>
+				</div>
+			</section>
+
+			<!-- Recent Blog Posts -->
+			<section class="py-16 px-4">
+				<div class="max-w-6xl mx-auto">
+					<h2 class="text-3xl font-bold text-gray-900 mb-12">Latest Insights</h2>
+					<div class="grid md:grid-cols-3 gap-8">
+						{posts.map((post) => (
+							<article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+								<div class="p-6">
+									<div class="text-sm text-gray-500 mb-2">
+										<FormattedDate date={post.data.pubDate} />
+									</div>
+									<h3 class="text-xl font-bold mb-3">
+										<a href={`/blog/${post.slug}/`} class="text-gray-900 hover:text-blue-600">
+											{post.data.title}
+										</a>
+									</h3>
+									<p class="text-gray-600">
+										{post.data.description}
+									</p>
+								</div>
+							</article>
+						))}
+					</div>
+					<div class="text-center mt-12">
+						<a href="/blog" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+							View All Posts
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- CTA Section -->
+			<section class="bg-blue-900 text-white py-16 px-4">
+				<div class="max-w-4xl mx-auto text-center">
+					<h2 class="text-3xl font-bold mb-6">Let's Connect</h2>
+					<p class="text-xl text-blue-100 mb-8">
+						Available for collaborations and talks worldwide. Interested in discussing
+						AI, digital transformation, or enterprise architecture?
+					</p>
+					<div class="flex flex-wrap justify-center gap-4">
+						<a href="https://www.linkedin.com/in/magnusoxenwaldt/"
+						   target="_blank"
+						   rel="noopener noreferrer"
+						   class="bg-white text-blue-900 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition">
+							Connect on LinkedIn
+						</a>
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

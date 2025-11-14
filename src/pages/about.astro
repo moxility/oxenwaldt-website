@@ -1,0 +1,128 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`About | ${SITE_TITLE}`} description="Learn more about Magnus Oxenwaldt" />
+	</head>
+	<body class="bg-gray-50">
+		<Header />
+		<main class="max-w-4xl mx-auto px-4 py-16">
+			<h1 class="text-5xl font-bold text-gray-900 mb-8">About Me</h1>
+
+			<div class="prose prose-lg max-w-none">
+				<p class="text-xl text-gray-700 leading-relaxed mb-8">
+					Hi, I'm Magnus Oxenwaldt - an AI & Digital Transformation Leader with over two decades
+					of experience helping organizations navigate the complexities of technological change.
+				</p>
+
+				<h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Professional Journey</h2>
+				<p class="text-gray-700 leading-relaxed mb-6">
+					Currently serving as Principal Business Consultant at Columbus Global, I work at the
+					intersection of artificial intelligence, enterprise architecture, and business transformation.
+					My role involves designing solutions, organizing business structures, and assisting companies
+					to embrace the digital world.
+				</p>
+
+				<p class="text-gray-700 leading-relaxed mb-6">
+					Based in Oslo, Norway, but with a Swedish background, I've had the privilege of working
+					internationally and gaining diverse perspectives on how technology transforms businesses
+					across different markets and cultures.
+				</p>
+
+				<h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Areas of Expertise</h2>
+				<div class="grid md:grid-cols-2 gap-6 mb-8">
+					<div class="bg-white p-6 rounded-lg shadow-md">
+						<h3 class="text-xl font-bold text-gray-900 mb-3">🤖 Artificial Intelligence</h3>
+						<p class="text-gray-600">
+							AI-driven solutions and integration strategies for enterprise applications,
+							with focus on practical implementation and business value.
+						</p>
+					</div>
+					<div class="bg-white p-6 rounded-lg shadow-md">
+						<h3 class="text-xl font-bold text-gray-900 mb-3">🚀 Digital Transformation</h3>
+						<p class="text-gray-600">
+							Leading enterprise-wide transformation initiatives, change management,
+							and helping organizations adapt to the digital age.
+						</p>
+					</div>
+					<div class="bg-white p-6 rounded-lg shadow-md">
+						<h3 class="text-xl font-bold text-gray-900 mb-3">🏗️ Enterprise Architecture</h3>
+						<p class="text-gray-600">
+							Designing scalable, sustainable solutions with ERP systems, customer
+							engagement platforms, and integrated business applications.
+						</p>
+					</div>
+					<div class="bg-white p-6 rounded-lg shadow-md">
+						<h3 class="text-xl font-bold text-gray-900 mb-3">💼 Business Strategy</h3>
+						<p class="text-gray-600">
+							Combining technology, economics, and marketing expertise to drive
+							strategic business outcomes.
+						</p>
+					</div>
+				</div>
+
+				<h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Education & Background</h2>
+				<p class="text-gray-700 leading-relaxed mb-6">
+					I hold a diversified academic background spanning technology, economics, and marketing,
+					including a DIHM Diploma in Marketing and Economics from IHM Business School. This
+					multidisciplinary foundation allows me to bridge the gap between technical solutions
+					and business value.
+				</p>
+
+				<h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Future Bytes Podcast</h2>
+				<p class="text-gray-700 leading-relaxed mb-6">
+					I'm passionate about sharing knowledge and exploring the future of AI in business.
+					That's why I host the <strong>Future Bytes podcast</strong>, where we discuss AI's
+					real impact on business, practical implementation strategies, and how organizations
+					can harness artificial intelligence to enhance efficiency and foster innovation.
+				</p>
+				<div class="bg-blue-50 border-l-4 border-blue-600 p-6 my-8">
+					<p class="text-blue-900 font-semibold mb-2">Listen to Future Bytes</p>
+					<p class="text-blue-800 mb-4">
+						Exploring AI's positive impact on business, one byte at a time.
+					</p>
+					<a href="https://open.spotify.com/show/2dUyQaG5wFvCPBkB2ErHKe"
+					   target="_blank"
+					   rel="noopener noreferrer"
+					   class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition">
+						Listen on Spotify
+					</a>
+				</div>
+
+				<h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Upcoming Book</h2>
+				<p class="text-gray-700 leading-relaxed mb-6">
+					I'm currently working on a book that will distill years of experience and insights
+					in AI and digital transformation. Stay tuned for updates!
+				</p>
+
+				<h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Let's Connect</h2>
+				<p class="text-gray-700 leading-relaxed mb-6">
+					I'm always available for side collaborations and talks worldwide. Whether you're
+					interested in discussing digital transformation, AI implementation, enterprise
+					architecture, or simply want to exchange ideas about the latest technologies,
+					I'd love to hear from you.
+				</p>
+
+				<div class="flex flex-wrap gap-4 mt-8">
+					<a href="https://www.linkedin.com/in/magnusoxenwaldt/"
+					   target="_blank"
+					   rel="noopener noreferrer"
+					   class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+						Connect on LinkedIn
+					</a>
+					<a href="/blog"
+					   class="inline-block border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition">
+						Read My Blog
+					</a>
+				</div>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
