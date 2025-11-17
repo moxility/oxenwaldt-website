@@ -2,7 +2,6 @@
 title: 'Claude 2.1: An Impressive Advancement in AI'
 description: 'Anthropic delivers a comparable—and sometimes better—LLM service with Claude 2.1, featuring a 200K token context window and significant improvements in accuracy.'
 pubDate: 'Nov 21 2023'
-heroImage: '/blog-placeholder-4.jpg'
 ---
 
 This is truly awesome. Keep it up and know that despite all the fuss about OpenAI, Anthropic is not only delivering a comparable LLM service, but in fact, on occasions, a better one.

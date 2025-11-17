@@ -2,7 +2,6 @@
 title: 'GPT: My Partner in Crime for Creative Problem-Solving'
 description: 'How I use GPT as an old confidant for constructive criticism and as a catalyst for creative thinking in digital transformation work.'
 pubDate: 'Mar 20 2023'
-heroImage: '/blog-placeholder-1.jpg'
 ---
 
 I've come to think of GPT as a partner in crime, an old confidant that I rely on for getting constructive criticism and spitballing me into a creative frenzy.

@@ -2,7 +2,6 @@
 title: 'A Dive into the Future: My First Experience with GPT-4'
 description: 'Testing OpenAI GPT-4 language model and discovering its remarkable capabilities across conversation, creativity, and technical tasks.'
 pubDate: 'Mar 14 2023'
-heroImage: '/blog-placeholder-3.jpg'
 ---
 
 As an AI enthusiast and digital transformation professional, I was eager to get my hands on OpenAI's newly released GPT-4 language model. After spending time testing its capabilities, I'm excited to share my first impressions of this significant advancement in AI technology.

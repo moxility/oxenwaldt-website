@@ -2,7 +2,6 @@
 title: 'Claude 3 is Out: Anthropic Raises the Bar Again'
 description: 'Anthropic announces Claude 3 with three models—Haiku, Sonnet, and Opus—bringing significant improvements in intelligence and capabilities across the board.'
 pubDate: 'Mar 04 2024'
-heroImage: '/blog-placeholder-5.jpg'
 ---
 
 Claude 3 is out. Anthropic has just announced their next generation of AI models, and this release represents a significant leap forward in capabilities.

@@ -2,7 +2,6 @@
 title: 'Competition is Paramount: AR Technologies Going Mainstream'
 description: 'The race between Apple, Google, and Microsoft in augmented reality is exactly what the industry needs to drive AR from experimental tech to mainstream product.'
 pubDate: 'May 28 2022'
-heroImage: '/blog-placeholder-2.jpg'
 ---
 
 Competition is paramount to driving AR technologies to become mainstream products. The ongoing race between Apple, Google, and Microsoft in the augmented reality space isn't just interesting—it's essential for the technology's evolution.

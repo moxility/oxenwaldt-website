@@ -2,7 +2,6 @@
 title: 'ChatGPT Monitored Microsoft Teams Chats'
 description: 'Building an automated Power Automate flow that uses ChatGPT API to analyze Teams messages for clarity and prevent misinterpretation.'
 pubDate: 'Mar 13 2023'
-heroImage: '/blog-placeholder-2.jpg'
 ---
 
 Remote work has transformed how we communicate, but it's also introduced new challenges. Messages in Microsoft Teams can easily be misinterpreted, assigning incorrect intent or meaning to what was written. To address this, I built an automated solution using Power Automate and the newly released ChatGPT API.
