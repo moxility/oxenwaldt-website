@@ -2,7 +2,6 @@
 title: 'The Shift From Commands to Collaboration'
 description: 'LinkedIn post from Aug 25 2025'
 pubDate: 'Aug 25 2025'
-heroImage: '/blog-placeholder-3.jpg'
 ---
 
 🚀 The Shift: From Commands to Collaboration"

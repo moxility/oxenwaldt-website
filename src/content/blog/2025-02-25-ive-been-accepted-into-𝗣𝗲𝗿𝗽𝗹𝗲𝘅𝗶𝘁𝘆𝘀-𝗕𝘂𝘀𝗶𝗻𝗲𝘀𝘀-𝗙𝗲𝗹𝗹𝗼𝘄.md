@@ -2,7 +2,6 @@
 title: 'Ive been accepted into 𝗣𝗲𝗿𝗽𝗹𝗲𝘅𝗶𝘁𝘆𝘀 𝗕𝘂𝘀𝗶𝗻𝗲𝘀𝘀 𝗙𝗲𝗹𝗹𝗼𝘄𝘀𝗵𝗶𝗽'
 description: 'LinkedIn post from Feb 25 2025'
 pubDate: 'Feb 25 2025'
-heroImage: '/blog-placeholder-2.jpg'
 ---
 
 I've been accepted into 𝗣𝗲𝗿𝗽𝗹𝗲𝘅𝗶𝘁𝘆'𝘀 𝗕𝘂𝘀𝗶𝗻𝗲𝘀𝘀 𝗙𝗲𝗹𝗹𝗼𝘄𝘀𝗵𝗶𝗽! 🎉"

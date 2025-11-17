@@ -2,7 +2,6 @@
 title: 'Have you tested Imagen 4 What are your results'
 description: 'LinkedIn post from Jun 27 2025'
 pubDate: 'Jun 27 2025'
-heroImage: '/blog-placeholder-1.jpg'
 ---
 
 When deciding between Google and OpenAI for AI image generation in business applications, what would you choose?"

@@ -2,7 +2,6 @@
 title: 'What if LLM providers credited us for every buggy line of co'
 description: 'LinkedIn post from Jun 12 2025'
 pubDate: 'Jun 12 2025'
-heroImage: '/blog-placeholder-2.jpg'
 ---
 
 What if LLM providers credited us for every buggy line of code their AI generates?"

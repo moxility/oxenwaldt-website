@@ -2,7 +2,6 @@
 title: 'Join me for a weekly breakdown of what truly matters in the'
 description: 'LinkedIn post from Sep 30 2025'
 pubDate: 'Sep 30 2025'
-heroImage: '/blog-placeholder-1.jpg'
 ---
 
 Join me for a weekly breakdown of what truly matters in the AI for your business. Follow me to stay ahead of the curve and unlock insights that can transform your strategies!

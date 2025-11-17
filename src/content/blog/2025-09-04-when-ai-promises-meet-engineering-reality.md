@@ -2,7 +2,6 @@
 title: 'When AI Promises Meet Engineering Reality'
 description: 'LinkedIn post from Sep 04 2025'
 pubDate: 'Sep 04 2025'
-heroImage: '/blog-placeholder-2.jpg'
 ---
 
 ⚔️ When AI Promises Meet Engineering Reality 🌌"

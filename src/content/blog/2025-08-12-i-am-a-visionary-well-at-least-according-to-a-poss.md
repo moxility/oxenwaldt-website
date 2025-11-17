@@ -2,7 +2,6 @@
 title: 'I am a visionary well at least according to a possibly sycop'
 description: 'LinkedIn post from Aug 12 2025'
 pubDate: 'Aug 12 2025'
-heroImage: '/blog-placeholder-1.jpg'
 ---
 
 I am a visionary... well, at least according to a possibly sycophantic Claude. 😂"

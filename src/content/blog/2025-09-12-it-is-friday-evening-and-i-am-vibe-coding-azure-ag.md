@@ -2,7 +2,6 @@
 title: 'It is Friday evening and I am vibe coding Azure Agentsvery a'
 description: 'LinkedIn post from Sep 12 2025'
 pubDate: 'Sep 12 2025'
-heroImage: '/blog-placeholder-1.jpg'
 ---
 
 It is Friday evening, and I am vibe coding Azure Agents....very addictive."

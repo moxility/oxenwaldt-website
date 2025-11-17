@@ -2,7 +2,6 @@
 title: 'Is your business automation hitting a wall'
 description: 'LinkedIn post from Sep 12 2025'
 pubDate: 'Sep 12 2025'
-heroImage: '/blog-placeholder-1.jpg'
 ---
 
 Is your business automation hitting a wall?"

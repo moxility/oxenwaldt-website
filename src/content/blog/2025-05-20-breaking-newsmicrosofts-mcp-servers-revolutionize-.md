@@ -2,7 +2,6 @@
 title: 'BREAKING NEWSMicrosofts MCP Servers Revolutionize Dynamics 3'
 description: 'LinkedIn post from May 20 2025'
 pubDate: 'May 20 2025'
-heroImage: '/blog-placeholder-4.jpg'
 ---
 
 【BREAKING NEWS】Microsoft's MCP Servers Revolutionize Dynamics 365! ✨"

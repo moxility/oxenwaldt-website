@@ -2,7 +2,6 @@
 title: 'This is an important message from a business leader Technolo'
 description: 'LinkedIn post from Mar 16 2025'
 pubDate: 'Mar 16 2025'
-heroImage: '/blog-placeholder-1.jpg'
 ---
 
 This is an important message from a business leader. Technologies alone won’t make a difference - people using them will.

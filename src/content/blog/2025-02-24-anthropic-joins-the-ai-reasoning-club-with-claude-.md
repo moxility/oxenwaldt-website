@@ -2,7 +2,6 @@
 title: 'Anthropic Joins the AI Reasoning Club with Claude 37 Sonnet'
 description: 'LinkedIn post from Feb 24 2025'
 pubDate: 'Feb 24 2025'
-heroImage: '/blog-placeholder-3.jpg'
 ---
 
 🧠 Anthropic Joins the AI Reasoning Club with Claude 3.7 Sonnet! 💭"

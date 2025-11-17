@@ -2,7 +2,6 @@
 title: 'Nano Banana just made Photoshop obsolete'
 description: 'LinkedIn post from Aug 20 2025'
 pubDate: 'Aug 20 2025'
-heroImage: '/blog-placeholder-4.jpg'
 ---
 
 Nano Banana just made Photoshop obsolete."
