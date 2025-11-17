@@ -1,0 +1,176 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Future Bytes Podcast | ${SITE_TITLE}`} description="Future Bytes: Bits of business transformation - A podcast exploring AI's impact on business and digital transformation" />
+	</head>
+	<body class="bg-white">
+		<Header />
+		<main class="p-0">
+			<!-- Hero Section -->
+			<section class="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white py-20 px-4">
+				<div class="max-w-4xl mx-auto text-center">
+					<div class="inline-block mb-6 px-4 py-2 bg-green-500/20 backdrop-blur-sm border border-green-400/30 rounded-full text-sm font-medium text-green-200">
+						<svg class="w-4 h-4 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+						</svg>
+						Podcast
+					</div>
+					<h1 class="text-5xl md:text-6xl font-bold mb-6">Future Bytes</h1>
+					<p class="text-2xl text-green-300 mb-4 font-semibold">Bits of business transformation</p>
+					<p class="text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto">
+						Exploring how artificial intelligence transforms business, featuring conversations with industry leaders
+						about practical AI strategy, digital transformation, and innovation.
+					</p>
+				</div>
+			</section>
+
+			<!-- Listen Now Section -->
+			<section class="py-16 px-4 bg-gradient-to-br from-slate-50 to-blue-50">
+				<div class="max-w-4xl mx-auto">
+					<h2 class="text-4xl font-bold text-slate-900 mb-8 text-center">Listen Now</h2>
+					<div class="grid md:grid-cols-2 gap-6">
+						<a href="https://open.spotify.com/show/2dUyQaG5wFvCPBkB2ErHKe"
+						   target="_blank"
+						   rel="noopener noreferrer"
+						   class="group bg-white p-8 rounded-2xl border-2 border-slate-200 hover:border-green-400 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+							<div class="flex items-center gap-4 mb-4">
+								<div class="w-16 h-16 bg-green-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+									<svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+										<path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+									</svg>
+								</div>
+								<div>
+									<h3 class="text-2xl font-bold text-slate-900">Spotify</h3>
+									<p class="text-slate-600">Listen on Spotify</p>
+								</div>
+							</div>
+							<div class="flex items-center text-green-600 font-semibold group-hover:gap-3 transition-all">
+								<span>Open Podcast</span>
+								<svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+								</svg>
+							</div>
+						</a>
+
+						<div class="bg-white p-8 rounded-2xl border-2 border-slate-200">
+							<div class="flex items-center gap-4 mb-4">
+								<div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
+									<svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+									</svg>
+								</div>
+								<div>
+									<h3 class="text-2xl font-bold text-slate-900">Other Platforms</h3>
+									<p class="text-slate-600">Coming soon</p>
+								</div>
+							</div>
+							<p class="text-slate-500">Apple Podcasts, Google Podcasts, and more platforms coming soon.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- About the Podcast -->
+			<section class="py-20 px-4">
+				<div class="max-w-4xl mx-auto">
+					<h2 class="text-4xl font-bold text-slate-900 mb-8">About Future Bytes</h2>
+					<div class="prose prose-lg max-w-none">
+						<p class="text-xl text-slate-700 leading-relaxed mb-6">
+							<strong>Future Bytes: Bits of business transformation</strong> is where AI strategy meets real-world business implementation.
+							Each episode explores how artificial intelligence is transforming industries, featuring conversations with leaders
+							who are actually doing the work—not just talking about it.
+						</p>
+						<p class="text-lg text-slate-600 leading-relaxed mb-6">
+							Hosted by Magnus Oxenwaldt, the podcast brings together perspectives from across Columbus Global's industries and beyond,
+							covering everything from ethical AI considerations to practical implementation strategies. Whether you're a business
+							leader exploring AI adoption or a technologist looking to understand business context, Future Bytes delivers
+							actionable insights grounded in real-world experience.
+						</p>
+					</div>
+
+					<!-- What You'll Learn -->
+					<div class="mt-16">
+						<h3 class="text-3xl font-bold text-slate-900 mb-6">What You'll Learn</h3>
+						<div class="grid md:grid-cols-2 gap-6">
+							<div class="bg-blue-50 p-6 rounded-xl border-2 border-blue-100">
+								<h4 class="text-xl font-bold text-blue-900 mb-3">AI Strategy & Implementation</h4>
+								<p class="text-slate-700">
+									Practical approaches to AI adoption that deliver measurable business results, not just impressive demos.
+								</p>
+							</div>
+							<div class="bg-indigo-50 p-6 rounded-xl border-2 border-indigo-100">
+								<h4 class="text-xl font-bold text-indigo-900 mb-3">Digital Transformation</h4>
+								<p class="text-slate-700">
+									How organizations navigate change, manage stakeholders, and build capabilities for the AI era.
+								</p>
+							</div>
+							<div class="bg-purple-50 p-6 rounded-xl border-2 border-purple-100">
+								<h4 class="text-xl font-bold text-purple-900 mb-3">Industry Applications</h4>
+								<p class="text-slate-700">
+									Real examples of AI transforming retail, manufacturing, services, and other industries.
+								</p>
+							</div>
+							<div class="bg-green-50 p-6 rounded-xl border-2 border-green-100">
+								<h4 class="text-xl font-bold text-green-900 mb-3">Ethics & Responsibility</h4>
+								<p class="text-slate-700">
+									Navigating the ethical considerations, workforce implications, and responsible AI practices.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Recent Episodes -->
+					<div class="mt-16">
+						<h3 class="text-3xl font-bold text-slate-900 mb-6">Recent Topics</h3>
+						<div class="space-y-4">
+							<div class="bg-white p-6 rounded-xl border-2 border-slate-100 hover:border-blue-200 transition-colors">
+								<h4 class="text-lg font-bold text-slate-900 mb-2">AI Within Retail</h4>
+								<p class="text-slate-600">
+									Exploring how artificial intelligence is transforming retail operations, customer experience, and business models.
+								</p>
+							</div>
+							<div class="bg-white p-6 rounded-xl border-2 border-slate-100 hover:border-blue-200 transition-colors">
+								<h4 class="text-lg font-bold text-slate-900 mb-2">Building Real AI Value</h4>
+								<p class="text-slate-600">
+									Conversations with experts about moving beyond AI hype to deliver tangible business outcomes.
+								</p>
+							</div>
+							<div class="bg-white p-6 rounded-xl border-2 border-slate-100 hover:border-blue-200 transition-colors">
+								<h4 class="text-lg font-bold text-slate-900 mb-2">The AI-First Wave</h4>
+								<p class="text-slate-600">
+									Lessons from Microsoft's transformation and what it means for other organizations embracing AI.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- CTA -->
+					<div class="mt-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-12 text-center text-white">
+						<h3 class="text-3xl font-bold mb-6">Subscribe to Stay Updated</h3>
+						<p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+							New episodes released regularly. Follow the podcast on Spotify to get notified
+							when new conversations go live.
+						</p>
+						<a href="https://open.spotify.com/show/2dUyQaG5wFvCPBkB2ErHKe"
+						   target="_blank"
+						   rel="noopener noreferrer"
+						   class="inline-flex items-center gap-3 bg-green-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+							<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+								<path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+							</svg>
+							<span>Listen on Spotify</span>
+						</a>
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
