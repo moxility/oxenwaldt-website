@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
@@ -10,105 +9,276 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+
+// Extract unique years for filtering
+const years = [...new Set(posts.map(post => post.data.pubDate.getFullYear()))].sort((a, b) => b - a);
+
+// Categorize posts by topic
+const categorizePost = (title: string, description: string) => {
+	const text = `${title} ${description}`.toLowerCase();
+	if (text.includes('claude') || text.includes('anthropic')) return 'Claude & Anthropic';
+	if (text.includes('gpt') || text.includes('openai') || text.includes('chatgpt')) return 'GPT & OpenAI';
+	if (text.includes('ai') || text.includes('artificial intelligence') || text.includes('llm')) return 'AI & LLMs';
+	if (text.includes('retail') || text.includes('ecommerce') || text.includes('shop')) return 'Retail & E-commerce';
+	if (text.includes('digital transformation') || text.includes('enterprise')) return 'Digital Transformation';
+	if (text.includes('podcast') || text.includes('future bytes')) return 'Podcast';
+	return 'Technology';
+};
+
+const postsWithCategories = posts.map(post => ({
+	...post,
+	category: categorizePost(post.data.title, post.data.description)
+}));
+
+const categories = [...new Set(postsWithCategories.map(p => p.category))];
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
+		<BaseHead title={`Blog | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
-									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
+		<main class="max-w-7xl mx-auto px-4 py-12">
+			<!-- Hero Section -->
+			<div class="text-center mb-12">
+				<h1 class="text-5xl font-bold text-slate-900 mb-4">Blog</h1>
+				<p class="text-xl text-slate-600 max-w-2xl mx-auto">
+					Insights on AI, digital transformation, and enterprise architecture
+				</p>
+			</div>
+
+			<!-- Search and Filters -->
+			<div class="mb-12 space-y-6">
+				<!-- Search Box -->
+				<div class="max-w-2xl mx-auto">
+					<div class="relative">
+						<input
+							type="text"
+							id="searchInput"
+							placeholder="Search blog posts..."
+							class="w-full px-6 py-4 text-lg border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all"
+						/>
+						<svg class="absolute right-6 top-1/2 -translate-y-1/2 w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+						</svg>
+					</div>
+				</div>
+
+				<!-- Category Filter -->
+				<div class="flex flex-wrap justify-center gap-3">
+					<button
+						class="filter-btn active px-6 py-2 rounded-full font-semibold transition-all"
+						data-filter="all"
+					>
+						All Posts
+					</button>
+					{categories.map(category => (
+						<button
+							class="filter-btn px-6 py-2 rounded-full font-semibold transition-all"
+							data-filter={category}
+						>
+							{category}
+						</button>
+					))}
+				</div>
+
+				<!-- Year Filter -->
+				<div class="flex flex-wrap justify-center gap-2">
+					<button
+						class="year-btn active text-sm px-4 py-2 rounded-lg font-medium transition-all"
+						data-year="all"
+					>
+						All Years
+					</button>
+					{years.map(year => (
+						<button
+							class="year-btn text-sm px-4 py-2 rounded-lg font-medium transition-all"
+							data-year={year}
+						>
+							{year}
+						</button>
+					))}
+				</div>
+			</div>
+
+			<!-- Posts Grid -->
+			<div id="postsContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+				{postsWithCategories.map((post) => (
+					<article
+						class="post-card group bg-white rounded-2xl border-2 border-slate-100 hover:border-blue-200 hover:shadow-xl transition-all duration-300 overflow-hidden"
+						data-category={post.category}
+						data-year={post.data.pubDate.getFullYear()}
+						data-title={post.data.title.toLowerCase()}
+						data-description={post.data.description.toLowerCase()}
+					>
+						<a href={`/blog/${post.id}/`} class="block">
+							<!-- Gradient Placeholder Image -->
+							<div class="h-48 bg-gradient-to-br from-blue-500 to-indigo-600 relative overflow-hidden">
+								<div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-all"></div>
+								<div class="absolute inset-0 flex items-center justify-center">
+									<span class="text-white text-sm font-semibold px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full">
+										{post.category}
+									</span>
+								</div>
+							</div>
+
+							<!-- Content -->
+							<div class="p-6">
+								<div class="flex items-center gap-2 mb-3">
+									<span class="text-sm text-blue-600 font-semibold">
+										{post.category}
+									</span>
+									<span class="text-slate-300">•</span>
+									<time class="text-sm text-slate-500">
 										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
+									</time>
+								</div>
+
+								<h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+									{post.data.title}
+								</h3>
+
+								<p class="text-slate-600 line-clamp-3">
+									{post.data.description}
+								</p>
+
+								<div class="mt-4 flex items-center text-blue-600 font-semibold group-hover:gap-2 transition-all">
+									<span>Read more</span>
+									<svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+									</svg>
+								</div>
+							</div>
+						</a>
+					</article>
+				))}
+			</div>
+
+			<!-- No Results Message -->
+			<div id="noResults" class="hidden text-center py-12">
+				<div class="text-6xl mb-4">🔍</div>
+				<h3 class="text-2xl font-bold text-slate-900 mb-2">No posts found</h3>
+				<p class="text-slate-600">Try adjusting your search or filters</p>
+			</div>
 		</main>
 		<Footer />
+
+		<script>
+			// Search and filter functionality
+			const searchInput = document.getElementById('searchInput') as HTMLInputElement;
+			const postsContainer = document.getElementById('postsContainer');
+			const noResults = document.getElementById('noResults');
+			const postCards = document.querySelectorAll('.post-card');
+			const filterBtns = document.querySelectorAll('.filter-btn');
+			const yearBtns = document.querySelectorAll('.year-btn');
+
+			let activeCategory = 'all';
+			let activeYear = 'all';
+			let searchQuery = '';
+
+			function filterPosts() {
+				let visibleCount = 0;
+
+				postCards.forEach((card) => {
+					const cardCategory = card.getAttribute('data-category');
+					const cardYear = card.getAttribute('data-year');
+					const cardTitle = card.getAttribute('data-title') || '';
+					const cardDescription = card.getAttribute('data-description') || '';
+
+					const matchesCategory = activeCategory === 'all' || cardCategory === activeCategory;
+					const matchesYear = activeYear === 'all' || cardYear === activeYear;
+					const matchesSearch = searchQuery === '' ||
+						cardTitle.includes(searchQuery) ||
+						cardDescription.includes(searchQuery);
+
+					if (matchesCategory && matchesYear && matchesSearch) {
+						(card as HTMLElement).style.display = 'block';
+						visibleCount++;
+					} else {
+						(card as HTMLElement).style.display = 'none';
+					}
+				});
+
+				if (visibleCount === 0) {
+					noResults?.classList.remove('hidden');
+					postsContainer?.classList.add('hidden');
+				} else {
+					noResults?.classList.add('hidden');
+					postsContainer?.classList.remove('hidden');
+				}
+			}
+
+			// Search
+			searchInput?.addEventListener('input', (e) => {
+				searchQuery = (e.target as HTMLInputElement).value.toLowerCase();
+				filterPosts();
+			});
+
+			// Category filters
+			filterBtns.forEach(btn => {
+				btn.addEventListener('click', () => {
+					filterBtns.forEach(b => b.classList.remove('active'));
+					btn.classList.add('active');
+					activeCategory = btn.getAttribute('data-filter') || 'all';
+					filterPosts();
+				});
+			});
+
+			// Year filters
+			yearBtns.forEach(btn => {
+				btn.addEventListener('click', () => {
+					yearBtns.forEach(b => b.classList.remove('active'));
+					btn.classList.add('active');
+					activeYear = btn.getAttribute('data-year') || 'all';
+					filterPosts();
+				});
+			});
+		</script>
+
+		<style>
+			.filter-btn {
+				background: white;
+				border: 2px solid #e2e8f0;
+				color: #64748b;
+			}
+			.filter-btn:hover {
+				border-color: #3b82f6;
+				color: #3b82f6;
+			}
+			.filter-btn.active {
+				background: #3b82f6;
+				border-color: #3b82f6;
+				color: white;
+			}
+
+			.year-btn {
+				background: #f1f5f9;
+				color: #64748b;
+			}
+			.year-btn:hover {
+				background: #e0e7ff;
+				color: #4f46e5;
+			}
+			.year-btn.active {
+				background: #4f46e5;
+				color: white;
+			}
+
+			.line-clamp-2 {
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+			}
+
+			.line-clamp-3 {
+				display: -webkit-box;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+			}
+		</style>
 	</body>
 </html>
