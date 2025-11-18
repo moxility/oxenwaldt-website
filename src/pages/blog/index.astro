@@ -25,10 +25,16 @@ const categorizePost = (title: string, description: string) => {
 	return 'Technology';
 };
 
-const postsWithCategories = posts.map(post => ({
-	...post,
-	category: categorizePost(post.data.title, post.data.description)
-}));
+const postsWithCategories = posts.map(post => {
+	const imageFilename = `${post.id}.png`;
+	const imagePath = `/blog-images/${imageFilename}`;
+
+	return {
+		...post,
+		category: categorizePost(post.data.title, post.data.description),
+		generatedImage: imagePath
+	};
+});
 
 const categories = [...new Set(postsWithCategories.map(p => p.category))];
 ---
@@ -114,10 +120,16 @@ const categories = [...new Set(postsWithCategories.map(p => p.category))];
 						data-description={post.data.description.toLowerCase()}
 					>
 						<a href={`/blog/${post.id}/`} class="block">
-							<!-- Gradient Placeholder Image -->
-							<div class="h-48 bg-gradient-to-br from-blue-500 to-indigo-600 relative overflow-hidden">
+							<!-- Blog Image (generated AI image or gradient fallback) -->
+							<div class="h-48 relative overflow-hidden bg-gradient-to-br from-blue-500 to-indigo-600">
+								<img
+									src={post.generatedImage}
+									alt={post.data.title}
+									class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+									onerror="this.style.display='none'"
+								/>
 								<div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-all"></div>
-								<div class="absolute inset-0 flex items-center justify-center">
+								<div class="absolute bottom-4 left-4">
 									<span class="text-white text-sm font-semibold px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full">
 										{post.category}
 									</span>
