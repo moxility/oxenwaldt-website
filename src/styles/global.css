@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 /*
   The CSS in this style tag is based off of Bear Blog's default CSS.
   https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
@@ -5,12 +7,14 @@
  */
 
 :root {
-	--accent: #1e40af;
-	--accent-dark: #1e3a8a;
-	--black: 15, 18, 25;
-	--gray: 96, 115, 159;
-	--gray-light: 229, 233, 240;
-	--gray-dark: 34, 41, 57;
+	/* Modern Monochrome with Teal accent */
+	--accent: #0d9488;
+	--accent-dark: #0f766e;
+	--accent-light: #14b8a6;
+	--black: 15, 23, 42;
+	--gray: 100, 116, 139;
+	--gray-light: 241, 245, 249;
+	--gray-dark: 30, 41, 59;
 	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
 	--box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 	--box-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);

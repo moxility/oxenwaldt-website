@@ -9,249 +9,170 @@ import { SITE_TITLE } from '../consts';
 <html lang="en">
 	<head>
 		<BaseHead title={`About | ${SITE_TITLE}`} description="Learn more about Magnus Oxenwaldt - AI & Digital Transformation Leader" />
+		<style>
+			.card-hover {
+				transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+			}
+			.card-hover:hover {
+				transform: translateY(-4px);
+			}
+		</style>
 	</head>
-	<body class="bg-white">
+	<body class="bg-slate-50">
 		<Header />
 		<main class="p-0">
 			<!-- Hero Section -->
-			<section class="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white py-20 px-4">
-				<div class="max-w-4xl mx-auto">
-					<div class="inline-block mb-4 px-4 py-2 bg-blue-500/20 backdrop-blur-sm border border-blue-400/30 rounded-full text-sm font-medium text-blue-200">
-						About
-					</div>
-					<h1 class="text-5xl md:text-6xl font-bold mb-6">About Magnus Oxenwaldt</h1>
-					<p class="text-xl text-slate-300 leading-relaxed">
-						A seasoned enterprise architect and digital transformation leader with over two decades
-						of experience helping organizations harness AI and emerging technologies for competitive advantage.
+			<section class="bg-slate-900 text-white py-20 px-4 relative overflow-hidden">
+				<div class="absolute inset-0 opacity-30">
+					<img src="/images/about_background_20251210_170542.png" alt="" class="w-full h-full object-cover" />
+				</div>
+				<div class="max-w-4xl mx-auto relative z-10">
+					<h1 class="text-5xl md:text-6xl font-black mb-4 tracking-tight">
+						Magnus Oxenwaldt
+					</h1>
+					<p class="text-xl text-slate-400 font-semibold">
+						AI Thought Leader & Strategic Advisor
 					</p>
 				</div>
 			</section>
 
 			<!-- Main Content -->
-			<section class="py-20 px-4">
+			<section class="py-16 px-4">
 				<div class="max-w-4xl mx-auto">
-					<!-- Introduction -->
-					<div class="prose prose-lg max-w-none mb-16">
-						<p class="text-2xl text-slate-700 leading-relaxed mb-8">
-							Originally from Sweden and now based in Oslo, Norway, I help organizations navigate
-							the complex landscape of digital transformation, enterprise architecture, and
-							artificial intelligence integration.
-						</p>
-						<p class="text-xl text-slate-600 leading-relaxed">
-							My work focuses on making emerging technologies—particularly large language models
-							and AI systems—deliver real value in business contexts. I combine technical depth
-							with business pragmatism, ensuring transformation initiatives produce measurable
-							outcomes, not just impressive demos. Through consulting, speaking, and my Future Bytes
-							podcast, I share practical insights on navigating the AI era.
-						</p>
-					</div>
-
-					<!-- Professional Journey -->
-					<div class="mb-20">
-						<h2 class="text-4xl font-bold text-slate-900 mb-8">Professional Journey</h2>
-						<div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 border-2 border-blue-100">
-							<div class="flex items-start gap-6 mb-6">
-								<div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
-									<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-									</svg>
-								</div>
-								<div>
-									<h3 class="text-2xl font-bold text-slate-900 mb-2">Principal Business Consultant</h3>
-									<p class="text-lg text-blue-900 font-semibold mb-4">Columbus Global • Oslo, Norway</p>
-									<p class="text-slate-700 leading-relaxed mb-4">
-										I lead enterprise-wide transformation initiatives focused on ERP systems, Customer
-										Engagement platforms, and artificial intelligence integration. My work ranges from
-										architecting vendor-supported cross-application connectors to implementing AI models
-										within DevOps pipelines and business processes.
-									</p>
-									<p class="text-slate-700 leading-relaxed">
-										My passion lies in making large language models (LLMs) and AI systems work for real
-										business operations—not in controlled demos, but in production environments with
-										actual users, messy data, and complex requirements. I help organizations build
-										competitive advantage through intelligent automation and AI-augmented workflows.
-									</p>
-								</div>
+					<!-- Bio with Portrait -->
+					<div class="mb-12 bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
+						<div class="flex flex-col md:flex-row gap-8 items-start">
+							<!-- Portrait -->
+							<div class="flex-shrink-0 mx-auto md:mx-0">
+								<img
+									src="/images/magnus_portrait_casual.png"
+									alt="Magnus Oxenwaldt"
+									class="w-48 h-48 md:w-56 md:h-56 rounded-2xl object-cover shadow-lg"
+								/>
 							</div>
-							<div class="mt-8 pt-8 border-t border-blue-200">
+							<!-- Bio Text -->
+							<div class="flex-1">
+								<p class="text-xl text-slate-700 leading-relaxed mb-4 font-medium">
+									I help enterprises navigate AI transformation—from strategy through implementation.
+								</p>
 								<p class="text-slate-600 leading-relaxed">
-									Working internationally from Oslo, Norway, with a Swedish background, I bring
-									diverse perspectives on how technology transforms businesses across different
-									markets, industries, and organizational cultures.
+									With 20+ years in enterprise architecture, I focus on making AI and emerging technologies
+									deliver real business value, not just impressive demos. Through consulting, speaking, and my
+									Future Bytes podcast, I share practical insights on navigating the AI era. My background spans
+									technology, economics, and marketing—enabling me to bridge technical and business conversations.
 								</p>
 							</div>
 						</div>
 					</div>
 
-					<!-- Areas of Expertise -->
-					<div class="mb-20">
-						<h2 class="text-4xl font-bold text-slate-900 mb-8">Areas of Expertise</h2>
-						<div class="grid md:grid-cols-2 gap-6">
-							<div class="group bg-white p-8 rounded-2xl border-2 border-slate-100 hover:border-blue-200 hover:shadow-xl transition-all duration-300">
-								<div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-									<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-									</svg>
-								</div>
-								<h3 class="text-2xl font-bold text-slate-900 mb-3">Artificial Intelligence</h3>
-								<p class="text-slate-600 leading-relaxed mb-4">
-									Practical AI implementation using frontier language models from OpenAI, Anthropic, and others.
-									I help organizations adopt AI systematically—from proof of concept through production deployment,
-									measuring real productivity gains and business impact.
-								</p>
-								<p class="text-sm text-slate-500 italic">
-									Each LLM has strengths for different tasks. I design solutions that leverage the right models
-									for specific needs while accounting for their real-world limitations.
-								</p>
-							</div>
-							<div class="group bg-white p-8 rounded-2xl border-2 border-slate-100 hover:border-blue-200 hover:shadow-xl transition-all duration-300">
-								<div class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-									<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<!-- Expertise Grid -->
+					<div class="mb-12">
+						<h2 class="text-2xl font-black text-slate-900 mb-6">Areas of Focus</h2>
+						<div class="grid md:grid-cols-2 gap-4">
+							<div class="card-hover p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-lg">
+								<div class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center mb-4">
+									<svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
 									</svg>
 								</div>
-								<h3 class="text-2xl font-bold text-slate-900 mb-3">Digital Transformation</h3>
-								<p class="text-slate-600 leading-relaxed">
-									Leading enterprise-wide transformation initiatives, change management,
-									and helping organizations adapt to the digital age with confidence.
+								<h3 class="text-lg font-bold text-slate-900 mb-2">AI Implementation</h3>
+								<p class="text-sm text-slate-600 leading-relaxed">
+									Practical AI strategies using OpenAI, Anthropic, and other frontier models.
+									Measuring real productivity gains, not vendor promises.
 								</p>
 							</div>
-							<div class="group bg-white p-8 rounded-2xl border-2 border-slate-100 hover:border-blue-200 hover:shadow-xl transition-all duration-300">
-								<div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-									<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<div class="card-hover p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-lg">
+								<div class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center mb-4">
+									<svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
 									</svg>
 								</div>
-								<h3 class="text-2xl font-bold text-slate-900 mb-3">Enterprise Architecture</h3>
-								<p class="text-slate-600 leading-relaxed">
-									Making complex systems work together: ERP platforms, customer engagement systems,
-									and the integrations that connect them. I architect vendor-supported solutions that
-									meet time-to-market demands while maintaining reliability—because broken integrations
-									kill transformation projects.
+								<h3 class="text-lg font-bold text-slate-900 mb-2">Enterprise Architecture</h3>
+								<p class="text-sm text-slate-600 leading-relaxed">
+									ERP, CRM, and integration architecture. Making complex systems work
+									together reliably.
 								</p>
 							</div>
-							<div class="group bg-white p-8 rounded-2xl border-2 border-slate-100 hover:border-blue-200 hover:shadow-xl transition-all duration-300">
-								<div class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-									<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<div class="card-hover p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-lg">
+								<div class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center mb-4">
+									<svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+									</svg>
+								</div>
+								<h3 class="text-lg font-bold text-slate-900 mb-2">Digital Transformation</h3>
+								<p class="text-sm text-slate-600 leading-relaxed">
+									Enterprise-wide transformation initiatives, change management, and
+									organizational adaptation.
+								</p>
+							</div>
+							<div class="card-hover p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-lg">
+								<div class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center mb-4">
+									<svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
 									</svg>
 								</div>
-								<h3 class="text-2xl font-bold text-slate-900 mb-3">Business Strategy</h3>
-								<p class="text-slate-600 leading-relaxed">
-									Combining technology, economics, and marketing expertise to drive
-									strategic business outcomes and sustainable growth.
+								<h3 class="text-lg font-bold text-slate-900 mb-2">Business Strategy</h3>
+								<p class="text-sm text-slate-600 leading-relaxed">
+									Combining technology, economics, and market insights to drive
+									strategic outcomes.
 								</p>
 							</div>
 						</div>
 					</div>
 
-					<!-- Education -->
-					<div class="mb-20">
-						<h2 class="text-4xl font-bold text-slate-900 mb-8">Education & Background</h2>
-						<div class="bg-slate-50 rounded-2xl p-8 border-2 border-slate-100">
-							<p class="text-lg text-slate-700 leading-relaxed">
-								I hold degrees in three distinct fields: <strong>technology, economics, and marketing</strong>.
-								This multidisciplinary foundation allows me to bridge the gap between technical architecture,
-								business strategy, and market realities. It's this unique combination that enables me to
-								speak both the language of C-suite executives and development teams—ensuring transformation
-								initiatives are technically sound, financially viable, and strategically aligned.
-							</p>
-						</div>
-					</div>
-
-					<!-- Future Bytes Podcast -->
-					<div class="mb-20">
-						<div class="bg-gradient-to-br from-slate-900 to-blue-900 rounded-3xl p-8 md:p-12 text-white">
-							<div class="flex items-start gap-4 mb-6">
-								<div class="w-16 h-16 bg-green-500/20 backdrop-blur-sm border-2 border-green-400/30 rounded-xl flex items-center justify-center flex-shrink-0">
-									<svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
-									</svg>
-								</div>
-								<div>
-									<div class="inline-block mb-2 px-3 py-1 bg-green-500/20 border border-green-400/30 rounded-full text-xs font-medium text-green-300">
-										Podcast
-									</div>
-									<h2 class="text-3xl font-bold mb-4">Future Bytes Podcast</h2>
-								</div>
-							</div>
-							<p class="text-lg text-slate-300 leading-relaxed mb-8">
-								<strong class="text-white">Future Bytes: Bits of business transformation</strong> explores how
-								artificial intelligence transforms business. I host conversations with industry leaders about
-								practical AI strategy, digital transformation, and real-world implementation. From ethical
-								considerations to technical approaches, each episode delivers actionable insights for
-								organizations navigating the AI era.
-							</p>
-							<div class="flex flex-wrap gap-4">
-								<a href="/podcast"
-								   class="inline-flex items-center gap-2 bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-									<span>Learn More</span>
-									<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-									</svg>
-								</a>
-								<a href="https://open.spotify.com/show/2dUyQaG5wFvCPBkB2ErHKe"
-								   target="_blank"
-								   rel="noopener noreferrer"
-								   class="inline-flex items-center gap-3 border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-all">
-									<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-										<path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
-									</svg>
-									<span>Listen on Spotify</span>
-								</a>
-							</div>
-						</div>
-					</div>
-
-					<!-- Upcoming Book -->
-					<div class="mb-20">
-						<div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12 border-2 border-blue-100">
-							<div class="flex items-start gap-4 mb-4">
-								<div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
-									<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-									</svg>
-								</div>
-								<div>
-									<h2 class="text-3xl font-bold text-slate-900 mb-4">Upcoming Book</h2>
-									<p class="text-lg text-slate-700 leading-relaxed">
-										I'm currently working on a book that will distill years of experience and insights
-										in AI and digital transformation. It will provide practical guidance for organizations
-										navigating the complex landscape of artificial intelligence adoption and digital change.
-										<strong class="text-blue-900">Stay tuned for updates!</strong>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- CTA -->
-					<div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-12 text-center text-white">
-						<h2 class="text-4xl font-bold mb-6">Let's Connect</h2>
-						<p class="text-xl text-blue-100 mb-10 leading-relaxed max-w-2xl mx-auto">
-							I'm always available for side collaborations and talks worldwide. Whether you're exploring
-							digital transformation strategies, navigating AI implementation challenges, architecting
-							enterprise solutions, or simply want to exchange ideas about emerging technologies,
-							I'd welcome the conversation.
-						</p>
-						<div class="flex flex-wrap justify-center gap-4">
-							<a href="https://www.linkedin.com/in/magnusoxenwaldt/"
-							   target="_blank"
-							   rel="noopener noreferrer"
-							   class="inline-flex items-center gap-3 bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-								<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-									<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+					<!-- Quick Links -->
+					<div class="grid md:grid-cols-2 gap-6 mb-12">
+						<!-- Podcast -->
+						<div class="card-hover bg-slate-900 rounded-2xl p-6 text-white shadow-lg">
+							<div class="w-10 h-10 bg-teal-600 rounded-lg flex items-center justify-center mb-4">
+								<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
 								</svg>
-								<span>Connect on LinkedIn</span>
-							</a>
-							<a href="/blog"
-							   class="inline-flex items-center gap-2 border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-all">
-								<span>Read My Blog</span>
-								<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							</div>
+							<h3 class="text-xl font-bold mb-2">Future Bytes Podcast</h3>
+							<p class="text-sm text-slate-400 mb-4 leading-relaxed">
+								Weekly conversations on AI strategy and real-world implementation.
+							</p>
+							<a href="/podcast" class="inline-flex items-center gap-2 text-teal-400 font-bold text-sm hover:text-teal-300 transition-colors group">
+								Listen now
+								<svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
 								</svg>
 							</a>
 						</div>
+						<!-- Book -->
+						<div class="card-hover bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-lg">
+							<div class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center mb-4">
+								<svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+								</svg>
+							</div>
+							<h3 class="text-xl font-bold text-slate-900 mb-2">Upcoming Book</h3>
+							<p class="text-sm text-slate-600 mb-4 leading-relaxed">
+								Practical guidance for AI adoption and digital transformation. Coming soon.
+							</p>
+							<span class="inline-flex items-center gap-2 text-teal-600 font-bold text-sm">
+								<span class="w-2 h-2 bg-teal-500 rounded-full animate-pulse"></span>
+								Stay tuned
+							</span>
+						</div>
+					</div>
+
+					<!-- Connect CTA -->
+					<div class="bg-slate-900 rounded-2xl p-10 text-center text-white">
+						<h2 class="text-3xl font-black mb-3">Let's Connect</h2>
+						<p class="text-slate-400 mb-6">
+							Available for consulting, speaking, and strategic advisory worldwide.
+						</p>
+						<a href="https://www.linkedin.com/in/magnusoxenwaldt/"
+						   target="_blank"
+						   rel="noopener noreferrer"
+						   class="inline-flex items-center gap-3 bg-teal-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-700 transition-colors">
+							<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+								<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+							</svg>
+							<span>Connect on LinkedIn</span>
+						</a>
 					</div>
 				</div>
 			</section>

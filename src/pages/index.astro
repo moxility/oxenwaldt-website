@@ -8,7 +8,12 @@ import FormattedDate from '../components/FormattedDate.astro';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-).slice(0, 3);
+).slice(0, 6);
+
+// Helper function to get image path for a blog post
+function getImagePath(slug: string) {
+	return `/blog-images/${slug}.png`;
+}
 ---
 
 <!doctype html>
@@ -18,215 +23,149 @@ const posts = (await getCollection('blog')).sort(
 	</head>
 	<body class="bg-white">
 		<Header />
-		<main class="p-0">
-			<!-- Hero Section -->
-			<section class="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white overflow-hidden">
-				<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-40"></div>
-				<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
-					<div class="max-w-4xl">
-						<h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
-							Two Decades of Making<br/><span class="text-blue-400">Digital Transformation</span> Actually Work
+
+		<!-- Hero Section - Modern Monochrome with Background -->
+		<section class="bg-slate-900 text-white relative overflow-hidden">
+			<div class="absolute inset-0 opacity-30">
+				<img src="/images/hero_banner_20251210_170506.png" alt="" class="w-full h-full object-cover" />
+			</div>
+			<div class="max-w-5xl mx-auto px-6 py-24 md:py-32 relative z-10">
+				<div class="flex flex-col md:flex-row items-center gap-12">
+					<!-- Portrait -->
+					<div class="flex-shrink-0">
+						<img
+							src="/images/magnus_portrait_casual.png"
+							alt="Magnus Oxenwaldt"
+							class="w-40 h-40 md:w-52 md:h-52 rounded-2xl object-cover shadow-2xl border-2 border-slate-700"
+						/>
+					</div>
+					<!-- Text Content -->
+					<div class="text-center md:text-left">
+						<h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+							Magnus Oxenwaldt
 						</h1>
-						<p class="text-xl md:text-2xl mb-8 text-slate-300 leading-relaxed max-w-3xl">
-							I cut through the AI hype to build transformation strategies that deliver measurable ROI.
-							ERP, Customer Engagement, AI integration—if it involves making complex systems work together,
-							I've probably debugged it at 2 AM.
+						<p class="text-2xl md:text-3xl text-slate-400 mb-6 font-light">
+							AI & Digital Transformation Leader
 						</p>
-						<div class="flex flex-wrap gap-4 mb-12">
-							<a href="/blog" class="group inline-flex items-center gap-2 bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-								<span>Read My Thinking</span>
-								<svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-								</svg>
+						<p class="text-lg text-slate-500 mb-12 max-w-2xl leading-relaxed">
+							Principal Business Consultant pioneering AI-driven solutions that revolutionize enterprise processes. Host of Future Bytes podcast. Over 20 years bridging emerging technologies with practical business applications across ERP, Customer Engagement, and AI integration.
+						</p>
+						<div class="flex gap-4 flex-wrap justify-center md:justify-start">
+							<a href="/blog" class="bg-teal-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-teal-700 transition-colors">
+								Read Articles
 							</a>
-							<a href="/about" class="inline-flex items-center gap-2 border-2 border-white/30 backdrop-blur-sm text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 hover:border-white/50 transition-all">
-								My Story
+							<a href="/podcast" class="border-2 border-slate-600 text-slate-300 px-8 py-4 rounded-lg font-semibold hover:bg-slate-800 hover:border-slate-500 transition-colors">
+								Listen to Podcast
 							</a>
-						</div>
-						<div class="flex items-center gap-3 text-sm text-slate-400">
-							<div class="flex items-center gap-2">
-								<svg class="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-									<path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-								</svg>
-								<span>Principal Business Consultant @ Columbus Global</span>
-							</div>
 						</div>
 					</div>
 				</div>
-			</section>
+			</div>
+		</section>
 
-			<!-- Value Proposition -->
-			<section class="py-20 px-4 bg-white">
-				<div class="max-w-7xl mx-auto">
-					<div class="text-center mb-16">
-						<h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-							Real Problems. Real Solutions.
-						</h2>
-						<p class="text-xl text-slate-600 max-w-3xl mx-auto">
-							Over 20 years, I've learned that successful transformation isn't about the latest tool—it's
-							about understanding where systems fail and building pragmatic fixes that stick.
+		<!-- What I Do - Icon Cards -->
+		<section class="py-20 bg-slate-50">
+			<div class="max-w-5xl mx-auto px-6">
+				<h2 class="text-3xl md:text-4xl font-bold mb-12 text-slate-900">Areas of Expertise</h2>
+				<div class="grid md:grid-cols-3 gap-8">
+					<!-- Card 1 -->
+					<div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow border border-slate-100">
+						<div class="w-14 h-14 bg-slate-800 rounded-xl flex items-center justify-center mb-6">
+							<svg class="w-7 h-7 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+							</svg>
+						</div>
+						<h3 class="text-xl font-bold mb-3 text-slate-900 whitespace-nowrap">AI Solutions</h3>
+						<p class="text-slate-600 leading-relaxed">
+							Pioneering AI-driven solutions using GPT-4, Azure OpenAI, and frontier models. Measurable business outcomes.
 						</p>
 					</div>
-					<div class="grid md:grid-cols-3 gap-8">
-						<div class="group bg-white p-8 rounded-2xl border-2 border-slate-100 hover:border-blue-200 hover:shadow-xl transition-all duration-300">
-							<div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-								<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-								</svg>
-							</div>
-							<h3 class="text-2xl font-bold mb-4 text-slate-900">AI That Actually Works</h3>
-							<p class="text-slate-600 leading-relaxed mb-4">
-								I've saved teams 40+ hours per month at $0.50/hour using GPT-4. Not by believing the hype,
-								but by treating AI as a powerful tool with real limitations—and building workflows around both.
-							</p>
-							<p class="text-sm font-semibold text-blue-600">
-								Practical ROI, not vendor promises →
-							</p>
-						</div>
-						<div class="group bg-white p-8 rounded-2xl border-2 border-slate-100 hover:border-blue-200 hover:shadow-xl transition-all duration-300">
-							<div class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-								<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-								</svg>
-							</div>
-							<h3 class="text-2xl font-bold mb-4 text-slate-900">Integration That Doesn't Break</h3>
-							<p class="text-slate-600 leading-relaxed mb-4">
-								Digital transformation projects fail because of non-working integrations. I architect
-								vendor-supported connectors and DevOps pipelines that meet time-to-market demands without
-								the midnight fire drills.
-							</p>
-							<p class="text-sm font-semibold text-indigo-600">
-								Systems that talk to each other →
-							</p>
-						</div>
-						<div class="group bg-white p-8 rounded-2xl border-2 border-slate-100 hover:border-blue-200 hover:shadow-xl transition-all duration-300">
-							<div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-								<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-								</svg>
-							</div>
-							<h3 class="text-2xl font-bold mb-4 text-slate-900">ERP & Customer Engagement</h3>
-							<p class="text-slate-600 leading-relaxed mb-4">
-								From enterprise architecture to customer-facing systems, I've spent two decades making
-								complex platforms work together. Whether it's Dynamics, SAP, or custom solutions—I know
-								where the bodies are buried.
-							</p>
-							<p class="text-sm font-semibold text-purple-600">
-								Enterprise systems that scale →
-							</p>
-						</div>
-					</div>
-				</div>
-			</section>
 
-			<!-- Future Bytes Podcast -->
-			<section class="bg-gradient-to-br from-slate-900 to-blue-900 py-20 px-4">
-				<div class="max-w-6xl mx-auto">
-					<div class="grid md:grid-cols-2 gap-12 items-center">
-						<div>
-							<div class="inline-block mb-4 px-4 py-2 bg-green-500/20 border border-green-400/30 rounded-full text-sm font-medium text-green-300">
-								Weekly Podcast
-							</div>
-							<h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Future Bytes</h2>
-							<p class="text-xl text-slate-300 mb-6 leading-relaxed">
-								Where AI meets reality. No hype, no fluff—just honest conversations about
-								what's actually working in AI implementation.
-							</p>
-							<p class="text-lg text-slate-400 mb-8 leading-relaxed">
-								Each episode breaks down real-world case studies, implementation challenges,
-								and practical strategies you can apply immediately. Because theory is cheap—execution is everything.
-							</p>
-							<a href="https://open.spotify.com/show/2dUyQaG5wFvCPBkB2ErHKe"
-							   target="_blank"
-							   rel="noopener noreferrer"
-							   class="inline-flex items-center gap-3 bg-green-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-								<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-									<path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
-								</svg>
-								<span>Listen on Spotify</span>
-							</a>
+					<!-- Card 2 -->
+					<div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow border border-slate-100">
+						<div class="w-14 h-14 bg-slate-800 rounded-xl flex items-center justify-center mb-6">
+							<svg class="w-7 h-7 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+							</svg>
 						</div>
-						<div class="relative">
-							<div class="aspect-square bg-gradient-to-br from-green-500/20 to-blue-500/20 rounded-3xl border-2 border-white/10 backdrop-blur-sm flex items-center justify-center">
-								<svg class="w-32 h-32 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
-								</svg>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- Recent Blog Posts -->
-			<section class="py-20 px-4 bg-slate-50">
-				<div class="max-w-7xl mx-auto">
-					<div class="text-center mb-16">
-						<h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Latest Thinking</h2>
-						<p class="text-xl text-slate-600 max-w-2xl mx-auto">
-							Essays on AI, transformation strategy, and what actually works in enterprise technology.
+						<h3 class="text-xl font-bold mb-3 text-slate-900 whitespace-nowrap">Enterprise</h3>
+						<p class="text-slate-600 leading-relaxed">
+							Dynamics 365, Microsoft Azure, Power Platform. Complex digital transformation across diverse industries.
 						</p>
 					</div>
-					<div class="grid md:grid-cols-3 gap-8">
-						{posts.map((post) => (
-							<article class="group bg-white rounded-2xl overflow-hidden border-2 border-slate-100 hover:border-blue-200 hover:shadow-xl transition-all duration-300">
-								<div class="p-8">
-									<div class="flex items-center gap-2 text-sm text-slate-500 mb-4">
-										<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-										</svg>
-										<FormattedDate date={post.data.pubDate} />
-									</div>
-									<h3 class="text-2xl font-bold mb-4 text-slate-900 group-hover:text-blue-600 transition-colors">
-										<a href={`/blog/${post.slug}/`} class="hover:underline">
+
+					<!-- Card 3 -->
+					<div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow border border-slate-100">
+						<div class="w-14 h-14 bg-slate-800 rounded-xl flex items-center justify-center mb-6">
+							<svg class="w-7 h-7 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+							</svg>
+						</div>
+						<h3 class="text-xl font-bold mb-3 text-slate-900 whitespace-nowrap">Podcast</h3>
+						<p class="text-slate-600 leading-relaxed">
+							Host of Future Bytes exploring AI's real impact on business—no fluff, just AI that works.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Latest Articles - Clean List Style -->
+		<section class="py-20 bg-white">
+			<div class="max-w-5xl mx-auto px-6">
+				<div class="flex justify-between items-center mb-12">
+					<h2 class="text-3xl md:text-4xl font-bold text-slate-900">Latest Posts</h2>
+					<a href="/blog" class="text-teal-600 hover:text-teal-700 font-semibold flex items-center gap-2">
+						View all
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+						</svg>
+					</a>
+				</div>
+				<div class="space-y-6">
+					{posts.map((post) => (
+						<article class="border-b border-gray-200 pb-6 last:border-0">
+							<a href={`/blog/${post.id}/`} class="group block">
+								<div class="flex items-start gap-6">
+									<div class="flex-1">
+										<time class="text-sm text-slate-500 mb-2 block">
+											<FormattedDate date={post.data.pubDate} />
+										</time>
+										<h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-teal-600 transition-colors leading-tight">
 											{post.data.title}
-										</a>
-									</h3>
-									<p class="text-slate-600 leading-relaxed mb-4">
-										{post.data.description}
-									</p>
-									<a href={`/blog/${post.slug}/`} class="inline-flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all">
-										<span>Read more</span>
-										<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-										</svg>
-									</a>
+										</h3>
+										<p class="text-slate-600 leading-relaxed">
+											{post.data.description}
+										</p>
+									</div>
 								</div>
-							</article>
-						))}
-					</div>
-					<div class="text-center mt-12">
-						<a href="/blog" class="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-							<span>All Articles</span>
-							<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-							</svg>
-						</a>
-					</div>
+							</a>
+						</article>
+					))}
 				</div>
-			</section>
+			</div>
+		</section>
 
-			<!-- CTA Section -->
-			<section class="bg-gradient-to-r from-blue-600 to-indigo-600 py-20 px-4">
-				<div class="max-w-4xl mx-auto text-center">
-					<h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Let's Talk Strategy</h2>
-					<p class="text-xl text-blue-100 mb-10 leading-relaxed max-w-2xl mx-auto">
-						Stuck on an AI initiative? Need a reality check on your transformation roadmap?
-						Available for consulting engagements, speaking, and strategic advisory.
-					</p>
-					<div class="flex flex-wrap justify-center gap-4">
-						<a href="https://www.linkedin.com/in/magnusoxenwaldt/"
-						   target="_blank"
-						   rel="noopener noreferrer"
-						   class="inline-flex items-center gap-3 bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-							<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-							</svg>
-							<span>Connect on LinkedIn</span>
-						</a>
-					</div>
-				</div>
-			</section>
-		</main>
+		<!-- CTA Section -->
+		<section class="py-20 bg-slate-900 text-white">
+			<div class="max-w-5xl mx-auto px-6 text-center">
+				<h2 class="text-3xl md:text-4xl font-bold mb-4">Let's Connect</h2>
+				<p class="text-xl text-slate-400 mb-8 max-w-2xl mx-auto">
+					Available for consulting, speaking engagements, and strategic advisory worldwide.
+				</p>
+				<a
+					href="https://www.linkedin.com/in/magnusoxenwaldt/"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="inline-flex items-center gap-3 bg-teal-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-teal-700 transition-colors">
+					<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+						<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+					</svg>
+					Connect on LinkedIn
+				</a>
+			</div>
+		</section>
+
 		<Footer />
 	</body>
 </html>

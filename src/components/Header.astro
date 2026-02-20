@@ -10,6 +10,7 @@ import HeaderLink from './HeaderLink.astro';
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/blog">Blog</HeaderLink>
 			<HeaderLink href="/podcast">Podcast</HeaderLink>
+			<HeaderLink href="/speaking">Speaking</HeaderLink>
 			<HeaderLink href="/about">About</HeaderLink>
 		</div>
 		<div class="social-links">
@@ -31,6 +32,15 @@ import HeaderLink from './HeaderLink.astro';
 					></path></svg
 				>
 			</a>
+			<a href="https://podcasts.apple.com/no/podcast/future-bytes/id1784685801" target="_blank">
+				<span class="sr-only">Listen to Future Bytes on Apple Podcasts</span>
+				<svg viewBox="0 0 24 24" aria-hidden="true" width="32" height="32"
+					><path
+						fill="currentColor"
+						d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0H5.34zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.224 1.272 1.912 2.619 2.264 4.392.12.59.12 2.2.007 2.864a8.506 8.506 0 01-3.24 5.296c-.608.46-1.716 1.104-1.891 1.104-.106 0-.128-.253-.128-1.477v-1.476l.263-.168c1.298-.855 2.216-2.334 2.47-3.98.09-.588.09-1.637 0-2.206-.32-1.972-1.357-3.533-3.022-4.54a6.125 6.125 0 00-3.15-.757c-1.989.067-3.62.972-4.68 2.598-.77 1.185-1.05 2.72-.77 4.203.27 1.438 1.082 2.79 2.19 3.66l.263.167v1.477c0 1.225-.02 1.477-.127 1.477-.213 0-1.312-.64-1.968-1.148a8.582 8.582 0 01-2.767-4.053 7.986 7.986 0 01-.263-3.3c.407-2.453 1.62-4.426 3.583-5.835a8.596 8.596 0 014.91-1.884zm.166 3.636c.834.11 1.588.395 2.28.866 1.074.732 1.837 1.943 2.086 3.318.082.451.082 1.503 0 1.973-.242 1.378-.998 2.574-2.136 3.38-.187.133-.361.24-.388.24-.026 0-.045-.85-.045-1.883v-1.883l.182-.179c.474-.47.756-1.09.843-1.842.073-.63-.036-1.166-.344-1.697-.494-.85-1.344-1.37-2.387-1.456-1.056-.088-2.026.315-2.67 1.104-.573.702-.795 1.631-.622 2.6.106.588.473 1.215.926 1.58l.181.146v1.87c0 1.028-.018 1.868-.04 1.868-.106 0-.678-.358-1.013-.632-.93-.766-1.558-1.83-1.8-3.054-.082-.413-.092-1.387-.019-1.794.286-1.59 1.236-2.886 2.64-3.602a5.248 5.248 0 012.326-.523zm-.045 5.616c.522.063.987.298 1.334.672.33.354.508.792.558 1.375v.38l-.417 2.812c-.46 3.109-.458 3.101-.795 3.534a1.627 1.627 0 01-1.334.617 1.588 1.588 0 01-1.262-.595c-.328-.406-.402-.673-.848-3.063-.228-1.224-.426-2.346-.44-2.495-.042-.434.036-.882.223-1.268a1.944 1.944 0 011.39-1.074c.263-.047.327-.05.59.085z"
+					></path></svg
+				>
+			</a>
 		</div>
 	</nav>
 </header>
@@ -38,8 +48,8 @@ import HeaderLink from './HeaderLink.astro';
 	header {
 		margin: 0;
 		padding: 0 1em;
-		background: white;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+		background: #0f172a;
+		border-bottom: 1px solid #1e293b;
 	}
 	h2 {
 		margin: 0;
@@ -49,6 +59,8 @@ import HeaderLink from './HeaderLink.astro';
 	h2 a,
 	h2 a.active {
 		text-decoration: none;
+		color: white;
+		font-weight: 700;
 	}
 	nav {
 		display: flex;
@@ -57,17 +69,27 @@ import HeaderLink from './HeaderLink.astro';
 	}
 	nav a {
 		padding: 1em 0.5em;
-		color: var(--black);
+		color: #94a3b8;
 		border-bottom: 4px solid transparent;
 		text-decoration: none;
 	}
+	nav a:hover {
+		color: white;
+	}
 	nav a.active {
 		text-decoration: none;
-		border-bottom-color: var(--accent);
+		border-bottom-color: #0d9488;
+		color: white;
 	}
 	.social-links,
 	.social-links a {
 		display: flex;
+	}
+	.social-links a {
+		color: #94a3b8;
+	}
+	.social-links a:hover {
+		color: #0d9488;
 	}
 	@media (max-width: 720px) {
 		.social-links {

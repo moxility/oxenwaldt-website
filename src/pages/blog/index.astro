@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
@@ -25,16 +25,33 @@ const categorizePost = (title: string, description: string) => {
 	return 'Technology';
 };
 
-const postsWithCategories = posts.map(post => {
+// Build posts with categories and extract content for search
+const postsWithCategories = await Promise.all(posts.map(async (post) => {
 	const imageFilename = `${post.id}.png`;
 	const imagePath = `/blog-images/${imageFilename}`;
+
+	// Extract plain text from markdown body for search
+	// The body is the raw content, we extract text without markdown syntax
+	const bodyText = post.body ? post.body
+		.replace(/#+\s/g, '') // Remove headers
+		.replace(/\*\*([^*]+)\*\*/g, '$1') // Remove bold
+		.replace(/\*([^*]+)\*/g, '$1') // Remove italic
+		.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // Remove links, keep text
+		.replace(/`[^`]+`/g, '') // Remove inline code
+		.replace(/```[\s\S]*?```/g, '') // Remove code blocks
+		.replace(/[-*+]\s/g, '') // Remove list markers
+		.replace(/\n+/g, ' ') // Replace newlines with spaces
+		.toLowerCase()
+		.slice(0, 1000) // Limit to first 1000 chars for performance
+	: '';
 
 	return {
 		...post,
 		category: categorizePost(post.data.title, post.data.description),
-		generatedImage: imagePath
+		generatedImage: imagePath,
+		searchableContent: bodyText
 	};
-});
+}));
 
 const categories = [...new Set(postsWithCategories.map(p => p.category))];
 ---
@@ -46,14 +63,19 @@ const categories = [...new Set(postsWithCategories.map(p => p.category))];
 	</head>
 	<body>
 		<Header />
-		<main class="max-w-7xl mx-auto px-4 py-12">
-			<!-- Hero Section -->
-			<div class="text-center mb-12">
-				<h1 class="text-5xl font-bold text-slate-900 mb-4">Blog</h1>
-				<p class="text-xl text-slate-600 max-w-2xl mx-auto">
+		<!-- Blog Hero Section -->
+		<section class="bg-slate-900 text-white py-16 px-4 relative overflow-hidden mb-12">
+			<div class="absolute inset-0 opacity-30">
+				<img src="/images/blog_background_20251210_170656.png" alt="" class="w-full h-full object-cover" />
+			</div>
+			<div class="max-w-7xl mx-auto text-center relative z-10">
+				<h1 class="text-5xl font-bold mb-4">Blog</h1>
+				<p class="text-xl text-slate-400 max-w-2xl mx-auto">
 					Insights on AI, digital transformation, and enterprise architecture
 				</p>
 			</div>
+		</section>
+		<main class="max-w-7xl mx-auto px-4 pb-12">
 
 			<!-- Search and Filters -->
 			<div class="mb-12 space-y-6">
@@ -63,8 +85,8 @@ const categories = [...new Set(postsWithCategories.map(p => p.category))];
 						<input
 							type="text"
 							id="searchInput"
-							placeholder="Search blog posts..."
-							class="w-full px-6 py-4 text-lg border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all"
+							placeholder="Search titles, descriptions, and content..."
+							class="w-full px-6 py-4 text-lg border border-slate-200 rounded-xl focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-100 transition-all"
 						/>
 						<svg class="absolute right-6 top-1/2 -translate-y-1/2 w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
@@ -113,15 +135,16 @@ const categories = [...new Set(postsWithCategories.map(p => p.category))];
 			<div id="postsContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 				{postsWithCategories.map((post) => (
 					<article
-						class="post-card group bg-white rounded-2xl border-2 border-slate-100 hover:border-blue-200 hover:shadow-xl transition-all duration-300 overflow-hidden"
+						class="post-card group bg-white rounded-2xl border border-slate-200 hover:border-teal-400 hover:shadow-lg transition-all duration-300 overflow-hidden"
 						data-category={post.category}
 						data-year={post.data.pubDate.getFullYear()}
 						data-title={post.data.title.toLowerCase()}
 						data-description={post.data.description.toLowerCase()}
+						data-content={post.searchableContent}
 					>
 						<a href={`/blog/${post.id}/`} class="block">
 							<!-- Blog Image (generated AI image or gradient fallback) -->
-							<div class="h-48 relative overflow-hidden bg-gradient-to-br from-blue-500 to-indigo-600">
+							<div class="h-48 relative overflow-hidden bg-slate-800">
 								<img
 									src={post.generatedImage}
 									alt={post.data.title}
@@ -139,7 +162,7 @@ const categories = [...new Set(postsWithCategories.map(p => p.category))];
 							<!-- Content -->
 							<div class="p-6">
 								<div class="flex items-center gap-2 mb-3">
-									<span class="text-sm text-blue-600 font-semibold">
+									<span class="text-sm text-teal-600 font-semibold">
 										{post.category}
 									</span>
 									<span class="text-slate-300">•</span>
@@ -148,7 +171,7 @@ const categories = [...new Set(postsWithCategories.map(p => p.category))];
 									</time>
 								</div>
 
-								<h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+								<h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-teal-600 transition-colors line-clamp-2">
 									{post.data.title}
 								</h3>
 
@@ -156,7 +179,7 @@ const categories = [...new Set(postsWithCategories.map(p => p.category))];
 									{post.data.description}
 								</p>
 
-								<div class="mt-4 flex items-center text-blue-600 font-semibold group-hover:gap-2 transition-all">
+								<div class="mt-4 flex items-center text-teal-600 font-semibold group-hover:gap-2 transition-all">
 									<span>Read more</span>
 									<svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -198,12 +221,14 @@ const categories = [...new Set(postsWithCategories.map(p => p.category))];
 					const cardYear = card.getAttribute('data-year');
 					const cardTitle = card.getAttribute('data-title') || '';
 					const cardDescription = card.getAttribute('data-description') || '';
+					const cardContent = card.getAttribute('data-content') || '';
 
 					const matchesCategory = activeCategory === 'all' || cardCategory === activeCategory;
 					const matchesYear = activeYear === 'all' || cardYear === activeYear;
 					const matchesSearch = searchQuery === '' ||
 						cardTitle.includes(searchQuery) ||
-						cardDescription.includes(searchQuery);
+						cardDescription.includes(searchQuery) ||
+						cardContent.includes(searchQuery);
 
 					if (matchesCategory && matchesYear && matchesSearch) {
 						(card as HTMLElement).style.display = 'block';
@@ -256,12 +281,12 @@ const categories = [...new Set(postsWithCategories.map(p => p.category))];
 				color: #64748b;
 			}
 			.filter-btn:hover {
-				border-color: #3b82f6;
-				color: #3b82f6;
+				border-color: #0d9488;
+				color: #0d9488;
 			}
 			.filter-btn.active {
-				background: #3b82f6;
-				border-color: #3b82f6;
+				background: #0d9488;
+				border-color: #0d9488;
 				color: white;
 			}
 
@@ -270,11 +295,11 @@ const categories = [...new Set(postsWithCategories.map(p => p.category))];
 				color: #64748b;
 			}
 			.year-btn:hover {
-				background: #e0e7ff;
-				color: #4f46e5;
+				background: #ccfbf1;
+				color: #0f766e;
 			}
 			.year-btn.active {
-				background: #4f46e5;
+				background: #0f766e;
 				color: white;
 			}
 

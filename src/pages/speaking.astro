@@ -1,0 +1,185 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import { SITE_TITLE } from '../consts';
+
+const speakingEvents = (await getCollection('speaking')).sort(
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const featuredEvents = speakingEvents.filter(e => e.data.featured);
+const pastEvents = speakingEvents.filter(e => !e.data.featured);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Speaking | ${SITE_TITLE}`} description="Magnus Oxenwaldt's speaking engagements, conferences, and presentations on AI, digital transformation, and enterprise strategy." />
+	</head>
+	<body class="bg-slate-50">
+		<Header />
+		<main class="p-0">
+			<!-- Hero Section -->
+			<section class="bg-slate-900 text-white py-20 px-4 relative overflow-hidden">
+				<div class="absolute inset-0 opacity-30">
+					<img src="/images/about_background_20251210_170542.png" alt="" class="w-full h-full object-cover" />
+				</div>
+				<div class="max-w-4xl mx-auto text-center relative z-10">
+					<div class="inline-block mb-6 px-4 py-2 bg-teal-600/20 border border-teal-500/30 rounded-full text-sm font-medium text-teal-300">
+						<svg class="w-4 h-4 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+						</svg>
+						Speaking
+					</div>
+					<h1 class="text-5xl md:text-6xl font-bold mb-6">Speaking Engagements</h1>
+					<p class="text-xl text-slate-400 max-w-3xl mx-auto">
+						Sharing insights on AI strategy, digital transformation, and enterprise architecture at conferences and corporate events worldwide.
+					</p>
+				</div>
+			</section>
+
+			<!-- Booking CTA -->
+			<section class="py-12 px-4 bg-white border-b border-slate-200">
+				<div class="max-w-4xl mx-auto text-center">
+					<h2 class="text-2xl font-bold text-slate-900 mb-4">Available for Speaking Engagements</h2>
+					<p class="text-slate-600 mb-6 max-w-2xl mx-auto">
+						Interested in having Magnus speak at your event? Topics include AI strategy, digital transformation, enterprise architecture, and practical AI implementation.
+					</p>
+					<a href="https://www.linkedin.com/in/magnusoxenwaldt/"
+					   target="_blank"
+					   rel="noopener noreferrer"
+					   class="inline-flex items-center gap-3 bg-teal-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-teal-700 transition-colors">
+						<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+							<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+						</svg>
+						Get in Touch
+					</a>
+				</div>
+			</section>
+
+			<!-- Speaking Topics -->
+			<section class="py-16 px-4">
+				<div class="max-w-4xl mx-auto">
+					<h2 class="text-3xl font-bold text-slate-900 mb-8">Speaking Topics</h2>
+					<div class="grid md:grid-cols-2 gap-6">
+						<div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+							<div class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center mb-4">
+								<svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+								</svg>
+							</div>
+							<h3 class="text-lg font-bold text-slate-900 mb-2">AI Strategy & Implementation</h3>
+							<p class="text-sm text-slate-600">
+								From pilot to production: practical frameworks for enterprise AI adoption that deliver measurable ROI.
+							</p>
+						</div>
+						<div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+							<div class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center mb-4">
+								<svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+								</svg>
+							</div>
+							<h3 class="text-lg font-bold text-slate-900 mb-2">Digital Transformation</h3>
+							<p class="text-sm text-slate-600">
+								Leading organizational change through technology adoption, change management, and capability building.
+							</p>
+						</div>
+						<div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+							<div class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center mb-4">
+								<svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+								</svg>
+							</div>
+							<h3 class="text-lg font-bold text-slate-900 mb-2">Enterprise Architecture</h3>
+							<p class="text-sm text-slate-600">
+								Building scalable systems with ERP, CRM, and AI integration for complex organizational needs.
+							</p>
+						</div>
+						<div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+							<div class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center mb-4">
+								<svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+								</svg>
+							</div>
+							<h3 class="text-lg font-bold text-slate-900 mb-2">AI in Retail & E-commerce</h3>
+							<p class="text-sm text-slate-600">
+								Industry-specific insights on customer experience, operations optimization, and competitive strategy.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Past Events -->
+			{speakingEvents.length > 0 && (
+				<section class="py-16 px-4 bg-white">
+					<div class="max-w-4xl mx-auto">
+						<h2 class="text-3xl font-bold text-slate-900 mb-8">Selected Events</h2>
+						<div class="space-y-6">
+							{speakingEvents.map((event) => (
+								<article class="bg-slate-50 rounded-xl overflow-hidden border border-slate-200 hover:border-teal-400 transition-colors">
+									{event.data.heroImage && (
+										<div class="w-full h-48 overflow-hidden">
+											<img src={event.data.heroImage} alt={event.data.title} class="w-full h-full object-cover object-top" />
+										</div>
+									)}
+									<div class="p-6">
+										<div class="flex flex-col md:flex-row md:items-start gap-4">
+											<div class="flex-shrink-0">
+												<div class="w-16 h-16 bg-slate-800 rounded-lg flex flex-col items-center justify-center text-white">
+													<span class="text-xs font-medium uppercase">{event.data.date.toLocaleDateString('en-US', { month: 'short' })}</span>
+													<span class="text-xl font-bold">{event.data.date.getDate()}</span>
+												</div>
+											</div>
+											<div class="flex-1">
+												<div class="flex items-center gap-2 mb-2">
+													{event.data.featured && (
+														<span class="px-2 py-1 bg-teal-100 text-teal-700 text-xs font-semibold rounded">Featured</span>
+													)}
+													<span class="text-sm text-slate-500">{event.data.event}</span>
+												</div>
+												<h3 class="text-xl font-bold text-slate-900 mb-2">{event.data.title}</h3>
+												<p class="text-slate-600 mb-3">{event.data.description}</p>
+												<div class="flex items-center gap-4 text-sm text-slate-500">
+													<span class="flex items-center gap-1">
+														<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+															<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+															<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+														</svg>
+														{event.data.location}
+													</span>
+													{event.data.tags && event.data.tags.length > 0 && (
+														<div class="flex gap-2">
+															{event.data.tags.slice(0, 3).map((tag: string) => (
+																<span class="px-2 py-1 bg-slate-200 text-slate-600 text-xs rounded">{tag}</span>
+															))}
+														</div>
+													)}
+												</div>
+											</div>
+										</div>
+									</div>
+								</article>
+							))}
+						</div>
+					</div>
+				</section>
+			)}
+
+			<!-- Empty State -->
+			{speakingEvents.length === 0 && (
+				<section class="py-16 px-4 bg-white">
+					<div class="max-w-4xl mx-auto text-center">
+						<div class="text-6xl mb-4">🎤</div>
+						<h3 class="text-2xl font-bold text-slate-900 mb-2">Speaking events coming soon</h3>
+						<p class="text-slate-600">Check back for upcoming speaking engagements and past presentations.</p>
+					</div>
+				</section>
+			)}
+		</main>
+		<Footer />
+	</body>
+</html>
