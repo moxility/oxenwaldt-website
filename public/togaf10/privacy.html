@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — TOGAF 10 Practice</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; color: #0f172a; line-height: 1.6; }
+  h1 { font-size: 28px; margin-bottom: 0; }
+  h2 { font-size: 20px; margin-top: 32px; color: #1e40af; }
+  .last { color: #64748b; font-size: 14px; }
+  a { color: #2563eb; }
+  code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<h1>Privacy Policy</h1>
+<p class="last">TOGAF 10 Practice · Last updated 2026-05-13</p>
+
+<p>This Privacy Policy describes how the iOS app <strong>TOGAF 10 Practice</strong> (the "App"), developed by Magnus Oxenwaldt ("we", "us", "our"), collects, uses, and shares information.</p>
+
+<h2>What we collect</h2>
+
+<h3>Account information</h3>
+<p>When you create an account, we collect:</p>
+<ul>
+  <li><strong>Email address</strong> — used to identify your account, sign you in, and contact you about the service.</li>
+  <li><strong>A hashed password</strong> — managed by our authentication provider Supabase; we never see your plaintext password.</li>
+</ul>
+
+<h3>App usage</h3>
+<p>We store your interaction with the app to power features:</p>
+<ul>
+  <li><strong>Practice attempts</strong> — which questions you answered, your selected answers, whether they were correct, and time spent.</li>
+  <li><strong>Sessions</strong> — when you started a practice session, what mode (practice / mock exam / review mistakes), how many questions.</li>
+  <li><strong>Daily quotas</strong> — how many free-tier questions you've consumed each day (so we can enforce the free-tier limit).</li>
+  <li><strong>Subscription state</strong> — whether you have an active Pro subscription (returned by Apple's StoreKit and RevenueCat).</li>
+</ul>
+<p>We use this to show you progress statistics, surface your weakest topics, and improve the app over time.</p>
+
+<h3>Diagnostics</h3>
+<p>If the app crashes or hits a runtime error, we collect a crash report via <a href="https://sentry.io">Sentry</a>. The report includes the stack trace, device model, and OS version. We do <strong>not</strong> include your email or other identifying information in crash reports.</p>
+
+<h3>Product analytics</h3>
+<p>We use <a href="https://posthog.com">PostHog</a> to understand which screens you visit and which features you use, so we can improve the app. PostHog events are linked to a randomly-generated app-install identifier, not to your email. You can opt out by deleting the app.</p>
+
+<h3>AI Tutor</h3>
+<p>The free AI Tutor runs entirely on your iPhone via Apple Foundation Models (iPhone 15 Pro and newer with Apple Intelligence enabled). <strong>Your tutor questions never leave your device.</strong> We do not collect, store, or have access to anything you type into the Tutor.</p>
+<p>Both the Free and Pro tutor tiers run on-device via Apple Intelligence. Same privacy guarantee: your questions never leave your iPhone.</p>
+
+<h2>What we do NOT do</h2>
+<ul>
+  <li>We do not sell your data to third parties.</li>
+  <li>We do not show third-party advertising.</li>
+  <li>We do not track you across other apps or websites.</li>
+  <li>We do not share your practice data with anyone, including The Open Group.</li>
+</ul>
+
+<h2>Data storage</h2>
+<p>Account and practice data are stored in Supabase (Postgres) in the EU (Frankfurt region). Crash reports are stored in Sentry. Product analytics are stored in PostHog (US region).</p>
+
+<h2>Your rights</h2>
+<p>You can:</p>
+<ul>
+  <li><strong>Access</strong> all data we hold about you by emailing <a href="mailto:magnus@oxenwaldt.com">magnus@oxenwaldt.com</a>.</li>
+  <li><strong>Correct</strong> your account email by contacting support.</li>
+  <li><strong>Delete</strong> your account and all associated data by emailing support; we will action within 30 days.</li>
+  <li><strong>Export</strong> your practice history by emailing support; we will provide a JSON export within 30 days.</li>
+</ul>
+
+<h2>Subscription handling</h2>
+<p>Subscriptions are processed by Apple via StoreKit. Apple shares minimal information with us via RevenueCat: that you have an active subscription and which tier (monthly or yearly). We do not see your Apple ID, your payment details, or your billing address. Manage or cancel your subscription in your iPhone's Settings → Apple ID → Subscriptions.</p>
+
+<h2>Changes to this policy</h2>
+<p>If we change this policy materially, we will update the "Last updated" date at the top and notify active users in-app on next launch.</p>
+
+<h2>Contact</h2>
+<p><a href="mailto:magnus@oxenwaldt.com">magnus@oxenwaldt.com</a></p>
+
+<p style="margin-top: 48px; color: #64748b; font-size: 12px; border-top: 1px solid #e2e8f0; padding-top: 16px;">
+TOGAF® is a registered trademark of The Open Group. TOGAF 10 Practice is an independent study app and is not affiliated with, endorsed by, or sponsored by The Open Group.
+</p>
+
+</body>
+</html>
