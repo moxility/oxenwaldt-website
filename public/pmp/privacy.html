@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — PMP Exam Practice</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; color: #0f172a; line-height: 1.6; }
+  h1 { font-size: 28px; margin-bottom: 0; }
+  h2 { font-size: 20px; margin-top: 32px; color: #1e40af; }
+  .last { color: #64748b; font-size: 14px; }
+  a { color: #2563eb; }
+  code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<h1>Privacy Policy</h1>
+<p class="last">PMP Exam Practice · Last updated 2026-08-03</p>
+
+<p>This Privacy Policy describes how the iOS app <strong>PMP Exam Practice</strong> (the "App"), developed by Magnus Oxenwaldt ("we", "us", "our"), collects, uses, and shares information.</p>
+
+<h2>What we collect</h2>
+
+<h3>Account information</h3>
+<p>The App requires an account. When you create one, we collect:</p>
+<ul>
+  <li><strong>Email address</strong> — used to identify your account, sign you in, and contact you about the service.</li>
+  <li><strong>A hashed password</strong> — managed by our authentication provider Supabase; we never see your plaintext password.</li>
+</ul>
+
+<h3>App usage</h3>
+<p>We store your interaction with the App to power its features:</p>
+<ul>
+  <li><strong>Practice attempts</strong> — which questions you answered, which answer you selected, whether it was correct, and time spent.</li>
+  <li><strong>Sessions</strong> — when you started a practice session or mock exam, what mode, and how many questions it contained.</li>
+  <li><strong>Daily quotas</strong> — how many free-tier questions you have used each day, so the free-tier limit can be enforced.</li>
+  <li><strong>Topic progress</strong> — your best score and pace per topic, so your stars survive reinstalling the App.</li>
+  <li><strong>Subscription state</strong> — whether you have an active Pro subscription, as reported by Apple's StoreKit via RevenueCat.</li>
+  <li><strong>Promotional code redemptions</strong> — if you redeem a promo code, we record which code and when.</li>
+  <li><strong>Support tickets</strong> — if you contact support from inside the App, we store what you wrote along with your app version and device model.</li>
+</ul>
+<p>We use this to show you progress statistics, surface your weakest topics, and improve the App over time.</p>
+
+<h3>Diagnostics and session recording</h3>
+<p>We use <a href="https://sentry.io">Sentry</a> for crash reporting. A crash report includes the stack trace, device model, and OS version.</p>
+<p><strong>Please read this part carefully.</strong> During the App's early-launch period, Sentry's Session Replay feature is enabled and records <strong>every session</strong>, not only sessions that crash. A replay is a reconstruction of what appeared on your screen and where you tapped, played back like a video. Images are masked; <strong>on-screen text is not masked</strong>, so a replay can show the question you were reading and the answer you selected. Replays are stored by Sentry and are used only to diagnose bugs and layout problems. We intend to reduce this to error-only recording once the App is stable, and we will update this policy and the date above when we do.</p>
+<p>If you would rather not be recorded, do not use the App while this notice stands.</p>
+
+<h3>Product analytics</h3>
+<p>We use <a href="https://posthog.com">PostHog</a> to understand which screens you visit and which features you use, so we can improve the App. PostHog events are linked to a randomly-generated app-install identifier, not to your email address. You can opt out by deleting the App.</p>
+
+<h3>Reminders</h3>
+<p>The optional daily streak reminder is scheduled entirely on your iPhone using local notifications. We do <strong>not</strong> collect a push token and we cannot send you a push notification. Turning the reminder on or off never leaves your device.</p>
+
+<h3>AI Tutor</h3>
+<p>The AI Tutor runs entirely on your iPhone via Apple Foundation Models, which requires iPhone 15 Pro or newer with Apple Intelligence enabled. <strong>Your tutor questions never leave your device.</strong> We do not collect, store, or have any access to what you type into the Tutor. On devices that do not support Apple Intelligence, the Tutor reports that it is unavailable rather than falling back to a server.</p>
+
+<h2>What we do NOT do</h2>
+<ul>
+  <li>We do not sell your data to third parties.</li>
+  <li>We do not show third-party advertising.</li>
+  <li>We do not track you across other apps or websites.</li>
+  <li>We do not share your practice data with anyone, including the Project Management Institute.</li>
+</ul>
+
+<h2>Data storage</h2>
+<p>Account and practice data are stored in Supabase (Postgres) in the EU (Frankfurt, <code>eu-central-1</code>). Crash reports and session replays are stored by Sentry. Product analytics are stored by PostHog in its US region.</p>
+
+<h2>Your rights</h2>
+<p>You can:</p>
+<ul>
+  <li><strong>Delete</strong> your account and everything attached to it from inside the App — Settings → Delete account. This removes your practice history, sessions, progress, support tickets and your login, immediately and permanently.</li>
+  <li><strong>Access</strong> all data we hold about you by emailing <a href="mailto:magnus@oxenwaldt.com">magnus@oxenwaldt.com</a>.</li>
+  <li><strong>Correct</strong> your account email by contacting support.</li>
+  <li><strong>Export</strong> your practice history by emailing support; we will provide a JSON export within 30 days.</li>
+</ul>
+
+<h2>Subscription handling</h2>
+<p>Subscriptions are processed by Apple via StoreKit. Apple shares minimal information with us through RevenueCat: that you have an active subscription and which tier (monthly or yearly). We do not see your Apple ID, your payment details, or your billing address. Manage or cancel your subscription in your iPhone's Settings → Apple Account → Subscriptions. Deleting your account in the App does not cancel your subscription, because only Apple can do that.</p>
+
+<h2>Children</h2>
+<p>The App is a professional certification study aid and is not directed at children. We do not knowingly collect information from anyone under 13.</p>
+
+<h2>Changes to this policy</h2>
+<p>If we change this policy materially, we will update the "Last updated" date at the top and notify active users in-app on next launch.</p>
+
+<h2>Contact</h2>
+<p><a href="mailto:magnus@oxenwaldt.com">magnus@oxenwaldt.com</a></p>
+
+<p style="margin-top: 48px; color: #64748b; font-size: 12px; border-top: 1px solid #e2e8f0; padding-top: 16px;">
+PMP, PMI and PMBOK are registered trademarks of the Project Management Institute, Inc. PMP Exam Practice is an independent study app and is not affiliated with, endorsed by, or sponsored by PMI.
+</p>
+
+</body>
+</html>
