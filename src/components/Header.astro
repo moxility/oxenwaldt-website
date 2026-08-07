@@ -5,41 +5,28 @@ import HeaderLink from './HeaderLink.astro';
 
 <header>
 	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
+		<h2><a href="/" class="site-logo"><span class="logo-mark">MO</span><span class="logo-text">{SITE_TITLE}</span></a></h2>
 		<div class="internal-links">
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/blog">Blog</HeaderLink>
 			<HeaderLink href="/podcast">Podcast</HeaderLink>
+			<HeaderLink href="/apps">Apps</HeaderLink>
 			<HeaderLink href="/speaking">Speaking</HeaderLink>
+			<HeaderLink href="/newsletter">Newsletter</HeaderLink>
 			<HeaderLink href="/about">About</HeaderLink>
 		</div>
 		<div class="social-links">
-			<a href="https://www.linkedin.com/in/magnusoxenwaldt/" target="_blank">
+			<a href="https://www.linkedin.com/in/magnusoxenwaldt/" target="_blank" rel="noopener noreferrer">
 				<span class="sr-only">Connect with Magnus on LinkedIn</span>
-				<svg viewBox="0 0 24 24" aria-hidden="true" width="32" height="32"
-					><path
-						fill="currentColor"
-						d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-					></path></svg
-				>
+				<svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
 			</a>
-			<a href="https://open.spotify.com/show/2dUyQaG5wFvCPBkB2ErHKe" target="_blank">
+			<a href="https://open.spotify.com/show/2dUyQaG5wFvCPBkB2ErHKe" target="_blank" rel="noopener noreferrer">
 				<span class="sr-only">Listen to Future Bytes on Spotify</span>
-				<svg viewBox="0 0 24 24" aria-hidden="true" width="32" height="32"
-					><path
-						fill="currentColor"
-						d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"
-					></path></svg
-				>
+				<svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22"><path fill="currentColor" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
 			</a>
-			<a href="https://podcasts.apple.com/no/podcast/future-bytes/id1784685801" target="_blank">
+			<a href="https://podcasts.apple.com/no/podcast/future-bytes/id1784685801" target="_blank" rel="noopener noreferrer">
 				<span class="sr-only">Listen to Future Bytes on Apple Podcasts</span>
-				<svg viewBox="0 0 24 24" aria-hidden="true" width="32" height="32"
-					><path
-						fill="currentColor"
-						d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0H5.34zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.224 1.272 1.912 2.619 2.264 4.392.12.59.12 2.2.007 2.864a8.506 8.506 0 01-3.24 5.296c-.608.46-1.716 1.104-1.891 1.104-.106 0-.128-.253-.128-1.477v-1.476l.263-.168c1.298-.855 2.216-2.334 2.47-3.98.09-.588.09-1.637 0-2.206-.32-1.972-1.357-3.533-3.022-4.54a6.125 6.125 0 00-3.15-.757c-1.989.067-3.62.972-4.68 2.598-.77 1.185-1.05 2.72-.77 4.203.27 1.438 1.082 2.79 2.19 3.66l.263.167v1.477c0 1.225-.02 1.477-.127 1.477-.213 0-1.312-.64-1.968-1.148a8.582 8.582 0 01-2.767-4.053 7.986 7.986 0 01-.263-3.3c.407-2.453 1.62-4.426 3.583-5.835a8.596 8.596 0 014.91-1.884zm.166 3.636c.834.11 1.588.395 2.28.866 1.074.732 1.837 1.943 2.086 3.318.082.451.082 1.503 0 1.973-.242 1.378-.998 2.574-2.136 3.38-.187.133-.361.24-.388.24-.026 0-.045-.85-.045-1.883v-1.883l.182-.179c.474-.47.756-1.09.843-1.842.073-.63-.036-1.166-.344-1.697-.494-.85-1.344-1.37-2.387-1.456-1.056-.088-2.026.315-2.67 1.104-.573.702-.795 1.631-.622 2.6.106.588.473 1.215.926 1.58l.181.146v1.87c0 1.028-.018 1.868-.04 1.868-.106 0-.678-.358-1.013-.632-.93-.766-1.558-1.83-1.8-3.054-.082-.413-.092-1.387-.019-1.794.286-1.59 1.236-2.886 2.64-3.602a5.248 5.248 0 012.326-.523zm-.045 5.616c.522.063.987.298 1.334.672.33.354.508.792.558 1.375v.38l-.417 2.812c-.46 3.109-.458 3.101-.795 3.534a1.627 1.627 0 01-1.334.617 1.588 1.588 0 01-1.262-.595c-.328-.406-.402-.673-.848-3.063-.228-1.224-.426-2.346-.44-2.495-.042-.434.036-.882.223-1.268a1.944 1.944 0 011.39-1.074c.263-.047.327-.05.59.085z"
-					></path></svg
-				>
+				<svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22"><path fill="currentColor" d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0H5.34zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.224 1.272 1.912 2.619 2.264 4.392.12.59.12 2.2.007 2.864a8.506 8.506 0 01-3.24 5.296c-.608.46-1.716 1.104-1.891 1.104-.106 0-.128-.253-.128-1.477v-1.476l.263-.168c1.298-.855 2.216-2.334 2.47-3.98.09-.588.09-1.637 0-2.206-.32-1.972-1.357-3.533-3.022-4.54a6.125 6.125 0 00-3.15-.757c-1.989.067-3.62.972-4.68 2.598-.77 1.185-1.05 2.72-.77 4.203.27 1.438 1.082 2.79 2.19 3.66l.263.167v1.477c0 1.225-.02 1.477-.127 1.477-.213 0-1.312-.64-1.968-1.148a8.582 8.582 0 01-2.767-4.053 7.986 7.986 0 01-.263-3.3c.407-2.453 1.62-4.426 3.583-5.835a8.596 8.596 0 014.91-1.884z"/></svg>
 			</a>
 		</div>
 	</nav>
@@ -47,53 +34,71 @@ import HeaderLink from './HeaderLink.astro';
 <style>
 	header {
 		margin: 0;
-		padding: 0 1em;
-		background: #0f172a;
-		border-bottom: 1px solid #1e293b;
+		padding: 0 1.5em;
+		background: var(--cream);
+		border-bottom: 1px solid var(--rule);
 	}
-	h2 {
-		margin: 0;
-		font-size: 1em;
+	h2 { margin: 0; font-size: 1em; }
+	h2 a, h2 a.active { text-decoration: none; color: var(--ink); font-weight: 600; }
+	.site-logo {
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+		padding: 0.9em 0;
 	}
-
-	h2 a,
-	h2 a.active {
-		text-decoration: none;
-		color: white;
-		font-weight: 700;
+	.logo-mark {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		background: var(--ink);
+		color: var(--cream);
+		border-radius: 6px;
+		font-family: 'Newsreader', Georgia, serif;
+		font-weight: 600;
+		font-size: 0.95rem;
+		letter-spacing: 0.02em;
+	}
+	.logo-text {
+		font-family: 'Newsreader', Georgia, serif;
+		font-size: 1.05rem;
+		letter-spacing: -0.01em;
 	}
 	nav {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		max-width: 64rem;
+		margin: 0 auto;
 	}
 	nav a {
-		padding: 1em 0.5em;
-		color: #94a3b8;
-		border-bottom: 4px solid transparent;
+		padding: 1.25em 0.75em;
+		color: var(--text-muted);
+		border-bottom: 2px solid transparent;
 		text-decoration: none;
+		font-size: 0.95rem;
+		font-weight: 500;
+		transition: color 0.15s, border-color 0.15s;
 	}
-	nav a:hover {
-		color: white;
-	}
+	nav a:hover { color: var(--ink); }
 	nav a.active {
 		text-decoration: none;
-		border-bottom-color: #0d9488;
-		color: white;
+		border-bottom-color: var(--accent);
+		color: var(--ink);
+		font-weight: 600;
 	}
-	.social-links,
+	.social-links { display: flex; gap: 0.5rem; }
 	.social-links a {
 		display: flex;
+		padding: 0.5em;
+		color: var(--text-muted);
+		border-bottom: none;
 	}
-	.social-links a {
-		color: #94a3b8;
-	}
-	.social-links a:hover {
-		color: #0d9488;
-	}
+	.social-links a:hover { color: var(--accent); }
 	@media (max-width: 720px) {
-		.social-links {
-			display: none;
-		}
+		.social-links { display: none; }
+		header { padding: 0 1em; }
+		nav a { padding: 1em 0.5em; font-size: 0.9rem; }
 	}
 </style>

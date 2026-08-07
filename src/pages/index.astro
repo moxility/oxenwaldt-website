@@ -2,149 +2,106 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import NewsletterSubscribe from '../components/NewsletterSubscribe.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
+
+import { PUBLIC_APPS } from '../data/apps.mjs';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 ).slice(0, 6);
 
-// Helper function to get image path for a blog post
-function getImagePath(slug: string) {
-	return `/blog-images/${slug}.png`;
-}
+// Front-page strip: the shipped ones first, so the row leads with what you can
+// actually download rather than with what is still in review.
+const stateRank = { live: 0, review: 1, prep: 2, building: 3, internal: 4 };
+const featuredApps = [...PUBLIC_APPS]
+	.sort((a, b) => stateRank[a.state] - stateRank[b.state])
+	.slice(0, 6);
+
+const appIcon = (app: { accent: string; glyph: string }) =>
+	'data:image/svg+xml,' +
+	encodeURIComponent(
+		`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">` +
+			`<rect width="100" height="100" rx="18" fill="#0D2454"/>` +
+			`<path fill="none" stroke="${app.accent}" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" d="${app.glyph}"/>` +
+			`</svg>`,
+	);
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} pageType="profile" />
 	</head>
-	<body class="bg-white">
+	<body>
 		<Header />
 
-		<!-- Hero Section - Modern Monochrome with Background -->
-		<section class="bg-slate-900 text-white relative overflow-hidden">
-			<div class="absolute inset-0 opacity-30">
-				<img src="/images/hero_banner_20251210_170506.png" alt="" class="w-full h-full object-cover" />
-			</div>
-			<div class="max-w-5xl mx-auto px-6 py-24 md:py-32 relative z-10">
-				<div class="flex flex-col md:flex-row items-center gap-12">
-					<!-- Portrait -->
-					<div class="flex-shrink-0">
-						<img
-							src="/images/magnus_portrait_casual.png"
-							alt="Magnus Oxenwaldt"
-							class="w-40 h-40 md:w-52 md:h-52 rounded-2xl object-cover shadow-2xl border-2 border-slate-700"
-						/>
-					</div>
-					<!-- Text Content -->
-					<div class="text-center md:text-left">
-						<h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-							Magnus Oxenwaldt
-						</h1>
-						<p class="text-2xl md:text-3xl text-slate-400 mb-6 font-light">
-							AI & Digital Transformation Leader
-						</p>
-						<p class="text-lg text-slate-500 mb-12 max-w-2xl leading-relaxed">
-							Principal Business Consultant pioneering AI-driven solutions that revolutionize enterprise processes. Host of Future Bytes podcast. Over 20 years bridging emerging technologies with practical business applications across ERP, Customer Engagement, and AI integration.
-						</p>
-						<div class="flex gap-4 flex-wrap justify-center md:justify-start">
-							<a href="https://www.linkedin.com/in/magnusoxenwaldt/" target="_blank" rel="noopener noreferrer" class="bg-teal-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-teal-700 transition-colors inline-flex items-center gap-2">
-								<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-									<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-								</svg>
-								Follow on LinkedIn
-							</a>
-							<a href="/podcast" class="border-2 border-slate-600 text-slate-300 px-8 py-4 rounded-lg font-semibold hover:bg-slate-800 hover:border-slate-500 transition-colors">
-								Listen to Podcast
-							</a>
-							<a href="/blog" class="border-2 border-slate-600 text-slate-300 px-8 py-4 rounded-lg font-semibold hover:bg-slate-800 hover:border-slate-500 transition-colors">
-								Read Articles
-							</a>
-						</div>
+		<!-- Hero — light editorial -->
+		<section class="hero">
+			<div class="hero-inner">
+				<div class="hero-portrait">
+					<img
+						src="/images/magnus_portrait_casual.png"
+						alt="Magnus Oxenwaldt"
+						class="portrait"
+					/>
+				</div>
+				<div class="hero-text">
+					<p class="kicker">AI &amp; Digital Transformation</p>
+					<h1>Magnus Oxenwaldt</h1>
+					<p class="lede">
+						I help enterprises turn AI from a slide into a system. VP Group AI at
+						Columbus Global, host of the <em>Future Bytes</em> podcast, and a
+						twenty-year veteran of bridging emerging technology and operating reality.
+					</p>
+					<div class="hero-cta">
+						<a href="/blog" class="btn btn-primary">Read the essays</a>
+						<a href="/podcast" class="btn btn-ghost">Listen to Future Bytes</a>
+						<a href="https://www.linkedin.com/in/magnusoxenwaldt/" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">Follow on LinkedIn</a>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- What I Do - Icon Cards -->
-		<section class="py-20 bg-slate-50">
-			<div class="max-w-5xl mx-auto px-6">
-				<h2 class="text-3xl md:text-4xl font-bold mb-12 text-slate-900">Areas of Expertise</h2>
-				<div class="grid md:grid-cols-3 gap-8">
-					<!-- Card 1 -->
-					<div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow border border-slate-100">
-						<div class="w-14 h-14 bg-slate-800 rounded-xl flex items-center justify-center mb-6">
-							<svg class="w-7 h-7 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-							</svg>
-						</div>
-						<h3 class="text-xl font-bold mb-3 text-slate-900 whitespace-nowrap">AI Solutions</h3>
-						<p class="text-slate-600 leading-relaxed">
-							Pioneering AI-driven solutions using GPT-4, Azure OpenAI, and frontier models. Measurable business outcomes.
-						</p>
-					</div>
-
-					<!-- Card 2 -->
-					<div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow border border-slate-100">
-						<div class="w-14 h-14 bg-slate-800 rounded-xl flex items-center justify-center mb-6">
-							<svg class="w-7 h-7 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-							</svg>
-						</div>
-						<h3 class="text-xl font-bold mb-3 text-slate-900 whitespace-nowrap">Enterprise</h3>
-						<p class="text-slate-600 leading-relaxed">
-							Dynamics 365, Microsoft Azure, Power Platform. Complex digital transformation across diverse industries.
-						</p>
-					</div>
-
-					<!-- Card 3 -->
-					<div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow border border-slate-100">
-						<div class="w-14 h-14 bg-slate-800 rounded-xl flex items-center justify-center mb-6">
-							<svg class="w-7 h-7 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
-							</svg>
-						</div>
-						<h3 class="text-xl font-bold mb-3 text-slate-900 whitespace-nowrap">Podcast</h3>
-						<p class="text-slate-600 leading-relaxed">
-							Host of Future Bytes exploring AI's real impact on business—no fluff, just AI that works.
-						</p>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- Latest Articles - Clean List Style -->
-		<section class="py-20 bg-white">
-			<div class="max-w-5xl mx-auto px-6">
-				<div class="flex justify-between items-center mb-12">
-					<h2 class="text-3xl md:text-4xl font-bold text-slate-900">Latest Posts</h2>
-					<a href="/blog" class="text-teal-600 hover:text-teal-700 font-semibold flex items-center gap-2">
-						View all
-						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-						</svg>
+		<!-- Areas of focus — editorial cards -->
+		<section class="band band-soft">
+			<div class="band-inner">
+				<h2 class="section-h">Areas of focus</h2>
+				<div class="cards">
+					<a href="/frontier" class="card card-link">
+						<h3>The Frontier Approach</h3>
+						<p>My methodology for moving enterprises from AI experimentation to durable agentic systems. Read the framework →</p>
 					</a>
+					<article class="card">
+						<h3>Enterprise transformation</h3>
+						<p>Two decades inside Dynamics 365, Microsoft Azure, and the Power Platform. Architecture decisions that hold up when the slides go away.</p>
+					</article>
+					<article class="card">
+						<h3>Speaking &amp; advisory</h3>
+						<p>Keynotes, executive briefings, and board advisory on how AI changes business models — not just workflows.</p>
+					</article>
 				</div>
-				<div class="space-y-6">
+			</div>
+		</section>
+
+		<!-- Latest essays -->
+		<section class="band">
+			<div class="band-inner">
+				<div class="section-head">
+					<h2 class="section-h">Latest essays</h2>
+					<a href="/blog" class="link-arrow">Browse all →</a>
+				</div>
+				<div class="post-list">
 					{posts.map((post) => (
-						<article class="border-b border-gray-200 pb-6 last:border-0">
-							<a href={`/blog/${post.id}/`} class="group block">
-								<div class="flex items-start gap-6">
-									<div class="flex-1">
-										<time class="text-sm text-slate-500 mb-2 block">
-											<FormattedDate date={post.data.pubDate} />
-										</time>
-										<h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-teal-600 transition-colors leading-tight">
-											{post.data.title}
-										</h3>
-										<p class="text-slate-600 leading-relaxed">
-											{post.data.description}
-										</p>
-									</div>
-								</div>
+						<article class="post-row">
+							<a href={`/blog/${post.id}/`} class="post-link">
+								<time class="post-date">
+									<FormattedDate date={post.data.pubDate} />
+								</time>
+								<h3 class="post-title">{post.data.title}</h3>
+								<p class="post-desc">{post.data.description}</p>
 							</a>
 						</article>
 					))}
@@ -152,67 +109,268 @@ function getImagePath(slug: string) {
 			</div>
 		</section>
 
-		<!-- LinkedIn Engagement Banner -->
-		<section class="py-16 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white">
-			<div class="max-w-5xl mx-auto px-6">
-				<div class="flex flex-col md:flex-row items-center gap-8">
-					<div class="flex-1 text-center md:text-left">
-						<div class="inline-flex items-center gap-2 bg-teal-600/20 border border-teal-500/30 rounded-full px-4 py-2 mb-4">
-							<svg class="w-4 h-4 text-teal-400" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-							</svg>
-							<span class="text-sm font-medium text-teal-300">Weekly insights on LinkedIn</span>
-						</div>
-						<h2 class="text-3xl md:text-4xl font-bold mb-4">Get AI insights that cut through the hype</h2>
-						<p class="text-lg text-slate-400 max-w-xl leading-relaxed">
-							I share practical takes on AI strategy, enterprise transformation, and the lessons from 20+ years in the field. No fluff — just what works.
-						</p>
-					</div>
-					<div class="flex flex-col gap-4">
-						<a
-							href="https://www.linkedin.com/in/magnusoxenwaldt/"
-							target="_blank"
-							rel="noopener noreferrer"
-							class="inline-flex items-center gap-3 bg-teal-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-teal-700 transition-colors text-lg">
-							<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-							</svg>
-							Follow on LinkedIn
+		<!-- Apps -->
+		<section class="band band-soft">
+			<div class="band-inner">
+				<div class="section-head">
+					<h2 class="section-h">Apps I build</h2>
+					<a href="/apps" class="link-arrow">See all {PUBLIC_APPS.length} →</a>
+				</div>
+				<p class="band-lede apps-lede">
+					Certification practice, executive writing tools, and the companions to the
+					books — all with the AI running on the phone rather than on someone
+					else&rsquo;s server.
+				</p>
+				<div class="app-strip">
+					{featuredApps.map((app) => (
+						<a href={`/${app.slug}/index.html`} class="app-chip">
+							<img src={appIcon(app)} alt="" width="40" height="40" loading="lazy" />
+							<span>
+								<b>{app.name}</b>
+								<span>{app.tagline}</span>
+							</span>
 						</a>
-						<p class="text-sm text-slate-500 text-center">Join 2,000+ followers</p>
-					</div>
+					))}
 				</div>
 			</div>
 		</section>
 
-		<!-- CTA Section -->
-		<section class="py-20 bg-slate-50">
-			<div class="max-w-5xl mx-auto px-6 text-center">
-				<h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900">Let's Connect</h2>
-				<p class="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
-					Available for consulting, speaking engagements, and strategic advisory worldwide.
+		<!-- Newsletter -->
+		<NewsletterSubscribe variant="wide" />
+
+		<!-- Closing CTA -->
+		<section class="band band-tight">
+			<div class="band-inner band-center">
+				<h2 class="section-h">Let's work together</h2>
+				<p class="band-lede">
+					Available for executive advisory, keynote speaking, and strategic consulting on AI and digital transformation.
 				</p>
-				<div class="flex gap-4 flex-wrap justify-center">
-					<a
-						href="https://www.linkedin.com/in/magnusoxenwaldt/"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="inline-flex items-center gap-3 bg-slate-900 text-white px-8 py-4 rounded-lg font-semibold hover:bg-slate-800 transition-colors">
-						<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-							<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-						</svg>
-						Message on LinkedIn
-					</a>
-					<a href="mailto:magnus@oxenwaldt.com" class="inline-flex items-center gap-3 border-2 border-slate-300 text-slate-700 px-8 py-4 rounded-lg font-semibold hover:bg-slate-100 transition-colors">
-						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-						</svg>
-						Send Email
-					</a>
+				<div class="hero-cta center">
+					<a href="https://www.linkedin.com/in/magnusoxenwaldt/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Message on LinkedIn</a>
+					<a href="mailto:magnus@oxenwaldt.com" class="btn btn-ghost">Email Magnus</a>
 				</div>
 			</div>
 		</section>
 
 		<Footer />
+
+		<style>
+			.hero {
+				background: var(--cream);
+				border-bottom: 1px solid var(--rule);
+				padding: 4.5rem 1.5rem 5rem;
+			}
+			.hero-inner {
+				max-width: 64rem;
+				margin: 0 auto;
+				display: flex;
+				gap: 3rem;
+				align-items: center;
+			}
+			.hero-portrait { flex-shrink: 0; }
+			.portrait {
+				width: 11rem;
+				height: 11rem;
+				border-radius: 9999px;
+				object-fit: cover;
+				border: 1px solid var(--rule);
+				box-shadow: var(--box-shadow-lg);
+			}
+			.hero-text { flex: 1; }
+			.kicker {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.78rem;
+				letter-spacing: 0.18em;
+				text-transform: uppercase;
+				color: var(--accent);
+				margin: 0 0 0.85rem;
+				font-weight: 600;
+			}
+			.hero h1 {
+				font-size: clamp(2.6rem, 5vw, 3.8rem);
+				margin: 0 0 1.25rem;
+				color: var(--ink);
+				line-height: 1.05;
+			}
+			.lede {
+				font-size: 1.2rem;
+				line-height: 1.65;
+				color: var(--text);
+				max-width: 38rem;
+				margin: 0 0 2rem;
+			}
+			.hero-cta {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.75rem;
+			}
+			.hero-cta.center { justify-content: center; }
+			.btn {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				padding: 0.7rem 1.4rem;
+				border-radius: 6px;
+				font-weight: 500;
+				font-size: 0.95rem;
+				text-decoration: none;
+				transition: background 0.2s, color 0.2s, border-color 0.2s;
+				border: 1px solid transparent;
+			}
+			.btn-primary {
+				background: var(--ink);
+				color: var(--cream);
+			}
+			.btn-primary:hover { background: var(--accent); color: var(--cream); }
+			.btn-ghost {
+				background: transparent;
+				color: var(--ink);
+				border-color: var(--rule);
+			}
+			.btn-ghost:hover { border-color: var(--ink); }
+
+			.band { padding: 5rem 1.5rem; background: var(--cream); }
+			.band-soft { background: var(--cream-soft); }
+			.band-tight { padding: 4rem 1.5rem; }
+			.band-inner { max-width: 64rem; margin: 0 auto; }
+			.band-center { text-align: center; }
+			.band-lede {
+				font-size: 1.15rem;
+				color: var(--text);
+				max-width: 38rem;
+				margin: 0 auto 2rem;
+			}
+			.section-head {
+				display: flex;
+				justify-content: space-between;
+				align-items: baseline;
+				margin-bottom: 2.5rem;
+				border-bottom: 1px solid var(--rule);
+				padding-bottom: 1rem;
+			}
+			.section-h {
+				font-size: 1.6rem;
+				margin: 0 0 2rem;
+				color: var(--ink);
+				letter-spacing: -0.01em;
+			}
+			.section-head .section-h { margin: 0; }
+			.link-arrow {
+				color: var(--accent);
+				font-size: 0.95rem;
+				font-weight: 500;
+				text-decoration: none;
+			}
+			.link-arrow:hover { color: var(--accent-dark); }
+
+			.apps-lede { margin: -0.25rem 0 1.75rem; max-width: 44rem; }
+			.app-strip {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+				gap: 0.85rem;
+			}
+			.app-chip {
+				display: flex;
+				gap: 0.85rem;
+				align-items: center;
+				padding: 0.85rem 1rem;
+				background: var(--cream);
+				border: 1px solid var(--rule);
+				border-radius: 10px;
+				text-decoration: none;
+				color: var(--text);
+				transition: border-color 0.15s, box-shadow 0.15s;
+			}
+			.app-chip:hover { border-color: var(--accent); box-shadow: var(--box-shadow); color: var(--text); }
+			.app-chip img { border-radius: 10px; flex: none; margin: 0; }
+			.app-chip b {
+				display: block;
+				font-family: 'Newsreader', Georgia, serif;
+				font-size: 1rem;
+				color: var(--ink);
+				line-height: 1.3;
+			}
+			.app-chip span span {
+				display: block;
+				font-size: 0.85rem;
+				color: var(--text-muted);
+				line-height: 1.4;
+			}
+
+			.cards {
+				display: grid;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+				gap: 2rem;
+			}
+			.card {
+				background: var(--cream);
+				border: 1px solid var(--rule);
+				border-radius: 8px;
+				padding: 1.75rem;
+				transition: border-color 0.2s, transform 0.2s;
+			}
+			.card:hover { border-color: var(--accent); transform: translateY(-2px); }
+			.card-link { text-decoration: none; color: inherit; display: block; }
+			.card-link:hover h3 { color: var(--accent); }
+			.card h3 {
+				font-size: 1.25rem;
+				margin: 0 0 0.75rem;
+				color: var(--ink);
+			}
+			.card p {
+				font-size: 0.98rem;
+				color: var(--text-muted);
+				margin: 0;
+				line-height: 1.6;
+			}
+
+			.post-list {
+				display: flex;
+				flex-direction: column;
+			}
+			.post-row {
+				border-bottom: 1px solid var(--rule);
+				padding: 1.5rem 0;
+			}
+			.post-row:last-child { border-bottom: none; }
+			.post-link {
+				display: block;
+				text-decoration: none;
+				color: inherit;
+			}
+			.post-date {
+				font-size: 0.85rem;
+				color: var(--text-muted);
+				display: block;
+				margin-bottom: 0.4rem;
+				letter-spacing: 0.02em;
+				text-transform: uppercase;
+				font-weight: 500;
+			}
+			.post-title {
+				font-size: 1.55rem;
+				margin: 0 0 0.5rem;
+				color: var(--ink);
+				line-height: 1.25;
+				transition: color 0.2s;
+			}
+			.post-link:hover .post-title { color: var(--accent); }
+			.post-desc {
+				color: var(--text-muted);
+				margin: 0;
+				font-size: 1rem;
+				line-height: 1.55;
+			}
+
+			@media (max-width: 720px) {
+				.hero { padding: 3rem 1rem 3.5rem; }
+				.hero-inner { flex-direction: column; text-align: center; gap: 1.5rem; }
+				.lede { margin-left: auto; margin-right: auto; }
+				.hero-cta { justify-content: center; }
+				.cards { grid-template-columns: 1fr; gap: 1.25rem; }
+				.section-head { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+				.band { padding: 3rem 1rem; }
+			}
+		</style>
 	</body>
 </html>
