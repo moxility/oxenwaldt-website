@@ -169,7 +169,7 @@ export const APPS = [
 	{
 		slug: 'azureai',
 		name: 'Azure AI Exam Prep',
-		tagline: 'Pass the Microsoft AI Engineer exam. On your iPhone.',
+		tagline: 'Pass the Microsoft AI Engineer exam. In your browser or on your iPhone.',
 		category: 'Certification',
 		state: 'review',
 		ascId: '6792709057',
