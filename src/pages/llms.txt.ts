@@ -56,7 +56,7 @@ export const GET: APIRoute = async () => {
 	for (const app of PUBLIC_APPS) {
 		const store = appStoreUrl(app);
 		lines.push(
-			`- [${app.name}](${SITE_URL}/${app.slug}/index.html) — ${app.tagline} Status: ${STATES[app.state].label}.${store ? ` App Store: ${store}` : ''}`,
+			`- [${app.name}](${SITE_URL}/${app.slug}/index.html) — ${app.tagline} Status: ${STATES[app.state].label}.${store ? ` App Store: ${store}` : ''}${app.webApp ? ` Playable in a browser, no install: ${SITE_URL}${app.webApp}` : ''}`,
 		);
 	}
 	lines.push('');

@@ -282,6 +282,22 @@ function siteFooter(app) {
 function ctaBlock(app) {
 	const url = appStoreUrl(app);
 	const state = STATES[app.state];
+
+	// A playable web build beats every other call to action, including a live store
+	// listing — it is the only one that costs the visitor nothing to try.
+	if (app.webApp) {
+		const secondary =
+			state.cta === 'download' && url
+				? `<a class="btn btn-ghost" href="${url}">Download on the App Store</a>`
+				: `<a class="btn btn-ghost" href="mailto:${OWNER.email}?subject=${encodeURIComponent(`${app.name} — tell me when it launches`)}">Tell me when the iPhone app lands</a>`;
+		return `
+      <div class="cta">
+        <a class="btn btn-primary" href="${app.webApp}">Use it in your browser</a>
+        ${secondary}
+        <span class="cta-note">No install, no account to start &middot; ${esc(state.label)} on iPhone</span>
+      </div>`;
+	}
+
 	if (state.cta === 'download' && url) {
 		return `
       <div class="cta">
@@ -410,7 +426,30 @@ ${
 		: ''
 }
 
-<section class="band">
+${
+	app.webApp
+		? `<section>
+  <div class="wrap narrow">
+    <p class="kicker">No install required</p>
+    <h2>The whole thing runs in your browser</h2>
+    <p class="section-intro">
+      Same app, same content, same session — just on a keyboard instead of a phone.
+      Open it, work through a track, and decide whether it is worth having in your
+      pocket. Nothing to download and nothing to uninstall if the answer is no.
+    </p>
+    <div class="cta">
+      <a class="btn btn-primary" href="${app.webApp}">Open ${esc(app.name)} in your browser</a>
+    </div>
+    <p class="sub">
+      The on-device AI tutor is the one thing that stays on the iPhone — it needs Apple
+      Intelligence, which a browser cannot provide.
+    </p>
+  </div>
+</section>
+
+`
+		: ''
+}<section class="band">
   <div class="wrap">
     <p class="kicker">Privacy</p>
     <h2>Built so there is nothing to leak</h2>

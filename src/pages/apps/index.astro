@@ -93,7 +93,11 @@ const jsonLd = {
 												{state.label}
 											</p>
 										</div>
-										{store && state.cta === 'download' && <span class="badge">App Store</span>}
+										{app.webApp ? (
+											<span class="badge badge-web">Try in browser</span>
+										) : (
+											store && state.cta === 'download' && <span class="badge">App Store</span>
+										)}
 									</a>
 								);
 							})}
@@ -255,6 +259,11 @@ const jsonLd = {
 				background: rgba(47, 138, 76, 0.08);
 				padding: 3px 8px;
 				border-radius: 999px;
+			}
+			.badge-web {
+				color: var(--accent);
+				border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+				background: color-mix(in srgb, var(--accent) 8%, transparent);
 			}
 
 			.why {

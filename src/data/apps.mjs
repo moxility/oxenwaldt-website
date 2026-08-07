@@ -176,6 +176,11 @@ export const APPS = [
 		bundleId: 'com.moxapps.azureai',
 		version: '1.1.0',
 		generated: true,
+		// Static expo-router export, served from public/azureai/app/. Deep links need the
+		// rewrite in vercel.json — client-side routing plus a host that 404s extensionless
+		// URLs means a hard refresh on /azureai/app/session would otherwise die.
+		webApp: '/azureai/app/',
+		extraLinks: [['Open the web app', '/azureai/app/']],
 		accent: '#3FA9F5',
 		accent2: '#8FD14F',
 		glyph: 'M50,20 L74,64 H60 L50,44 L40,64 H26 Z M32,72 H68 L64,80 H36 Z',
