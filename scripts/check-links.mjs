@@ -49,3 +49,22 @@ if (broken.size) {
 	process.exit(1);
 }
 console.log(`All ${checked} root-relative links resolve, across ${files.length} pages.`);
+
+// A placeholder is a VALID link, so a hero-image lookup that silently misses every
+// post still passes the check above — that shipped once, serving placeholders for
+// all 85 posts. Report the split so the regression is visible rather than green.
+const blogIndex = path.join(DIST, 'blog', 'index.html');
+if (fs.existsSync(blogIndex)) {
+	const html = fs.readFileSync(blogIndex, 'utf8');
+	const real = [...html.matchAll(/src="\/blog-images\/[^"]+"/g)].length;
+	const placeheld = [...html.matchAll(/src="\/blog-placeholder-[^"]+"/g)].length;
+	const pct = placeheld / Math.max(1, real + placeheld);
+	console.log(`Blog heroes: ${real} generated, ${placeheld} placeholder.`);
+	if (pct > 0.5) {
+		console.log(
+			`\nOver half the blog cards fall back to a placeholder. That usually means the ` +
+				`image lookup is resolving to the wrong directory, not that the images are missing.`,
+		);
+		process.exit(1);
+	}
+}

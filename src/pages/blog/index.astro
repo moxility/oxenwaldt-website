@@ -1,6 +1,6 @@
 ---
 import { existsSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
+import { join } from 'node:path';
 import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
@@ -38,7 +38,11 @@ const placeholderFor = (id: string) => {
 
 const postsWithCategories = await Promise.all(posts.map(async (post) => {
 	const generated = `/blog-images/${post.id}.png`;
-	const imagePath = existsSync(fileURLToPath(new URL(`../../../public${generated}`, import.meta.url)))
+	// Resolve against the project root, NOT import.meta.url: Astro compiles this
+	// frontmatter into a bundled chunk, so import.meta.url is not the source path
+	// at build time and every lookup silently missed — which served a placeholder
+	// for all 85 posts instead of the 11 that need one.
+	const imagePath = existsSync(join(process.cwd(), 'public', generated))
 		? generated
 		: placeholderFor(post.id);
 	const bodyText = post.body ? post.body
