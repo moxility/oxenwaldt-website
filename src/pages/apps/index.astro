@@ -91,13 +91,13 @@ const jsonLd = {
 											<p class={`state ${state.tone}`}>
 												<span class="dot" />
 												{state.label}
+												{app.webApp ? (
+													<span class="badge badge-web">Try in browser</span>
+												) : (
+													store && state.cta === 'download' && <span class="badge">App Store</span>
+												)}
 											</p>
 										</div>
-										{app.webApp ? (
-											<span class="badge badge-web">Try in browser</span>
-										) : (
-											store && state.cta === 'download' && <span class="badge">App Store</span>
-										)}
 									</a>
 								);
 							})}
@@ -234,8 +234,10 @@ const jsonLd = {
 				color: var(--text-muted);
 				display: flex;
 				align-items: center;
+				flex-wrap: wrap;
 				gap: 0.4rem;
 			}
+			.state .badge { margin-left: 0.15rem; }
 			.dot {
 				width: 7px;
 				height: 7px;
@@ -246,10 +248,10 @@ const jsonLd = {
 			.state.good .dot { background: #2f8a4c; }
 			.state.good { color: #2f8a4c; font-weight: 600; }
 			.state.wait .dot { background: var(--accent); }
+			/* Sits inline on the status line. It used to be absolutely positioned in the
+			   card's top-right, where it overlapped any title long enough to reach it —
+			   "TOGAF 10 Practice" and "Azure AI Exam Prep" were both struck through by it. */
 			.badge {
-				position: absolute;
-				top: 0.9rem;
-				right: 0.9rem;
 				font-size: 0.68rem;
 				font-weight: 650;
 				letter-spacing: 0.05em;
