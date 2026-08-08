@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy &mdash; EU AI Act Navigator</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; color: #0f172a; line-height: 1.6; }
+  h1 { font-size: 28px; margin-bottom: 0; }
+  h2 { font-size: 20px; margin-top: 32px; color: #1e40af; }
+  .last { color: #64748b; font-size: 14px; }
+  a { color: #2563eb; }
+  .card { background: #f1f5f9; padding: 16px 20px; border-radius: 12px; margin: 20px 0; }
+</style>
+</head>
+<body>
+
+<p style="font-size:14px;color:#64748b;margin-bottom:28px"><a href="/aiact/index.html">EU AI Act Navigator</a> &middot; <a href="/aiact/act.html">The Act</a> &middot; <a href="/aiact/app/">Web app</a> &middot; <a href="/aiact/terms.html">Terms</a> &middot; <a href="/aiact/support.html">Support</a></p>
+
+<h1>Privacy Policy</h1>
+<p class="last">EU AI Act Navigator &middot; Last updated 2026-08-07</p>
+
+<div class="card">
+<strong>EU AI Act Navigator is built on a single principle: nobody but you can read your AI
+inventory &mdash; including us.</strong>
+An inventory of the AI systems an organisation uses is a map of its internal estate and its
+unmitigated legal exposure. Use the app without an account and nothing ever leaves your device.
+Turn on sync and your assessment is encrypted on your device first, with a key we never receive,
+so the copy we store is one we have no way to open.
+</div>
+
+<h2>What we collect</h2>
+<p><strong>Without an account: nothing.</strong> The app works fully offline with no sign-up. In that mode there is no network traffic and no server involvement whatsoever.</p>
+<p><strong>With sync enabled</strong> we store, per account: your email address, an authentication credential derived from your passphrase, and one <em>encrypted</em> blob containing your assessment, plus the revision number and device identifier needed to sync it between your devices.</p>
+<p>In neither mode do we collect, transmit, store, or have any access to the readable contents of:</p>
+<ul>
+  <li>the organisation, systems, or assessment facts you capture,</li>
+  <li>the classifications, registries, or action plans the app derives,</li>
+  <li>your voice or any audio from the guided interview,</li>
+  <li>the documents you export,</li>
+  <li>analytics, usage statistics, advertising identifiers, or crash telemetry.</li>
+</ul>
+
+<h2>How the encryption works</h2>
+<p>When you create an account, your passphrase is put through <strong>Argon2id</strong> on your own device and split into two independent keys:</p>
+<ul>
+  <li>an <strong>authentication key</strong>, which is sent to our authentication provider as your account password, and</li>
+  <li>an <strong>encryption key</strong>, which <strong>never leaves your device</strong> and is held in memory only for the duration of your session.</li>
+</ul>
+<p>Your assessment is sealed with <strong>AES-256-GCM</strong> using the encryption key before it is uploaded. The two keys are computationally independent: learning the authentication key &mdash; which the server necessarily does &mdash; reveals nothing about the encryption key. The web app decrypts in your browser; the plaintext never exists on our infrastructure.</p>
+<p><strong>How two devices share a key without it ever being sent.</strong> The key is not transmitted or copied between your devices &mdash; it is <em>re-derived independently on each one</em>. Because the derivation is deterministic, entering the same passphrase on your iPhone and in your browser produces the identical key on both, without either device ever asking us for it. That is why the passphrase is the only thing that can open your vault, and why we cannot open it for you.</p>
+<div class="card">
+<strong>The consequence, stated plainly: we cannot reset your passphrase.</strong> There is no recovery
+process, no support override, and no back door. If you forget it, the synced copy of your
+assessment is permanently unreadable &mdash; by you, by us, and by anyone who compels us. That is
+the cost of the guarantee, and we would rather you knew it before you rely on it. Keep your
+passphrase in a password manager, and export your registry regularly.
+</div>
+
+<h2>Data processing and your rights</h2>
+<p>Where you use sync, we act as a data controller for your account email and as a processor of an opaque encrypted blob whose contents we cannot access. You can delete your account and that blob at any time from inside the app (Account &rsaquo; Delete account) or from the web app; deletion is immediate and permanent. Because the stored data is ciphertext we cannot decrypt, we are unable to produce its contents in response to any request &mdash; yours or a third party&rsquo;s.</p>
+<p>Our hosting and authentication provider is <strong>Supabase</strong>, with data stored in the EU. See <a href="https://supabase.com/privacy">Supabase&rsquo;s privacy policy</a>.</p>
+
+<h2>How the app works</h2>
+<ul>
+  <li><strong>Guided interview.</strong> Speech is transcribed using Apple&rsquo;s on-device speech recognition. Where available, Apple&rsquo;s on-device Foundation Models suggest structured facts from your description. Audio, transcripts, and suggestions all stay on your device.</li>
+  <li><strong>Classification.</strong> Every classification is computed on your device from bundled methodology data. Nothing is sent to any server to be classified.</li>
+  <li><strong>Storage.</strong> Everything you capture is stored locally in the operating system&rsquo;s standard app storage. Without sync, deleting the app deletes it permanently and we hold no copy. With sync, we hold an encrypted copy that only your passphrase can open.</li>
+  <li><strong>Export.</strong> Registry and action-plan documents are generated on your device and handed to the iOS share sheet. Where they go from there is entirely your choice.</li>
+  <li><strong>Offline.</strong> The assessment works in airplane mode. No network connection is needed to capture, classify, or export &mdash; only to sync, if you have enabled it.</li>
+</ul>
+
+<h2>Subscriptions</h2>
+<p>Navigator Pro is an auto-renewing subscription sold through Apple&rsquo;s App Store. Payment is handled by Apple and charged to your Apple ID.</p>
+<p>Subscription status is managed by <strong>RevenueCat, Inc.</strong>, which processes an anonymous, randomly generated identifier and your purchase receipt solely to determine whether your subscription is active. This identifier is not linked to your name, email, or anything you capture in the app. See <a href="https://www.revenuecat.com/privacy">RevenueCat&rsquo;s privacy policy</a>.</p>
+<p><strong>No assessment content is ever shared with RevenueCat, Apple, or anyone else.</strong> Your free-tier system count is stored only on your device.</p>
+
+<h2>Permissions</h2>
+<ul>
+  <li><strong>Microphone</strong> and <strong>Speech Recognition</strong> &mdash; used only while you hold the talk button in the guided interview, to transcribe your speech on device. Nothing is recorded to a file or uploaded.</li>
+</ul>
+
+<h2>Children</h2>
+<p>EU AI Act Navigator is a professional compliance-preparation tool intended for business use and is not directed at children under 13.</p>
+
+<h2>Changes</h2>
+<p>If this policy changes, the updated version will be published on this page with a new date.</p>
+
+<h2>Contact</h2>
+<p>Questions about privacy or this policy: <a href="mailto:magnus@oxenwaldt.com">magnus@oxenwaldt.com</a></p>
+
+</body>
+</html>

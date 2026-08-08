@@ -14,264 +14,229 @@ const episodes = (await getCollection('episodes')).sort(
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={`Future Bytes Podcast | ${SITE_TITLE}`} description="Future Bytes: Bits of business transformation - A podcast exploring AI's impact on business and digital transformation" />
+		<BaseHead
+			title={`Future Bytes Podcast | ${SITE_TITLE}`}
+			description="Future Bytes — bits of business transformation. A weekly podcast on AI's impact on business, hosted by Magnus Oxenwaldt."
+			pageType="podcast"
+		/>
 	</head>
-	<body class="bg-white">
+	<body>
 		<Header />
-		<main class="p-0">
-			<!-- Hero Section -->
-			<section class="bg-slate-900 text-white py-20 px-4 relative overflow-hidden">
-				<div class="absolute inset-0 opacity-40">
-					<img src="/images/podcast_background_20251210_170621.png" alt="" class="w-full h-full object-cover" />
-				</div>
-				<div class="max-w-4xl mx-auto relative z-10">
-					<div class="flex flex-col md:flex-row items-center gap-8">
-						<!-- Podcast Cover -->
-						<div class="flex-shrink-0">
-							<img
-								src="/images/future_bytes_cover.jpg"
-								alt="Future Bytes Podcast"
-								class="w-48 h-48 md:w-56 md:h-56 rounded-2xl shadow-2xl border-2 border-slate-700"
-							/>
-						</div>
-						<!-- Text Content -->
-						<div class="text-center md:text-left">
-							<div class="inline-block mb-4 px-4 py-2 bg-teal-600/20 border border-teal-500/30 rounded-full text-sm font-medium text-teal-300">
-								<svg class="w-4 h-4 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
-								</svg>
-								Podcast
-							</div>
-							<h1 class="text-5xl md:text-6xl font-bold mb-4">Future Bytes</h1>
-							<p class="text-2xl text-teal-400 mb-4 font-semibold">Bits of business transformation</p>
-							<p class="text-lg text-slate-400 leading-relaxed max-w-xl">
-								Exploring how artificial intelligence transforms business, featuring conversations with industry leaders.
-							</p>
-						</div>
-					</div>
-				</div>
-			</section>
 
-			<!-- Listen Now Section -->
-			<section class="py-12 px-4 bg-slate-50">
-				<div class="max-w-4xl mx-auto">
-					<div class="flex flex-wrap justify-center gap-4">
-						<a href="https://open.spotify.com/show/2dUyQaG5wFvCPBkB2ErHKe"
-						   target="_blank"
-						   rel="noopener noreferrer"
-						   class="inline-flex items-center gap-3 bg-slate-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-800 transition-colors">
-							<svg class="w-6 h-6 text-teal-400" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
-							</svg>
-							Spotify
-						</a>
-						<a href="https://podcasts.apple.com/no/podcast/future-bytes/id1784685801"
-						   target="_blank"
-						   rel="noopener noreferrer"
-						   class="inline-flex items-center gap-3 bg-slate-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-800 transition-colors">
-							<svg class="w-6 h-6 text-teal-400" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0H5.34zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.224 1.272 1.912 2.619 2.264 4.392.12.59.12 2.2.007 2.864a8.506 8.506 0 01-3.24 5.296c-.608.46-1.716 1.104-1.891 1.104-.106 0-.128-.253-.128-1.477v-1.476l.263-.168c1.298-.855 2.216-2.334 2.47-3.98.09-.588.09-1.637 0-2.206-.32-1.972-1.357-3.533-3.022-4.54a6.125 6.125 0 00-3.15-.757c-1.989.067-3.62.972-4.68 2.598-.77 1.185-1.05 2.72-.77 4.203.27 1.438 1.082 2.79 2.19 3.66l.263.167v1.477c0 1.225-.02 1.477-.127 1.477-.213 0-1.312-.64-1.968-1.148a8.582 8.582 0 01-2.767-4.053 7.986 7.986 0 01-.263-3.3c.407-2.453 1.62-4.426 3.583-5.835a8.596 8.596 0 014.91-1.884zm.166 3.636c.834.11 1.588.395 2.28.866 1.074.732 1.837 1.943 2.086 3.318.082.451.082 1.503 0 1.973-.242 1.378-.998 2.574-2.136 3.38-.187.133-.361.24-.388.24-.026 0-.045-.85-.045-1.883v-1.883l.182-.179c.474-.47.756-1.09.843-1.842.073-.63-.036-1.166-.344-1.697-.494-.85-1.344-1.37-2.387-1.456-1.056-.088-2.026.315-2.67 1.104-.573.702-.795 1.631-.622 2.6.106.588.473 1.215.926 1.58l.181.146v1.87c0 1.028-.018 1.868-.04 1.868-.106 0-.678-.358-1.013-.632-.93-.766-1.558-1.83-1.8-3.054-.082-.413-.092-1.387-.019-1.794.286-1.59 1.236-2.886 2.64-3.602a5.248 5.248 0 012.326-.523zm-.045 5.616c.522.063.987.298 1.334.672.33.354.508.792.558 1.375v.38l-.417 2.812c-.46 3.109-.458 3.101-.795 3.534a1.627 1.627 0 01-1.334.617 1.588 1.588 0 01-1.262-.595c-.328-.406-.402-.673-.848-3.063-.228-1.224-.426-2.346-.44-2.495-.042-.434.036-.882.223-1.268a1.944 1.944 0 011.39-1.074c.263-.047.327-.05.59.085z"/>
-							</svg>
-							Apple Podcasts
-						</a>
-						<a href="https://www.linkedin.com/in/magnusoxenwaldt/"
-						   target="_blank"
-						   rel="noopener noreferrer"
-						   class="inline-flex items-center gap-3 bg-slate-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-800 transition-colors">
-							<svg class="w-6 h-6 text-teal-400" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-							</svg>
-							Follow for Insights
-						</a>
-						<span class="inline-flex items-center gap-2 text-slate-500 px-4 py-3">
-							<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-							</svg>
-							{episodes.length} Episodes
-						</span>
-					</div>
+		<section class="podcast-hero">
+			<div class="podcast-hero-inner">
+				<div class="podcast-cover">
+					<img src="/images/future_bytes_cover.jpg" alt="Future Bytes Podcast" />
 				</div>
-			</section>
-
-			<!-- Episodes List -->
-			<section class="py-16 px-4">
-				<div class="max-w-4xl mx-auto">
-					<h2 class="text-3xl font-bold text-slate-900 mb-8">All Episodes</h2>
-					<div class="space-y-4">
-						{episodes.map((episode) => (
-							<article class="bg-white rounded-xl border border-slate-200 hover:border-teal-400 hover:shadow-md transition-all duration-300 overflow-hidden">
-								<a href={episode.data.spotifyUrl || "https://open.spotify.com/show/2dUyQaG5wFvCPBkB2ErHKe"}
-								   target="_blank"
-								   rel="noopener noreferrer"
-								   class="block p-6">
-									<div class="flex items-start gap-4">
-										<!-- Episode Number -->
-										<div class="flex-shrink-0 w-14 h-14 bg-slate-900 rounded-lg flex items-center justify-center">
-											<span class="text-teal-400 font-bold text-lg">#{episode.data.episodeNumber}</span>
-										</div>
-										<!-- Episode Content -->
-										<div class="flex-1 min-w-0">
-											<div class="flex items-center gap-3 mb-2 flex-wrap">
-												<time class="text-sm text-slate-500">
-													<FormattedDate date={episode.data.pubDate} />
-												</time>
-												<span class="text-slate-300">&bull;</span>
-												<span class="text-sm text-slate-500">{episode.data.duration}</span>
-												{episode.data.guest && (
-													<>
-														<span class="text-slate-300">&bull;</span>
-														<span class="text-sm text-teal-600 font-medium">Guest: {episode.data.guest}</span>
-													</>
-												)}
-											</div>
-											<h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-teal-600 transition-colors">
-												{episode.data.title}
-											</h3>
-											<p class="text-slate-600 line-clamp-2">
-												{episode.data.description}
-											</p>
-											{episode.data.tags && episode.data.tags.length > 0 && (
-												<div class="flex gap-2 mt-3 flex-wrap">
-													{episode.data.tags.slice(0, 4).map((tag: string) => (
-														<span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded">{tag}</span>
-													))}
-												</div>
-											)}
-										</div>
-										<!-- Play Icon -->
-										<div class="flex-shrink-0 hidden md:flex items-center justify-center w-10 h-10 bg-teal-600 rounded-full text-white hover:bg-teal-700 transition-colors">
-											<svg class="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-												<path d="M8 5v14l11-7z"/>
-											</svg>
-										</div>
-									</div>
-								</a>
-							</article>
-						))}
-					</div>
-				</div>
-			</section>
-
-			<!-- About the Podcast -->
-			<section class="py-16 px-4 bg-slate-50">
-				<div class="max-w-4xl mx-auto">
-					<div class="flex flex-col md:flex-row gap-8 items-start">
-						<!-- Host Info -->
-						<div class="flex-shrink-0">
-							<img
-								src="/images/magnus_portrait_casual.png"
-								alt="Magnus Oxenwaldt"
-								class="w-32 h-32 rounded-xl object-cover shadow-lg"
-							/>
-						</div>
-						<div>
-							<h2 class="text-3xl font-bold text-slate-900 mb-4">About Future Bytes</h2>
-							<p class="text-lg text-slate-700 leading-relaxed mb-4">
-								<strong>Future Bytes: Bits of business transformation</strong> is where AI strategy meets real-world business implementation.
-								Each episode explores how artificial intelligence is transforming industries, featuring conversations with leaders
-								who are actually doing the work&mdash;not just talking about it.
-							</p>
-							<p class="text-slate-600 leading-relaxed">
-								Hosted by <strong>Magnus Oxenwaldt</strong>, the podcast brings together perspectives from across industries,
-								covering everything from ethical AI considerations to practical implementation strategies.
-							</p>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- What You'll Learn -->
-			<section class="py-16 px-4">
-				<div class="max-w-4xl mx-auto">
-					<h2 class="text-3xl font-bold text-slate-900 mb-8">What You'll Learn</h2>
-					<div class="grid md:grid-cols-2 gap-6">
-						<div class="bg-white p-6 rounded-xl border border-slate-200">
-							<div class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center mb-4">
-								<svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-								</svg>
-							</div>
-							<h3 class="text-lg font-bold text-slate-900 mb-2">AI Strategy & Implementation</h3>
-							<p class="text-slate-600">
-								Practical approaches to AI adoption that deliver measurable business results, not just impressive demos.
-							</p>
-						</div>
-						<div class="bg-white p-6 rounded-xl border border-slate-200">
-							<div class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center mb-4">
-								<svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
-								</svg>
-							</div>
-							<h3 class="text-lg font-bold text-slate-900 mb-2">Digital Transformation</h3>
-							<p class="text-slate-600">
-								How organizations navigate change, manage stakeholders, and build capabilities for the AI era.
-							</p>
-						</div>
-						<div class="bg-white p-6 rounded-xl border border-slate-200">
-							<div class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center mb-4">
-								<svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-								</svg>
-							</div>
-							<h3 class="text-lg font-bold text-slate-900 mb-2">Industry Applications</h3>
-							<p class="text-slate-600">
-								Real examples of AI transforming retail, manufacturing, services, and other industries.
-							</p>
-						</div>
-						<div class="bg-white p-6 rounded-xl border border-slate-200">
-							<div class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center mb-4">
-								<svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-								</svg>
-							</div>
-							<h3 class="text-lg font-bold text-slate-900 mb-2">Ethics & Responsibility</h3>
-							<p class="text-slate-600">
-								Navigating the ethical considerations, workforce implications, and responsible AI practices.
-							</p>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- CTA -->
-			<section class="py-16 px-4 bg-slate-900 text-white">
-				<div class="max-w-4xl mx-auto text-center">
-					<h2 class="text-3xl font-bold mb-6">Never Miss an Episode</h2>
-					<p class="text-xl text-slate-400 mb-8 max-w-2xl mx-auto">
-						New episodes released weekly. Follow on LinkedIn for episode highlights and behind-the-scenes insights, or subscribe on your favorite podcast platform.
+				<div class="podcast-text">
+					<p class="kicker">The Podcast</p>
+					<h1>Future Bytes</h1>
+					<p class="tagline">Bits of business transformation</p>
+					<p class="lede">
+						Weekly conversations and AI news for business leaders. Most episodes
+						are under ten minutes — what actually matters, no fluff.
 					</p>
-					<div class="flex flex-wrap justify-center gap-4">
-						<a href="https://www.linkedin.com/in/magnusoxenwaldt/"
-						   target="_blank"
-						   rel="noopener noreferrer"
-						   class="inline-flex items-center gap-3 bg-teal-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-teal-700 transition-colors">
-							<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-							</svg>
-							Follow on LinkedIn
-						</a>
-						<a href="https://open.spotify.com/show/2dUyQaG5wFvCPBkB2ErHKe"
-						   target="_blank"
-						   rel="noopener noreferrer"
-						   class="inline-flex items-center gap-3 border-2 border-slate-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-slate-800 transition-colors">
-							<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
-							</svg>
-							Listen on Spotify
-						</a>
+					<div class="platforms">
+						<a href="https://open.spotify.com/show/2dUyQaG5wFvCPBkB2ErHKe" target="_blank" rel="noopener noreferrer" class="btn-primary">Spotify</a>
+						<a href="https://podcasts.apple.com/no/podcast/future-bytes/id1784685801" target="_blank" rel="noopener noreferrer" class="btn-ghost">Apple Podcasts</a>
+						<span class="ep-count">{episodes.length} episodes</span>
 					</div>
 				</div>
+			</div>
+		</section>
+
+		<main class="podcast-main">
+			<section class="episodes">
+				<h2>All episodes</h2>
+				<div class="episode-list">
+					{episodes.map((episode) => (
+						<article class="episode">
+							<a href={episode.data.spotifyUrl || "https://open.spotify.com/show/2dUyQaG5wFvCPBkB2ErHKe"} target="_blank" rel="noopener noreferrer" class="episode-link">
+								<div class="episode-num">#{episode.data.episodeNumber}</div>
+								<div class="episode-body">
+									<div class="episode-meta">
+										<time><FormattedDate date={episode.data.pubDate} /></time>
+										<span class="dot">·</span>
+										<span>{episode.data.duration}</span>
+										{episode.data.guest && (<><span class="dot">·</span><span class="guest">Guest: {episode.data.guest}</span></>)}
+									</div>
+									<h3>{episode.data.title}</h3>
+									<p>{episode.data.description}</p>
+									{episode.data.tags && episode.data.tags.length > 0 && (
+										<div class="tags">
+											{episode.data.tags.slice(0, 4).map((tag: string) => (<span class="tag">{tag}</span>))}
+										</div>
+									)}
+								</div>
+							</a>
+						</article>
+					))}
+				</div>
+			</section>
+
+			<section class="about-pod">
+				<h2>About the show</h2>
+				<p><strong>Future Bytes: Bits of business transformation</strong> is where AI strategy meets real-world implementation. Each episode unpacks how AI is changing industries through conversations with leaders who are actually doing the work.</p>
+				<p>Hosted by <strong>Magnus Oxenwaldt</strong>, VP Group AI at Columbus Global. Released weekly. Most episodes 5–10 minutes, with deeper guest interviews running longer.</p>
 			</section>
 		</main>
+
 		<Footer />
+
+		<style>
+			.podcast-hero {
+				background: var(--cream);
+				border-bottom: 1px solid var(--rule);
+				padding: 4rem 1.5rem;
+			}
+			.podcast-hero-inner {
+				max-width: 64rem;
+				margin: 0 auto;
+				display: flex;
+				gap: 3rem;
+				align-items: center;
+			}
+			.podcast-cover img {
+				width: 12rem;
+				height: 12rem;
+				border-radius: 8px;
+				box-shadow: var(--box-shadow-lg);
+				border: 1px solid var(--rule);
+			}
+			.kicker {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.78rem;
+				letter-spacing: 0.18em;
+				text-transform: uppercase;
+				color: var(--accent);
+				margin: 0 0 0.5rem;
+				font-weight: 600;
+			}
+			.podcast-text h1 {
+				font-size: clamp(2.4rem, 5vw, 3.4rem);
+				margin: 0 0 0.4rem;
+				color: var(--ink);
+				line-height: 1.05;
+			}
+			.tagline {
+				font-family: 'Newsreader', Georgia, serif;
+				color: var(--accent);
+				font-style: italic;
+				margin: 0 0 1rem;
+				font-size: 1.2rem;
+			}
+			.lede {
+				color: var(--text);
+				margin: 0 0 1.5rem;
+				font-size: 1.08rem;
+				line-height: 1.6;
+				max-width: 36rem;
+			}
+			.platforms { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; }
+			.btn-primary {
+				background: var(--ink);
+				color: var(--cream);
+				padding: 0.6rem 1.2rem;
+				border-radius: 6px;
+				text-decoration: none;
+				font-weight: 500;
+				font-size: 0.92rem;
+				transition: background 0.2s;
+			}
+			.btn-primary:hover { background: var(--accent); color: var(--cream); }
+			.btn-ghost {
+				background: transparent;
+				color: var(--ink);
+				padding: 0.6rem 1.2rem;
+				border-radius: 6px;
+				border: 1px solid var(--rule);
+				text-decoration: none;
+				font-weight: 500;
+				font-size: 0.92rem;
+				transition: border-color 0.2s;
+			}
+			.btn-ghost:hover { border-color: var(--ink); }
+			.ep-count { color: var(--text-muted); font-size: 0.92rem; margin-left: 0.4rem; }
+
+			.podcast-main { max-width: 56rem; padding: 0 1.5rem; }
+			.episodes { padding: 4rem 0 3rem; border-bottom: 1px solid var(--rule); }
+			.episodes h2 { font-size: 1.6rem; margin: 0 0 2rem; color: var(--ink); }
+			.episode-list { display: flex; flex-direction: column; }
+			.episode { border-bottom: 1px solid var(--rule); }
+			.episode:last-child { border-bottom: none; }
+			.episode-link {
+				display: flex;
+				gap: 1.5rem;
+				padding: 1.5rem 0;
+				text-decoration: none;
+				color: inherit;
+			}
+			.episode-num {
+				flex-shrink: 0;
+				width: 3.5rem;
+				height: 3.5rem;
+				background: var(--cream-soft);
+				border: 1px solid var(--rule);
+				border-radius: 6px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-family: 'Newsreader', Georgia, serif;
+				color: var(--accent);
+				font-weight: 600;
+				font-size: 1rem;
+			}
+			.episode-body { flex: 1; min-width: 0; }
+			.episode-meta {
+				display: flex;
+				gap: 0.5rem;
+				font-size: 0.85rem;
+				color: var(--text-muted);
+				margin-bottom: 0.4rem;
+				flex-wrap: wrap;
+				align-items: center;
+			}
+			.dot { color: var(--rule); }
+			.guest { color: var(--accent); font-weight: 500; }
+			.episode h3 {
+				font-size: 1.25rem;
+				margin: 0 0 0.4rem;
+				color: var(--ink);
+				transition: color 0.2s;
+			}
+			.episode-link:hover h3 { color: var(--accent); }
+			.episode p {
+				color: var(--text-muted);
+				margin: 0 0 0.75rem;
+				font-size: 0.98rem;
+				line-height: 1.55;
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+			}
+			.tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+			.tag {
+				background: var(--cream-soft);
+				border: 1px solid var(--rule);
+				color: var(--text-muted);
+				font-size: 0.75rem;
+				padding: 0.2rem 0.5rem;
+				border-radius: 4px;
+			}
+
+			.about-pod { padding: 3rem 0 4rem; }
+			.about-pod h2 { font-size: 1.6rem; margin: 0 0 1rem; color: var(--ink); }
+			.about-pod p { color: var(--text); margin: 0 0 1rem; line-height: 1.7; }
+
+			@media (max-width: 720px) {
+				.podcast-hero-inner { flex-direction: column; text-align: center; gap: 1.5rem; }
+				.podcast-cover img { width: 9rem; height: 9rem; }
+				.platforms { justify-content: center; }
+				.podcast-hero { padding: 2.5rem 1rem; }
+				.episode-link { gap: 1rem; padding: 1.25rem 0; }
+				.episode-num { width: 2.75rem; height: 2.75rem; font-size: 0.85rem; }
+			}
+		</style>
 	</body>
 </html>
-
-<style>
-	.line-clamp-2 {
-		display: -webkit-box;
-		-webkit-line-clamp: 2;
-		-webkit-box-orient: vertical;
-		overflow: hidden;
-	}
-</style>

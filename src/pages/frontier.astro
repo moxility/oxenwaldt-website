@@ -1,0 +1,243 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import NewsletterSubscribe from '../components/NewsletterSubscribe.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title={`The Frontier Approach — Agentic AI for Enterprise | ${SITE_TITLE}`}
+			description="The Frontier Approach is Magnus Oxenwaldt's framework for moving enterprises from AI experimentation to durable agentic systems in production — used at Columbus Global and presented at Microsoft, D-Congress, and Nordic enterprise events."
+			tags={["Agentic AI", "Frontier", "AI Strategy", "Enterprise AI", "Methodology"]}
+		/>
+	</head>
+	<body>
+		<Header />
+
+		<section class="frontier-hero">
+			<div class="frontier-hero-inner">
+				<p class="kicker">The Methodology</p>
+				<h1>The Frontier Approach</h1>
+				<p class="lede">
+					A working framework for moving enterprises from AI experimentation
+					into durable agentic systems — built from twenty years of enterprise
+					engagements at Columbus Global, refined through the work my teams
+					ship every week.
+				</p>
+			</div>
+		</section>
+
+		<main class="frontier-main">
+			<section class="prose">
+				<h2>Why most AI projects stall</h2>
+				<p>
+					In my consulting practice the same pattern shows up almost every
+					quarter. A board sees a demo, allocates a budget, a pilot ships, and
+					three months later the work hasn't moved a metric anyone in the
+					operating business cares about. The technology rarely fails. The
+					framing does.
+				</p>
+				<p>
+					AI projects fail because organizations treat them like software
+					projects, but agentic AI has fundamentally different operational
+					properties: it changes its own behavior under load, it pulls work
+					across team boundaries, and it requires governance that didn't exist
+					in the previous generation of enterprise systems. The Frontier
+					Approach is the framework I use with clients to handle that gap.
+				</p>
+
+				<h2>The four moves</h2>
+
+				<h3>1. Align on outcomes, not capabilities</h3>
+				<p>
+					"We want to use AI" is not a project. "We want to compress quote-to-cash
+					from 14 days to 4 days" is. The first move is forcing the
+					conversation back to a measurable business outcome with a named
+					owner. If a senior leader can't name the metric, the project isn't
+					ready to start. This single move kills more bad projects than any
+					technical decision.
+				</p>
+
+				<h3>2. Architect for autonomy</h3>
+				<p>
+					Most enterprise systems were built for deterministic workflows. Agentic
+					AI introduces probabilistic decision-making — agents that pick paths,
+					call tools, hand work to other agents. The architecture has to assume
+					non-determinism: structured logging of every agent decision, idempotent
+					side effects, evaluators running alongside production traffic. The
+					companies that get this right treat their evaluation infrastructure as
+					production infrastructure, not a research artifact.
+				</p>
+
+				<h3>3. Implement with engineering rigor, not prompt rigor</h3>
+				<p>
+					Prompt engineering is real but overweighted. The durable wins come from
+					the surrounding engineering: retrieval pipelines that handle
+					out-of-distribution inputs, retry semantics that don't compound errors,
+					human-in-the-loop checkpoints at the points where stakes are highest,
+					and a continuous-evaluation harness that catches regressions before
+					customers do. Treat the LLM as one component in a system designed for
+					failure, not the system itself.
+				</p>
+
+				<h3>4. Govern the way the auditor would want</h3>
+				<p>
+					Boards and auditors will eventually ask hard questions about AI
+					decisions: who authorized this, what data trained it, how do you
+					rollback, who is accountable when it goes wrong. Get those answers in
+					place before they're asked. AI governance done well becomes a
+					competitive advantage when regulation lands — companies that already
+					have the controls don't slow down.
+				</p>
+
+				<h2>What's different about agentic systems</h2>
+				<p>
+					The shift from <em>using AI</em> to <em>deploying agents</em> is bigger
+					than the shift from desktop to mobile. An agent can take action, hand
+					work to other agents, escalate when stuck, and learn from feedback.
+					The unit of work is no longer a request-response cycle but a
+					conversation between systems with goals.
+				</p>
+				<p>
+					That changes everything operational. Capacity planning becomes about
+					tokens, not transactions. Observability becomes about decisions, not
+					just spans. Quality becomes about agent behavior, not pixel
+					correctness. Companies that internalize this early will operate at
+					scales their competitors can't reach.
+				</p>
+
+				<h2>Where this came from</h2>
+				<p>
+					This framework grew out of work at Columbus Global helping
+					enterprises across the Nordics and globally implement Microsoft
+					Dynamics, Azure, and now agentic AI on top of those stacks. I've
+					presented versions of it at Microsoft Norway's all-hands, D-Congress
+					(the largest Nordic retail and e-commerce event), the Finnish Embassy
+					business forum, and to the boards of several public companies in
+					Scandinavia. Each engagement sharpens it. Each new client teaches me
+					something the framework didn't yet account for.
+				</p>
+
+				<h2>How to use this</h2>
+				<p>
+					You can apply this framework yourself — most of it is just disciplined
+					thinking. If you're working on an AI initiative right now, the
+					highest-value question to start with is the first one: <strong>what
+					business metric does this move, and who owns that metric?</strong> If
+					you can't answer cleanly, fix that before anything else.
+				</p>
+				<p>
+					If you'd rather have me work alongside your team on a specific
+					initiative, that's the kind of advisory work I take on selectively
+					through Columbus and independently. Reach out and let's talk through
+					what you're working on.
+				</p>
+			</section>
+
+			<NewsletterSubscribe variant="compact" />
+
+			<section class="cta-block">
+				<h2>Talk to me about a specific initiative</h2>
+				<p>
+					Available for executive advisory, board briefings, and strategic
+					engagement on AI and digital transformation programs.
+				</p>
+				<div class="cta-row">
+					<a href="mailto:magnus@oxenwaldt.com?subject=Frontier%20advisory%20enquiry" class="primary-cta">Email Magnus</a>
+					<a href="https://www.linkedin.com/in/magnusoxenwaldt/" target="_blank" rel="noopener noreferrer" class="ghost-cta">Message on LinkedIn</a>
+				</div>
+			</section>
+		</main>
+
+		<Footer />
+
+		<style>
+			.frontier-hero {
+				background: var(--cream);
+				border-bottom: 1px solid var(--rule);
+				padding: 4.5rem 1.5rem 3.5rem;
+			}
+			.frontier-hero-inner { max-width: 56rem; margin: 0 auto; text-align: center; }
+			.kicker {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.78rem;
+				letter-spacing: 0.18em;
+				text-transform: uppercase;
+				color: var(--accent);
+				font-weight: 600;
+				margin: 0 0 0.85rem;
+			}
+			.frontier-hero h1 {
+				font-size: clamp(2.6rem, 5vw, 4rem);
+				margin: 0 0 1.25rem;
+				color: var(--ink);
+				line-height: 1.05;
+			}
+			.lede {
+				color: var(--text);
+				margin: 0 auto;
+				font-size: 1.2rem;
+				line-height: 1.65;
+				max-width: 38rem;
+			}
+			.frontier-main { max-width: 44rem; margin: 0 auto; padding: 0 1.5rem; }
+			.prose { padding: 4rem 0 2rem; }
+			.prose h2 {
+				font-size: 1.6rem;
+				margin: 2.5rem 0 1rem;
+				color: var(--ink);
+				letter-spacing: -0.01em;
+			}
+			.prose h2:first-child { margin-top: 0; }
+			.prose h3 {
+				font-size: 1.25rem;
+				margin: 2rem 0 0.75rem;
+				color: var(--ink);
+			}
+			.prose p {
+				color: var(--text);
+				font-size: 1.08rem;
+				line-height: 1.75;
+				margin: 0 0 1.25rem;
+			}
+			.cta-block {
+				padding: 3rem 0 4rem;
+				text-align: center;
+				border-top: 1px solid var(--rule);
+				margin-top: 3rem;
+			}
+			.cta-block h2 { font-size: 1.6rem; color: var(--ink); margin: 0 0 0.75rem; }
+			.cta-block p { color: var(--text-muted); margin: 0 0 2rem; }
+			.cta-row { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+			.primary-cta {
+				background: var(--ink);
+				color: var(--cream);
+				padding: 0.75rem 1.5rem;
+				border-radius: 6px;
+				font-weight: 500;
+				text-decoration: none;
+				transition: background 0.2s;
+			}
+			.primary-cta:hover { background: var(--accent); }
+			.ghost-cta {
+				background: transparent;
+				color: var(--ink);
+				padding: 0.75rem 1.5rem;
+				border-radius: 6px;
+				border: 1px solid var(--rule);
+				font-weight: 500;
+				text-decoration: none;
+				transition: border-color 0.2s;
+			}
+			.ghost-cta:hover { border-color: var(--ink); }
+			@media (max-width: 720px) {
+				.frontier-hero { padding: 3rem 1rem 2.5rem; }
+				.prose { padding: 2.5rem 0 1.5rem; }
+			}
+		</style>
+	</body>
+</html>

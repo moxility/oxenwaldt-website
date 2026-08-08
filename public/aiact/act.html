@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The EU AI Act after the Digital Omnibus &mdash; timeline, risk tiers and Article 50</title>
+<meta name="description" content="A current reference to Regulation (EU) 2024/1689 as amended by the Digital Omnibus: the post-Omnibus compliance timeline with penalties, the four risk tiers, the Annex III high-risk domains, the Article 5 prohibited practices, and Article 50 transparency explained in depth. High-risk obligations now apply from 2 December 2027, not 2 August 2026.">
+<link rel="canonical" href="https://www.oxenwaldt.com/aiact/act.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EU AI Act Navigator">
+<meta property="og:url" content="https://www.oxenwaldt.com/aiact/act.html">
+<meta property="og:title" content="The EU AI Act after the Digital Omnibus &mdash; the current timeline">
+<meta property="og:description" content="Most published guidance still says high-risk lands 2 August 2026. It does not. The post-Omnibus dates, penalties, risk tiers, Annex III domains and Article 50 in depth.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The EU AI Act after the Digital Omnibus &mdash; the current timeline">
+<meta name="twitter:description" content="Most published guidance still says high-risk lands 2 August 2026. It does not. The post-Omnibus dates, penalties, risk tiers, Annex III domains and Article 50 in depth.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20rx='18'%20fill='%230D2454'/%3E%3Cpath%20fill='%23FFC81E'%20fill-rule='evenodd'%20d='M50,20L57.63,43.49L82.34,43.49L62.35,58.01L69.98,81.51L50,66.99L30.02,81.51L37.65,58.01L17.66,43.49L42.37,43.49ZM50,35.4L41.5,57L47.02,57L47.02,66.6L52.98,66.6L52.98,57L58.5,57Z'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --gold: #FFC81E;
+    --navy-1: #0D2454;
+    --navy-2: #050C1C;
+    --bg: #0B1220;
+    --accent: #4C8DFF;
+    --text: #EAF0FA;
+    --muted: #98A9C6;
+    --line: rgba(234, 240, 250, 0.13);
+    --card: rgba(234, 240, 250, 0.045);
+    --t-minimal: #4CAF50;
+    --t-limited: #FFB300;
+    --t-high: #FF6600;
+    --t-prohibited: #C21A1A;
+    --t-tbd: #9098A8;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text); font-size: 17px; line-height: 1.65;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 22px; }
+  .narrow { max-width: 780px; }
+
+  header.site {
+    position: sticky; top: 0; z-index: 20; border-bottom: 1px solid var(--line);
+    background: rgba(11, 18, 32, 0.86); backdrop-filter: saturate(160%) blur(12px);
+    -webkit-backdrop-filter: saturate(160%) blur(12px);
+  }
+  header.site .wrap { display: flex; align-items: center; gap: 20px; min-height: 62px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--text); font-weight: 600; letter-spacing: -0.01em; }
+  .brand:hover { text-decoration: none; }
+  .brand b { color: var(--gold); font-weight: 700; }
+  .mark { width: 26px; height: 26px; display: block; flex: none; }
+  nav.site { margin-left: auto; display: flex; gap: 18px; font-size: 14.5px; }
+  nav.site a { color: var(--muted); }
+  nav.site a.on { color: var(--gold); }
+
+  .page-head { background: radial-gradient(1000px 520px at 50% -22%, var(--navy-1) 0%, rgba(5,12,28,0) 68%); padding: 56px 0 40px; }
+  h1 { font-size: 42px; line-height: 1.12; letter-spacing: -0.025em; margin: 14px 0 0; font-weight: 700; }
+  .kicker { font-size: 13px; font-weight: 650; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin: 0; }
+  .lede { font-size: 19px; color: #C6D3E8; margin: 20px 0 0; max-width: 44em; }
+  .meta-line { color: var(--muted); font-size: 14.5px; margin-top: 22px; max-width: 44em; }
+
+  .toc { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 30px; }
+  .toc a { border: 1px solid var(--line); border-radius: 999px; padding: 7px 15px; font-size: 14.5px; color: #C6D3E8; }
+  .toc a:hover { border-color: rgba(255,200,30,0.5); color: var(--gold); text-decoration: none; }
+
+  section { padding: 58px 0; border-top: 1px solid var(--line); scroll-margin-top: 76px; }
+  h2 { font-size: 30px; line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 12px; font-weight: 700; }
+  h3 { font-size: 19px; letter-spacing: -0.01em; margin: 34px 0 8px; }
+  h4 { font-size: 16px; margin: 22px 0 6px; color: var(--gold); }
+  p { max-width: 46em; }
+  .section-intro { color: var(--muted); max-width: 46em; margin: 0 0 30px; }
+  .muted { color: var(--muted); }
+
+  .callout { border: 1px solid rgba(255,200,30,0.32); background: rgba(255,200,30,0.06);
+             border-radius: 14px; padding: 18px 22px; margin: 26px 0; max-width: 46em; }
+  .callout b { color: var(--gold); }
+  .callout.blue { border-color: rgba(76,141,255,0.34); background: rgba(76,141,255,0.07); }
+  .callout.blue b { color: var(--accent); }
+
+  .tablewrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line);
+               border-radius: 14px; background: #0C1526; }
+  table { border-collapse: collapse; width: 100%; min-width: 780px; font-size: 15px; }
+  th, td { text-align: left; padding: 13px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  thead th { font-size: 12.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted);
+             font-weight: 650; background: rgba(13,36,84,0.55); white-space: nowrap; }
+  tbody tr:last-child td { border-bottom: none; }
+  td.date { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  td.oblig b { display: block; font-size: 15.5px; }
+  td.oblig span { color: var(--muted); font-size: 13.5px; }
+  .pill { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.05em;
+          text-transform: uppercase; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+  .pill.live { background: rgba(76,175,80,0.16); color: #7BD98A; border: 1px solid rgba(76,175,80,0.4); }
+  .pill.soon { background: rgba(76,141,255,0.14); color: #8FB6FF; border: 1px solid rgba(76,141,255,0.4); }
+  .pen { white-space: nowrap; font-weight: 650; color: var(--gold); }
+  .pen.none { color: var(--muted); font-weight: 400; }
+  .chg { font-size: 14px; }
+  .chg.none { color: var(--muted); }
+  .tnote { color: var(--muted); font-size: 14px; margin-top: 14px; max-width: 46em; }
+
+  /* tiers */
+  .tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .tier { border: 1px solid var(--line); border-radius: 14px; background: var(--card); padding: 0 22px 22px;
+          border-top: 4px solid var(--tc); }
+  .tier .th { display: flex; align-items: center; gap: 10px; margin: 20px 0 10px; }
+  .tier .swatch { width: 12px; height: 12px; border-radius: 3px; background: var(--tc); flex: none; }
+  .tier .th b { font-size: 17.5px; letter-spacing: -0.01em; }
+  .tier dl { margin: 0; }
+  .tier dt { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+             margin-top: 14px; font-weight: 650; }
+  .tier dd { margin: 3px 0 0; font-size: 15px; line-height: 1.55; }
+  .tier .when { font-size: 13.5px; color: var(--muted); margin-top: 16px; }
+
+  /* list blocks */
+  .items { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+  .item { border: 1px solid var(--line); border-radius: 12px; background: var(--card); padding: 18px 20px; }
+  .item .ihead { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .item .ihead b { font-size: 16px; }
+  .item .ref { font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; color: var(--accent);
+               border: 1px solid rgba(76,141,255,0.35); border-radius: 6px; padding: 1px 7px; white-space: nowrap; }
+  .item.ban .ref { color: #FF8E8E; border-color: rgba(255,120,120,0.4); }
+  .item p { margin: 8px 0 0; color: var(--muted); font-size: 15px; line-height: 1.55; max-width: none; }
+
+  ul.plain { list-style: none; padding: 0; margin: 16px 0 0; max-width: 46em; }
+  ul.plain li { position: relative; padding-left: 22px; margin-bottom: 10px; }
+  ul.plain li::before { content: ""; position: absolute; left: 3px; top: 11px; width: 7px; height: 7px;
+                        border-radius: 50%; background: var(--accent); }
+  ul.src { list-style: none; padding: 0; margin: 0; }
+  ul.src li { border-bottom: 1px solid var(--line); padding: 15px 0; }
+  ul.src li:last-child { border-bottom: none; }
+  ul.src .who { display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: 0.07em;
+                text-transform: uppercase; padding: 2px 8px; border-radius: 5px; margin-right: 10px;
+                vertical-align: 2px; }
+  ul.src .who.official { background: rgba(255,200,30,0.14); color: var(--gold); border: 1px solid rgba(255,200,30,0.38); }
+  ul.src .who.third { background: rgba(234,240,250,0.06); color: var(--muted); border: 1px solid var(--line); }
+  ul.src .d { display: block; color: var(--muted); font-size: 14.5px; margin-top: 5px; }
+
+  .disclaimer { border: 1px solid rgba(255,200,30,0.3); background: rgba(255,200,30,0.06);
+                border-radius: 14px; padding: 20px 24px; color: #DCE5F5; font-size: 15.5px; max-width: 46em; }
+  .disclaimer b { color: var(--gold); }
+  .appbox { border: 1px solid rgba(255,200,30,0.34); border-radius: 16px; padding: 26px;
+            background: linear-gradient(180deg, rgba(13,36,84,0.6), rgba(255,200,30,0.03)); }
+  .appbox h2 { font-size: 25px; }
+  .btn { display: inline-block; padding: 12px 22px; border-radius: 12px; font-weight: 650; font-size: 16px;
+         background: var(--gold); color: #16110A; margin-top: 8px; }
+  .btn:hover { background: #FFD44E; text-decoration: none; }
+
+  footer.site { border-top: 1px solid var(--line); padding: 40px 0 60px; color: var(--muted); font-size: 14.5px; }
+  footer.site .flinks { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 14px 0 18px; }
+  footer.site .flinks a { color: #B9C7DE; }
+
+  @media (max-width: 700px) {
+    body { font-size: 16.5px; }
+    h1 { font-size: 31px; }
+    h2 { font-size: 25px; }
+    .lede { font-size: 17.5px; }
+    .page-head { padding: 34px 0 30px; }
+    section { padding: 44px 0; }
+    nav.site { margin-left: 0; width: 100%; padding-bottom: 10px; gap: 16px; }
+    header.site .wrap { min-height: 0; padding-top: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="/aiact/index.html">
+      <svg class="mark" viewBox="16 18 68 66" role="img" aria-label="">
+        <path fill="#FFC81E" fill-rule="evenodd" d="M50,20L57.63,43.49L82.34,43.49L62.35,58.01L69.98,81.51L50,66.99L30.02,81.51L37.65,58.01L17.66,43.49L42.37,43.49ZM50,35.4L41.5,57L47.02,57L47.02,66.6L52.98,66.6L52.98,57L58.5,57Z"/>
+      </svg>
+      <span>EU AI Act <b>Navigator</b></span>
+    </a>
+    <nav class="site">
+      <a href="/aiact/index.html">Overview</a>
+      <a class="on" href="/aiact/act.html">The Act</a>
+      <a href="/aiact/privacy.html">Privacy</a>
+      <a href="/aiact/support.html">Support</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-head">
+  <div class="wrap">
+    <p class="kicker">Reference &middot; content version 2026-08-06</p>
+    <h1>The EU AI Act, after the Digital Omnibus</h1>
+    <p class="lede">
+      A current reference to Regulation (EU) 2024/1689 as amended: what applies today, what is
+      still coming, which tier a system falls into, and what Article&nbsp;50 actually requires.
+      The dates below are the post-Omnibus ones &mdash; a great deal of material still on the
+      internet is not.
+    </p>
+    <p class="meta-line">
+      Legal basis: Regulation (EU) 2024/1689 as amended by the Digital Omnibus on AI (European
+      Parliament, 16 June 2026, 423&ndash;57; final Council approval, 29 June 2026). This page
+      publishes the same methodology data the EU AI Act Navigator app ships with, so the two never
+      disagree.
+    </p>
+    <div class="toc">
+      <a href="#timeline">Compliance timeline</a>
+      <a href="#article-50">Article 50 in depth</a>
+      <a href="#tiers">The four risk tiers</a>
+      <a href="#annex-iii">Annex III domains</a>
+      <a href="#prohibited">Prohibited practices</a>
+      <a href="#penalties">Penalties</a>
+      <a href="#sources">Official sources</a>
+    </div>
+  </div>
+</div>
+
+<section id="timeline">
+  <div class="wrap">
+    <h2>The post-Omnibus compliance timeline</h2>
+    <p class="section-intro">
+      Every application date in the Act, with what the Digital Omnibus changed. Two rows carry most
+      of the practical consequence: transparency is <em>live</em>, and high-risk is <em>not</em>.
+    </p>
+
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Obligation</th>
+            <th>Article</th>
+            <th>Applies from</th>
+            <th>Status</th>
+            <th>Max penalty</th>
+            <th>What the Omnibus changed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="oblig"><b>Prohibited AI practices banned</b><span>Social scoring, real-time remote biometric identification in public spaces, manipulation of vulnerable groups, emotion inference at work and in education.</span></td>
+            <td>Art.&nbsp;5</td>
+            <td class="date">2 Feb 2025</td>
+            <td><span class="pill live">In force</span></td>
+            <td class="pen">&euro;35M / 7%</td>
+            <td class="chg none">Nothing.</td>
+          </tr>
+          <tr>
+            <td class="oblig"><b>General-purpose AI model obligations</b><span>Applies to providers of GPAI models, not to organisations merely deploying systems built on them.</span></td>
+            <td>Ch.&nbsp;V</td>
+            <td class="date">2 Aug 2025</td>
+            <td><span class="pill live">In force</span></td>
+            <td class="pen none">&mdash;</td>
+            <td class="chg none">Nothing.</td>
+          </tr>
+          <tr>
+            <td class="oblig"><b>AI literacy</b><span>Organisation-level, regardless of tier, wherever staff operate or are affected by AI systems. Evidence should be role-specific and logged against the individual learner.</span></td>
+            <td>Art.&nbsp;4</td>
+            <td class="date">2 Aug 2026</td>
+            <td><span class="pill live">In force</span></td>
+            <td class="pen">&euro;7.5M / 1%</td>
+            <td class="chg">Softened from &ldquo;ensure a sufficient level&rdquo; of AI literacy to &ldquo;support its development&rdquo; &mdash; an obligation of <b>effort</b>, not of result.</td>
+          </tr>
+          <tr>
+            <td class="oblig"><b>Transparency obligations</b><span>Tell people they are talking to an AI; inform people exposed to emotion recognition or biometric categorisation; label AI-generated published content and deepfakes.</span></td>
+            <td>Art.&nbsp;50(1),&nbsp;50(3),&nbsp;50(4)</td>
+            <td class="date">2 Aug 2026</td>
+            <td><span class="pill live">In force</span></td>
+            <td class="pen">&euro;15M / 3%</td>
+            <td class="chg"><b>Not deferred.</b> Only Art.&nbsp;50(2) machine-readable marking moved &mdash; see the next row.</td>
+          </tr>
+          <tr>
+            <td class="oblig"><b>Machine-readable marking of generative output</b><span>Provider-side duty: outputs of generative systems must be marked in a machine-readable format as artificially generated or manipulated.</span></td>
+            <td>Art.&nbsp;50(2)</td>
+            <td class="date">2 Dec 2026</td>
+            <td><span class="pill soon">Upcoming</span></td>
+            <td class="pen">&euro;15M / 3%</td>
+            <td class="chg">Deferred from 2 Aug 2026 to <b>2 Dec 2026</b>.</td>
+          </tr>
+          <tr>
+            <td class="oblig"><b>High-risk obligations &mdash; standalone Annex&nbsp;III systems</b><span>Conformity assessment, risk management system, data governance, technical documentation, record-keeping, transparency, human oversight, accuracy and robustness, EU database registration. Deployers: Art.&nbsp;26 duties and, where applicable, an Art.&nbsp;27 fundamental rights impact assessment.</span></td>
+            <td>Ch.&nbsp;III + Annex&nbsp;III</td>
+            <td class="date">2 Dec 2027</td>
+            <td><span class="pill soon">Upcoming</span></td>
+            <td class="pen">&euro;15M / 3%</td>
+            <td class="chg">Deferred from 2 Aug 2026 by <b>16 months</b>. This is the row most published guidance still gets wrong.</td>
+          </tr>
+          <tr>
+            <td class="oblig"><b>High-risk obligations &mdash; AI embedded in regulated products</b><span>AI systems that are safety components of products already covered by Annex&nbsp;I Union harmonisation legislation.</span></td>
+            <td>Art.&nbsp;6(1) + Annex&nbsp;I</td>
+            <td class="date">2 Aug 2028</td>
+            <td><span class="pill soon">Upcoming</span></td>
+            <td class="pen">&euro;15M / 3%</td>
+            <td class="chg">Deferred by <b>12 months</b>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tnote">
+      Penalty figures are stated as the maximum of a fixed amount or a percentage of total worldwide
+      annual turnover for the preceding financial year, whichever is higher. The Act&rsquo;s penalty
+      regime is in Article&nbsp;99; national market surveillance authorities set the actual amount.
+    </p>
+
+    <div class="callout">
+      <b>Two dates to put in the calendar now.</b>
+      <b>2 December 2026</b> &mdash; Art.&nbsp;50(2) marking comes into force; re-check every system
+      that generates content. <b>2 December 2027</b> &mdash; Annex&nbsp;III high-risk obligations come
+      into force; re-check every system classified high, or conditionally high.
+    </div>
+  </div>
+</section>
+
+<section id="article-50">
+  <div class="wrap">
+    <h2>Article 50, in depth</h2>
+    <p class="section-intro">
+      Article&nbsp;50 is the provision that matters commercially right now. It is live, it was not
+      deferred, it carries a penalty tier three times Article&nbsp;4&rsquo;s, and it catches a far
+      wider population than high-risk ever will &mdash; because almost every organisation now has
+      something that talks to a person or produces published text.
+    </p>
+
+    <h3>The four duties</h3>
+    <div class="items">
+      <div class="item">
+        <div class="ihead"><b>Tell people they are talking to an AI</b><span class="ref">Art. 50(1)</span></div>
+        <p>
+          Any system interacting directly with natural persons must inform them that they are
+          interacting with an AI system, unless that is obvious from the context. Falls on both
+          providers and deployers. Live since 2 August 2026.
+        </p>
+      </div>
+      <div class="item">
+        <div class="ihead"><b>Mark generative output machine-readably</b><span class="ref">Art. 50(2)</span></div>
+        <p>
+          A provider-side duty: the outputs of generative systems must be marked in a machine-readable
+          format as artificially generated or manipulated. This is the only part of Article&nbsp;50 the
+          Omnibus moved &mdash; to 2 December 2026.
+        </p>
+      </div>
+      <div class="item">
+        <div class="ihead"><b>Inform people exposed to the system</b><span class="ref">Art. 50(3)</span></div>
+        <p>
+          Where emotion recognition or biometric categorisation is in use, the persons exposed to it
+          must be informed of its operation. A deployer duty. Live since 2 August 2026.
+        </p>
+      </div>
+      <div class="item">
+        <div class="ihead"><b>Disclose AI-generated content and deepfakes</b><span class="ref">Art. 50(4)</span></div>
+        <p>
+          Deployers publishing AI-generated text on matters of public interest, or deepfake content,
+          must disclose it. A deployer duty. Live since 2 August 2026.
+        </p>
+      </div>
+    </div>
+
+    <h3>Provider or deployer &mdash; and why the answer differs per system</h3>
+    <p>
+      The obligations diverge sharply, and most organisations assume &ldquo;deployer&rdquo; for
+      everything and are wrong about at least one system. Establish the role <em>per system</em>,
+      not once for the organisation.
+    </p>
+    <ul class="plain">
+      <li><b>As a provider</b> &mdash; you develop or place the system on the market under your own
+        name or trademark. You carry Art.&nbsp;50(1) and, from 2 December 2026, the Art.&nbsp;50(2)
+        machine-readable marking of anything the system generates.</li>
+      <li><b>As a deployer</b> &mdash; you use the system under your own authority. You carry
+        Art.&nbsp;50(1) where it speaks to people, Art.&nbsp;50(3) where it infers emotion or
+        categorises biometrically, and Art.&nbsp;50(4) where you publish what it produces.</li>
+      <li><b>You can become a provider without meaning to</b> &mdash; typically by putting your own
+        name on a system, or by substantially modifying one. Worth checking wherever a vendor product
+        has been white-labelled or heavily customised.</li>
+    </ul>
+
+    <h3>The rule that catches people out</h3>
+    <div class="callout">
+      <b>Disclosure must be perceptible to a human without a detection tool.</b>
+      A hidden machine-readable mark in the metadata does not satisfy a deployer&rsquo;s
+      Art.&nbsp;50(4) duty, and a provider satisfying Art.&nbsp;50(2) has not thereby satisfied
+      Art.&nbsp;50(1) or 50(4). The test is whether an ordinary person can see or hear the
+      disclosure. The two duties stack; they do not substitute for each other.
+    </div>
+
+    <h3>It reaches outside the EU</h3>
+    <p>
+      Article&nbsp;50 is not limited to organisations established in the Union. Providers are in
+      scope where they place a system on the EU market <b>or</b> where the system&rsquo;s output is
+      used in the EU; deployers likewise where the output is used in the EU. A company with no EU
+      entity, no EU office and an EU-facing chatbot or an EU readership for its AI-written articles
+      is inside the scope of the Regulation.
+    </p>
+
+    <h3>What to do about it, in order</h3>
+    <ul class="plain">
+      <li>List every system that <b>interacts with a person</b> &mdash; chatbots, assistants, voice
+        menus, natural-language search and query interfaces.</li>
+      <li>List every system whose output you <b>publish</b> &mdash; generated text on matters of
+        public interest, generated or manipulated images, audio and video.</li>
+      <li>List every system that <b>infers emotion or categorises people biometrically</b>. Check
+        Art.&nbsp;5(1)(f) first: in the workplace and in education, emotion inference is not a
+        transparency question, it is banned.</li>
+      <li>For each one, record the role (provider, deployer, or both) and check whether today&rsquo;s
+        disclosure is actually <b>perceptible to a human</b>.</li>
+      <li>Diarise <b>2 December 2026</b> for the Art.&nbsp;50(2) machine-readable marking of anything
+        you provide that generates content.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="tiers">
+  <div class="wrap">
+    <h2>The four risk tiers</h2>
+    <p class="section-intro">
+      The Act is risk-tiered: obligations attach to what a system does and where it is used, not to
+      the technology. A capability operating in an Annex&nbsp;III domain escalates above its base
+      tier &mdash; which is why the same chatbot can be limited risk in marketing and high risk in
+      recruitment.
+    </p>
+    <div class="tiers">
+      <div class="tier" style="--tc: var(--t-prohibited)">
+        <div class="th"><span class="swatch"></span><b>Prohibited &mdash; unacceptable risk</b></div>
+        <dl>
+          <dt>Description</dt>
+          <dd>AI systems that pose an unacceptable risk to fundamental rights and safety. Banned under the EU AI Act.</dd>
+          <dt>Examples</dt>
+          <dd>Social scoring by governments, real-time biometric identification in public spaces (with limited exceptions), manipulation of vulnerable groups, emotion inference in workplace or education settings.</dd>
+          <dt>Obligations</dt>
+          <dd>These AI systems are banned and must not be deployed.</dd>
+        </dl>
+        <div class="when">In force since 2 February 2025 &middot; up to &euro;35M / 7%</div>
+      </div>
+
+      <div class="tier" style="--tc: var(--t-high)">
+        <div class="th"><span class="swatch"></span><b>High risk</b></div>
+        <dl>
+          <dt>Description</dt>
+          <dd>AI systems used in critical areas that significantly affect people&rsquo;s lives, health, safety, or fundamental rights.</dd>
+          <dt>Examples</dt>
+          <dd>AI in employment and recruitment, credit scoring, critical infrastructure management, education assessment, law enforcement, migration and border control.</dd>
+          <dt>Obligations</dt>
+          <dd>Conformity assessment, risk management system, data governance, technical documentation, record-keeping, transparency, human oversight, accuracy and robustness requirements. Registration in the EU database required.</dd>
+        </dl>
+        <div class="when">Applies from 2 December 2027 (standalone Annex&nbsp;III) or 2 August 2028 (embedded in Annex&nbsp;I products) &middot; up to &euro;15M / 3%</div>
+      </div>
+
+      <div class="tier" style="--tc: var(--t-limited)">
+        <div class="th"><span class="swatch"></span><b>Limited risk</b></div>
+        <dl>
+          <dt>Description</dt>
+          <dd>AI systems with specific transparency obligations. Users must be informed they are interacting with AI.</dd>
+          <dt>Examples</dt>
+          <dd>Chatbots, AI-generated content, emotion recognition systems, biometric categorisation systems.</dd>
+          <dt>Obligations</dt>
+          <dd>Transparency: users must be informed of AI interaction. Deepfakes and AI-generated content must be labelled. Disclosure must be perceptible to a human without a detection tool.</dd>
+        </dl>
+        <div class="when">In force since 2 August 2026; Art.&nbsp;50(2) marking from 2 December 2026 &middot; up to &euro;15M / 3%</div>
+      </div>
+
+      <div class="tier" style="--tc: var(--t-minimal)">
+        <div class="th"><span class="swatch"></span><b>Minimal risk</b></div>
+        <dl>
+          <dt>Description</dt>
+          <dd>AI systems posing no or minimal risk. No specific regulatory requirements under the EU AI Act.</dd>
+          <dt>Examples</dt>
+          <dd>AI-powered spam filters, AI in video games, basic recommendation systems, simple automation.</dd>
+          <dt>Obligations</dt>
+          <dd>No specific obligations; voluntary codes of conduct are encouraged. Art.&nbsp;4 AI literacy still applies at organisation level.</dd>
+        </dl>
+        <div class="when">Art.&nbsp;4 literacy in force since 2 August 2026</div>
+      </div>
+
+      <div class="tier" style="--tc: var(--t-tbd)">
+        <div class="th"><span class="swatch"></span><b>To be determined &mdash; the honest fifth state</b></div>
+        <dl>
+          <dt>Description</dt>
+          <dd>Not enough is known to classify honestly. This is a legitimate, tracked state &mdash; not a gap to be guessed at. An honest unknown beats a confident wrong answer, and it generates an investigation task.</dd>
+          <dt>Rule</dt>
+          <dd>Never auto-resolve. Only a human answer to the open question moves a system out of this state.</dd>
+          <dt>Why it matters</dt>
+          <dd>The other pattern real registries need is the <em>conditional</em> classification: minimal today, high risk the moment a dormant feature is switched on. Record the escalation trigger, and gate activation on a fresh assessment.</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="annex-iii">
+  <div class="wrap">
+    <h2>Annex III &mdash; the high-risk domains</h2>
+    <p class="section-intro">
+      Eight domains. A system operating in one of them is high risk regardless of how modest the
+      technology looks. These are facts about <em>where</em> a system is used, so they have to be
+      captured in discovery, not inferred from a product description.
+    </p>
+    <div class="items">
+      <div class="item">
+        <div class="ihead"><b>Biometric identification and categorisation</b><span class="ref">Annex III &sect;1</span></div>
+        <p>Remote biometric identification, biometric categorisation by sensitive attributes.</p>
+      </div>
+      <div class="item">
+        <div class="ihead"><b>Critical infrastructure</b><span class="ref">Annex III &sect;2</span></div>
+        <p>Safety components in the management of road traffic, water, gas, heating, electricity, and critical digital infrastructure.</p>
+      </div>
+      <div class="item">
+        <div class="ihead"><b>Education and vocational training</b><span class="ref">Annex III &sect;3</span></div>
+        <p>Admission, evaluation of learning outcomes, proctoring, steering the learning process.</p>
+      </div>
+      <div class="item">
+        <div class="ihead"><b>Employment and workforce management</b><span class="ref">Annex III &sect;4</span></div>
+        <p>Recruitment and selection, targeted job advertising, decisions on promotion or termination, task allocation, monitoring and evaluation of workers. This is why HR-tool AI features are the canonical conditional case: any AI touching recruitment, employee assessment or workforce management is explicitly high risk.</p>
+      </div>
+      <div class="item">
+        <div class="ihead"><b>Access to essential services</b><span class="ref">Annex III &sect;5</span></div>
+        <p>Credit scoring, risk assessment and pricing in life and health insurance, emergency call dispatching, eligibility for public benefits.</p>
+      </div>
+      <div class="item">
+        <div class="ihead"><b>Law enforcement</b><span class="ref">Annex III &sect;6</span></div>
+        <p>Risk-of-offending assessments, evidence reliability evaluation, profiling in criminal investigations.</p>
+      </div>
+      <div class="item">
+        <div class="ihead"><b>Migration, asylum and border control</b><span class="ref">Annex III &sect;7</span></div>
+        <p>Visa and asylum application examination, risk assessments of persons entering the EU.</p>
+      </div>
+      <div class="item">
+        <div class="ihead"><b>Justice and democratic processes</b><span class="ref">Annex III &sect;8</span></div>
+        <p>Assisting judicial authorities in researching and applying the law, influencing election outcomes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="prohibited">
+  <div class="wrap">
+    <h2>Article 5 &mdash; prohibited practices</h2>
+    <p class="section-intro">
+      Banned outright since 2 February 2025, and carrying the Act&rsquo;s highest penalty tier at up
+      to &euro;35 million or 7% of worldwide turnover. If a system matches one of these, the answer
+      is not mitigation &mdash; it is discontinuation.
+    </p>
+    <div class="items">
+      <div class="item ban">
+        <div class="ihead"><b>Manipulative or exploitative techniques</b><span class="ref">Art. 5(1)(a)&ndash;(b)</span></div>
+        <p>Subliminal or purposefully manipulative techniques; exploitation of vulnerabilities due to age, disability, or social or economic situation.</p>
+      </div>
+      <div class="item ban">
+        <div class="ihead"><b>Social scoring</b><span class="ref">Art. 5(1)(c)</span></div>
+        <p>Evaluation or classification of persons based on social behaviour or personal characteristics leading to detrimental treatment.</p>
+      </div>
+      <div class="item ban">
+        <div class="ihead"><b>Individual predictive policing</b><span class="ref">Art. 5(1)(d)</span></div>
+        <p>Risk assessments of persons to predict the commission of a criminal offence based solely on profiling or personality traits.</p>
+      </div>
+      <div class="item ban">
+        <div class="ihead"><b>Untargeted scraping of facial images</b><span class="ref">Art. 5(1)(e)</span></div>
+        <p>Creating or expanding facial recognition databases through untargeted scraping of the internet or CCTV footage.</p>
+      </div>
+      <div class="item ban">
+        <div class="ihead"><b>Emotion inference in workplace or education</b><span class="ref">Art. 5(1)(f)</span></div>
+        <p>Emotion recognition systems in the areas of the workplace and education institutions, except for medical or safety reasons.</p>
+      </div>
+      <div class="item ban">
+        <div class="ihead"><b>Biometric categorisation by sensitive attributes</b><span class="ref">Art. 5(1)(g)</span></div>
+        <p>Categorisation of persons based on biometric data to deduce race, political opinions, trade union membership, religious beliefs, sex life or sexual orientation.</p>
+      </div>
+      <div class="item ban">
+        <div class="ihead"><b>Real-time remote biometric identification in public spaces</b><span class="ref">Art. 5(1)(h)</span></div>
+        <p>Banned for law enforcement purposes, with narrow exceptions.</p>
+      </div>
+    </div>
+    <div class="callout">
+      <b>The one most organisations trip over is Art.&nbsp;5(1)(f).</b>
+      Emotion inference in the workplace or in an education institution is prohibited, not merely
+      high risk. Sentiment scoring of employee communications, engagement analytics that infer mood,
+      and proctoring that reads affect all belong in this conversation &mdash; and they are usually
+      bought as a feature of something else.
+    </div>
+  </div>
+</section>
+
+<section id="penalties">
+  <div class="wrap">
+    <h2>Penalty tiers</h2>
+    <p class="section-intro">
+      Three bands. Each is expressed as a fixed maximum or a percentage of total worldwide annual
+      turnover for the preceding financial year, whichever is <em>higher</em>.
+    </p>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Band</th>
+            <th>Maximum</th>
+            <th>Attaches to</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Highest</b></td>
+            <td class="pen">&euro;35M / 7%</td>
+            <td>Prohibited practices under Article&nbsp;5.</td>
+          </tr>
+          <tr>
+            <td><b>Standard</b></td>
+            <td class="pen">&euro;15M / 3%</td>
+            <td>Transparency obligations under Article&nbsp;50, and the high-risk obligations once they apply (2 Dec 2027 / 2 Aug 2028).</td>
+          </tr>
+          <tr>
+            <td><b>Lower</b></td>
+            <td class="pen">&euro;7.5M / 1%</td>
+            <td>AI literacy under Article&nbsp;4.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tnote">
+      The penalty regime is set out in Article&nbsp;99; enforcement and the actual amount are matters
+      for national market surveillance authorities. The figures above are the maxima encoded in this
+      app&rsquo;s methodology data &mdash; they are not a prediction of what any given authority will
+      impose.
+    </p>
+  </div>
+</section>
+
+<section id="sources">
+  <div class="wrap">
+    <h2>Official sources</h2>
+    <p class="section-intro">
+      Primary legislation and Commission guidance first. Where a law-firm analysis is cited it is
+      because it dates and summarises the Omnibus changes precisely &mdash; but the Regulation and
+      the Commission&rsquo;s own material are the references to rely on.
+    </p>
+    <ul class="src">
+      <li>
+        <span class="who official">Primary law</span>
+        <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" rel="noopener">EUR-Lex &mdash; Regulation (EU) 2024/1689 (the AI Act), full consolidated text</a>
+        <span class="d">The Regulation itself, in every official EU language. The authoritative source for every article referenced on this page.</span>
+      </li>
+      <li>
+        <span class="who official">Commission guidance</span>
+        <a href="https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act" rel="noopener">European Commission &mdash; FAQ on transparency obligations under Article 50</a>
+        <span class="d">The Commission&rsquo;s own answers on who is caught, what disclosure must look like, and how the provider and deployer duties differ. The single best source on Article&nbsp;50.</span>
+      </li>
+      <li>
+        <span class="who official">Commission</span>
+        <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" rel="noopener">European Commission &mdash; the regulatory framework for AI</a>
+        <span class="d">The Commission&rsquo;s policy hub for the Act: the risk-based approach, implementation timeline and the AI Office.</span>
+      </li>
+      <li>
+        <span class="who official">Commission</span>
+        <a href="https://digital-strategy.ec.europa.eu/en/policies/ai-act-service-desk" rel="noopener">European Commission &mdash; AI Act Service Desk</a>
+        <span class="d">The official single point of contact for questions on applying the Act, including the compliance checker and guidance for SMEs.</span>
+      </li>
+      <li>
+        <span class="who third">Article text</span>
+        <a href="https://artificialintelligenceact.eu/article/50/" rel="noopener">EU Artificial Intelligence Act &mdash; Article 50, transparency obligations</a>
+        <span class="d">Readable per-article presentation of the text with recitals attached. See also <a href="https://artificialintelligenceact.eu/article/5/" rel="noopener">Article 5</a>, <a href="https://artificialintelligenceact.eu/article/6/" rel="noopener">Article 6</a>, <a href="https://artificialintelligenceact.eu/article/26/" rel="noopener">Article 26</a>, <a href="https://artificialintelligenceact.eu/article/99/" rel="noopener">Article 99</a> and <a href="https://artificialintelligenceact.eu/annex/3/" rel="noopener">Annex III</a>.</span>
+      </li>
+      <li>
+        <span class="who third">Omnibus analysis</span>
+        <a href="https://www.gibsondunn.com/eu-ai-act-omnibus-agreement-postponed-high-risk-deadlines-and-other-key-changes/" rel="noopener">Gibson Dunn &mdash; the Omnibus agreement, postponed high-risk deadlines and other key changes</a>
+        <span class="d">A dated walk-through of what the Digital Omnibus moved and what it left alone.</span>
+      </li>
+      <li>
+        <span class="who third">Omnibus analysis</span>
+        <a href="https://www.orrick.com/en/Insights/2026/07/EU-AI-Act-Update-Digital-Omnibus-Finalizes-8-Compliance-Changes" rel="noopener">Orrick &mdash; Digital Omnibus finalises eight compliance changes</a>
+        <span class="d">The eight substantive changes, itemised, after final Council approval.</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="appbox">
+      <h2>Turn this into your own registry</h2>
+      <p class="muted" style="margin-top:0">
+        EU AI Act Navigator applies exactly this methodology to your organisation: a guided discovery
+        interview to find the AI, an honest classification per system, obligations mapped to the
+        timeline above, and the registry and action plan exported as documents. It runs entirely on
+        your iPhone &mdash; no account, no server, nothing leaves the device.
+      </p>
+      <a class="btn" href="/aiact/index.html">See what the app does</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="disclaimer">
+      <b>This page is a reference, not legal advice.</b>
+      It summarises Regulation (EU) 2024/1689 as amended by the Digital Omnibus, as understood at
+      content version 2026-08-06. Summaries lose detail, the law continues to move, and every
+      organisation&rsquo;s situation differs. Read the Regulation itself for anything that matters,
+      and have your assessment validated by qualified legal counsel before relying on it.
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <a class="brand" href="/aiact/index.html">
+      <svg class="mark" viewBox="16 18 68 66" role="img" aria-label="">
+        <path fill="#FFC81E" fill-rule="evenodd" d="M50,20L57.63,43.49L82.34,43.49L62.35,58.01L69.98,81.51L50,66.99L30.02,81.51L37.65,58.01L17.66,43.49L42.37,43.49ZM50,35.4L41.5,57L47.02,57L47.02,66.6L52.98,66.6L52.98,57L58.5,57Z"/>
+      </svg>
+      <span>EU AI Act <b>Navigator</b></span>
+    </a>
+    <div class="flinks">
+      <a href="/aiact/index.html">Overview</a>
+      <a href="/aiact/privacy.html">Privacy Policy</a>
+      <a href="/aiact/terms.html">Terms of Use</a>
+      <a href="/aiact/support.html">Support</a>
+      <a href="mailto:magnus@oxenwaldt.com">magnus@oxenwaldt.com</a>
+    </div>
+    <p style="margin:0;max-width:52em">
+      Built by Magnus Oxenwaldt as an independent project. Not affiliated with, endorsed by, or
+      sponsored by any institution of the European Union. Methodology content version 2026-08-06.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

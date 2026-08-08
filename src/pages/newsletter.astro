@@ -1,0 +1,212 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import { SITE_TITLE } from '../consts';
+
+// Pull recent newsletter-flavored posts (those mentioning weekly AI news)
+const allPosts = await getCollection('blog');
+const newsletterIssues = allPosts
+	.filter(p => /weekly\s+ai|ai\s+news|week\s+\d+/i.test(p.data.title) || /weekly ai news for business/i.test(p.data.description))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 6);
+
+const NEWSLETTER_URL = 'https://www.linkedin.com/newsletters/weekly-ai-news-for-business-7377233384185442304/';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title={`Weekly AI News for Business | ${SITE_TITLE}`}
+			description="Get the weekly AI signal — not the noise. Magnus Oxenwaldt's free newsletter for business leaders. Released every Monday."
+		/>
+	</head>
+	<body>
+		<Header />
+
+		<section class="newsletter-hero">
+			<div class="newsletter-hero-inner">
+				<p class="kicker">The Newsletter</p>
+				<h1>Weekly AI News for Business</h1>
+				<p class="lede">
+					Every Monday I send one short read covering what actually moved in AI
+					for business leaders — and what it means for the way decisions get
+					made. No breathless hype, no model-of-the-week breakdowns. Just the
+					moves you'd want a trusted advisor to flag.
+				</p>
+				<a href={NEWSLETTER_URL} target="_blank" rel="noopener noreferrer" class="primary-cta">
+					<svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+					Subscribe on LinkedIn
+				</a>
+				<p class="micro">Hosted on LinkedIn · Free · One click · Unsubscribe anytime</p>
+			</div>
+		</section>
+
+		<main class="newsletter-main">
+			<section class="what-you-get">
+				<h2>What lands in your inbox</h2>
+				<div class="grid">
+					<div class="item">
+						<div class="badge">Mon</div>
+						<h3>One short read</h3>
+						<p>Five minutes. The stories that actually matter for enterprises shipping AI — picked, framed, and connected to the operating reality I see every week.</p>
+					</div>
+					<div class="item">
+						<div class="badge">Audio</div>
+						<h3>Companion podcast</h3>
+						<p>Same week, deeper dive. <em>Future Bytes</em> on Spotify and Apple Podcasts. Most episodes 5–10 minutes.</p>
+					</div>
+					<div class="item">
+						<div class="badge">No spam</div>
+						<h3>Just the news</h3>
+						<p>One issue per week, period. No drip sequences, no upsells, no "synergistic webinars". You can unsubscribe with one click.</p>
+					</div>
+				</div>
+			</section>
+
+			{newsletterIssues.length > 0 && (
+				<section class="recent-issues">
+					<h2>Recent issues</h2>
+					<div class="issues">
+						{newsletterIssues.map(post => (
+							<article class="issue">
+								<a href={`/blog/${post.id}/`}>
+									<time><FormattedDate date={post.data.pubDate} /></time>
+									<h3>{post.data.title}</h3>
+									<p>{post.data.description}</p>
+								</a>
+							</article>
+						))}
+					</div>
+				</section>
+			)}
+
+			<section class="closing-cta">
+				<h2>Ready when you are.</h2>
+				<p>One Monday a week. Five minutes. The signal worth keeping.</p>
+				<a href={NEWSLETTER_URL} target="_blank" rel="noopener noreferrer" class="primary-cta">
+					<svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+					Subscribe on LinkedIn
+				</a>
+			</section>
+		</main>
+
+		<Footer />
+
+		<style>
+			.newsletter-hero {
+				background: var(--cream);
+				border-bottom: 1px solid var(--rule);
+				padding: 4.5rem 1.5rem 4rem;
+			}
+			.newsletter-hero-inner { max-width: 56rem; margin: 0 auto; text-align: center; }
+			.kicker {
+				font-family: 'Inter', sans-serif;
+				font-size: 0.78rem;
+				letter-spacing: 0.18em;
+				text-transform: uppercase;
+				color: var(--accent);
+				font-weight: 600;
+				margin: 0 0 0.85rem;
+			}
+			.newsletter-hero h1 {
+				font-size: clamp(2.4rem, 5vw, 3.5rem);
+				margin: 0 0 1.25rem;
+				color: var(--ink);
+				line-height: 1.1;
+			}
+			.lede {
+				color: var(--text);
+				margin: 0 auto 2rem;
+				font-size: 1.15rem;
+				line-height: 1.65;
+				max-width: 38rem;
+			}
+			.primary-cta {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				gap: 0.65rem;
+				background: var(--ink);
+				color: var(--cream);
+				padding: 1rem 1.75rem;
+				border-radius: 6px;
+				font-weight: 500;
+				font-size: 1rem;
+				text-decoration: none;
+				transition: background 0.2s;
+			}
+			.primary-cta:hover { background: var(--accent); color: var(--cream); }
+			.micro {
+				color: var(--text-muted);
+				font-size: 0.82rem;
+				margin: 0.85rem 0 0;
+			}
+
+			.newsletter-main { max-width: 56rem; padding: 0 1.5rem; }
+			.what-you-get { padding: 4rem 0 3rem; border-bottom: 1px solid var(--rule); }
+			.what-you-get h2 { font-size: 1.6rem; margin: 0 0 2rem; color: var(--ink); }
+			.grid {
+				display: grid;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+				gap: 2rem;
+			}
+			.item .badge {
+				display: inline-block;
+				background: var(--cream-soft);
+				border: 1px solid var(--rule);
+				color: var(--accent);
+				font-family: 'Inter', sans-serif;
+				font-size: 0.72rem;
+				font-weight: 600;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+				padding: 0.3rem 0.65rem;
+				border-radius: 9999px;
+				margin-bottom: 0.85rem;
+			}
+			.item h3 { font-size: 1.15rem; color: var(--ink); margin: 0 0 0.5rem; }
+			.item p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.55; margin: 0; }
+
+			.recent-issues { padding: 3rem 0; border-bottom: 1px solid var(--rule); }
+			.recent-issues h2 { font-size: 1.6rem; margin: 0 0 2rem; color: var(--ink); }
+			.issues { display: flex; flex-direction: column; }
+			.issue { border-bottom: 1px solid var(--rule); }
+			.issue:last-child { border-bottom: none; }
+			.issue a {
+				display: block;
+				padding: 1.25rem 0;
+				text-decoration: none;
+				color: inherit;
+			}
+			.issue time {
+				font-size: 0.78rem;
+				color: var(--text-muted);
+				letter-spacing: 0.04em;
+				text-transform: uppercase;
+				font-weight: 500;
+			}
+			.issue h3 {
+				font-size: 1.25rem;
+				color: var(--ink);
+				margin: 0.4rem 0 0.4rem;
+				transition: color 0.2s;
+			}
+			.issue a:hover h3 { color: var(--accent); }
+			.issue p { color: var(--text-muted); font-size: 0.95rem; margin: 0; line-height: 1.55; }
+
+			.closing-cta { padding: 4rem 0; text-align: center; }
+			.closing-cta h2 { font-size: 1.8rem; color: var(--ink); margin: 0 0 0.75rem; }
+			.closing-cta p { color: var(--text-muted); margin: 0 0 2rem; font-size: 1.05rem; }
+
+			@media (max-width: 720px) {
+				.newsletter-hero { padding: 3rem 1rem 2.5rem; }
+				.grid { grid-template-columns: 1fr; gap: 1.5rem; }
+				.what-you-get, .recent-issues, .closing-cta { padding: 2.5rem 0; }
+			}
+		</style>
+	</body>
+</html>

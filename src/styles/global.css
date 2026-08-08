@@ -1,24 +1,33 @@
 @import "tailwindcss";
 
 /*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
+  Light editorial theme — for an enterprise AI advisor's personal brand.
+  Anchored on warm off-white with deep navy text and copper accents.
  */
 
 :root {
-	/* Modern Monochrome with Teal accent */
-	--accent: #0d9488;
-	--accent-dark: #0f766e;
-	--accent-light: #14b8a6;
-	--black: 15, 23, 42;
-	--gray: 100, 116, 139;
-	--gray-light: 241, 245, 249;
-	--gray-dark: 30, 41, 59;
-	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
-	--box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-	--box-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+	/* Light editorial palette */
+	--cream: #fafaf7;
+	--cream-soft: #f6f3eb;
+	--ink: #0f1f3a;
+	--ink-soft: #1f2d4a;
+	--text: #2a3548;
+	--text-muted: #5b6478;
+	--rule: #e7e3da;
+	--accent: #b8612a;
+	--accent-dark: #8f4a1f;
+	--accent-light: #d97a3f;
+
+	/* Legacy aliases kept for any inline references */
+	--black: 15, 31, 58;
+	--gray: 91, 100, 120;
+	--gray-light: 231, 227, 218;
+	--gray-dark: 42, 53, 72;
+	--gray-gradient: rgba(var(--gray-light), 50%), var(--cream);
+	--box-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 1px 3px rgb(0 0 0 / 0.06);
+	--box-shadow-lg: 0 8px 24px -8px rgb(15 31 58 / 0.12), 0 4px 8px -4px rgb(15 31 58 / 0.08);
 }
+
 @font-face {
 	font-family: "Atkinson";
 	src: url("/fonts/atkinson-regular.woff") format("woff");
@@ -33,113 +42,95 @@
 	font-style: normal;
 	font-display: swap;
 }
+
 body {
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background: #ffffff;
+	background: var(--cream);
 	word-wrap: break-word;
 	overflow-wrap: break-word;
-	color: #1f2937;
+	color: var(--text);
 	font-size: 18px;
-	line-height: 1.75;
+	line-height: 1.7;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+
 main {
 	width: 720px;
 	max-width: calc(100% - 2em);
 	margin: auto;
 	padding: 3em 1em;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+
+h1, h2, h3, h4, h5, h6 {
 	margin: 0 0 0.5rem 0;
-	color: rgb(var(--black));
-	line-height: 1.2;
+	color: var(--ink);
+	line-height: 1.15;
+	font-family: 'Newsreader', 'Source Serif Pro', Georgia, 'Times New Roman', serif;
+	font-weight: 600;
+	letter-spacing: -0.01em;
 }
-h1 {
-	font-size: 3.052em;
-}
-h2 {
-	font-size: 2.441em;
-}
-h3 {
-	font-size: 1.953em;
-}
-h4 {
-	font-size: 1.563em;
-}
-h5 {
-	font-size: 1.25em;
-}
-strong,
-b {
-	font-weight: 700;
-}
+h1 { font-size: 3.052em; letter-spacing: -0.02em; }
+h2 { font-size: 2.25em; }
+h3 { font-size: 1.75em; }
+h4 { font-size: 1.4em; }
+h5 { font-size: 1.2em; }
+
+strong, b { font-weight: 700; color: var(--ink); }
+
 @layer base {
-	a {
-		color: var(--accent);
-	}
-	a:hover {
-		color: var(--accent);
-	}
+	a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+	a:hover { color: var(--accent-dark); }
 }
-p {
-	margin-bottom: 1em;
-}
-.prose p {
-	margin-bottom: 2em;
-}
-textarea {
-	width: 100%;
-	font-size: 16px;
-}
-input {
-	font-size: 16px;
-}
-table {
-	width: 100%;
-}
-img {
-	max-width: 100%;
-	height: auto;
-	border-radius: 8px;
-}
+
+p { margin-bottom: 1em; }
+.prose p { margin-bottom: 1.5em; }
+
+textarea, input { font-size: 16px; }
+
+table { width: 100%; }
+
+img { max-width: 100%; height: auto; border-radius: 8px; }
+
 code {
 	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
-	border-radius: 2px;
+	background-color: var(--cream-soft);
+	border: 1px solid var(--rule);
+	border-radius: 4px;
+	font-size: 0.92em;
 }
 pre {
 	padding: 1.5em;
 	border-radius: 8px;
+	background-color: var(--cream-soft);
+	border: 1px solid var(--rule);
+	overflow-x: auto;
 }
-pre > code {
-	all: unset;
-}
+pre > code { all: unset; }
+
 blockquote {
-	border-left: 4px solid var(--accent);
-	padding: 0 0 0 20px;
-	margin: 0px;
-	font-size: 1.333em;
+	border-left: 3px solid var(--accent);
+	padding: 0 0 0 1.25rem;
+	margin: 1.5rem 0;
+	font-size: 1.15em;
+	color: var(--ink-soft);
+	font-style: italic;
 }
+
 hr {
 	border: none;
-	border-top: 1px solid rgb(var(--gray-light));
+	border-top: 1px solid var(--rule);
+	margin: 2em 0;
 }
+
 @media (max-width: 720px) {
-	body {
-		font-size: 18px;
-	}
-	main {
-		padding: 1em;
-	}
+	body { font-size: 17px; }
+	main { padding: 1em; }
+	h1 { font-size: 2.4em; }
+	h2 { font-size: 1.85em; }
 }
 
 .sr-only {
@@ -150,12 +141,8 @@ hr {
 	height: 1px;
 	width: 1px;
 	overflow: hidden;
-	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
 	clip: rect(1px 1px 1px 1px);
-	/* maybe deprecated but we need to support legacy browsers */
 	clip: rect(1px, 1px, 1px, 1px);
-	/* modern browsers, clip-path works inwards from each corner */
 	clip-path: inset(50%);
-	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
 }

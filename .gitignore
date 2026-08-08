@@ -31,3 +31,7 @@ pnpm-debug.log*
 /.idea/
 
 /.vercel
+
+# agent scratch — machine-local coordination log, not site content
+/.moxgpt-handoff.md
+/.playwright-mcp/
