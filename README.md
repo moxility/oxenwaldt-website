@@ -131,7 +131,31 @@ Anything listed there that is source rather than build output is a bug.
 
 ## Known debt
 
+- **No CI.** The checks above only run when someone runs them. Adding a workflow
+  needs one command from Magnus, because the stored GitHub token carries
+  `gist, read:org, repo` and **no `workflow` scope**, so any commit touching
+  `.github/workflows/` is rejected on push:
+
+  ```
+  gh auth refresh -h github.com -s workflow
+  ```
+
+  It is interactive by design, takes about a minute, and never needs doing again.
+
+- **This repo is public.** That is fine for a personal site — the content is
+  published anyway, and the only keys in it are Supabase **anon** keys, which are
+  RLS-protected and ship in every app binary by design (verified: `role=anon`,
+  no `service_role`). Worth knowing before anything private goes in.
+
 - `.git` is ~332 MB against ~174 MB of current images: every image regeneration
   commits a fresh copy of every hero. Worth addressing, but not by rewriting
   history under a site that deploys from the working tree.
+
 - The largest blog heroes are ~3 MB, heavier than they need to be for the web.
+
+- Older duplicates of some tooling still sit **outside** the repo in the project
+  root (`generate_blog_images.py`, `scrape_linkedin_images.py`,
+  `scrape_linkedin_v2.py`) alongside run logs. `scripts/` in this repo is the
+  authoritative copy; the loose ones are superseded and were left in place rather
+  than deleted, since they are not in version control and deletion would be
+  irreversible.
