@@ -1,5 +1,5 @@
 ---
-title: '𝐖𝐡𝐚𝐭 𝐚 𝐟𝐚𝐧𝐭𝐚𝐬𝐭𝐢𝐜 𝐦𝐨𝐫𝐧𝐢𝐧𝐠 𝐚𝐭 𝐭𝐡𝐞 𝐅𝐢𝐧𝐧𝐢𝐬𝐡 𝐄𝐦𝐛𝐚𝐬𝐬𝐲 𝐢𝐧 𝐎𝐬𝐥𝐨'
+title: 'What a fantastic morning at the Finnish Embassy in Oslo'
 description: 'LinkedIn post from Sep 19 2025'
 pubDate: 'Sep 19 2025'
 ---

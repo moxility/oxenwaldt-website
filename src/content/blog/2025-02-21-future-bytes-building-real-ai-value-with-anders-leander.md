@@ -1,5 +1,5 @@
 ---
-title: '𝐅𝐮𝐭𝐮𝐫𝐞 𝐁𝐲𝐭𝐞𝐬 𝐁𝐮𝐢𝐥𝐝𝐢𝐧𝐠 𝐑𝐄𝐀𝐋 𝐀𝐈 𝐕𝐚𝐥𝐮𝐞 𝐰𝐢𝐭𝐡 𝐀𝐧𝐝𝐞𝐫𝐬 𝐋𝐞𝐚𝐧𝐝𝐞𝐫'
+title: 'Future Bytes Building REAL AI Value with Anders Leander'
 description: 'LinkedIn post from Feb 21 2025'
 pubDate: 'Feb 21 2025'
 ---

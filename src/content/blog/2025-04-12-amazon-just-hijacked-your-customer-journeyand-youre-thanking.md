@@ -1,5 +1,5 @@
 ---
-title: '𝗔𝗺𝗮𝘇𝗼𝗻 𝗝𝘂𝘀𝘁 𝗛𝗶𝗷𝗮𝗰𝗸𝗲𝗱 𝗬𝗼𝘂𝗿 𝗖𝘂𝘀𝘁𝗼𝗺𝗲𝗿 𝗝𝗼𝘂𝗿𝗻𝗲𝘆𝗔𝗻𝗱 𝗬𝗼𝘂𝗿𝗲 𝗧𝗵𝗮𝗻𝗸𝗶𝗻𝗴'
+title: 'Amazon Just Hijacked Your Customer JourneyAnd Youre Thanking'
 description: 'LinkedIn post from Apr 12 2025'
 pubDate: 'Apr 12 2025'
 ---

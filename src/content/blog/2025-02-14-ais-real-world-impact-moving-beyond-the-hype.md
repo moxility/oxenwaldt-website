@@ -1,5 +1,5 @@
 ---
-title: '𝐀𝐈𝐬 𝐑𝐞𝐚𝐥-𝐖𝐨𝐫𝐥𝐝 𝐈𝐦𝐩𝐚𝐜𝐭 𝐌𝐨𝐯𝐢𝐧𝐠 𝐁𝐞𝐲𝐨𝐧𝐝 𝐭𝐡𝐞 𝐇𝐲𝐩𝐞'
+title: 'AIs Real-World Impact Moving Beyond the Hype'
 description: 'LinkedIn post from Feb 14 2025'
 pubDate: 'Feb 14 2025'
 ---

@@ -1,5 +1,5 @@
 ---
-title: '𝙔𝙤𝙪𝙧 𝙎𝙩𝙤𝙧𝙚 𝙅𝙪𝙨𝙩 𝘽𝙚𝙘𝙖𝙢𝙚 𝙄𝙣𝙫𝙞𝙨𝙞𝙗𝙡𝙚 𝙩𝙤 700𝙈 𝙎𝙝𝙤𝙥𝙥𝙚𝙧𝙨'
+title: 'Your Store Just Became Invisible to 700M Shoppers'
 description: 'LinkedIn post from Sep 29 2025'
 pubDate: 'Sep 29 2025'
 ---

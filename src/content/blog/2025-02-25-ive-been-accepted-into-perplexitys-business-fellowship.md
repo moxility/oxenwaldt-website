@@ -1,5 +1,5 @@
 ---
-title: 'Ive been accepted into 𝗣𝗲𝗿𝗽𝗹𝗲𝘅𝗶𝘁𝘆𝘀 𝗕𝘂𝘀𝗶𝗻𝗲𝘀𝘀 𝗙𝗲𝗹𝗹𝗼𝘄𝘀𝗵𝗶𝗽'
+title: 'Ive been accepted into Perplexitys Business Fellowship'
 description: 'LinkedIn post from Feb 25 2025'
 pubDate: 'Feb 25 2025'
 ---

@@ -1,5 +1,5 @@
 ---
-title: '𝗧𝗵𝗲 𝗔𝗜 𝗘𝘅𝗽𝗿𝗲𝘀𝘀 𝗔 𝗟𝗲𝗮𝗱𝗲𝗿𝘀𝗵𝗶𝗽 𝗝𝗼𝘂𝗿𝗻𝗲𝘆 𝗜𝗻𝘁𝗼 𝘁𝗵𝗲 𝗨𝗻𝗸𝗻𝗼𝘄𝗻'
+title: 'The AI Express A Leadership Journey Into the Unknown'
 description: 'LinkedIn post from Mar 06 2025'
 pubDate: 'Mar 06 2025'
 ---

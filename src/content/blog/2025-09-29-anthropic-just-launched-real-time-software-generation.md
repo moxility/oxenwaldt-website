@@ -1,5 +1,5 @@
 ---
-title: 'ᴀɴᴛʜʀᴏᴘɪᴄ ᴊᴜsᴛ ʟᴀᴜɴᴄʜᴇᴅ ʀᴇᴀʟ-ᴛɪᴍᴇ sᴏғᴛᴡᴀʀᴇ ɢᴇɴᴇʀᴀᴛɪᴏɴ'
+title: 'Anthropic Just Launched Real-Time Software Generation'
 description: 'LinkedIn post from Sep 29 2025'
 pubDate: 'Sep 29 2025'
 ---

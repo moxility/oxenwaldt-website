@@ -1,5 +1,5 @@
 ---
-title: '𝗪𝗵𝘆 𝗺𝗼𝗿𝗲 𝘁𝗵𝗮𝗻 𝟳𝟬 𝗼𝗳 𝗔𝗜 𝗣𝗿𝗼𝗷𝗲𝗰𝘁𝘀 𝗙𝗮𝗶𝗹 𝗛𝗶𝗻𝘁 𝗜𝘁𝘀 𝗡𝗼𝘁 𝘁𝗵𝗲 𝗧𝗲𝗰𝗵'
+title: 'Why more than 70 of AI Projects Fail Hint Its Not the Tech'
 description: 'LinkedIn post from Mar 20 2025'
 pubDate: 'Mar 20 2025'
 ---
