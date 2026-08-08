@@ -1,4 +1,39 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-  <rect width="128" height="128" rx="20" fill="#0f172a"/>
-  <text x="64" y="82" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="60" font-weight="700" fill="#0d9488" text-anchor="middle" letter-spacing="-2">MO</text>
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d9488"/>
+      <stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="20" fill="#0c1222"/>
+  <!-- Chip body -->
+  <rect x="28" y="28" width="72" height="72" rx="10" fill="none" stroke="url(#g)" stroke-width="5"/>
+  <!-- Pins top -->
+  <rect x="40" y="18" width="6" height="14" rx="3" fill="url(#g)"/>
+  <rect x="52" y="18" width="6" height="14" rx="3" fill="url(#g)"/>
+  <rect x="64" y="18" width="6" height="14" rx="3" fill="url(#g)"/>
+  <rect x="76" y="18" width="6" height="14" rx="3" fill="url(#g)"/>
+  <!-- Pins bottom -->
+  <rect x="40" y="96" width="6" height="14" rx="3" fill="url(#g)"/>
+  <rect x="52" y="96" width="6" height="14" rx="3" fill="url(#g)"/>
+  <rect x="64" y="96" width="6" height="14" rx="3" fill="url(#g)"/>
+  <rect x="76" y="96" width="6" height="14" rx="3" fill="url(#g)"/>
+  <!-- Pins left -->
+  <rect x="18" y="40" width="14" height="6" rx="3" fill="url(#g)"/>
+  <rect x="18" y="52" width="14" height="6" rx="3" fill="url(#g)"/>
+  <rect x="18" y="64" width="14" height="6" rx="3" fill="url(#g)"/>
+  <rect x="18" y="76" width="14" height="6" rx="3" fill="url(#g)"/>
+  <!-- Pins right -->
+  <rect x="96" y="40" width="14" height="6" rx="3" fill="url(#g)"/>
+  <rect x="96" y="52" width="14" height="6" rx="3" fill="url(#g)"/>
+  <rect x="96" y="64" width="14" height="6" rx="3" fill="url(#g)"/>
+  <rect x="96" y="76" width="14" height="6" rx="3" fill="url(#g)"/>
+  <!-- MOX text as nodes -->
+  <text x="64" y="72" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="30" font-weight="700" fill="url(#g)" text-anchor="middle" letter-spacing="1">MOX</text>
+  <!-- Circuit nodes -->
+  <circle cx="55" cy="50" r="4" fill="url(#g)"/>
+  <circle cx="72" cy="78" r="3" fill="url(#g)"/>
+  <!-- Circuit traces -->
+  <line x1="55" y1="54" x2="55" y2="60" stroke="url(#g)" stroke-width="2"/>
+  <line x1="72" y1="72" x2="72" y2="75" stroke="url(#g)" stroke-width="2"/>
 </svg>
