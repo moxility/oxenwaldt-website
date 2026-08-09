@@ -131,16 +131,26 @@ Anything listed there that is source rather than build output is a bug.
 
 ## Known debt
 
-- **No CI.** The checks above only run when someone runs them. Adding a workflow
-  needs one command from Magnus, because the stored GitHub token carries
-  `gist, read:org, repo` and **no `workflow` scope**, so any commit touching
-  `.github/workflows/` is rejected on push:
+- **No CI, deliberately.** The checks run in `deploy.ps1`, which refuses to deploy
+  when they fail — and deploys only ever happen from this machine, against the
+  working tree. GitHub Actions would run the same checks a second time, on a
+  snapshot that is not what ships.
 
-  ```
-  gh auth refresh -h github.com -s workflow
-  ```
+  It would also cost a permission grant: the stored token carries
+  `gist, read:org, repo` and no `workflow` scope, so anything touching
+  `.github/workflows/` is rejected — `404`, not `403`, via both the `gh` CLI and
+  the GitHub MCP server (tested 2026-08-09; an identical write to a
+  non-workflow path returns `200`). Granting it needs an interactive device-flow
+  login: `gh auth refresh -h github.com -s workflow`.
 
-  It is interactive by design, takes about a minute, and never needs doing again.
+  Not worth it at this size. Revisit if anyone starts pushing from a second
+  machine, or if PRs become part of the workflow — those are the cases where a
+  check that runs *away* from the deploy box earns its keep.
+
+  Note for anyone tempted by CI as a safety net: it would not have caught the
+  2026-08-08 hero-image regression. That bug passed `check-links` (a placeholder
+  is a valid link) and was only found by looking at the deployed site. Checks
+  catch what they are written to catch.
 
 - **This repo is public.** That is fine for a personal site — the content is
   published anyway, and the only keys in it are Supabase **anon** keys, which are
