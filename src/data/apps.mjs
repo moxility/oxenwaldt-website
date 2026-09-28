@@ -116,7 +116,7 @@ export const APPS = [
 		],
 	},
 
-	// ──────────────────────────────────────────────────────── in review ──
+	// ─────────────────────────────────────────── live since Aug–Sep 2026 ──
 	{
 		slug: 'togaf10',
 		name: 'TOGAF 10 Practice',
@@ -171,10 +171,11 @@ export const APPS = [
 		name: 'Azure AI Exam Prep',
 		tagline: 'Pass the Microsoft AI Engineer exam. In your browser or on your iPhone.',
 		category: 'Certification',
-		state: 'review',
+		state: 'live',
 		ascId: '6792709057',
+		storeLive: true, // verified 2026-09-28 via itunes lookup
 		bundleId: 'com.moxapps.azureai',
-		version: '1.1.0',
+		version: '1.3.0',
 		generated: true,
 		// Static expo-router export, served from public/azureai/app/. Deep links need the
 		// rewrite in vercel.json — client-side routing plus a host that 404s extensionless
@@ -223,10 +224,11 @@ export const APPS = [
 		name: 'ArchiMate 3.2 Practice',
 		tagline: 'Learn the notation properly. Then pass the exam.',
 		category: 'Certification',
-		state: 'review',
+		state: 'live',
 		ascId: '6795196951',
+		storeLive: true, // verified 2026-09-28 via itunes lookup
 		bundleId: 'com.moxapps.archimate',
-		version: '1.0',
+		version: '1.1',
 		generated: true,
 		accent: '#F2A65A',
 		accent2: '#7EC8E3',
@@ -271,10 +273,11 @@ export const APPS = [
 		name: "AI Don't Fix Stupidity",
 		tagline: 'The mobile companion to the book. The move from apps to agents, in ninety days.',
 		category: 'The book',
-		state: 'review',
+		state: 'live',
 		ascId: '6767744319',
+		storeLive: true, // verified 2026-09-28 via itunes lookup
 		bundleId: 'com.moxapps.theshift',
-		version: '0.13.0',
+		version: '0.14.4',
 		generated: true,
 		accent: '#FFC81E',
 		accent2: '#4C8DFF',
@@ -336,10 +339,11 @@ export const APPS = [
 		name: "AI Don't Fix Stupidity — the Game",
 		tagline: 'Twelve weeks to make Norvik AI-first. A competitor has already started.',
 		category: 'The book',
-		state: 'prep',
+		state: 'live',
 		ascId: '6796604437',
+		storeLive: true, // verified 2026-09-28 via itunes lookup
 		bundleId: 'com.moxapps.aidfsgame',
-		version: '1.0',
+		version: '1.0.2',
 		generated: true,
 		accent: '#E8564B',
 		accent2: '#FFC81E',
