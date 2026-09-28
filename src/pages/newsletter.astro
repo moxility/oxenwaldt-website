@@ -4,16 +4,18 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import FormattedDate from '../components/FormattedDate.astro';
-import { SITE_TITLE } from '../consts';
+import { NEWSLETTER_URL, PODCAST, SITE_TITLE } from '../consts';
 
-// Pull recent newsletter-flavored posts (those mentioning weekly AI news)
-const allPosts = await getCollection('blog');
-const newsletterIssues = allPosts
-	.filter(p => /weekly\s+ai|ai\s+news|week\s+\d+/i.test(p.data.title) || /weekly ai news for business/i.test(p.data.description))
-	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-	.slice(0, 6);
-
-const NEWSLETTER_URL = 'https://www.linkedin.com/newsletters/weekly-ai-news-for-business-7377233384185442304/';
+// The newsletter and the weekly AI News episode are the same stories. The LinkedIn
+// newsletter "Weekly AI news for business" (published from the Columbus page, and
+// described there as "AI News by Future Bytes") is the written edition of that
+// week's episode. So the weeks listed here come from the episodes collection, which
+// the Acast sync keeps current, rather than from a hand-kept list of articles.
+const aiNews = (await getCollection('episodes'))
+	.filter((e) => e.data.tags?.includes('AI News'))
+	.sort((a, b) => b.data.episodeNumber - a.data.episodeNumber);
+const [latest, ...earlier] = aiNews;
+const recent = earlier.slice(0, 5);
 ---
 
 <!doctype html>
@@ -21,7 +23,7 @@ const NEWSLETTER_URL = 'https://www.linkedin.com/newsletters/weekly-ai-news-for-
 	<head>
 		<BaseHead
 			title={`Weekly AI News for Business | ${SITE_TITLE}`}
-			description="Get the weekly AI signal — not the noise. Magnus Oxenwaldt's free newsletter for business leaders. Released every Monday."
+			description="AI News by Future Bytes: the AI news that matters for business leaders, every week. A short read on LinkedIn and the same stories as a Future Bytes episode."
 		/>
 	</head>
 	<body>
@@ -31,33 +33,51 @@ const NEWSLETTER_URL = 'https://www.linkedin.com/newsletters/weekly-ai-news-for-
 			<div class="newsletter-hero-inner">
 				<p class="kicker">The Newsletter</p>
 				<h1>Weekly AI News for Business</h1>
+				<p class="tagline">AI News by Future Bytes</p>
 				<p class="lede">
-					Every Monday I send one short read covering what actually moved in AI
-					for business leaders — and what it means for the way decisions get
-					made. No breathless hype, no model-of-the-week breakdowns. Just the
-					moves you'd want a trusted advisor to flag.
+					The stories that actually moved in AI for business this week, and what
+					they mean for the way decisions get made. One short read on LinkedIn,
+					and the same stories as a Future Bytes episode. Ten minutes a week.
 				</p>
 				<a href={NEWSLETTER_URL} target="_blank" rel="noopener noreferrer" class="primary-cta">
 					<svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
 					Subscribe on LinkedIn
 				</a>
-				<p class="micro">Hosted on LinkedIn · Free · One click · Unsubscribe anytime</p>
+				<p class="micro">On LinkedIn, published by Columbus · Free · One click · Unsubscribe anytime</p>
 			</div>
 		</section>
 
 		<main class="newsletter-main">
+			{latest && (
+				<section class="this-week">
+					<h2>Latest edition</h2>
+					<article class="week-card">
+						<p class="week-meta">
+							<time><FormattedDate date={latest.data.pubDate} /></time>
+							<span>· #{latest.data.episodeNumber} · {latest.data.duration}</span>
+						</p>
+						<h3>{latest.data.title}</h3>
+						<p>{latest.data.description}</p>
+						<div class="week-links">
+							<a href={NEWSLETTER_URL} target="_blank" rel="noopener noreferrer" class="week-read">Read it on LinkedIn</a>
+							<a href={latest.data.spotifyUrl ?? PODCAST.spotifyUrl} target="_blank" rel="noopener noreferrer" class="week-listen">Listen on Spotify</a>
+						</div>
+					</article>
+				</section>
+			)}
+
 			<section class="what-you-get">
 				<h2>What lands in your inbox</h2>
 				<div class="grid">
 					<div class="item">
-						<div class="badge">Mon</div>
+						<div class="badge">Weekly</div>
 						<h3>One short read</h3>
-						<p>Five minutes. The stories that actually matter for enterprises shipping AI — picked, framed, and connected to the operating reality I see every week.</p>
+						<p>Ten minutes. The stories that actually matter for enterprises shipping AI, picked, framed, and connected to the operating reality I see every week.</p>
 					</div>
 					<div class="item">
 						<div class="badge">Audio</div>
-						<h3>Companion podcast</h3>
-						<p>Same week, deeper dive. <em>Future Bytes</em> on Spotify and Apple Podcasts. Most episodes 5–10 minutes.</p>
+						<h3>The same stories, as an episode</h3>
+						<p>Every edition is also a <em>Future Bytes</em> episode, out the same week on Spotify and Apple Podcasts. Most run under ten minutes.</p>
 					</div>
 					<div class="item">
 						<div class="badge">No spam</div>
@@ -67,26 +87,30 @@ const NEWSLETTER_URL = 'https://www.linkedin.com/newsletters/weekly-ai-news-for-
 				</div>
 			</section>
 
-			{newsletterIssues.length > 0 && (
+			{recent.length > 0 && (
 				<section class="recent-issues">
-					<h2>Recent issues</h2>
+					<h2>Earlier weeks</h2>
 					<div class="issues">
-						{newsletterIssues.map(post => (
+						{recent.map((e) => (
 							<article class="issue">
-								<a href={`/blog/${post.id}/`}>
-									<time><FormattedDate date={post.data.pubDate} /></time>
-									<h3>{post.data.title}</h3>
-									<p>{post.data.description}</p>
+								<a href={e.data.spotifyUrl ?? PODCAST.spotifyUrl} target="_blank" rel="noopener noreferrer">
+									<time><FormattedDate date={e.data.pubDate} /></time>
+									<h3>{e.data.title}</h3>
+									<p>{e.data.description}</p>
 								</a>
 							</article>
 						))}
 					</div>
+					<p class="all-links">
+						<a href="/podcast">Every episode →</a>
+						<a href={NEWSLETTER_URL} target="_blank" rel="noopener noreferrer">Every edition on LinkedIn →</a>
+					</p>
 				</section>
 			)}
 
 			<section class="closing-cta">
 				<h2>Ready when you are.</h2>
-				<p>One Monday a week. Five minutes. The signal worth keeping.</p>
+				<p>One read a week. Ten minutes. The signal worth keeping.</p>
 				<a href={NEWSLETTER_URL} target="_blank" rel="noopener noreferrer" class="primary-cta">
 					<svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
 					Subscribe on LinkedIn
@@ -145,6 +169,58 @@ const NEWSLETTER_URL = 'https://www.linkedin.com/newsletters/weekly-ai-news-for-
 				font-size: 0.82rem;
 				margin: 0.85rem 0 0;
 			}
+
+			.tagline {
+				font-family: 'Newsreader', Georgia, serif;
+				font-style: italic;
+				color: var(--accent);
+				font-size: 1.25rem;
+				margin: -0.5rem 0 1.25rem;
+			}
+
+			.this-week { padding: 3.5rem 0 1rem; }
+			.this-week h2 { font-size: 1.6rem; margin: 0 0 1.25rem; color: var(--ink); }
+			.week-card {
+				background: var(--cream-soft);
+				border: 1px solid var(--rule);
+				border-radius: 12px;
+				padding: 1.75rem;
+			}
+			.week-meta {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.35rem;
+				font-size: 0.8rem;
+				color: var(--text-muted);
+				letter-spacing: 0.04em;
+				text-transform: uppercase;
+				font-weight: 500;
+				margin: 0 0 0.5rem;
+			}
+			.week-card h3 { font-size: 1.45rem; color: var(--ink); margin: 0 0 0.6rem; }
+			.week-card > p:not(.week-meta) { color: var(--text); font-size: 1rem; line-height: 1.6; margin: 0 0 1.25rem; }
+			.week-links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+			.week-read, .week-listen {
+				display: inline-flex;
+				padding: 0.6rem 1.2rem;
+				border-radius: 6px;
+				font-weight: 500;
+				font-size: 0.92rem;
+				text-decoration: none;
+				transition: background 0.2s, border-color 0.2s;
+			}
+			.week-read { background: var(--ink); color: var(--cream); }
+			.week-read:hover { background: var(--accent); color: var(--cream); }
+			.week-listen { border: 1px solid var(--rule); color: var(--ink); background: var(--cream); }
+			.week-listen:hover { border-color: var(--ink); color: var(--ink); }
+			.all-links {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.5rem 1.5rem;
+				margin: 1.5rem 0 0;
+				font-size: 0.95rem;
+			}
+			.all-links a { text-decoration: none; font-weight: 500; }
 
 			.newsletter-main { max-width: 56rem; padding: 0 1.5rem; }
 			.what-you-get { padding: 4rem 0 3rem; border-bottom: 1px solid var(--rule); }
@@ -206,6 +282,8 @@ const NEWSLETTER_URL = 'https://www.linkedin.com/newsletters/weekly-ai-news-for-
 				.newsletter-hero { padding: 3rem 1rem 2.5rem; }
 				.grid { grid-template-columns: 1fr; gap: 1.5rem; }
 				.what-you-get, .recent-issues, .closing-cta { padding: 2.5rem 0; }
+				.this-week { padding-top: 2.5rem; }
+				.week-card { padding: 1.25rem; }
 			}
 		</style>
 	</body>

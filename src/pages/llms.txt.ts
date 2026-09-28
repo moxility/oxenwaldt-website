@@ -47,7 +47,7 @@ export const GET: APIRoute = async () => {
 	lines.push('');
 	lines.push('## Newsletter');
 	lines.push(
-		'- "Weekly AI News for Business" on LinkedIn — free, every Monday',
+		'- "Weekly AI News for Business" on LinkedIn (AI News by Future Bytes): free, weekly. The written edition of the weekly AI News episode of Future Bytes.',
 	);
 	lines.push(
 		'- https://www.linkedin.com/newsletters/weekly-ai-news-for-business-7377233384185442304/',
