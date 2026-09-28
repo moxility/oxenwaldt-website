@@ -59,7 +59,11 @@ body {
 }
 
 main {
-	width: 720px;
+	/* min(), not a bare 720px. Most pages override max-width with something larger
+	   (56rem, 72rem), which removed the only cap on the fixed width: on a phone
+	   <main> stayed 720px wide and those pages scrolled sideways. This keeps the
+	   cap when max-width is overridden, and changes nothing on a desktop. */
+	width: min(720px, 100%);
 	max-width: calc(100% - 2em);
 	margin: auto;
 	padding: 3em 1em;
