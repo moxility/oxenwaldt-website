@@ -7,7 +7,8 @@
  *     book one, KDP cover file for book two). The copy is quoted as printed.
  *   - publication date, publisher, pages and ISBN for book one: the live BoD
  *     Bokshop listing.
- *   - page count and format for book two: the print interior.
+ *   - page count and format for book two: the print interior. Publication date and
+ *     ISBN: the live Amazon listing of the KDP paperback.
  *
  * Add a retailer to `buy` only after opening the listing and seeing the book on it.
  * No endorsements go here unless the endorser has agreed in writing.
@@ -87,13 +88,22 @@ export const BOOKS = [
 		inside:
 			'Part One, <em>The Only Human in the Building</em>, follows Kris Norrby and the digital coworker he builds, Xris. Part Two, <em>The Playbook</em>, is the practice behind the story.',
 		details: [
-			['Published', 'September 2026'],
+			['Published', '25 September 2026'],
 			['Format', 'Paperback, 220 pages'],
 			['Language', 'English'],
+			['ISBN', '9798176870732'],
 		],
+		isbn: '9798176870732',
+		datePublished: '2026-09-25',
 		numberOfPages: 220,
-		// Retail links are added once confirmed.
-		buy: [],
+		// The KDP paperback; listing opened and checked 2026-09-28.
+		buy: [
+			{
+				label: 'Buy the paperback',
+				href: 'https://www.amazon.com/dp/B0HL62NQ15',
+				note: 'Amazon',
+			},
+		],
 		companions: ['partnership'],
 	},
 ];
