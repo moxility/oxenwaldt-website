@@ -78,6 +78,7 @@ export const APPS = [
 		storeLive: true, // verified 2026-08-07 via itunes lookup
 		bundleId: 'com.moxapps.boardmemo',
 		version: '1.1',
+		minOs: '26.0', // itunes lookup minimumOsVersion, 2026-09-28
 		generated: true,
 		accent: '#C9A227',
 		accent2: '#6FA8FF',
@@ -129,6 +130,8 @@ export const APPS = [
 		storeLive: true, // verified 2026-08-07 via itunes lookup
 		bundleId: 'com.moxapps.togaf10',
 		version: '1.3.6',
+		minOs: '15.1', // itunes lookup minimumOsVersion, 2026-09-28
+		aiNote: 'The AI tutor needs iOS 26 and Apple Intelligence',
 		generated: true,
 		accent: '#4FA3D1',
 		accent2: '#FFC81E',
@@ -176,6 +179,8 @@ export const APPS = [
 		storeLive: true, // verified 2026-09-28 via itunes lookup
 		bundleId: 'com.moxapps.azureai',
 		version: '1.3.0',
+		minOs: '15.1', // itunes lookup minimumOsVersion, 2026-09-28
+		aiNote: 'The AI tutor needs iOS 26 and Apple Intelligence',
 		generated: true,
 		// Static expo-router export, served from public/azureai/app/. Deep links need the
 		// rewrite in vercel.json — client-side routing plus a host that 404s extensionless
@@ -229,6 +234,8 @@ export const APPS = [
 		storeLive: true, // verified 2026-09-28 via itunes lookup
 		bundleId: 'com.moxapps.archimate',
 		version: '1.1',
+		minOs: '15.1', // itunes lookup minimumOsVersion, 2026-09-28
+		aiNote: 'The AI tutor needs iOS 26 and Apple Intelligence',
 		generated: true,
 		accent: '#F2A65A',
 		accent2: '#7EC8E3',
@@ -278,6 +285,8 @@ export const APPS = [
 		storeLive: true, // verified 2026-09-28 via itunes lookup
 		bundleId: 'com.moxapps.theshift',
 		version: '0.14.4',
+		minOs: '15.1', // itunes lookup minimumOsVersion, 2026-09-28
+		aiNote: 'The Advisor needs iOS 26 and Apple Intelligence',
 		generated: true,
 		accent: '#FFC81E',
 		accent2: '#4C8DFF',
@@ -344,6 +353,8 @@ export const APPS = [
 		storeLive: true, // verified 2026-09-28 via itunes lookup
 		bundleId: 'com.moxapps.aidfsgame',
 		version: '1.0.2',
+		minOs: '15.1', // itunes lookup minimumOsVersion, 2026-09-28
+		aiNote: 'The characters’ on-device replies need iOS 26 and Apple Intelligence',
 		generated: true,
 		accent: '#E8564B',
 		accent2: '#FFC81E',

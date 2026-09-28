@@ -279,6 +279,16 @@ function siteFooter(app) {
 
 // ────────────────────────────────────────────────────────────── the landing ──
 
+// What the phone needs, under the Download button. minOs is the store's own
+// minimumOsVersion (apps:check-store fails when it drifts): most apps install
+// from iOS 15.1 and only their on-device AI needs iOS 26, so a blanket
+// "requires iOS 26" turned away people who could install them.
+function requirementNote(app) {
+	const major = parseInt(app.minOs ?? '26', 10);
+	if (major >= 26) return `iPhone &middot; requires iOS ${major} and Apple Intelligence`;
+	return `iPhone &middot; iOS ${esc(app.minOs)} or later${app.aiNote ? ` &middot; ${esc(app.aiNote)}` : ''}`;
+}
+
 function ctaBlock(app) {
 	const url = appStoreUrl(app);
 	const state = STATES[app.state];
@@ -303,7 +313,7 @@ function ctaBlock(app) {
       <div class="cta">
         <a class="btn btn-primary" href="${url}">Download on the App Store</a>
         <a class="btn btn-ghost" href="/${app.slug}/support.html">Support</a>
-        <span class="cta-note">iPhone &middot; requires iOS 26</span>
+        <span class="cta-note">${requirementNote(app)}</span>
       </div>`;
 	}
 	if (state.cta === 'none') {

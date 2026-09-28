@@ -20,10 +20,12 @@ for (const app of APPS) {
 		continue;
 	}
 	let live = false;
+	let storeMinOs = null;
 	try {
 		const res = await fetch(`https://itunes.apple.com/lookup?id=${app.ascId}&country=us`);
 		const json = await res.json();
 		live = json.resultCount > 0;
+		storeMinOs = live ? json.results[0].minimumOsVersion ?? null : null;
 	} catch (err) {
 		console.error(`${app.name}: lookup failed (${err.message}) — skipping, not concluding.`);
 		continue;
@@ -33,6 +35,9 @@ for (const app of APPS) {
 	console.log(`${mark} ${app.name.padEnd(34)} ascId=${app.ascId}  store=${live ? 'live' : 'not live'}  flag=${flagged}`);
 	if (live && !flagged) problems.push(`${app.name}: now live on the App Store — set storeLive: true.`);
 	if (!live && flagged) problems.push(`${app.name}: storeLive is true but the store has no listing — links would 404.`);
+	// The Download button prints minOs, so it has to be the store's own figure.
+	if (live && flagged && app.minOs !== storeMinOs)
+		problems.push(`${app.name}: minOs is ${app.minOs ?? 'unset'} but the store says ${storeMinOs} — set minOs: '${storeMinOs}'.`);
 }
 
 if (problems.length) {
