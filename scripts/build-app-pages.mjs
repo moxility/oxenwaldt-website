@@ -369,6 +369,12 @@ const PRIVACY_HEADLINES = {
 		['On-device Advisor', 'Advisor conversations never leave your phone.'],
 		['Never sold', 'No advertising, no cross-app tracking, no sale of your data.'],
 	],
+	'account-leaderboard': [
+		['Play without an account', 'A run works fully offline. Signing in is only for the leaderboard.'],
+		['A handle, not your name', 'The leaderboard shows the handle you choose and your score. Nothing else is public.'],
+		['No analytics SDKs', 'No Sentry, no PostHog, no advertising identifiers, no crash telemetry.'],
+		['Never sold', 'No advertising, no cross-app tracking, no sale of your data.'],
+	],
 	'internal-sso': [
 		['Columbus accounts only', 'Authentication is your ordinary Entra ID sign-in.'],
 		['A client, not a store', 'The app displays the portal; the portal holds the data.'],
@@ -632,6 +638,24 @@ function privacyBody(app) {
 <p>Account and progress data are stored in Supabase (Postgres) in the EU (Frankfurt region). Crash reports are stored by Sentry. Product analytics are stored by PostHog in its US region.</p>`);
 	}
 
+	if (A === 'account-leaderboard') {
+		parts.push(`<h2>What we collect</h2>
+<h3>Nothing, until you choose to sign in</h3>
+<p>A run is played and stored entirely on your iPhone. The App works fully with no account, and if you never sign in we hold nothing about you at all.</p>
+<h3>Account information (optional)</h3>
+<ul>
+  <li><strong>Email address and password</strong> — only if you create an account, and only so your leaderboard entry belongs to you across devices. The password is handled by Supabase authentication; we never see it.</li>
+  <li><strong>Handle</strong> — the display name you choose for the leaderboard.</li>
+</ul>
+<h3>Leaderboard entries — these are public</h3>
+<p>When a signed-in run reaches AI-first, the App submits that run to the leaderboard. The entry holds your <strong>handle</strong>, the <strong>number of quarters</strong> you took, your <strong>score</strong> and whether you completed the <strong>rollout</strong>, against an account identifier.</p>
+<p><strong>Your handle and your result are visible to other players.</strong> Choose a handle you are comfortable being seen. Your email address is never shown on the leaderboard.</p>
+<h3>What we do not collect</h3>
+<p>No analytics, no usage statistics, no crash telemetry, no advertising identifiers. The App contains no Sentry, no PostHog and no advertising SDK. Your in-run decisions, beyond the summary figures above, stay on your device.</p>
+<h2>Data storage</h2>
+<p>Account and leaderboard data are stored in Supabase (Postgres). Everything else lives on your iPhone and is removed when you delete the App.</p>`);
+	}
+
 	if (A === 'anon-progress') {
 		parts.push(`<h2>What we collect</h2>
 <h3>No email, no password</h3>
@@ -679,13 +703,13 @@ function privacyBody(app) {
   <li><strong>Correct</strong> your account email by contacting support.</li>
   <li><strong>Export</strong> your practice history by emailing support; we will provide a JSON export within 30 days.</li>
 </ul>`);
-	} else if (A === 'anon-progress' || A === 'anon-optional-profile') {
+	} else if (A === 'anon-progress' || A === 'anon-optional-profile' || A === 'account-leaderboard') {
 		parts.push(`<h2>Your rights</h2>
 <ul>
   <li><strong>Access</strong> all data we hold about you by emailing <a href="mailto:${OWNER.email}">${OWNER.email}</a>.</li>
   <li><strong>Correct</strong> any profile field by contacting us.</li>
   <li><strong>Delete</strong> your account and all associated data by emailing us — we will action it within 30 days. Deleting the App also removes everything held on the device.</li>
-  <li><strong>Export</strong> your progress${A === 'anon-optional-profile' ? ' and profile' : ''} by emailing us; we will provide a JSON export within 30 days.</li>
+  <li><strong>Export</strong> your progress${A === 'anon-optional-profile' ? ' and profile' : A === 'account-leaderboard' ? ' and leaderboard entries' : ''} by emailing us; we will provide a JSON export within 30 days.</li>
 </ul>`);
 	} else {
 		parts.push(`<h2>Your rights</h2>
@@ -805,7 +829,7 @@ function supportBody(app) {
 		}
 	}
 
-	if (app.privacy !== 'internal-sso') {
+	if (app.privacy !== 'internal-sso' && app.privacy !== 'account-leaderboard') {
 		parts.push(`<h3>Apple Intelligence says it is unavailable</h3>
 <p>The on-device model requires iPhone 15 Pro or newer running iOS 26, with Apple Intelligence switched on in Settings &rsaquo; Apple Intelligence &amp; Siri, and enough free storage for the model to download. On a simulator it never works — that is expected.</p>`);
 	}

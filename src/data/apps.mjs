@@ -367,7 +367,7 @@ export const APPS = [
 			['Plays in short sessions', 'Built for a commute, not an evening.'],
 		],
 		// The live policy is explicit: no accounts, no sign-in, no servers.
-		privacy: 'on-device-only',
+		privacy: 'account-leaderboard',
 		pricing: [{ name: 'Free', amount: 'Free', per: 'the full campaign', pro: true, points: ['The complete twelve-week campaign', 'All eight scoring dimensions', 'On-device characters', 'No ads, no leaderboards'] }],
 		faq: [
 			['Do I need to have read the book?', 'No. The game tells its own story. Readers will recognise Norvik and Elena; everyone else just plays.'],
