@@ -367,12 +367,12 @@ export const APPS = [
 			['Drawn from the book', 'Every mechanic traces to the manuscript. The campaign is Part 1 (the novel); the systems underneath are Part 2 (the playbook).'],
 			['Decisions with consequences', 'Choices compound across the twelve weeks. The ending you get is the one your decisions earned, not one of three canned outcomes.'],
 			['On-device reasoning', 'Characters respond through Apple Intelligence on the phone. Nothing you say to them is sent anywhere.'],
-			['No account, no server', 'There is nothing to register for and no backend to hold your save. Everything you do stays on the iPhone.'],
+			['Optional account, public leaderboard', 'Play without registering; the save stays on the iPhone. Sign in with an email only to put your fastest run on the public leaderboard, under a handle you choose.'],
 			['Plays in short sessions', 'Built for a commute, not an evening.'],
 		],
-		// The live policy is explicit: no accounts, no sign-in, no servers.
+		// Optional email sign-in for the public leaderboard; the save stays on the device.
 		privacy: 'account-leaderboard',
-		pricing: [{ name: 'Free', amount: 'Free', per: 'the full campaign', pro: true, points: ['The complete twelve-week campaign', 'All eight scoring dimensions', 'On-device characters', 'No ads, no leaderboards'] }],
+		pricing: [{ name: 'Free', amount: 'Free', per: 'the full campaign', pro: true, points: ['The complete twelve-week campaign', 'All eight scoring dimensions', 'On-device characters', 'No ads'] }],
 		faq: [
 			['Do I need to have read the book?', 'No. The game tells its own story. Readers will recognise Norvik and Elena; everyone else just plays.'],
 			['Is this the same as the AI Don\u2019t Fix Stupidity app?', 'No — that one is the book companion with the chapters, assessment and ninety-day plan. This is the simulation. They share a world, not a codebase.'],
