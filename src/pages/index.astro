@@ -8,6 +8,7 @@ import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 
 import { PUBLIC_APPS } from '../data/apps.mjs';
+import { BOOKS } from '../data/books.mjs';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -61,6 +62,29 @@ const appIcon = (app: { accent: string; glyph: string }) =>
 						<a href="/podcast" class="btn btn-ghost">Listen to Future Bytes</a>
 						<a href="https://www.linkedin.com/in/magnusoxenwaldt/" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">Follow on LinkedIn</a>
 					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Books -->
+		<section class="band band-books">
+			<div class="band-inner">
+				<div class="section-head">
+					<h2 class="section-h">Books</h2>
+					<a href="/books" class="link-arrow">About the books →</a>
+				</div>
+				<div class="book-strip">
+					{BOOKS.map((book) => (
+						<a href={`/books#${book.slug}`} class="book-chip">
+							<img src={book.cover} alt={`Cover of ${book.title}`} width={book.coverSize[0]} height={book.coverSize[1]} loading="lazy" />
+							<span>
+								<span class="book-status">{book.status}</span>
+								<b>{book.title}</b>
+								<span class="book-sub">{book.subtitle}</span>
+								<span class="book-hook">{book.headline}.</span>
+							</span>
+						</a>
+					))}
 				</div>
 			</div>
 		</section>
@@ -263,6 +287,67 @@ const appIcon = (app: { accent: string; glyph: string }) =>
 			}
 			.link-arrow:hover { color: var(--accent-dark); }
 
+			.band-books { padding-top: 4rem; padding-bottom: 4rem; }
+			.book-strip {
+				display: grid;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 1.25rem;
+			}
+			.book-chip {
+				display: flex;
+				gap: 1.25rem;
+				align-items: center;
+				padding: 1.25rem;
+				background: var(--cream-soft);
+				border: 1px solid var(--rule);
+				border-radius: 12px;
+				text-decoration: none;
+				color: var(--text);
+				transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+			}
+			.book-chip:hover { border-color: var(--accent); box-shadow: var(--box-shadow-lg); transform: translateY(-2px); color: var(--text); }
+			.book-chip img {
+				width: 6.5rem;
+				height: auto;
+				flex: none;
+				margin: 0;
+				border-radius: 3px;
+				box-shadow: 0 10px 24px -12px rgb(15 31 58 / 0.45);
+			}
+			.book-chip b {
+				display: block;
+				font-family: 'Newsreader', Georgia, serif;
+				font-size: 1.35rem;
+				color: var(--ink);
+				line-height: 1.2;
+				margin: 0.35rem 0 0.2rem;
+			}
+			.book-chip .book-status {
+				display: inline-block;
+				background: var(--accent);
+				color: var(--cream);
+				font-size: 0.68rem;
+				font-weight: 600;
+				padding: 0.15rem 0.6rem;
+				border-radius: 9999px;
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+			}
+			.book-chip .book-sub {
+				display: block;
+				font-size: 0.9rem;
+				color: var(--text-muted);
+				line-height: 1.4;
+				margin: 0 0 0.6rem;
+			}
+			.book-chip .book-hook {
+				display: block;
+				font-family: 'Newsreader', Georgia, serif;
+				font-style: italic;
+				font-size: 1rem;
+				color: var(--accent);
+			}
+
 			.apps-lede { margin: -0.25rem 0 1.75rem; max-width: 44rem; }
 			.app-strip {
 				display: grid;
@@ -368,6 +453,8 @@ const appIcon = (app: { accent: string; glyph: string }) =>
 				.lede { margin-left: auto; margin-right: auto; }
 				.hero-cta { justify-content: center; }
 				.cards { grid-template-columns: 1fr; gap: 1.25rem; }
+				.book-strip { grid-template-columns: 1fr; }
+				.book-chip img { width: 5.5rem; }
 				.section-head { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
 				.band { padding: 3rem 1rem; }
 			}

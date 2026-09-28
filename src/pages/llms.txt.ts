@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { SITE_URL, PERSON, PODCAST } from '../consts';
 import { PUBLIC_APPS, STATES, appStoreUrl } from '../data/apps.mjs';
+import { BOOKS, fullTitle } from '../data/books.mjs';
 
 // Emerging convention: /llms.txt is a short, machine-readable index that
 // LLM crawlers (OpenAI, Anthropic, Perplexity, Google AI Overviews) can use
@@ -22,7 +23,7 @@ export const GET: APIRoute = async () => {
 	lines.push(`# ${PERSON.name} — ${PERSON.jobTitle} at ${PERSON.worksFor}`);
 	lines.push('');
 	lines.push(
-		`> Personal website of ${PERSON.name}, an AI and digital-transformation leader with 20+ years in enterprise architecture. Host of the *${PODCAST.name}* podcast. The site publishes essays on AI strategy, agentic AI for enterprise, and the practical engineering behind durable AI implementations — anchored in real consulting work across Nordic and global enterprises.`,
+		`> Personal website of ${PERSON.name}, an AI and digital-transformation leader with 20+ years in enterprise architecture. Host of the *${PODCAST.name}* podcast and author of ${BOOKS.map((b) => `*${b.title}*`).join(' and ')}. The site publishes essays on AI strategy, agentic AI for enterprise, and the practical engineering behind durable AI implementations — anchored in real consulting work across Nordic and global enterprises.`,
 	);
 	lines.push('');
 	lines.push('## About');
@@ -30,6 +31,13 @@ export const GET: APIRoute = async () => {
 	lines.push(`- Areas: ${PERSON.knowsAbout.join(', ')}`);
 	lines.push(`- Email: ${PERSON.email}`);
 	lines.push(`- LinkedIn: https://www.linkedin.com/in/magnusoxenwaldt/`);
+	lines.push('');
+	lines.push(`## Books (${BOOKS.length})`);
+	for (const b of BOOKS) {
+		const facts = b.details.map(([k, v]) => `${k}: ${v}`).join('; ');
+		const buy = b.buy.map((x) => ` Buy: ${x.href} (${x.note})`).join('');
+		lines.push(`- [${fullTitle(b)}](${SITE_URL}/books/#${b.slug}) by ${PERSON.name}. ${b.headline}. ${facts}.${buy}`);
+	}
 	lines.push('');
 	lines.push('## Podcast');
 	lines.push(`- ${PODCAST.name} (${PODCAST.tagline})`);

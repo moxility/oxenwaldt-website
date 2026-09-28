@@ -72,6 +72,7 @@ Both run automatically inside `deploy.ps1`. Keep them at zero.
 src/pages/          routes; src/pages/apps/ is the app portfolio hub
 src/content/        blog/, episodes/, speaking/ — markdown collections
 src/data/apps.mjs   THE source of truth for the moxapps companion pages
+src/data/books.mjs  THE source of truth for the books: /books, the home strip, /about, llms.txt
 scripts/            all operational tooling, versioned
 public/<slug>/      generated per-app pages (see below)
 public/aiact/app/   EU AI Act Navigator, running in the browser
