@@ -351,7 +351,7 @@ const appIcon = (app: { accent: string; glyph: string }) =>
 			.apps-lede { margin: -0.25rem 0 1.75rem; max-width: 44rem; }
 			.app-strip {
 				display: grid;
-				grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+				grid-template-columns: repeat(auto-fill, minmax(min(19rem, 100%), 1fr));
 				gap: 0.85rem;
 			}
 			.app-chip {

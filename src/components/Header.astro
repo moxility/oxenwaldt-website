@@ -100,6 +100,17 @@ import HeaderLink from './HeaderLink.astro';
 	@media (max-width: 720px) {
 		.social-links { display: none; }
 		header { padding: 0 1em; }
-		nav a { padding: 1em 0.5em; font-size: 0.9rem; }
+		/* The logo gets its own row and the links wrap across the full width below
+		   it. Squeezed beside the logo they had ~220px and wrapped to four rows,
+		   a 222px header on a phone. */
+		nav { flex-wrap: wrap; }
+		.site-logo { padding: 0.75em 0 0.2em; }
+		.internal-links {
+			display: flex;
+			flex-wrap: wrap;
+			width: calc(100% + 1em);
+			margin: 0 0 0.3em -0.5em;
+		}
+		nav a { padding: 0.6em 0.5em; font-size: 0.9rem; }
 	}
 </style>
