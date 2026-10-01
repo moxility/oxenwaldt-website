@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { SITE_URL, PERSON, PODCAST } from '../consts';
 import { PUBLIC_APPS, STATES, appStoreUrl } from '../data/apps.mjs';
-import { BOOKS, fullTitle } from '../data/books.mjs';
+import { BOOKS, bookFormats, fullTitle } from '../data/books.mjs';
 
 // Emerging convention: /llms.txt is a short, machine-readable index that
 // LLM crawlers (OpenAI, Anthropic, Perplexity, Google AI Overviews) can use
@@ -35,7 +35,9 @@ export const GET: APIRoute = async () => {
 	lines.push(`## Books (${BOOKS.length})`);
 	for (const b of BOOKS) {
 		const facts = b.details.map(([k, v]) => `${k}: ${v}`).join('; ');
-		const buy = b.buy.map((x) => ` Buy: ${x.href} (${x.note})`).join('');
+		const buy = bookFormats(b).flatMap((format) =>
+			format.links.map((x) => ` Buy ${format.label.toLowerCase()}: ${x.href} (${x.store}${x.market ? `, ${x.market}` : ''})`),
+		).join('');
 		lines.push(`- [${fullTitle(b)}](${SITE_URL}/books/#${b.slug}) by ${PERSON.name}. ${b.headline}. ${facts}.${buy}`);
 	}
 	lines.push('');

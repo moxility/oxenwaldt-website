@@ -10,9 +10,19 @@
  *   - page count and format for book two: the print interior. Publication date and
  *     ISBN: the live Amazon listing of the KDP paperback.
  *
- * Add a retailer to `buy` only after opening the listing and seeing the book on it.
+ * `buy` groups verified store listings by format. An empty list means no verified
+ * store link is listed here; it is not a claim that the edition is unpublished.
+ * Add links only from the distribution handoff, after checking book AND format.
+ * Keep each listing's verification date; never substitute a store search URL.
  * No endorsements go here unless the endorser has agreed in writing.
  */
+
+export const BOOK_FORMATS = [
+	{ id: 'paperback', label: 'Paperback' },
+	{ id: 'hardcover', label: 'Hardcover' },
+	{ id: 'ebook', label: 'Ebook' },
+	{ id: 'audiobook', label: 'Audiobook' },
+];
 
 export const BOOKS = [
 	{
@@ -45,21 +55,32 @@ export const BOOKS = [
 		details: [
 			['Published', '25 September 2026'],
 			['Publisher', 'BoD (Books on Demand)'],
-			['Format', 'Paperback, 372 pages'],
+			['Format', 'Paperback, 374 pages'],
 			['Language', 'English'],
 			['ISBN', '9789181501186'],
 		],
 		isbn: '9789181501186',
 		datePublished: '2026-09-25',
 		publisher: 'BoD - Books on Demand',
-		numberOfPages: 372,
-		buy: [
-			{
-				label: 'Buy the paperback',
+		numberOfPages: 374,
+		buy: {
+			paperback: [{
+				store: 'BoD Bokshop',
 				href: 'https://bokshop.bod.se/ai-dont-fix-stupidity-magnus-oxenwaldt-9789181501186',
-				note: 'BoD Bokshop, Sweden',
-			},
-		],
+				market: 'Sweden',
+				isbn: '9789181501186',
+				verifiedAt: '2026-10-01',
+			}],
+			hardcover: [],
+			ebook: [{
+				store: 'Apple Books',
+				href: 'https://books.apple.com/se/book/ai-dont-fix-stupidity/id6815501318',
+				market: 'Sweden',
+				isbn: '9789181505238',
+				verifiedAt: '2026-10-01',
+			}],
+			audiobook: [],
+		},
 		companions: ['aidfs', 'aidfsgame'],
 	},
 	{
@@ -89,24 +110,41 @@ export const BOOKS = [
 			'Part One, <em>The Only Human in the Building</em>, follows Kris Norrby and the digital coworker he builds, Xris. Part Two, <em>The Playbook</em>, is the practice behind the story.',
 		details: [
 			['Published', '25 September 2026'],
-			['Format', 'Paperback, 220 pages'],
+			['KDP paperback', '220 pages'],
 			['Language', 'English'],
-			['ISBN', '9798176870732'],
+			['KDP ISBN', '9798176870732'],
 		],
 		isbn: '9798176870732',
 		datePublished: '2026-09-25',
 		numberOfPages: 220,
 		// The KDP paperback; listing opened and checked 2026-09-28.
-		buy: [
-			{
-				label: 'Buy the paperback',
+		buy: {
+			paperback: [{
+				store: 'Amazon',
 				href: 'https://www.amazon.com/dp/B0HL62NQ15',
-				note: 'Amazon',
-			},
-		],
+				market: 'Amazon.com',
+				edition: 'KDP edition · 220 pages',
+				isbn: '9798176870732',
+				verifiedAt: '2026-09-28',
+			}, {
+				store: 'BoD Bokshop',
+				href: 'https://bokshop.bod.se/ai-dont-make-you-smarter-magnus-oxenwaldt-9789181501575',
+				market: 'Sweden',
+				edition: 'BoD edition · 238 pages',
+				isbn: '9789181501575',
+				verifiedAt: '2026-10-01',
+			}],
+			hardcover: [],
+			ebook: [],
+			audiobook: [],
+		},
 		companions: ['partnership'],
 	},
 ];
+
+/** All four formats, including those still waiting for a verified store link. */
+export const bookFormats = (book) =>
+	BOOK_FORMATS.map((format) => ({ ...format, links: book.buy[format.id] ?? [] }));
 
 /** "Title: Subtitle", the form the copyright pages use. */
 export const fullTitle = (book) => `${book.title}: ${book.subtitle}`;
