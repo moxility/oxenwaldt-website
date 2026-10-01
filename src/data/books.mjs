@@ -13,7 +13,7 @@
  * `buy` groups verified store listings by format. An empty list means no verified
  * store link is listed here; it is not a claim that the edition is unpublished.
  * Add links only from the distribution handoff, after checking book AND format.
- * Keep each listing's verification date; never substitute a store search URL.
+ * Keep each listing's original verification timestamp; never substitute a search URL.
  * No endorsements go here unless the endorser has agreed in writing.
  */
 
@@ -69,15 +69,44 @@ export const BOOKS = [
 				href: 'https://bokshop.bod.se/ai-dont-fix-stupidity-magnus-oxenwaldt-9789181501186',
 				market: 'Sweden',
 				isbn: '9789181501186',
-				verifiedAt: '2026-10-01',
+				verifiedAt: '2026-10-01T01:36:39.617339+00:00',
 			}],
 			hardcover: [],
 			ebook: [{
+				store: 'Google Play Books',
+				href: 'https://play.google.com/store/books/details/Magnus_Oxenwaldt_AI_Don_t_Fix_Stupidity?id=lisQEgAAQBAJ&gl=SE',
+				market: 'Sweden',
+				verifiedAt: '2026-10-01T01:36:42.058997+00:00',
+			}, {
 				store: 'Apple Books',
 				href: 'https://books.apple.com/se/book/ai-dont-fix-stupidity/id6815501318',
 				market: 'Sweden',
 				isbn: '9789181505238',
-				verifiedAt: '2026-10-01',
+				verifiedAt: '2026-10-01T01:36:42.063562+00:00',
+			}, {
+				store: 'Apple Books',
+				href: 'https://books.apple.com/us/book/ai-dont-fix-stupidity/id6815501318',
+				market: 'United States',
+				isbn: '9789181505238',
+				verifiedAt: '2026-10-01T01:36:42.874364+00:00',
+			}, {
+				store: 'Apple Books',
+				href: 'https://books.apple.com/gb/book/ai-dont-fix-stupidity/id6815501318',
+				market: 'United Kingdom',
+				isbn: '9789181505238',
+				verifiedAt: '2026-10-01T01:36:43.049992+00:00',
+			}, {
+				store: 'Apple Books',
+				href: 'https://books.apple.com/de/book/ai-dont-fix-stupidity/id6815501318',
+				market: 'Germany',
+				isbn: '9789181505238',
+				verifiedAt: '2026-10-01T01:36:43.412078+00:00',
+			}, {
+				store: 'Apple Books',
+				href: 'https://books.apple.com/ca/book/ai-dont-fix-stupidity/id6815501318',
+				market: 'Canada',
+				isbn: '9789181505238',
+				verifiedAt: '2026-10-01T01:36:44.144813+00:00',
 			}],
 			audiobook: [],
 		},
@@ -117,22 +146,15 @@ export const BOOKS = [
 		isbn: '9798176870732',
 		datePublished: '2026-09-25',
 		numberOfPages: 220,
-		// The KDP paperback; listing opened and checked 2026-09-28.
+		// KDP metadata above is retained; its store link awaits consumer verification.
 		buy: {
 			paperback: [{
-				store: 'Amazon',
-				href: 'https://www.amazon.com/dp/B0HL62NQ15',
-				market: 'Amazon.com',
-				edition: 'KDP edition · 220 pages',
-				isbn: '9798176870732',
-				verifiedAt: '2026-09-28',
-			}, {
 				store: 'BoD Bokshop',
 				href: 'https://bokshop.bod.se/ai-dont-make-you-smarter-magnus-oxenwaldt-9789181501575',
 				market: 'Sweden',
 				edition: 'BoD edition · 238 pages',
 				isbn: '9789181501575',
-				verifiedAt: '2026-10-01',
+				verifiedAt: '2026-10-01T01:36:39.619015+00:00',
 			}],
 			hardcover: [],
 			ebook: [],

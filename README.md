@@ -68,15 +68,18 @@ Both run automatically inside `deploy.ps1`. Keep them at zero.
 
 `src/data/books.mjs` groups each book's `buy` listings into `paperback`, `hardcover`,
 `ebook` and `audiobook`. Each format accepts multiple stores/markets. A listing
-contains `store`, a direct product `href`, `market`, `isbn` and `verifiedAt`
-(`YYYY-MM-DD`); use `edition` when editions differ. Add only book-and-format-matched
+contains `store`, a direct product `href`, `market` and the original `verifiedAt`
+ISO timestamp. Include `isbn` only when the edition is confirmed; use `edition`
+when editions differ. Add only book-and-format-matched
 live listings from the distribution handoff. An empty format shows no buying
 button and does not claim the edition is unpublished. Prices remain at the store.
 
 `BookBuyLinks.astro` and `llms.txt` read that same data. Paperback JSON-LD includes
 only URLs matching its ISBN, so a different edition or ebook is never assigned
 the paperback's identifiers. Publication of the new format section waits for the
-verified distribution list and Magnus's review of the preview (1 October brief).
+complete verified distribution list and Magnus's review of the preview (1 October
+brief). The current eight offers retain the 1 October handoff timestamps; they do
+not establish complete distribution. Amazon links await consumer verification.
 
 ---
 
