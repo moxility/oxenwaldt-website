@@ -1,0 +1,53 @@
+---
+import { bookFormats } from '../data/books.mjs';
+
+const { book } = Astro.props;
+const headingId = `${book.slug}-buy-heading`;
+---
+
+<section class="book-buy" id={`${book.slug}-buy`} aria-labelledby={headingId}>
+	<h3 id={headingId}>Where to buy</h3>
+	<p class="buy-intro">Choose your format, then your store.</p>
+	<div class="format-grid">
+		{bookFormats(book).map((format) => (
+			<section class="format" aria-labelledby={`${book.slug}-${format.id}`}>
+				<h4 id={`${book.slug}-${format.id}`}>{format.label}</h4>
+				{format.links.length ? (
+					<ul class="stores">
+						{format.links.map((link) => (
+							<li>
+								<a href={link.href} target="_blank" rel="noopener noreferrer"
+									aria-label={`Buy ${book.title}, ${format.label.toLowerCase()}, at ${link.store}${link.market ? ` (${link.market})` : ''} (opens in a new tab)`}>
+									<span class="store-name">{link.store}</span>
+									{link.market && <span class="store-market">{link.market}</span>}
+									<span class="store-arrow" aria-hidden="true">↗</span>
+								</a>
+								{link.edition && <p class="edition">{link.edition}</p>}
+							</li>
+						))}
+					</ul>
+				) : <p class="no-listing">Store links not yet listed.</p>}
+			</section>
+		))}
+	</div>
+</section>
+
+<style>
+	.book-buy { margin: 0 0 2.5rem; scroll-margin-top: 1rem; }
+	h3 { margin: 0 0 0.35rem; font-size: 1.45rem; }
+	.buy-intro { margin: 0 0 1rem; color: var(--ink-soft); font-size: 1rem; }
+	.format-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+	.format { min-width: 0; padding: 1rem; border: 1px solid var(--rule); border-radius: 8px; background: #fff; }
+	h4 { margin: 0 0 0.65rem; font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--ink); }
+	.stores { list-style: none; padding: 0; margin: 0; }
+	.stores li + li { margin-top: 0.5rem; }
+	.stores a { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 0.5rem; min-height: 44px; padding: 0.7rem 0.8rem; border-radius: 5px; background: var(--ink); color: var(--cream); text-decoration: none; }
+	.stores a:hover { background: var(--accent); }
+	.stores a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+	.store-name { font-size: 1rem; font-weight: 600; overflow-wrap: anywhere; }
+	.store-market { grid-column: 1; font-size: 0.875rem; }
+	.store-arrow { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-size: 1.25rem; }
+	.edition { margin: 0.3rem 0 0.75rem; font-size: 0.875rem; color: var(--ink-soft); }
+	.no-listing { margin: 0; color: var(--ink-soft); font-size: 0.875rem; line-height: 1.5; }
+	@media (max-width: 440px) { .format-grid { grid-template-columns: 1fr; } }
+</style>

@@ -10,9 +10,19 @@
  *   - page count and format for book two: the print interior. Publication date and
  *     ISBN: the live Amazon listing of the KDP paperback.
  *
- * Add a retailer to `buy` only after opening the listing and seeing the book on it.
+ * `buy` groups verified store listings by format. An empty list means no verified
+ * store link is listed here; it is not a claim that the edition is unpublished.
+ * Add links only from the distribution handoff, after checking book AND format.
+ * Keep each listing's original verification timestamp; never substitute a search URL.
  * No endorsements go here unless the endorser has agreed in writing.
  */
+
+export const BOOK_FORMATS = [
+	{ id: 'paperback', label: 'Paperback' },
+	{ id: 'hardcover', label: 'Hardcover' },
+	{ id: 'ebook', label: 'Ebook' },
+	{ id: 'audiobook', label: 'Audiobook' },
+];
 
 export const BOOKS = [
 	{
@@ -45,21 +55,99 @@ export const BOOKS = [
 		details: [
 			['Published', '25 September 2026'],
 			['Publisher', 'BoD (Books on Demand)'],
-			['Format', 'Paperback, 372 pages'],
+			['Format', 'Paperback, 374 pages'],
 			['Language', 'English'],
 			['ISBN', '9789181501186'],
 		],
 		isbn: '9789181501186',
 		datePublished: '2026-09-25',
 		publisher: 'BoD - Books on Demand',
-		numberOfPages: 372,
-		buy: [
-			{
-				label: 'Buy the paperback',
+		numberOfPages: 374,
+		buy: {
+			paperback: [{
+				store: 'BoD Bokshop',
 				href: 'https://bokshop.bod.se/ai-dont-fix-stupidity-magnus-oxenwaldt-9789181501186',
-				note: 'BoD Bokshop, Sweden',
-			},
-		],
+				market: 'Sweden',
+				isbn: '9789181501186',
+				verifiedAt: '2026-10-03T07:38:39+00:00',
+			}, {
+				store: 'Amazon',
+				href: 'https://www.amazon.de/dp/9181501188',
+				market: 'Germany',
+				edition: 'BoD edition',
+				isbn: '9789181501186',
+				verifiedAt: '2026-10-03T07:38:41+00:00',
+			}],
+			hardcover: [{
+				store: 'Amazon',
+				href: 'https://www.amazon.com/dp/B0HLNQBS99',
+				market: 'United States',
+				verifiedAt: '2026-10-03T07:38:43+00:00',
+			}, {
+				store: 'Amazon',
+				href: 'https://www.amazon.de/dp/B0HLNQBS99',
+				market: 'Germany',
+				verifiedAt: '2026-10-03T07:38:44+00:00',
+			}],
+			ebook: [{
+				store: 'Amazon Kindle',
+				href: 'https://www.amazon.com/dp/B0HKV8Z7D4',
+				market: 'United States',
+				verifiedAt: '2026-10-03T07:38:46+00:00',
+			}, {
+				store: 'Amazon Kindle',
+				href: 'https://www.amazon.co.uk/dp/B0HKV8Z7D4',
+				market: 'United Kingdom',
+				verifiedAt: '2026-10-03T07:38:47+00:00',
+			}, {
+				store: 'Amazon Kindle',
+				href: 'https://www.amazon.de/dp/B0HKV8Z7D4',
+				market: 'Germany',
+				verifiedAt: '2026-10-03T07:38:49+00:00',
+			}, {
+				store: 'Apple Books',
+				href: 'https://books.apple.com/se/book/ai-dont-fix-stupidity/id6815501318',
+				market: 'Sweden',
+				isbn: '9789181505238',
+				verifiedAt: '2026-10-03T07:38:50+00:00',
+			}, {
+				store: 'Apple Books',
+				href: 'https://books.apple.com/us/book/ai-dont-fix-stupidity/id6815501318',
+				market: 'United States',
+				isbn: '9789181505238',
+				verifiedAt: '2026-10-03T07:38:51+00:00',
+			}, {
+				store: 'Apple Books',
+				href: 'https://books.apple.com/gb/book/ai-dont-fix-stupidity/id6815501318',
+				market: 'United Kingdom',
+				isbn: '9789181505238',
+				verifiedAt: '2026-10-03T07:38:52+00:00',
+			}, {
+				store: 'Apple Books',
+				href: 'https://books.apple.com/de/book/ai-dont-fix-stupidity/id6815501318',
+				market: 'Germany',
+				isbn: '9789181505238',
+				verifiedAt: '2026-10-03T07:38:53+00:00',
+			}, {
+				store: 'Apple Books',
+				href: 'https://books.apple.com/ca/book/ai-dont-fix-stupidity/id6815501318',
+				market: 'Canada',
+				isbn: '9789181505238',
+				verifiedAt: '2026-10-03T07:38:55+00:00',
+			}, {
+				store: 'Google Play Books',
+				href: 'https://play.google.com/store/books/details/Magnus_Oxenwaldt_AI_Don_t_Fix_Stupidity?id=lisQEgAAQBAJ&gl=SE',
+				market: 'Sweden',
+				verifiedAt: '2026-10-03T07:38:55+00:00',
+			}],
+			audiobook: [{
+				store: 'Spotify',
+				href: 'https://open.spotify.com/show/3dB7n48lJo9RTzzXy9PiII',
+				market: 'Worldwide',
+				edition: 'Narrated by a digital voice',
+				verifiedAt: '2026-10-03T07:38:55+00:00',
+			}],
+		},
 		companions: ['aidfs', 'aidfsgame'],
 	},
 	{
@@ -89,24 +177,63 @@ export const BOOKS = [
 			'Part One, <em>The Only Human in the Building</em>, follows Kris Norrby and the digital coworker he builds, Xris. Part Two, <em>The Playbook</em>, is the practice behind the story.',
 		details: [
 			['Published', '25 September 2026'],
-			['Format', 'Paperback, 220 pages'],
+			['KDP paperback', '220 pages'],
 			['Language', 'English'],
-			['ISBN', '9798176870732'],
+			['KDP ISBN', '9798176870732'],
 		],
 		isbn: '9798176870732',
 		datePublished: '2026-09-25',
 		numberOfPages: 220,
-		// The KDP paperback; listing opened and checked 2026-09-28.
-		buy: [
-			{
-				label: 'Buy the paperback',
+		buy: {
+			paperback: [{
+				store: 'BoD Bokshop',
+				href: 'https://bokshop.bod.se/ai-dont-make-you-smarter-magnus-oxenwaldt-9789181501575',
+				market: 'Sweden',
+				edition: 'BoD edition · 238 pages',
+				isbn: '9789181501575',
+				verifiedAt: '2026-10-03T07:38:56+00:00',
+			}, {
+				store: 'Amazon',
 				href: 'https://www.amazon.com/dp/B0HL62NQ15',
-				note: 'Amazon',
-			},
-		],
+				market: 'United States',
+				edition: 'KDP edition · 220 pages',
+				isbn: '9798176870732',
+				verifiedAt: '2026-10-03T07:38:58+00:00',
+			}, {
+				store: 'Amazon',
+				href: 'https://www.amazon.de/dp/9181501579',
+				market: 'Germany',
+				edition: 'BoD edition · 238 pages',
+				isbn: '9789181501575',
+				verifiedAt: '2026-10-03T07:39:00+00:00',
+			}],
+			hardcover: [{
+				store: 'Amazon',
+				href: 'https://www.amazon.com/dp/B0HLKX65FX',
+				market: 'United States',
+				verifiedAt: '2026-10-03T07:39:01+00:00',
+			}, {
+				store: 'Amazon',
+				href: 'https://www.amazon.de/dp/B0HLKX65FX',
+				market: 'Germany',
+				verifiedAt: '2026-10-03T07:39:03+00:00',
+			}],
+			ebook: [],
+			audiobook: [{
+				store: 'Spotify',
+				href: 'https://open.spotify.com/show/4ZD3RuwsdIDe7fezfHHtlA',
+				market: 'Worldwide',
+				edition: 'Narrated by a digital voice',
+				verifiedAt: '2026-10-03T07:39:03+00:00',
+			}],
+		},
 		companions: ['partnership'],
 	},
 ];
+
+/** All four formats, including those still waiting for a verified store link. */
+export const bookFormats = (book) =>
+	BOOK_FORMATS.map((format) => ({ ...format, links: book.buy[format.id] ?? [] }));
 
 /** "Title: Subtitle", the form the copyright pages use. */
 export const fullTitle = (book) => `${book.title}: ${book.subtitle}`;
