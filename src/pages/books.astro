@@ -130,6 +130,17 @@ const jsonLd = {
 							))}
 						</dl>
 
+						{b.press?.length > 0 && (
+							<div class="press">
+								<h3>In the news</h3>
+								<ul>
+									{b.press.map((n) => (
+										<li><a href={n.href} target="_blank" rel="noopener noreferrer">{n.title}</a> <span>· {n.outlet}</span></li>
+									))}
+								</ul>
+							</div>
+						)}
+
 						{b.companions.length > 0 && (
 							<div class="companions">
 								<h3>{b.companions.length > 1 ? 'Companions' : 'Companion'}</h3>
@@ -158,6 +169,11 @@ const jsonLd = {
 		<Footer />
 
 		<style>
+			.press { margin: 2rem 0 0; }
+			.press h3 { margin: 0 0 0.5rem; }
+			.press ul { list-style: none; padding: 0; margin: 0; }
+			.press a { color: var(--accent); }
+			.press span { color: var(--ink-soft); font-size: 0.9rem; }
 			.books-hero {
 				background: var(--cream-soft);
 				border-bottom: 1px solid var(--rule);
