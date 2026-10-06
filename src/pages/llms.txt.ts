@@ -36,7 +36,7 @@ export const GET: APIRoute = async () => {
 	for (const b of BOOKS) {
 		const facts = b.details.map(([k, v]) => `${k}: ${v}`).join('; ');
 		const buy = bookFormats(b).flatMap((format) =>
-			format.links.map((x) => ` Buy ${format.label.toLowerCase()}: ${x.href} (${x.store}${x.market ? `, ${x.market}` : ''})`),
+			format.links.filter((x) => x.href).map((x) => ` Buy ${format.label.toLowerCase()}: ${x.href} (${x.store}${x.market ? `, ${x.market}` : ''})`),
 		).join('');
 		lines.push(`- [${fullTitle(b)}](${SITE_URL}/books/#${b.slug}) by ${PERSON.name}. ${b.headline}. ${facts}.${buy}`);
 	}

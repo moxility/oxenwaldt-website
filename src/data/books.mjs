@@ -14,6 +14,9 @@
  * store link is listed here; it is not a claim that the edition is unpublished.
  * Add links only from the distribution handoff, after checking book AND format.
  * Keep each listing's original verification timestamp; never substitute a search URL.
+ * A listing without `href` renders as a dashed "Coming soon" row (optional `note`),
+ * for a store the distribution handoff reports as submitted but not yet live.
+ * When the URL lands, add `href` and `verifiedAt`; nothing else changes.
  * No endorsements go here unless the endorser has agreed in writing.
  */
 
