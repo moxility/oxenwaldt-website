@@ -26,7 +26,7 @@ const headingId = `${book.slug}-buy-heading`;
 							</li>
 						))}
 					</ul>
-				) : <p class="no-listing">Store links not yet listed.</p>}
+				) : <p class="no-listing">{book.pending?.[format.id] ?? 'Store links not yet listed.'}</p>}
 			</section>
 		))}
 	</div>
