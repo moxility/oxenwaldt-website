@@ -7,6 +7,7 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import NewsletterSubscribe from '../components/NewsletterSubscribe.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
+import BookPromo from '../components/BookPromo.astro';
 
 type Props = CollectionEntry<'blog'>['data'] & { slug?: string };
 
@@ -127,6 +128,8 @@ const slug = (Astro.params as any).slug ?? '';
 						<hr />
 					</div>
 					<slot />
+
+					<BookPromo />
 
 					<RelatedPosts currentSlug={slug} currentTitle={title} currentDesc={description} />
 

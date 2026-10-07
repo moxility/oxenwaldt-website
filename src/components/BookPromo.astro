@@ -1,0 +1,35 @@
+---
+// One quiet book card at the end of an essay. Deliberately small: a cover, a line, a link.
+import { BOOKS } from '../data/books.mjs';
+const { slug = BOOKS[0].slug } = Astro.props;
+const book = BOOKS.find((b) => b.slug === slug) ?? BOOKS[0];
+const other = BOOKS.find((b) => b !== book);
+---
+
+<aside class="book-promo" aria-label="Books by Magnus Oxenwaldt">
+	<a href={`/books#${book.slug}`} class="cover">
+		<img src={book.cover} alt={`Cover of ${book.title}`} width={book.coverSize[0]} height={book.coverSize[1]} loading="lazy" />
+	</a>
+	<div>
+		<p class="label">The book</p>
+		<p class="title"><a href={`/books#${book.slug}`}>{book.title}</a></p>
+		<p class="hook">{book.headline}. Paperback, hardcover, ebook and audiobook.</p>
+		<p class="links">
+			<a href={`/books#${book.slug}-buy`}>Where to buy →</a>
+			{other && <span>· Also: <a href={`/books#${other.slug}`}>{other.title}</a></span>}
+		</p>
+	</div>
+</aside>
+
+<style>
+	.book-promo { display: grid; grid-template-columns: 5rem 1fr; gap: 1.25rem; align-items: center; margin: 2.5rem 0; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--cream-soft); }
+	.cover img { width: 5rem; height: auto; display: block; border-radius: 2px; box-shadow: var(--box-shadow-lg); }
+	p { margin: 0; }
+	.label { font-family: 'Inter', sans-serif; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+	.title { font-size: 1.25rem; font-weight: 600; margin: 0.2rem 0; }
+	.title a { color: var(--ink); text-decoration: none; }
+	.hook { font-size: 0.95rem; color: var(--text-muted); }
+	.links { margin-top: 0.5rem; font-size: 0.95rem; }
+	.links a { color: var(--accent); }
+	.links span { color: var(--text-muted); }
+</style>
