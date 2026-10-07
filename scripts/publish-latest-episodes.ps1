@@ -46,6 +46,10 @@ foreach ($file in Get-ChildItem -Path $aiact -Recurse -File) {
 }
 Say 'aiact matches production.'
 
+# External tools write progress to stderr; Windows PowerShell 5 would turn that
+# into a terminating error. Exit codes are checked explicitly from here on.
+$ErrorActionPreference = 'Continue'
+
 # --- sync -------------------------------------------------------------------
 $before = @(Get-ChildItem src\content\episodes -File | ForEach-Object Name)
 python scripts/sync-episodes.py | Out-Null
