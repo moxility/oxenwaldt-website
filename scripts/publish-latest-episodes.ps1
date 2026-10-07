@@ -66,7 +66,7 @@ if ($changed.Count -gt 0) { git checkout -- src/content/episodes; Stop-Run "sync
 # /podcast yet, so a run whose deploy failed is repaired by the next one.
 $latest = (Get-ChildItem src\content\episodes -File | ForEach-Object { [int][regex]::Match($_.Name, '^\d+').Value } | Measure-Object -Maximum).Maximum
 $live = (Invoke-WebRequest -UseBasicParsing -TimeoutSec 60 -Uri "https://www.oxenwaldt.com/podcast/?v=$Stamp").Content
-if ($new.Count -eq 0 -and $live -match "#$latest") { Say "Up to date: #$latest is live."; exit 0 }
+if ($new.Count -eq 0 -and $live -match "#$latest") { Say "Up to date: #$latest is live."; exit 0 }
 if ($new.Count -gt 0) { Say "New: $($new.Name -join ', ')" } else { Say "#$latest is committed but not live; deploying." }
 
 # --- build and check --------------------------------------------------------
