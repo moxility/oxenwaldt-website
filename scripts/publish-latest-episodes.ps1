@@ -22,7 +22,7 @@ $Stamp = Get-Date -Format 'yyyy-MM-dd_HHmm'
 $Log = Join-Path $LogDir "$Stamp.log"
 Set-Location $SiteDir
 
-function Say($msg) { $line = "$(Get-Date -Format 'HH:mm:ss') $msg"; Write-Host $line; Add-Content -Path $Log -Value $line }
+function Say($msg) { $line = "$(Get-Date -Format 'HH:mm:ss') $msg"; Write-Host $line; Add-Content -Encoding utf8 -Path $Log -Value $line }
 function Stop-Run($msg) { Say "STOPPED: $msg"; exit 1 }
 
 # --- preconditions ----------------------------------------------------------
@@ -82,7 +82,7 @@ if ($WhatIf) { Say '-WhatIf: built, checked and committed; not deployed.'; exit 
 $ok = $false
 foreach ($try in 1..3) {
     $out = npx vercel@latest --prod --yes 2>&1 | Out-String
-    Add-Content -Path $Log -Value $out
+    Add-Content -Encoding utf8 -Path $Log -Value $out
     if ($LASTEXITCODE -eq 0 -and $out -notmatch '"status":\s*"error"') { $ok = $true; break }
     Say "deploy attempt $try failed; retrying."
     Start-Sleep -Seconds 20
@@ -90,9 +90,14 @@ foreach ($try in 1..3) {
 if (-not $ok) { Stop-Run 'deploy failed three times.' }
 
 # --- read back --------------------------------------------------------------
-Start-Sleep -Seconds 15
-$page = (Invoke-WebRequest -UseBasicParsing -TimeoutSec 60 -Uri "https://www.oxenwaldt.com/podcast/?v=$Stamp").Content
-if ($page -notmatch "#$latest") { Stop-Run "deployed, but /podcast does not show #$latest." }
+# The edge cache takes a minute or two to turn over.
+$seen = $false
+foreach ($i in 1..12) {
+    Start-Sleep -Seconds 15
+    $page = (Invoke-WebRequest -UseBasicParsing -TimeoutSec 60 -Uri "https://www.oxenwaldt.com/podcast/?v=$Stamp$i").Content
+    if ($page -match "#$latest") { $seen = $true; break }
+}
+if (-not $seen) { Stop-Run "deployed, but /podcast still does not show #$latest after 3 minutes." }
 Say "LIVE: #$latest on https://www.oxenwaldt.com/podcast/"
 
 Add-Content -Path (Join-Path $RepoRoot '.moxgpt-handoff.md') -Value @"
