@@ -1,0 +1,88 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { SITE_TITLE } from '../../consts';
+import { BOOKS } from '../../data/books.mjs';
+import { FRAMEWORKS } from '../../data/frameworks.mjs';
+
+const lead = FRAMEWORKS.find((f) => f.slug === 'three-ai-eras');
+const byBook = BOOKS.map((book, i) => ({
+	book,
+	items: FRAMEWORKS.filter((f) => f.book === i + 1 && f !== lead),
+}));
+const firstSentence = (s: string) => (s.match(/^.*?[.!?](\s|$)/)?.[0] ?? s).trim();
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Frameworks | ${SITE_TITLE}`} description="The named frameworks from Magnus Oxenwaldt's books AI Don't Fix Stupidity and AI Don't Make You Smarter: the Earned Autonomy Ladder, the Tool Risk Ladder, the AI Heartbeat and more." />
+	</head>
+	<body>
+		<Header />
+		<section class="fw-hero">
+			<div class="inner">
+				<p class="kicker">Frameworks</p>
+				<h1>The tools behind the books</h1>
+				<p class="lede">Every framework from <em>AI Don't Fix Stupidity</em> and <em>AI Don't Make You Smarter</em>, one page each. Use them, adapt them, and cite them.</p>
+			</div>
+		</section>
+		<main class="fw-main">
+			{lead && (
+				<a class="lead" href={`/frameworks/${lead.slug}/`}>
+					<span class="label">Start here</span>
+					<h2>{lead.name}</h2>
+					<p>{lead.levels}</p>
+				</a>
+			)}
+			{byBook.map(({ book, items }) => (
+				<section class="group">
+					<div class="group-head">
+						<img src={book.cover} alt="" width={book.coverSize[0]} height={book.coverSize[1]} loading="lazy" />
+						<div>
+							<h2>{book.title}</h2>
+							<p>{book.subtitle} · <a href={`/books#${book.slug}`}>The book</a></p>
+						</div>
+					</div>
+					<div class="grid">
+						{items.map((f) => (
+							<a class="card" href={`/frameworks/${f.slug}/`}>
+								<h3>{f.name}</h3>
+								<p>{firstSentence(f.summary)}</p>
+							</a>
+						))}
+					</div>
+				</section>
+			))}
+			<p class="cite">Frameworks may be referenced and adapted with attribution to Magnus Oxenwaldt and the book they come from.</p>
+		</main>
+		<Footer />
+		<style>
+			.fw-hero { background: var(--cream-soft); border-bottom: 1px solid var(--rule); padding: 4rem 1.5rem 3rem; }
+			.inner, .fw-main { max-width: 64rem; margin: 0 auto; }
+			.fw-main { padding: 3rem 1.5rem 2rem; width: 100%; max-width: 64rem; box-sizing: border-box; }
+			.kicker { font-family: 'Inter', sans-serif; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin: 0 0 0.85rem; }
+			h1 { font-size: clamp(2.4rem, 5vw, 3.4rem); margin: 0 0 1rem; line-height: 1.05; }
+			.lede { font-family: 'Newsreader', Georgia, serif; font-size: 1.35rem; line-height: 1.45; color: var(--ink-soft); max-width: 40rem; margin: 0; }
+			.lead { display: block; padding: 1.75rem; border-radius: 10px; background: var(--ink); color: var(--cream); text-decoration: none; margin-bottom: 3rem; }
+			.lead .label { font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-light); font-weight: 600; }
+			.lead h2 { color: var(--cream); margin: 0.35rem 0 0.5rem; }
+			.lead p { margin: 0; opacity: 0.9; }
+			.lead:hover { background: var(--ink-soft); }
+			.group { margin-bottom: 3.5rem; }
+			.group-head { display: flex; gap: 1rem; align-items: center; margin-bottom: 1.25rem; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
+			.group-head img { width: 3.5rem; height: auto; border-radius: 2px; box-shadow: var(--box-shadow-lg); }
+			.group-head h2 { margin: 0; font-size: 1.6rem; }
+			.group-head p { margin: 0.2rem 0 0; color: var(--text-muted); font-size: 0.95rem; }
+			.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+			.card { display: block; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: #fff; color: inherit; text-decoration: none; transition: border-color 0.2s, transform 0.2s; }
+			.card:hover { border-color: var(--accent); transform: translateY(-2px); }
+			.card h3 { margin: 0 0 0.5rem; font-size: 1.15rem; color: var(--ink); }
+			.card p { margin: 0; font-size: 0.92rem; color: var(--text-muted); line-height: 1.5; }
+			.cite { color: var(--text-muted); font-size: 0.9rem; }
+			@media (max-width: 860px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+			@media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
+		</style>
+	</body>
+</html>
