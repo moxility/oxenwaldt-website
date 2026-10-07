@@ -53,8 +53,12 @@ if ($LASTEXITCODE -ne 0) { Stop-Run 'episode sync failed.' }
 $new = @(Get-ChildItem src\content\episodes -File | Where-Object { $before -notcontains $_.Name })
 $changed = @(git status --porcelain -- src/content/episodes | Where-Object { $_ -notmatch '^\?\?' })
 if ($changed.Count -gt 0) { git checkout -- src/content/episodes; Stop-Run "sync modified existing episodes: $($changed -join '; ')" }
-if ($new.Count -eq 0) { Say 'No new episodes.'; exit 0 }
-Say "New: $($new.Name -join ', ')"
+# Live is the source of truth: deploy whenever the newest local episode is not on
+# /podcast yet, so a run whose deploy failed is repaired by the next one.
+$latest = (Get-ChildItem src\content\episodes -File | ForEach-Object { [int][regex]::Match($_.Name, '^\d+').Value } | Measure-Object -Maximum).Maximum
+$live = (Invoke-WebRequest -UseBasicParsing -TimeoutSec 60 -Uri "https://www.oxenwaldt.com/podcast/?v=$Stamp").Content
+if ($new.Count -eq 0 -and $live -match "#$latest") { Say "Up to date: #$latest is live."; exit 0 }
+if ($new.Count -gt 0) { Say "New: $($new.Name -join ', ')" } else { Say "#$latest is committed but not live; deploying." }
 
 # --- build and check --------------------------------------------------------
 npm run build *> (Join-Path $LogDir "$Stamp-build.log")
@@ -62,9 +66,11 @@ if ($LASTEXITCODE -ne 0) { Stop-Run 'build failed; new episode files left uncomm
 npm run apps:check-links *>> $Log
 if ($LASTEXITCODE -ne 0) { Stop-Run 'broken links; new episode files left uncommitted.' }
 
-git add -- ($new | ForEach-Object { "src/content/episodes/$($_.Name)" })
-git commit -q -m "Episodes: $($new.Name -join ', ') (auto-publish from Acast)" | Out-Null
-Say "Committed $((git rev-parse --short HEAD).Trim())."
+if ($new.Count -gt 0) {
+    git add -- ($new | ForEach-Object { "src/content/episodes/$($_.Name)" })
+    git commit -q -m "Episodes: $($new.Name -join ', ') (auto-publish from Acast)" | Out-Null
+    Say "Committed $((git rev-parse --short HEAD).Trim())."
+}
 
 if ($WhatIf) { Say '-WhatIf: built, checked and committed; not deployed.'; exit 0 }
 
@@ -82,18 +88,12 @@ if (-not $ok) { Stop-Run 'deploy failed three times.' }
 # --- read back --------------------------------------------------------------
 Start-Sleep -Seconds 15
 $page = (Invoke-WebRequest -UseBasicParsing -TimeoutSec 60 -Uri "https://www.oxenwaldt.com/podcast/?v=$Stamp").Content
-$missing = @()
-foreach ($f in $new) {
-    $title = (Select-String -Path $f.FullName -Pattern "^title:\s*['""]?(.+?)['""]?\s*$").Matches[0].Groups[1].Value
-    $num = [regex]::Match($f.Name, '^\d+').Value
-    if ($page -notmatch [regex]::Escape($num.TrimStart('0'))) { $missing += $title }
-}
-if ($missing.Count -gt 0) { Stop-Run "deployed, but /podcast does not show: $($missing -join '; ')" }
-Say "LIVE: $($new.Name -join ', ') on https://www.oxenwaldt.com/podcast/"
+if ($page -notmatch "#$latest") { Stop-Run "deployed, but /podcast does not show #$latest." }
+Say "LIVE: #$latest on https://www.oxenwaldt.com/podcast/"
 
 Add-Content -Path (Join-Path $RepoRoot '.moxgpt-handoff.md') -Value @"
 
 ## $(Get-Date -Format 'yyyy-MM-dd HH:mm') Oslo · episode auto-publish
-- Published $($new.Name -join ', ') from Acast to oxenwaldt.com (commit $((git rev-parse --short HEAD).Trim())), read back on /podcast. Log: review/episode-autopublish/$Stamp.log
+- Published up to #$latest from Acast to oxenwaldt.com (commit $((git rev-parse --short HEAD).Trim())), read back on /podcast. Log: review/episode-autopublish/$Stamp.log
 "@
 exit 0
