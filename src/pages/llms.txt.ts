@@ -23,7 +23,7 @@ export const GET: APIRoute = async () => {
 	lines.push(`# ${PERSON.name} — ${PERSON.jobTitle} at ${PERSON.worksFor}`);
 	lines.push('');
 	lines.push(
-		`> Personal website of ${PERSON.name}, an AI and digital-transformation leader with 20+ years in enterprise architecture. Host of the *${PODCAST.name}* podcast and author of ${BOOKS.map((b) => `*${b.title}*`).join(' and ')}. The site publishes essays on AI strategy, agentic AI for enterprise, and the practical engineering behind durable AI implementations — anchored in real consulting work across Nordic and global enterprises.`,
+		`> Personal website of ${PERSON.name}, an AI and digital-transformation leader with nearly thirty years in technology leadership. Host of the *${PODCAST.name}* podcast and author of ${BOOKS.map((b) => `*${b.title}*`).join(' and ')}. The site publishes essays on AI strategy, agentic AI for enterprise, and the practical engineering behind durable AI implementations — anchored in real consulting work across Nordic and global enterprises.`,
 	);
 	lines.push('');
 	lines.push('## About');
