@@ -14,7 +14,7 @@ const headingId = `${book.slug}-buy-heading`;
 				<h4 id={`${book.slug}-${format.id}`}>{format.label}</h4>
 				{format.links.length ? (
 					<ul class="stores">
-						{format.links.map((link) => (
+						{format.links.map((link) => link.href ? (
 							<li>
 								<a href={link.href} target="_blank" rel="noopener noreferrer"
 									aria-label={`Buy ${book.title}, ${format.label.toLowerCase()}, at ${link.store}${link.market ? ` (${link.market})` : ''} (opens in a new tab)`}>
@@ -23,6 +23,12 @@ const headingId = `${book.slug}-buy-heading`;
 									<span class="store-arrow" aria-hidden="true">↗</span>
 								</a>
 								{link.edition && <p class="edition">{link.edition}</p>}
+							</li>
+						) : (
+							<li class="pending">
+								<span class="store-name">{link.store}</span>
+								{link.market && <span class="store-market">{link.market}</span>}
+								<span class="pending-note">{link.note ?? 'Coming soon'}</span>
 							</li>
 						))}
 					</ul>
@@ -48,6 +54,9 @@ const headingId = `${book.slug}-buy-heading`;
 	.store-market { grid-column: 1; font-size: 0.875rem; }
 	.store-arrow { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-size: 1.25rem; }
 	.edition { margin: 0.3rem 0 0.75rem; font-size: 0.875rem; color: var(--ink-soft); }
+	.pending { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 0.5rem; min-height: 44px; padding: 0.7rem 0.8rem; border: 1px dashed var(--rule); border-radius: 5px; color: var(--ink-soft); }
+	.pending .store-market { grid-column: 1; }
+	.pending-note { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-size: 0.875rem; }
 	.no-listing { margin: 0; color: var(--ink-soft); font-size: 0.875rem; line-height: 1.5; }
 	@media (max-width: 440px) { .format-grid { grid-template-columns: 1fr; } }
 </style>

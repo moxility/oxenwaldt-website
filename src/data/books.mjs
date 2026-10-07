@@ -14,6 +14,9 @@
  * store link is listed here; it is not a claim that the edition is unpublished.
  * Add links only from the distribution handoff, after checking book AND format.
  * Keep each listing's original verification timestamp; never substitute a search URL.
+ * A listing without `href` renders as a dashed "Coming soon" row (optional `note`),
+ * for a store the distribution handoff reports as submitted but not yet live.
+ * When the URL lands, add `href` and `verifiedAt`; nothing else changes.
  * No endorsements go here unless the endorser has agreed in writing.
  */
 
@@ -142,17 +145,21 @@ export const BOOKS = [
 				verifiedAt: '2026-10-06T15:05:00+00:00',
 			}, {
 				store: 'Google Play Books',
-				href: 'https://play.google.com/store/books/details/Magnus_Oxenwaldt_AI_Don_t_Fix_Stupidity?id=lisQEgAAQBAJ&gl=SE',
-				market: 'Sweden',
-				verifiedAt: '2026-10-06T15:05:00+00:00',
+				href: 'https://play.google.com/store/books/details/Magnus_Oxenwaldt_AI_Don_t_Fix_Stupidity?id=lisQEgAAQBAJ',
+				market: 'Sweden, Norway',
+				verifiedAt: '2026-10-06T22:50:00+00:00',
 			}],
 			audiobook: [{
 				store: 'Spotify',
 				href: 'https://open.spotify.com/show/3dB7n48lJo9RTzzXy9PiII',
-				market: 'Worldwide',
+				market: 'Spotify audiobook markets, not Norway',
 				edition: 'Narrated by a digital voice',
-				verifiedAt: '2026-10-06T15:05:00+00:00',
-			}],
+				verifiedAt: '2026-10-06T00:00:00+00:00',
+			}, {
+				store: 'Apple Books', note: 'In review' }, {
+				store: 'Google Play Books', note: 'In review' }, {
+				store: 'Kobo', note: 'In review' }, {
+				store: 'Storytel', note: 'In review' }],
 		},
 		press: [{
 			outlet: 'Columbus',
@@ -233,10 +240,14 @@ export const BOOKS = [
 			audiobook: [{
 				store: 'Spotify',
 				href: 'https://open.spotify.com/show/4ZD3RuwsdIDe7fezfHHtlA',
-				market: 'Worldwide',
+				market: 'Spotify audiobook markets, not Norway',
 				edition: 'Narrated by a digital voice',
-				verifiedAt: '2026-10-06T15:05:00+00:00',
-			}],
+				verifiedAt: '2026-10-06T00:00:00+00:00',
+			}, {
+				store: 'Apple Books', note: 'In review' }, {
+				store: 'Google Play Books', note: 'In review' }, {
+				store: 'Kobo', note: 'In review' }, {
+				store: 'Storytel', note: 'In review' }],
 		},
 		// Shown in place of the neutral text for a format with no link yet.
 		pending: { ebook: 'Ebook coming soon.' },
