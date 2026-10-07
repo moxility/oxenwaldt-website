@@ -1,12 +1,10 @@
 ---
 title: 'Investor, entrepreneur & bestselling author'
-description: 'Investor, entrepreneur & bestselling author 4mo LinkedIn I60 PEOPLE’S WORK, DONE DAILY BY AI I recently had a fascinating conversation with Magnus Oxenwaldt (Columbus) about how AI - especially agenti…'
+description: '𝗜𝟲𝟬 𝗣𝗘𝗢𝗣𝗟𝗘’𝗦 𝗪𝗢𝗥𝗞, 𝗗𝗢𝗡𝗘 𝗗𝗔𝗜𝗟𝗬 𝗕𝗬 𝗔𝗜 I recently had a fascinating conversation with Magnus Oxenwaldt Columbus about how AI - especially agentic AI - is…'
 pubDate: 2025-12-15
 heroImage: '/blog-images/investor-entrepreneur-bestselling-author.png'
+hidden: true
 ---
-Investor, entrepreneur & bestselling author
-4mo
-LinkedIn
 𝗜𝟲𝟬 𝗣𝗘𝗢𝗣𝗟𝗘’𝗦 𝗪𝗢𝗥𝗞, 𝗗𝗢𝗡𝗘 𝗗𝗔𝗜𝗟𝗬 𝗕𝗬 𝗔𝗜
 
 I recently had a fascinating conversation with Magnus Oxenwaldt (Columbus) about how AI - especially agentic AI - is actually being used in practice, not in slides. Both in general, and very concretely in two companies I’m involved in: Supertrends and Projekt Y.

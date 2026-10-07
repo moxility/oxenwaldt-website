@@ -9,8 +9,9 @@ import FormattedDate from '../components/FormattedDate.astro';
 
 import { PUBLIC_APPS } from '../data/apps.mjs';
 import { BOOKS } from '../data/books.mjs';
+import { isEssay } from '../data/posts.mjs';
 
-const posts = (await getCollection('blog')).sort(
+const posts = (await getCollection('blog')).filter(isEssay).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 ).slice(0, 6);
 

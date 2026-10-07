@@ -1,13 +1,10 @@
 ---
 title: 'Did you get all the 2026 retail insights you were hoping for at D-Congress? 💭'
-description: 'Columbus 45,266 followers 1mo Edited LinkedIn Did you get all the 2026 retail insights you were hoping for at D-Congress? 💭 If not, we’ve gathered a few of the most important ones for you. Our experts…'
+description: 'Did you get all the 2026 retail insights you were hoping for at D-Congress? 💭 If not, we’ve gathered a few of the most important ones for you. Our experts…'
 pubDate: 2026-03-06
 heroImage: '/blog-images/did-you-get-all-the-2026-retail-insights-you-were-hoping-for.png'
+short: true
 ---
-Columbus
-45,266 followers
-1mo Edited
-LinkedIn
 Did you get all the 2026 retail insights you were hoping for at D-Congress? 💭
 If not, we’ve gathered a few of the most important ones for you.
 
@@ -26,7 +23,6 @@ Our experts Garret Cunningham, Magnus Oxenwaldt, and Dan Andersson share their e
 So, don’t wait for the perfect AI strategy - stay curious, start building, and act now!
 
 #dcongress #svenskhandel #teamcolumbus
-Play Video
 
 ---
 *Originally posted on [LinkedIn](https://www.linkedin.com/feed/update/urn%3Ali%3Aactivity%3A7435671944357806082) on 2026-03-06*

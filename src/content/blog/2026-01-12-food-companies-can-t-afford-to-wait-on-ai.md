@@ -29,9 +29,6 @@ The food industry that adopts AI fastest wins.
 Because margins don't forgive inefficiency.
 
 #FoodIndustry #FoodAI #SupplyChain #FoodSafety
-+1
-12
-2 Comments
 
 ---
 *Originally posted on [LinkedIn](https://www.linkedin.com/feed/update/urn%3Ali%3Aactivity%3A7416513041334247424) on 2026-01-12*

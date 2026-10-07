@@ -12,7 +12,6 @@ Not another step forward. A curve bending upward.
 Are we witnessing the moment the evolution truly turns exponential?
 🚀 Daniël Rood 1st
 Director, AI (UK/I & SSA) at Google Cloud | Architecting for Enterprise Transformation | Cloud AI Strategy & Commercial Leadership
-2mo Edited
 Gemini 3 Deep Think isn’t just faster. it's the 7th best coder in the world.
 
 It’s smarter and far more efficient.

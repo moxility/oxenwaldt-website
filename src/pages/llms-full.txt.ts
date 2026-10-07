@@ -6,7 +6,7 @@ import { SITE_URL, PERSON, PODCAST } from '../consts';
 // that want to ingest the canonical content without rendering HTML.
 
 export const GET: APIRoute = async () => {
-	const posts = (await getCollection('blog')).sort(
+	const posts = (await getCollection('blog')).filter((p) => !p.data.hidden).sort(
 		(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 	);
 

@@ -1,6 +1,6 @@
 ---
 title: 'This is an important message from a business leader Technolo'
-description: 'LinkedIn post from Mar 16 2025'
+description: 'This is an important message from a business leader. Technologies alone won’t make a difference - people using them will.'
 pubDate: 'Mar 16 2025'
 ---
 

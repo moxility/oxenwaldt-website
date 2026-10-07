@@ -31,7 +31,6 @@ After 2020, everyone knows supply chain matters.
 The question is: Is yours learning?
 
 #SupplyChainAI #SupplyChainResilience #LogisticsAI #Procurement
-+2
 
 ---
 *Originally posted on [LinkedIn](https://www.linkedin.com/feed/update/urn%3Ali%3Aactivity%3A7419264988806115329) on 2026-01-20*

@@ -1,6 +1,6 @@
 ---
 title: 'Have you tested Imagen 4 What are your results'
-description: 'LinkedIn post from Jun 27 2025'
+description: 'When deciding between Google and OpenAI for AI image generation in business applications, what would you choose? Have you tested Imagen 4? What are your…'
 pubDate: 'Jun 27 2025'
 ---
 

@@ -33,7 +33,6 @@ We're transformation partners.
 85% retention because we stay for the journey.
 
 #ContinuousTransformation #OrganizationalChange #DigitalTransformation #ChangeMangement
-+2
 
 ---
 *Originally posted on [LinkedIn](https://www.linkedin.com/feed/update/urn%3Ali%3Aactivity%3A7437399475226214400) on 2026-03-11*

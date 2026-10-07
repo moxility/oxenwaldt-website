@@ -13,6 +13,10 @@ const blog = defineCollection({
 		updatedDate: z.coerce.date().optional(),
 		// Plain string path (relative to /public or full URL) so /blog-images/* works
 		heroImage: z.string().optional(),
+		// Imported post written by someone else: kept online, unlisted and noindexed.
+		hidden: z.boolean().optional(),
+		// A repost of a company post: listed under short posts, never as an essay.
+		short: z.boolean().optional(),
 	}),
 });
 

@@ -1,6 +1,6 @@
 ---
 title: 'First five episodes about AI within Retail'
-description: 'LinkedIn post from Feb 06 2025'
+description: 'Yet another podcast about AI, but with the distinct difference that this one cuts through the AI hype and focuses on practical AI applied to business."…'
 pubDate: 'Feb 06 2025'
 ---
 

@@ -16,7 +16,6 @@ What this is that with this specialization, our customers can confidently rely o
 🤔 Want to learn more about this Specialisation?
 
 https://lnkd.in/d2ZRWbFb
-Play Video
 
 ---
 *Originally posted on [LinkedIn](https://www.linkedin.com/feed/update/urn%3Ali%3Aactivity%3A7419017540242149376) on 2026-01-19*

@@ -35,7 +35,6 @@ At Columbus, we don't hand off.
 We stay until value is delivered.
 
 #TransformationPartner #Consulting #ValueDelivery #Implementation
-+1
 
 ---
 *Originally posted on [LinkedIn](https://www.linkedin.com/feed/update/urn%3Ali%3Aactivity%3A7417962612161679360) on 2026-01-16*

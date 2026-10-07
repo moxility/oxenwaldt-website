@@ -152,8 +152,7 @@ export const BOOKS = [
 			audiobook: [{
 				store: 'Spotify',
 				href: 'https://open.spotify.com/show/3dB7n48lJo9RTzzXy9PiII',
-				market: 'Spotify audiobook markets, not Norway',
-				edition: 'Narrated by a digital voice',
+				edition: 'Narrated by a digital voice · not sold in Norway',
 				verifiedAt: '2026-10-06T00:00:00+00:00',
 			}, {
 				store: 'Apple Books', note: 'In review' }, {
@@ -240,8 +239,7 @@ export const BOOKS = [
 			audiobook: [{
 				store: 'Spotify',
 				href: 'https://open.spotify.com/show/4ZD3RuwsdIDe7fezfHHtlA',
-				market: 'Spotify audiobook markets, not Norway',
-				edition: 'Narrated by a digital voice',
+				edition: 'Narrated by a digital voice · not sold in Norway',
 				verifiedAt: '2026-10-06T00:00:00+00:00',
 			}, {
 				store: 'Apple Books', note: 'In review' }, {

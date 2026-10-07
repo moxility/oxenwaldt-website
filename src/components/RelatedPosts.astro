@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import FormattedDate from './FormattedDate.astro';
+import { isEssay } from '../data/posts.mjs';
 
 interface Props {
 	currentSlug: string;
@@ -11,7 +12,7 @@ interface Props {
 
 const { currentSlug, currentTitle, currentDesc, limit = 3 } = Astro.props;
 
-const all = await getCollection('blog');
+const all = (await getCollection('blog')).filter(isEssay);
 
 // Token-overlap similarity over (title + description). Cheap, works at
 // build time, no client JS required.
