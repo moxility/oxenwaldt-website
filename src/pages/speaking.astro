@@ -4,6 +4,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_TITLE } from '../consts';
+import { BOOKS } from '../data/books.mjs';
 
 const speakingEvents = (await getCollection('speaking')).sort(
 	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
@@ -32,8 +33,31 @@ const speakingEvents = (await getCollection('speaking')).sort(
 		</section>
 
 		<main class="speak-main">
+			<section class="keynotes">
+				<h2>Signature keynotes</h2>
+				<p class="section-lede">Each one is built on a book, so the room leaves with the argument and the tools behind it.</p>
+				<div class="keynote-grid">
+					<article class="keynote">
+						<img src={BOOKS[0].cover} alt="" width={BOOKS[0].coverSize[0]} height={BOOKS[0].coverSize[1]} loading="lazy" />
+						<div>
+							<h3>AI won't fix your company</h3>
+							<p class="from">From <a href={`/books#${BOOKS[0].slug}`}><em>{BOOKS[0].title}</em></a></p>
+							<p>The question isn't whether to use AI. It's what your organisation must become when intelligence is suddenly abundant. Strategy, governance, architecture, adoption and measurement, and a plan for the first ninety days. For boards and executive teams.</p>
+						</div>
+					</article>
+					<article class="keynote">
+						<img src={BOOKS[1].cover} alt="" width={BOOKS[1].coverSize[0]} height={BOOKS[1].coverSize[1]} loading="lazy" />
+						<div>
+							<h3>AI won't make you smarter. The partnership will.</h3>
+							<p class="from">From <a href={`/books#${BOOKS[1].slug}`}><em>{BOOKS[1].title}</em></a></p>
+							<p>Who you have to become when a digital coworker does the work you used to do. How to brief it, how to read work you did not watch being made, and how to stay the accountable half. For leaders and knowledge workers.</p>
+						</div>
+					</article>
+				</div>
+			</section>
+
 			<section class="topics">
-				<h2>Topics</h2>
+				<h2>Other topics</h2>
 				<div class="topics-grid">
 					<div class="topic">
 						<h3>AI strategy &amp; implementation</h3>
@@ -92,6 +116,27 @@ const speakingEvents = (await getCollection('speaking')).sort(
 					<p>Upcoming events will be listed here.</p>
 				</section>
 			)}
+			<section class="kit" id="speaker-kit">
+				<h2>Speaker kit</h2>
+				<p class="section-lede">For organisers and press. Use freely with credit.</p>
+				<div class="kit-grid">
+					<div class="bio-block">
+						<h3>Short bio</h3>
+						<p>Magnus Oxenwaldt is VP Group AI at Columbus Global, author of <em>AI Don't Fix Stupidity</em> and <em>AI Don't Make You Smarter</em>, and host of the <em>Future Bytes</em> podcast. He helps leaders turn AI from a slide into a system.</p>
+						<h3>Long bio</h3>
+						<p>Magnus Oxenwaldt is VP Group AI at Columbus Global, where he leads the AI practice and the company's own AI-first transformation. He has spent nearly thirty years in technology leadership: IT manager, eight years as CTO, five as Chief Commercial Officer, then executive consultant and enterprise architect across ERP, customer engagement and integration.</p>
+						<p>He is the author of two books on AI at work. <em>AI Don't Fix Stupidity</em> asks what a company has to become when intelligence is suddenly abundant. <em>AI Don't Make You Smarter</em> asks who you have to become inside it. Every week he hosts <em>Future Bytes</em>, a podcast on the AI news that matters for business. He holds a master's degree in marketing economics.</p>
+					</div>
+					<div class="photos">
+						<h3>Photos</h3>
+						<a href="/images/magnus-oxenwaldt-2024-columbus.jpg" download><img src="/images/magnus-oxenwaldt-2024-columbus.jpg" alt="Magnus Oxenwaldt, portrait" loading="lazy" /><span>Portrait ↓</span></a>
+						<a href="/images/magnus_portrait_casual.png" download><img src="/images/magnus_portrait_casual.png" alt="Magnus Oxenwaldt, casual portrait" loading="lazy" /><span>Casual ↓</span></a>
+						<h3>Book covers</h3>
+						{BOOKS.map((b) => (<a href={b.cover} download class="cover-dl">{b.title} ↓</a>))}
+					</div>
+				</div>
+				<p class="book-it"><a href="mailto:magnus@oxenwaldt.com?subject=Speaking%20enquiry" class="btn-primary">Book Magnus</a></p>
+			</section>
 		</main>
 
 		<Footer />
@@ -140,6 +185,22 @@ const speakingEvents = (await getCollection('speaking')).sort(
 			.speak-main { max-width: 56rem; padding: 0 1.5rem; }
 			.topics { padding: 3.5rem 0; border-bottom: 1px solid var(--rule); }
 			.topics h2 { font-size: 1.6rem; margin: 0 0 2rem; color: var(--ink); }
+			.keynotes { padding: 3.5rem 0 3rem; border-bottom: 1px solid var(--rule); }
+			.kit { padding: 3.5rem 0 4rem; border-top: 1px solid var(--rule); }
+			.keynotes h2, .kit h2 { font-size: 1.6rem; margin: 0 0 1rem; color: var(--ink); }
+			.section-lede { color: var(--text-muted); margin: -0.5rem 0 1.5rem; }
+			.keynote-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+			.keynote { display: grid; grid-template-columns: 7rem 1fr; gap: 1.25rem; padding: 1.5rem; border: 1px solid var(--rule); border-radius: 10px; background: #fff; }
+			.keynote img { width: 7rem; height: auto; border-radius: 2px; box-shadow: var(--box-shadow-lg); }
+			.keynote h3 { margin: 0 0 0.35rem; font-size: 1.3rem; line-height: 1.25; }
+			.keynote .from { margin: 0 0 0.75rem; font-size: 0.9rem; color: var(--text-muted); }
+			.keynote p { margin: 0 0 0.5rem; }
+			.kit-grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 2rem; }
+			.bio-block h3, .photos h3 { font-family: 'Inter', sans-serif; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin: 1.25rem 0 0.5rem; }
+			.photos a { display: inline-block; margin: 0 0.75rem 0.75rem 0; color: var(--accent); font-size: 0.9rem; font-weight: 600; text-decoration: none; }
+			.photos img { display: block; width: 7rem; height: 7rem; object-fit: cover; border-radius: 6px; margin-bottom: 0.3rem; }
+			.photos .cover-dl { display: block; }
+			.book-it { margin-top: 1.5rem; }
 			.topics-grid {
 				display: grid;
 				grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -178,6 +239,7 @@ const speakingEvents = (await getCollection('speaking')).sort(
 				border: 1px solid var(--rule);
 			}
 			.event-body { min-width: 0; }
+			.event:not(:has(.event-image)) .event-body { grid-column: 1 / -1; }
 			.event-meta {
 				display: flex;
 				gap: 0.5rem;
@@ -222,6 +284,7 @@ const speakingEvents = (await getCollection('speaking')).sort(
 
 			@media (max-width: 720px) {
 				.topics-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+				.keynote-grid, .kit-grid { grid-template-columns: 1fr; }
 				.event { grid-template-columns: 1fr; gap: 1rem; }
 				.event-image img { aspect-ratio: 16/9; }
 				.speak-hero { padding: 3rem 1rem 2.5rem; }

@@ -2,7 +2,7 @@
 // You can import this data from anywhere in your site by using the `import` keyword.
 
 export const SITE_TITLE = 'Magnus Oxenwaldt';
-export const SITE_DESCRIPTION = 'AI & Digital Transformation Leader with 20+ years in enterprise architecture. Host of Future Bytes podcast. Practical insights on AI strategy, ERP, and making technology deliver real business results.';
+export const SITE_DESCRIPTION = 'AI and digital transformation leader with nearly thirty years in technology leadership. Author of AI Don’t Fix Stupidity and AI Don’t Make You Smarter, host of the Future Bytes podcast. Practical insight on AI strategy and making technology deliver real business results.';
 export const SITE_URL = 'https://www.oxenwaldt.com';
 
 // Identity graph for entity disambiguation in search engines and LLMs.
