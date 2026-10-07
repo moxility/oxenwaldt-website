@@ -9,8 +9,9 @@ import FormattedDate from '../components/FormattedDate.astro';
 
 import { PUBLIC_APPS } from '../data/apps.mjs';
 import { BOOKS } from '../data/books.mjs';
+import { isEssay } from '../data/posts.mjs';
 
-const posts = (await getCollection('blog')).sort(
+const posts = (await getCollection('blog')).filter(isEssay).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 ).slice(0, 6);
 
@@ -42,15 +43,11 @@ const appIcon = (app: { accent: string; glyph: string }) =>
 		<!-- Hero — light editorial -->
 		<section class="hero">
 			<div class="hero-inner">
-				<div class="hero-portrait">
-					<img
-						src="/images/magnus_portrait_casual.png"
-						alt="Magnus Oxenwaldt"
-						class="portrait"
-					/>
-				</div>
 				<div class="hero-text">
-					<p class="kicker">AI &amp; Digital Transformation</p>
+					<div class="hero-id">
+						<img src="/images/magnus_portrait_casual.png" alt="Magnus Oxenwaldt" class="portrait" />
+						<p class="kicker">AI &amp; Digital Transformation</p>
+					</div>
 					<h1>Magnus Oxenwaldt</h1>
 					<p class="lede">
 						I help enterprises turn AI from a slide into a system. VP Group AI at
@@ -64,6 +61,12 @@ const appIcon = (app: { accent: string; glyph: string }) =>
 						<a href="https://www.linkedin.com/in/magnusoxenwaldt/" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">Follow on LinkedIn</a>
 					</div>
 				</div>
+				<a href="/books" class="hero-books" aria-label="The books by Magnus Oxenwaldt">
+					{BOOKS.slice(0, 2).map((book, i) => (
+						<img src={book.cover} alt={`Cover of ${book.title}`} width={book.coverSize[0]} height={book.coverSize[1]} class={`hero-cover hero-cover-${i}`} />
+					))}
+					<span class="hero-books-label">Two books on AI at work →</span>
+				</a>
 			</div>
 		</section>
 
@@ -188,20 +191,37 @@ const appIcon = (app: { accent: string; glyph: string }) =>
 			.hero-inner {
 				max-width: 64rem;
 				margin: 0 auto;
-				display: flex;
+				display: grid;
+				grid-template-columns: minmax(0, 1fr) 17rem;
 				gap: 3rem;
 				align-items: center;
 			}
-			.hero-portrait { flex-shrink: 0; }
+			.hero { background: radial-gradient(ellipse at 85% 40%, var(--cream-soft), var(--cream) 60%); }
+			.hero-id { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1rem; }
 			.portrait {
-				width: 11rem;
-				height: 11rem;
+				width: 3.5rem;
+				height: 3.5rem;
 				border-radius: 9999px;
 				object-fit: cover;
 				border: 1px solid var(--rule);
-				box-shadow: var(--box-shadow-lg);
+				box-shadow: var(--box-shadow);
 			}
-			.hero-text { flex: 1; }
+			.hero-id .kicker { margin: 0; }
+			.hero-text { min-width: 0; }
+			.hero-books { position: relative; display: block; height: 20rem; text-decoration: none; }
+			.hero-cover {
+				position: absolute;
+				width: 11rem;
+				height: auto;
+				border-radius: 3px;
+				box-shadow: 0 18px 40px -12px rgb(15 31 58 / 0.35), 0 4px 10px -4px rgb(15 31 58 / 0.2);
+				transition: transform 0.3s ease;
+			}
+			.hero-cover-0 { left: 0; top: 0.5rem; transform: rotate(-5deg); z-index: 1; }
+			.hero-cover-1 { right: 0; top: 2.5rem; transform: rotate(4deg); z-index: 2; }
+			.hero-books:hover .hero-cover-0 { transform: rotate(-7deg) translateY(-4px); }
+			.hero-books:hover .hero-cover-1 { transform: rotate(6deg) translateY(-4px); }
+			.hero-books-label { position: absolute; left: 0; right: 0; bottom: -0.5rem; text-align: center; font-size: 0.9rem; font-weight: 600; color: var(--accent); }
 			.kicker {
 				font-family: 'Inter', sans-serif;
 				font-size: 0.78rem;
@@ -455,6 +475,10 @@ const appIcon = (app: { accent: string; glyph: string }) =>
 				.hero-cta { justify-content: center; }
 				.cards { grid-template-columns: 1fr; gap: 1.25rem; }
 				.book-strip { grid-template-columns: 1fr; }
+				.hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+				.hero-id { justify-content: center; }
+				.hero-books { height: 17.5rem; max-width: 15rem; margin: 0 auto; width: 100%; }
+				.hero-cover { width: 8.5rem; }
 				.book-chip img { width: 5.5rem; }
 				.section-head { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
 				.band { padding: 3rem 1rem; }

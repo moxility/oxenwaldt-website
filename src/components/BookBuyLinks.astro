@@ -3,60 +3,80 @@ import { bookFormats } from '../data/books.mjs';
 
 const { book } = Astro.props;
 const headingId = `${book.slug}-buy-heading`;
+
+// One row per store, with its markets as small links, so ten Apple and Kindle
+// storefronts read as two rows instead of a wall of buttons. Rows without `href`
+// are stores the distribution handoff reports as submitted but not yet live.
+const SHORT = { 'United States': 'US', 'United Kingdom': 'UK', Germany: 'DE', Sweden: 'SE', Norway: 'NO', Canada: 'CA' };
+const label = (m) => (m ? m.split(', ').map((x) => SHORT[x] ?? x).join(' · ') : 'Listen');
+
+const groupFormat = (links) => {
+	const live = [];
+	for (const link of links.filter((l) => l.href)) {
+		const key = `${link.store}|${link.edition ?? ''}`;
+		let row = live.find((r) => r.key === key);
+		if (!row) live.push((row = { key, store: link.store, edition: link.edition, markets: [] }));
+		row.markets.push(link);
+	}
+	const pending = links.filter((l) => !l.href);
+	return { live, pending };
+};
 ---
 
 <section class="book-buy" id={`${book.slug}-buy`} aria-labelledby={headingId}>
 	<h3 id={headingId}>Where to buy</h3>
-	<p class="buy-intro">Choose your format, then your store.</p>
 	<div class="format-grid">
-		{bookFormats(book).map((format) => (
-			<section class="format" aria-labelledby={`${book.slug}-${format.id}`}>
-				<h4 id={`${book.slug}-${format.id}`}>{format.label}</h4>
-				{format.links.length ? (
-					<ul class="stores">
-						{format.links.map((link) => link.href ? (
-							<li>
-								<a href={link.href} target="_blank" rel="noopener noreferrer"
-									aria-label={`Buy ${book.title}, ${format.label.toLowerCase()}, at ${link.store}${link.market ? ` (${link.market})` : ''} (opens in a new tab)`}>
-									<span class="store-name">{link.store}</span>
-									{link.market && <span class="store-market">{link.market}</span>}
-									<span class="store-arrow" aria-hidden="true">↗</span>
-								</a>
-								{link.edition && <p class="edition">{link.edition}</p>}
-							</li>
-						) : (
-							<li class="pending">
-								<span class="store-name">{link.store}</span>
-								{link.market && <span class="store-market">{link.market}</span>}
-								<span class="pending-note">{link.note ?? 'Coming soon'}</span>
-							</li>
-						))}
-					</ul>
-				) : <p class="no-listing">{book.pending?.[format.id] ?? 'Store links not yet listed.'}</p>}
-			</section>
-		))}
+		{bookFormats(book).map((format) => {
+			const { live, pending } = groupFormat(format.links);
+			return (
+				<section class="format" aria-labelledby={`${book.slug}-${format.id}`}>
+					<h4 id={`${book.slug}-${format.id}`}>{format.label}</h4>
+					{live.length > 0 && (
+						<ul class="stores">
+							{live.map((row) => (
+								<li>
+									<span class="store-name">{row.store}</span>
+									{row.edition && <span class="edition">{row.edition}</span>}
+									<span class="markets">
+										{row.markets.map((link) => (
+											<a href={link.href} target="_blank" rel="noopener noreferrer"
+												aria-label={`Buy ${book.title}, ${format.label.toLowerCase()}, at ${link.store}${link.market ? ` (${link.market})` : ''} (opens in a new tab)`}>
+												{label(link.market)}<span aria-hidden="true"> ↗</span>
+											</a>
+										))}
+									</span>
+								</li>
+							))}
+						</ul>
+					)}
+					{pending.length > 0 && (
+						<p class="pending">{pending.map((l) => l.store).join(', ')}: {pending[0].note?.toLowerCase() ?? 'coming soon'}</p>
+					)}
+					{live.length === 0 && pending.length === 0 && (
+						<p class="no-listing">{book.pending?.[format.id] ?? 'Store links not yet listed.'}</p>
+					)}
+				</section>
+			);
+		})}
 	</div>
 </section>
 
 <style>
 	.book-buy { margin: 0 0 2.5rem; scroll-margin-top: 1rem; }
-	h3 { margin: 0 0 0.35rem; font-size: 1.45rem; }
-	.buy-intro { margin: 0 0 1rem; color: var(--ink-soft); font-size: 1rem; }
+	h3 { margin: 0 0 0.85rem; font-size: 1.45rem; }
 	.format-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
-	.format { min-width: 0; padding: 1rem; border: 1px solid var(--rule); border-radius: 8px; background: #fff; }
-	h4 { margin: 0 0 0.65rem; font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--ink); }
+	.format { min-width: 0; padding: 1rem 1.1rem; border: 1px solid var(--rule); border-radius: 8px; background: #fff; }
+	h4 { margin: 0 0 0.6rem; font-family: 'Inter', sans-serif; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
 	.stores { list-style: none; padding: 0; margin: 0; }
-	.stores li + li { margin-top: 0.5rem; }
-	.stores a { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 0.5rem; min-height: 44px; padding: 0.7rem 0.8rem; border-radius: 5px; background: var(--ink); color: var(--cream); text-decoration: none; }
-	.stores a:hover { background: var(--accent); }
-	.stores a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
-	.store-name { font-size: 1rem; font-weight: 600; overflow-wrap: anywhere; }
-	.store-market { grid-column: 1; font-size: 0.875rem; }
-	.store-arrow { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-size: 1.25rem; }
-	.edition { margin: 0.3rem 0 0.75rem; font-size: 0.875rem; color: var(--ink-soft); }
-	.pending { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 0.5rem; min-height: 44px; padding: 0.7rem 0.8rem; border: 1px dashed var(--rule); border-radius: 5px; color: var(--ink-soft); }
-	.pending .store-market { grid-column: 1; }
-	.pending-note { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-size: 0.875rem; }
-	.no-listing { margin: 0; color: var(--ink-soft); font-size: 0.875rem; line-height: 1.5; }
-	@media (max-width: 440px) { .format-grid { grid-template-columns: 1fr; } }
+	.stores li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.6rem; padding: 0.55rem 0; border-top: 1px solid var(--rule); }
+	.stores li:first-child { border-top: 0; padding-top: 0.15rem; }
+	.store-name { font-weight: 600; color: var(--ink); }
+	.edition { flex-basis: 100%; order: 3; font-size: 0.8rem; color: var(--text-muted); margin-top: -0.1rem; }
+	.markets { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-left: auto; }
+	.markets a { display: inline-flex; align-items: center; min-height: 36px; padding: 0 0.7rem; border-radius: 999px; background: var(--ink); color: var(--cream); font-size: 0.85rem; font-weight: 600; text-decoration: none; }
+	.markets a:hover { background: var(--accent); }
+	.markets a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+	.pending { margin: 0.6rem 0 0; font-size: 0.85rem; color: var(--text-muted); }
+	.no-listing { margin: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; }
+	@media (max-width: 560px) { .format-grid { grid-template-columns: 1fr; } }
 </style>

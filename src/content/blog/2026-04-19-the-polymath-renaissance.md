@@ -1,6 +1,6 @@
 ---
 title: '🎨 The Polymath Renaissance ✨'
-description: '🎨 The Polymath Renaissance ✨ Da Vinci painted masterpieces, dissected bodies, designed war machines, and studied the flow of water. He could do all of it because the boundaries between disciplines had…'
+description: 'Da Vinci painted masterpieces, dissected bodies, designed war machines, and studied the flow of water. He could do all of it because the boundaries between disciplines had…'
 pubDate: 2026-04-19
 heroImage: '/blog-images/the-polymath-renaissance.png'
 ---
@@ -41,8 +41,6 @@ __________
 𝘞𝘩𝘢𝘵’𝘴 𝘵𝘩𝘦 𝘰𝘥𝘥𝘦𝘴𝘵 𝘤𝘰𝘮𝘣𝘪𝘯𝘢𝘵𝘪𝘰𝘯 𝘰𝘧 𝘥𝘰𝘮𝘢𝘪𝘯𝘴 𝘺𝘰𝘶’𝘷𝘦 𝘦𝘷𝘦𝘳 𝘤𝘰𝘯𝘯𝘦𝘤𝘵𝘦𝘥 𝘪𝘯 𝘺𝘰𝘶𝘳 𝘸𝘰𝘳𝘬? 👇
 
 #TheShift #PolymathRenaissance #AgenticAI #FutureOfWork #AIStrategy
-7
-5 Comments
 
 ---
 *Originally posted on [LinkedIn](https://www.linkedin.com/feed/update/urn%3Ali%3Aactivity%3A7451573744147525632) on 2026-04-19*

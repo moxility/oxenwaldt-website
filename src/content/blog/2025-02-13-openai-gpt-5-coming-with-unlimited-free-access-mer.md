@@ -1,6 +1,6 @@
 ---
 title: 'OpenAI GPT-5 coming with unlimited free access merging with'
-description: 'LinkedIn post from Feb 13 2025'
+description: 'OpenAI GPT-5 coming with unlimited free access, merging with ''o3'' model, while GPT-4.5 (Orion) marks the end of the non thinking models - Plus & Pro users…'
 pubDate: 'Feb 13 2025'
 ---
 

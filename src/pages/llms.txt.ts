@@ -9,7 +9,7 @@ import { BOOKS, bookFormats, fullTitle } from '../data/books.mjs';
 // to understand a site's purpose and key content. See https://llmstxt.org/
 
 export const GET: APIRoute = async () => {
-	const posts = (await getCollection('blog')).sort(
+	const posts = (await getCollection('blog')).filter((p) => !p.data.hidden).sort(
 		(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 	);
 	const episodes = (await getCollection('episodes')).sort(

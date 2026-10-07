@@ -1,6 +1,6 @@
 ---
 title: 'What an incredible AI adoption event Im genuinely proud to b'
-description: 'LinkedIn post from May 27 2025'
+description: 'What an incredible AI adoption event! I''m genuinely proud to be part of a team with so many talented individuals who are driving meaningful AI innovation…'
 pubDate: 'May 27 2025'
 ---
 

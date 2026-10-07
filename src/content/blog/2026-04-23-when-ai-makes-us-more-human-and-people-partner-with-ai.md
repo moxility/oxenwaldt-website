@@ -14,7 +14,6 @@ When excitement and burnout live in the same person.
 
 Magnus Oxenwaldt sits down with Paulina Modlitba, for a conversation about the human side of AI. 💬
 The human side of the AI revolution
-Columbus on LinkedIn
 
 ---
 *Originally posted on [LinkedIn](https://www.linkedin.com/feed/update/urn%3Ali%3Aactivity%3A7453077851903254528) on 2026-04-23*

@@ -29,9 +29,6 @@ At Columbus, we prepare organizations for this future.
 Not fear. Enablement.
 
 #FutureOfWork #AIAugmentation #WorkforceTransformation #DigitalSkills
-+2
-22
-2 Comments
 
 ---
 *Originally posted on [LinkedIn](https://www.linkedin.com/feed/update/urn%3Ali%3Aactivity%3A7434137926050930688) on 2026-03-02*

@@ -30,7 +30,6 @@ Not replace them with unicorns.
 That's sustainable AI.
 
 #AITalent #DigitalSkills #Workforce #AI
-+2
 
 ---
 *Originally posted on [LinkedIn](https://www.linkedin.com/feed/update/urn%3Ali%3Aactivity%3A7419997284634988545) on 2026-01-22*
