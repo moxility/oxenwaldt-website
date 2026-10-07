@@ -23,7 +23,12 @@ $Log = Join-Path $LogDir "$Stamp.log"
 Set-Location $SiteDir
 
 function Say($msg) { $line = "$(Get-Date -Format 'HH:mm:ss') $msg"; Write-Host $line; Add-Content -Encoding utf8 -Path $Log -Value $line }
-function Stop-Run($msg) { Say "STOPPED: $msg"; exit 1 }
+function Stop-Run($msg) {
+    Say "STOPPED: $msg"
+    # A stopped run must not be silent: leave it where the next session reads first.
+    Add-Content -Encoding utf8 -Path (Join-Path $RepoRoot '.moxgpt-handoff.md') -Value "`n## $(Get-Date -Format 'yyyy-MM-dd HH:mm') Oslo · episode auto-publish STOPPED`n- $msg Log: review/episode-autopublish/$Stamp.log`n"
+    exit 1
+}
 
 # --- preconditions ----------------------------------------------------------
 $branch = (git rev-parse --abbrev-ref HEAD).Trim()
