@@ -1,4 +1,4 @@
-# Publish new Future Bytes episodes to oxenwaldt.com, unattended.
+﻿# Publish new Future Bytes episodes to oxenwaldt.com, unattended.
 #
 #   .\scripts\publish-latest-episodes.ps1           # sync, build, check, deploy, read back
 #   .\scripts\publish-latest-episodes.ps1 -WhatIf   # stop before deploying
@@ -84,12 +84,24 @@ if ($new.Count -gt 0) {
 if ($WhatIf) { Say '-WhatIf: built, checked and committed; not deployed.'; exit 0 }
 
 # --- deploy (the CLI answers "Not authorized" on its first call now and then) --
+# Pinned CLI, and each attempt is killed (whole process tree) after 5 minutes:
+# with no TTY an expired token makes the CLI wait on an interactive login
+# instead of failing, which on 14 Oct hung three runs until the task limit.
+$VercelCli = 'vercel@48.10.0'
+$AttemptTimeoutMs = 300000
 $ok = $false
 foreach ($try in 1..3) {
-    $out = npx vercel@latest --prod --yes 2>&1 | Out-String
+    $tmp = [System.IO.Path]::GetTempFileName()
+    $p = Start-Process -FilePath 'cmd.exe' -ArgumentList '/c', "npx $VercelCli --prod --yes > `"$tmp`" 2>&1 < NUL" `
+        -WorkingDirectory $PSScriptRoot\.. -NoNewWindow -PassThru
+    $null = $p.Handle  # without this, ExitCode reads empty after WaitForExit
+    $exited = $p.WaitForExit($AttemptTimeoutMs)
+    if (-not $exited) { & taskkill /PID $p.Id /T /F 2>&1 | Out-Null }
+    $out = Get-Content -Raw -ErrorAction SilentlyContinue $tmp; Remove-Item $tmp -ErrorAction SilentlyContinue
     Add-Content -Encoding utf8 -Path $Log -Value $out
-    if ($LASTEXITCODE -eq 0 -and $out -notmatch '"status":\s*"error"') { $ok = $true; break }
-    Say "deploy attempt $try failed; retrying."
+    if (-not $exited) { Say "deploy attempt $try timed out after $($AttemptTimeoutMs / 60000) min (check Vercel CLI login); killed." }
+    elseif ($p.ExitCode -eq 0 -and $out -notmatch '"status":\s*"error"') { $ok = $true; break }
+    else { Say "deploy attempt $try failed (exit $($p.ExitCode)); retrying." }
     Start-Sleep -Seconds 20
 }
 if (-not $ok) { Stop-Run 'deploy failed three times.' }
