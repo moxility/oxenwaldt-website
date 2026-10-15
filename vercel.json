@@ -4,6 +4,14 @@
     {
       "source": "/azureai/app/:path*",
       "destination": "/azureai/app/index.html"
+    },
+    {
+      "source": "/dynamics365/app/:path*",
+      "destination": "/dynamics365/app/index.html"
+    },
+    {
+      "source": "/aidfsgame/app/:path*",
+      "destination": "/aidfsgame/app/index.html"
     }
   ]
 }
