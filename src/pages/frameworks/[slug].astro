@@ -15,14 +15,8 @@ const book = BOOKS[f.book - 1];
 const sources = (f.books ?? [f.book]).map((n: number) => BOOKS[n - 1]);
 const siblings = FRAMEWORKS.filter((x) => x.book === f.book && x.slug !== f.slug).slice(0, 4);
 
-// "Org-wide stages: A · B. Per-capability rungs: C · D." becomes two labelled rows of steps.
-const levels = f.levels
-	? f.levels.split(/(?<=\.)\s+(?=[A-Z][\w-]+(?: [\w-]+)*:)/).map((part: string) => {
-		const m = part.match(/^([^:·]{2,40}):\s*(.*)$/);
-		const rest = (m ? m[2] : part).replace(/\.$/, '');
-		return { label: m ? m[1] : '', steps: rest.split(/\s+·\s+/).map((s: string) => s.replace(/^\d+\s+/, '')) };
-	})
-	: [];
+// Structure is authored as lists; numbers such as 20/70/10 are content, not markup.
+const levels = f.levels;
 const citation = `Oxenwaldt, M. (2026). ${sources.map((b: typeof book) => b.title).join(' and ')}.`;
 const jsonLd = {
 	'@context': 'https://schema.org',
@@ -51,10 +45,10 @@ const jsonLd = {
 
 			{levels.length > 0 && (
 				<section class="levels" aria-label={f.levelsLabel || 'Structure'}>
-					{levels.map((group: { label: string; steps: string[] }) => (
+					{levels.map((group: { label: string; steps: string[]; numbered?: boolean }) => (
 						<div class="level-group">
 							{(group.label || f.levelsLabel) && <h2>{group.label || f.levelsLabel}</h2>}
-							<ol>{group.steps.map((s: string) => <li>{s}</li>)}</ol>
+							<ol class:list={{ unnumbered: group.numbered === false }}>{group.steps.map((s: string) => <li>{s}</li>)}</ol>
 						</div>
 					))}
 				</section>
@@ -100,7 +94,7 @@ const jsonLd = {
 			.level-group h2, .monday h2, .more h2 { font-family: 'Inter', sans-serif; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.6rem; }
 			.level-group ol { list-style: none; counter-reset: step; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
 			.level-group li { counter-increment: step; padding: 0.55rem 0.9rem; border-radius: 6px; background: var(--ink); color: var(--cream); font-weight: 600; font-size: 0.95rem; }
-			.level-group li::before { content: counter(step); color: var(--accent-light); margin-right: 0.5rem; font-weight: 700; }
+			.level-group ol:not(.unnumbered) li::before { content: counter(step); color: var(--accent-light); margin-right: 0.5rem; font-weight: 700; }
 			.summary { font-size: 1.08rem; line-height: 1.75; }
 			.monday { margin: 2rem 0; padding: 1.25rem 1.5rem; border-radius: 8px; background: var(--cream-soft); border: 1px solid var(--rule); }
 			.monday p { margin: 0; }

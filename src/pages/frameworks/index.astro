@@ -33,7 +33,7 @@ const firstSentence = (s: string) => (s.match(/^.*?[.!?](\s|$)/)?.[0] ?? s).trim
 				<a class="lead" href={`/frameworks/${lead.slug}/`}>
 					<span class="label">Start here</span>
 					<h2>{lead.name}</h2>
-					<p>{lead.levels}</p>
+					<p>{lead.levels.flatMap((group) => group.steps).join(' · ')}</p>
 				</a>
 			)}
 			{byBook.map(({ book, items }) => (
