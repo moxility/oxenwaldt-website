@@ -120,6 +120,10 @@ export const APPS = [
 	// ─────────────────────────────────────────── live since Aug–Sep 2026 ──
 	{
 		slug: 'togaf10',
+		// Static expo-router export from the app repo HEAD, Supabase public env only (no analytics or
+		// purchase keys); served from public/togaf10/app/, deep links via the vercel.json rewrite.
+		webApp: '/togaf10/app/',
+		extraLinks: [['Open the web app', '/togaf10/app/']],
 		name: 'TOGAF 10 Practice',
 		tagline: 'Pass TOGAF 10. On your iPhone, in the gaps in your day.',
 		category: 'Certification',
@@ -396,6 +400,10 @@ export const APPS = [
 	},
 	{
 		slug: 'pmp',
+		// Static expo-router export from the app repo HEAD, Supabase public env only (no analytics or
+		// purchase keys); served from public/pmp/app/, deep links via the vercel.json rewrite.
+		webApp: '/pmp/app/',
+		extraLinks: [['Open the web app', '/pmp/app/']],
 		name: 'PMP Exam Practice',
 		tagline: 'Pass the PMP. In the gaps in your day.',
 		category: 'Certification',

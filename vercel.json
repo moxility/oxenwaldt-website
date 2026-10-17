@@ -12,6 +12,14 @@
     {
       "source": "/aidfsgame/app/:path*",
       "destination": "/aidfsgame/app/index.html"
+    },
+    {
+      "source": "/togaf10/app/:path*",
+      "destination": "/togaf10/app/index.html"
+    },
+    {
+      "source": "/pmp/app/:path*",
+      "destination": "/pmp/app/index.html"
     }
   ]
 }
