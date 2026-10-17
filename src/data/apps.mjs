@@ -345,6 +345,10 @@ export const APPS = [
 	},
 	{
 		slug: 'aidfsgame',
+		// Static expo-router export (repo scripts/build-web.mjs), served from public/aidfsgame/app/;
+		// deep links rely on the vercel.json rewrite, as for azureai.
+		webApp: '/aidfsgame/app/',
+		extraLinks: [['Open the web app', '/aidfsgame/app/']],
 		name: "AI Don't Fix Stupidity — the Game",
 		tagline: 'Twelve weeks to make Norvik AI-first. A competitor has already started.',
 		category: 'The book',
@@ -525,6 +529,10 @@ export const APPS = [
 	// ─────────────────────────────────────────────────────────── planned ──
 	{
 		slug: 'dynamics365',
+		// Static expo-router export (repo scripts/build-web.mjs), served from public/dynamics365/app/;
+		// deep links rely on the vercel.json rewrite, as for azureai.
+		webApp: '/dynamics365/app/',
+		extraLinks: [['Open the web app', '/dynamics365/app/']],
 		name: 'Dynamics 365 Cert Prep',
 		tagline: 'The Dynamics 365 certifications, practised on your phone.',
 		category: 'Certification',

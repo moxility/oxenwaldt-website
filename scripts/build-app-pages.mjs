@@ -57,7 +57,7 @@ const appTile = (app) =>
 	`<path fill="none" stroke="${app.accent}" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" d="${app.glyph}"/>` +
 	`</svg>`;
 
-function head(app, { title, description, pageUrl }) {
+function head(app, { title, description, pageUrl, jsonld }) {
 	return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,7 +74,10 @@ function head(app, { title, description, pageUrl }) {
 <meta name="twitter:card" content="summary">${
 		app.unlisted ? '\n<meta name="robots" content="noindex, follow">' : ''
 	}
-<link rel="icon" href="${iconDataUri(app)}">
+<link rel="icon" href="${iconDataUri(app)}">${
+		jsonld ? `
+<script type="application/ld+json">${JSON.stringify(jsonld).replace(/</g, '\u003c')}</script>` : ''
+	}
 <style>${css(app)}</style>
 </head>
 <body>`;
@@ -393,12 +396,48 @@ const PRIVACY_HEADLINES = {
 	],
 };
 
+/**
+ * Structured data for a companion landing page: the page itself, its author,
+ * the iOS app it promotes (store URL only when appStoreUrl() says it is live),
+ * and the FAQ when the app has one. Unlisted apps get none.
+ */
+function landingJsonLd(app, url, description) {
+	if (app.unlisted) return null;
+	const pageUrl = `${OWNER.site}${url}`;
+	const author = { '@type': 'Person', name: OWNER.name, url: OWNER.site, sameAs: [OWNER.linkedin] };
+	const store = appStoreUrl(app);
+	const graph = [
+		{ '@type': 'WebPage', '@id': `${pageUrl}#page`, url: pageUrl, name: `${app.name} — ${app.tagline}`, description, author },
+		{
+			'@type': 'SoftwareApplication',
+			name: app.name,
+			description,
+			applicationCategory: 'EducationalApplication',
+			operatingSystem: 'iOS',
+			author,
+			url: pageUrl,
+			...(store ? { installUrl: store, sameAs: [store] } : {}),
+		},
+	];
+	if (app.faq?.length) {
+		graph.push({
+			'@type': 'FAQPage',
+			mainEntity: app.faq.map(([q, a]) => ({
+				'@type': 'Question',
+				name: q,
+				acceptedAnswer: { '@type': 'Answer', text: String(a).replace(/<[^>]+>/g, '') },
+			})),
+		});
+	}
+	return { '@context': 'https://schema.org', '@graph': graph };
+}
+
 function landing(app) {
 	const url = `/${app.slug}/index.html`;
 	const description = `${app.tagline} ${String(app.lede).replace(/<[^>]+>/g, '')}`.slice(0, 300);
 	const state = STATES[app.state];
 
-	return `${head(app, { title: `${app.name} — ${app.tagline}`, description, pageUrl: url })}
+	return `${head(app, { title: `${app.name} — ${app.tagline}`, description, pageUrl: url, jsonld: landingJsonLd(app, url, description) })}
 ${siteHeader(app, 'overview')}
 
 <div class="hero">
