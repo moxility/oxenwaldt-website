@@ -80,6 +80,13 @@ export const BOOKS = [
 				edition: 'BoD edition',
 				isbn: '9789181501186',
 				verifiedAt: '2026-10-06T15:05:00+00:00',
+			}, {
+				store: 'Amazon',
+				href: 'https://www.amazon.com/dp/B0HMZCBMSY',
+				market: 'United States',
+				edition: 'KDP edition',
+				isbn: '9798177582245',
+				verifiedAt: '2026-10-15T07:30:00+00:00',
 			}],
 			hardcover: [{
 				store: 'Amazon',
@@ -158,13 +165,22 @@ export const BOOKS = [
 			audiobook: [{
 				store: 'Spotify',
 				href: 'https://open.spotify.com/show/3dB7n48lJo9RTzzXy9PiII',
-				edition: 'Narrated by a digital voice · not sold in Norway',
+				edition: 'Narrated by a digital voice · Norway availability unconfirmed',
 				verifiedAt: '2026-10-06T00:00:00+00:00',
 			}, {
-				store: 'Apple Books', note: 'In review' }, {
-				store: 'Google Play Books', note: 'In review' }, {
-				store: 'Kobo', note: 'In review' }, {
-				store: 'Storytel', note: 'In review' }],
+				store: 'Google Play Books',
+				href: 'https://play.google.com/store/audiobooks/details/Magnus_Oxenwaldt_AI_Don_t_Fix_Stupidity?id=AQAAAEBGIltiDM&gl=SE&hl=en',
+				market: 'Sweden',
+				edition: 'Narrated by a digital voice',
+				verifiedAt: '2026-10-14T11:04:35.926Z',
+			}, {
+				store: 'Google Play Books',
+				href: 'https://play.google.com/store/audiobooks/details/Magnus_Oxenwaldt_AI_Don_t_Fix_Stupidity?id=AQAAAEBGIltiDM&gl=NO&hl=en',
+				market: 'Norway',
+				edition: 'Narrated by a digital voice',
+				verifiedAt: '2026-10-14T11:04:35.915Z',
+			}, {
+				store: 'Additional audiobook stores', note: 'Availability not yet verified.' }],
 		},
 		press: [{
 			outlet: 'Columbus',
@@ -241,20 +257,72 @@ export const BOOKS = [
 				market: 'Germany',
 				verifiedAt: '2026-10-06T15:05:00+00:00',
 			}],
-			ebook: [],
+			ebook: [{
+				store: 'Apple Books',
+				href: 'https://books.apple.com/se/book/ai-dont-make-you-smarter/id6822691587',
+				market: 'Sweden',
+				verifiedAt: '2026-10-14T21:16:00+00:00',
+			}, {
+				store: 'Apple Books',
+				href: 'https://books.apple.com/no/book/ai-dont-make-you-smarter/id6822691587',
+				market: 'Norway',
+				verifiedAt: '2026-10-14T21:16:00+00:00',
+			}, {
+				store: 'Apple Books',
+				href: 'https://books.apple.com/us/book/ai-dont-make-you-smarter/id6822691587',
+				market: 'United States',
+				verifiedAt: '2026-10-15T07:30:00+00:00',
+			}, {
+				store: 'Apple Books',
+				href: 'https://books.apple.com/gb/book/ai-dont-make-you-smarter/id6822691587',
+				market: 'United Kingdom',
+				verifiedAt: '2026-10-15T07:30:00+00:00',
+			}, {
+				store: 'Apple Books',
+				href: 'https://books.apple.com/de/book/ai-dont-make-you-smarter/id6822691587',
+				market: 'Germany',
+				verifiedAt: '2026-10-15T07:30:00+00:00',
+			}, {
+				store: 'BoD Bokshop',
+				href: 'https://bokshop.bod.se/ai-dont-make-you-smarter-magnus-oxenwaldt-9789168594279',
+				market: 'Sweden',
+				isbn: '9789168594279',
+				verifiedAt: '2026-10-14T21:16:00+00:00',
+			}],
 			audiobook: [{
 				store: 'Spotify',
 				href: 'https://open.spotify.com/show/4ZD3RuwsdIDe7fezfHHtlA',
-				edition: 'Narrated by a digital voice · not sold in Norway',
+				edition: 'Narrated by a digital voice · Norway availability unconfirmed',
 				verifiedAt: '2026-10-06T00:00:00+00:00',
 			}, {
-				store: 'Apple Books', note: 'In review' }, {
-				store: 'Google Play Books', note: 'In review' }, {
-				store: 'Kobo', note: 'In review' }, {
-				store: 'Storytel', note: 'In review' }],
+				store: 'Storytel',
+				href: 'https://www.storytel.com/se/books/ai-don-t-make-you-smarter-the-partnership-does-15434767',
+				market: 'Sweden',
+				edition: 'Narrated by a digital voice',
+				isbn: '6610001451141',
+				verifiedAt: '2026-10-14T07:27:57.966Z',
+			}, {
+				store: 'Storytel',
+				href: 'https://www.storytel.com/no/books/ai-don-t-make-you-smarter-the-partnership-does-15434767',
+				market: 'Norway',
+				edition: 'Narrated by a digital voice',
+				isbn: '6610001451141',
+				verifiedAt: '2026-10-14T07:27:58.643Z',
+			}, {
+				store: 'Google Play Books',
+				href: 'https://play.google.com/store/audiobooks/details/Magnus_Oxenwaldt_AI_Don_t_Make_You_Smarter?id=AQAAAEBGCklKHM&gl=SE&hl=en',
+				market: 'Sweden',
+				edition: 'Narrated by a digital voice',
+				verifiedAt: '2026-10-15T07:30:00+00:00',
+			}, {
+				store: 'Google Play Books',
+				href: 'https://play.google.com/store/audiobooks/details/Magnus_Oxenwaldt_AI_Don_t_Make_You_Smarter?id=AQAAAEBGCklKHM&gl=NO&hl=en',
+				market: 'Norway',
+				edition: 'Narrated by a digital voice',
+				verifiedAt: '2026-10-15T07:30:00+00:00',
+			}, {
+				store: 'Additional audiobook stores', note: 'Availability not yet verified.' }],
 		},
-		// Shown in place of the neutral text for a format with no link yet.
-		pending: { ebook: 'Ebook coming soon.' },
 		companions: ['partnership'],
 	},
 ];
