@@ -123,6 +123,8 @@ export const APPS = [
 		// Static expo-router export from the app repo HEAD, Supabase public env only (no analytics or
 		// purchase keys); served from public/togaf10/app/, deep links via the vercel.json rewrite.
 		webApp: '/togaf10/app/',
+		// The web build opens on sign-up against the app's Supabase; the copy must not promise "no account".
+		webAppAccount: true,
 		extraLinks: [['Open the web app', '/togaf10/app/']],
 		name: 'TOGAF 10 Practice',
 		tagline: 'Pass TOGAF 10. On your iPhone, in the gaps in your day.',
@@ -190,6 +192,8 @@ export const APPS = [
 		// rewrite in vercel.json — client-side routing plus a host that 404s extensionless
 		// URLs means a hard refresh on /azureai/app/session would otherwise die.
 		webApp: '/azureai/app/',
+		// The web build opens on sign-up against the app's Supabase; the copy must not promise "no account".
+		webAppAccount: true,
 		extraLinks: [['Open the web app', '/azureai/app/']],
 		accent: '#3FA9F5',
 		accent2: '#8FD14F',
@@ -403,6 +407,8 @@ export const APPS = [
 		// Static expo-router export from the app repo HEAD, Supabase public env only (no analytics or
 		// purchase keys); served from public/pmp/app/, deep links via the vercel.json rewrite.
 		webApp: '/pmp/app/',
+		// The web build opens on sign-up against the app's Supabase; the copy must not promise "no account".
+		webAppAccount: true,
 		extraLinks: [['Open the web app', '/pmp/app/']],
 		name: 'PMP Exam Practice',
 		tagline: 'Pass the PMP. In the gaps in your day.',

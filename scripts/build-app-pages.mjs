@@ -307,7 +307,7 @@ function ctaBlock(app) {
       <div class="cta">
         <a class="btn btn-primary" href="${app.webApp}">Use it in your browser</a>
         ${secondary}
-        <span class="cta-note">No install, no account to start &middot; ${esc(state.label)} on iPhone</span>
+        <span class="cta-note">${app.webAppAccount ? 'No install &middot; free account' : 'No install, no account to start'} &middot; ${esc(state.label)} on iPhone</span>
       </div>`;
 	}
 
@@ -486,9 +486,9 @@ ${
 		? `<section>
   <div class="wrap narrow">
     <p class="kicker">No install required</p>
-    <h2>The whole thing runs in your browser</h2>
+    <h2>${app.webAppAccount ? 'The practice runs in your browser' : 'The whole thing runs in your browser'}</h2>
     <p class="section-intro">
-      Same app, same content, same session — just on a keyboard instead of a phone.
+      ${app.webAppAccount ? 'Same app and same content, after a free sign-up that also works in the iPhone app' : 'Same app, same content, same session'} — just on a keyboard instead of a phone.
       Open it, work through a track, and decide whether it is worth having in your
       pocket. Nothing to download and nothing to uninstall if the answer is no.
     </p>
