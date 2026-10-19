@@ -245,6 +245,27 @@ export const BOOKS = [
 				edition: 'BoD edition · 238 pages',
 				isbn: '9789181501575',
 				verifiedAt: '2026-10-06T15:05:00+00:00',
+			}, {
+				store: 'Bokus',
+				href: 'https://www.bokus.com/bok/9789181501575/ai-dont-make-you-smarter-the-partnership-does',
+				market: 'Sweden',
+				edition: 'BoD edition · 238 pages',
+				isbn: '9789181501575',
+				verifiedAt: '2026-10-18T22:48:00+00:00',
+			}, {
+				store: 'Akademibokhandeln',
+				href: 'https://www.akademibokhandeln.se/bok/ai-dont-make-you-smarter-the-partnership-does/9789181501575',
+				market: 'Sweden',
+				edition: 'BoD edition · 238 pages',
+				isbn: '9789181501575',
+				verifiedAt: '2026-10-18T22:48:00+00:00',
+			}, {
+				store: 'Adlibris',
+				href: 'https://www.adlibris.com/sv/bok/ai-dont-make-you-smarter-the-partnership-does-9789181501575',
+				market: 'Sweden',
+				edition: 'BoD edition · 238 pages',
+				isbn: '9789181501575',
+				verifiedAt: '2026-10-18T22:48:00+00:00',
 			}],
 			hardcover: [{
 				store: 'Amazon',
@@ -288,6 +309,18 @@ export const BOOKS = [
 				market: 'Sweden',
 				isbn: '9789168594279',
 				verifiedAt: '2026-10-14T21:16:00+00:00',
+			}, {
+				store: 'Bokus',
+				href: 'https://www.bokus.com/bok/9789168594279/ai-dont-make-you-smarter-the-partnership-does',
+				market: 'Sweden',
+				isbn: '9789168594279',
+				verifiedAt: '2026-10-18T22:48:00+00:00',
+			}, {
+				store: 'Adlibris',
+				href: 'https://www.adlibris.com/sv/bok/ai-dont-make-you-smarter-the-partnership-does-9789168594279',
+				market: 'Sweden',
+				isbn: '9789168594279',
+				verifiedAt: '2026-10-18T22:48:00+00:00',
 			}],
 			audiobook: [{
 				store: 'Spotify',
