@@ -305,9 +305,9 @@ function ctaBlock(app) {
 				: `<a class="btn btn-ghost" href="mailto:${OWNER.email}?subject=${encodeURIComponent(`${app.name} — tell me when it launches`)}">Tell me when the iPhone app lands</a>`;
 		return `
       <div class="cta">
-        <a class="btn btn-primary" href="${app.webApp}">Use it in your browser</a>
+        <a class="btn btn-primary" href="${app.webApp}">${app.webTool ? esc(app.webTool.cta) : 'Use it in your browser'}</a>
         ${secondary}
-        <span class="cta-note">${app.webAppAccount ? 'No install &middot; free account' : 'No install, no account to start'} &middot; ${esc(state.label)} on iPhone</span>
+        <span class="cta-note">${app.webTool ? 'Free &middot; runs in your browser' : app.webAppAccount ? 'No install &middot; free account' : 'No install, no account to start'} &middot; ${esc(state.label)} on iPhone</span>
       </div>`;
 	}
 
@@ -482,7 +482,21 @@ ${
 }
 
 ${
-	app.webApp
+	app.webTool
+		? `<section>
+  <div class="wrap narrow">
+    <p class="kicker">Free in your browser</p>
+    <h2>${esc(app.webTool.h2)}</h2>
+    <p class="section-intro">${esc(app.webTool.intro)}</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="${app.webApp}">${esc(app.webTool.cta)}</a>
+    </div>
+    <p class="sub">${esc(app.webTool.sub)}</p>
+  </div>
+</section>
+
+`
+		: app.webApp
 		? `<section>
   <div class="wrap narrow">
     <p class="kicker">No install required</p>

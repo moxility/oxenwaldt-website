@@ -80,6 +80,15 @@ export const APPS = [
 		version: '1.1',
 		minOs: '26.0', // itunes lookup minimumOsVersion, 2026-09-28
 		generated: true,
+		webApp: '/boardmemo/app/',
+		// A hand-built tool, not the app: the drafting needs Apple Intelligence on the phone.
+		webTool: {
+			cta: 'Try the free memo builder',
+			h2: 'A board memo builder, free in your browser',
+			intro: 'The same six templates and four audiences as the app, with a board-tone check that flags hedging, vague numbers and buried points as you type. You write each section yourself; nothing you type leaves the browser.',
+			sub: 'The iPhone app does the writing: paste or dictate rough notes and it drafts the memo in this structure, on the device.',
+		},
+		extraLinks: [['Memo builder', '/boardmemo/app/']],
 		accent: '#C9A227',
 		accent2: '#6FA8FF',
 		glyph: 'M28,30 H72 V44 H28 Z M28,52 H72 V58 H28 Z M28,64 H58 V70 H28 Z',
