@@ -87,6 +87,13 @@ export const BOOKS = [
 				edition: 'KDP edition',
 				isbn: '9798177582245',
 				verifiedAt: '2026-10-15T07:30:00+00:00',
+			}, {
+				store: 'Amazon',
+				href: 'https://www.amazon.co.uk/dp/B0HMZCBMSY',
+				market: 'United Kingdom',
+				edition: 'KDP edition',
+				isbn: '9798177582245',
+				verifiedAt: '2026-10-21T08:10:49+00:00',
 			}],
 			hardcover: [{
 				store: 'Amazon',
