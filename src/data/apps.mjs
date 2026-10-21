@@ -404,7 +404,13 @@ export const APPS = [
 		],
 		// Optional email sign-in for the public leaderboard; the save stays on the device.
 		privacy: 'account-leaderboard',
-		pricing: [{ name: 'Free', amount: 'Free', per: 'the full campaign', pro: true, points: ['The complete twelve-week campaign', 'All eight scoring dimensions', 'On-device characters', 'No ads'] }],
+		pricing: [{ name: 'Free', amount: 'Free', per: 'the full campaign', pro: true, points: ['The complete twelve-week campaign', 'All eight scoring dimensions', 'On-device characters', 'No ads', 'Optional advisory coins, never needed to finish'] }],
+		// One-off consumables through RevenueCat (moxapps game-aidfs lib/game/purchases.ts), not a
+		// subscription. The paywall links to /aidfsgame/terms.html and privacy.html, so both name them.
+		consumables: {
+			unit: 'advisory coins',
+			packs: [['Short retainer', 10], ['Standing retainer', 30], ['Full engagement', 100]],
+		},
 		faq: [
 			['Do I need to have read the book?', 'No. The game tells its own story. Readers will recognise Norvik and Elena; everyone else just plays.'],
 			['Is this the same as the AI Don\u2019t Fix Stupidity app?', 'No — that one is the book companion with the chapters, assessment and ninety-day plan. This is the simulation. They share a world, not a codebase.'],

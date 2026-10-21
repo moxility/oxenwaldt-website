@@ -784,6 +784,11 @@ function privacyBody(app) {
 <p>Subscriptions are processed by Apple via StoreKit. Apple shares minimal information with us through <strong>RevenueCat, Inc.</strong>: that you have an active subscription and which tier. We do not see your Apple ID, your payment details or your billing address. See <a href="https://www.revenuecat.com/privacy">RevenueCat&rsquo;s privacy policy</a>. Manage or cancel your subscription in your iPhone&rsquo;s Settings &rsaquo; Apple Account &rsaquo; Subscriptions. Deleting your data in the App does not cancel your subscription, because only Apple can do that.</p>`);
 	}
 
+	if (app.consumables) {
+		parts.push(`<h2>Purchases</h2>
+<p>${esc(app.consumables.unit[0].toUpperCase() + app.consumables.unit.slice(1))} are sold through Apple&rsquo;s App Store. Apple processes the payment and passes the purchase to us through <strong>RevenueCat, Inc.</strong>, which records which pack was bought and when against a random identifier the App creates. That identifier is not linked to your email address or your leaderboard account. We do not see your Apple ID, your payment details or your billing address. See <a href="https://www.revenuecat.com/privacy">RevenueCat&rsquo;s privacy policy</a>. Your coin balance is stored on your iPhone.</p>`);
+	}
+
 	parts.push(`<h2>Children</h2>
 <p>The App is a professional tool and is not directed at children. We do not knowingly collect information from anyone under 13.</p>
 <h2>Changes to this policy</h2>
@@ -837,6 +842,18 @@ function termsBody(app) {
 </ul>
 <h2>Refunds</h2>
 <p>Purchases are handled by Apple, so refunds are Apple&rsquo;s to give. Request one at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>. We cannot issue refunds directly.</p>`);
+	} else if (app.consumables) {
+		const c = app.consumables;
+		parts.push(`<h2>Price and in-app purchases</h2>
+<p>${esc(app.name)} is free to download and play, and nothing in it is behind a payment. You can optionally buy ${esc(c.unit)} for extra help during a run:</p>
+<ul>
+  ${c.packs.map(([name, n]) => `<li><strong>${esc(name)}</strong> — ${n} ${esc(c.unit)}.</li>`).join('\n  ')}
+  <li>Prices are shown in the App Store in your currency before you confirm.</li>
+  <li>Payment is charged to your Apple ID at confirmation of purchase. These are one-off purchases, not a subscription.</li>
+  <li>${esc(c.unit[0].toUpperCase() + c.unit.slice(1))} are consumable: they are used up when you spend them, and they cannot be restored on another device or after you delete the App.</li>
+</ul>
+<h2>Refunds</h2>
+<p>Purchases are handled by Apple, so refunds are Apple&rsquo;s to give. Request one at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>. We cannot issue refunds directly. If a purchase went through but the coins did not arrive, email us and we will put it right.</p>`);
 	} else {
 		parts.push(`<h2>Price</h2>
 <p>${esc(app.name)} is currently offered free of charge. If that ever changes, existing functionality you already have will not be taken away without notice.</p>`);
