@@ -1,12 +1,8 @@
 ---
 title: 'A Dive into the Future: My First Experience with GPT-4'
-description: 'A Dive into the Future: My First Experience with GPT-4 GPT-4 in my hands…I don’t think I will sleep much tonight! **Introduction** As an AI enthusiast, I was beyond excited when Op…'
+description: 'GPT-4 in my hands…I don’t think I will sleep much tonight! Introduction As an AI enthusiast, I was beyond excited when OpenAI announced the release of GPT-4, the newest iteration…'
 pubDate: 2023-03-14
 ---
-A Dive into the Future: My First Experience with GPT-4 
-
- 
- 
 GPT-4 in my hands…I don’t think I will sleep much tonight!
 
 **Introduction**
@@ -35,22 +31,5 @@ My experience with GPT-4 has been nothing short of remarkable. Its conversationa
 
 #Mox #gpt4
 
-### Share this:
-
-- [Twitter](http://web.archive.org/web/20230328215814/https://oxenwaldt.com/2023/03/14/a-dive-into-the-future-my-first-experience-with-gpt-4/?share=twitter)
-- [Facebook](http://web.archive.org/web/20230328215814/https://oxenwaldt.com/2023/03/14/a-dive-into-the-future-my-first-experience-with-gpt-4/?share=facebook)
-- 
-
-### Like this:
-
-Like Loading...
-
- 
- 
-
- 
- 
- Posted on [March 14, 2023](http://web.archive.org/web/20230328215814/https://oxenwaldt.com/2023/03/14/a-dive-into-the-future-my-first-experience-with-gpt-4/)Author [Magnus Oxenwaldt](http://web.archive.org/web/20230328215814/https://oxenwaldt.com/author/magnus248a42c4e5/)Categories [gpt4](http://web.archive.org/web/20230328215814/https://oxenwaldt.com/category/gpt4/)Tags [ChatGPT](http://web.archive.org/web/20230328215814/https://oxenwaldt.com/tag/chatgpt/), [GPT-3](http://web.archive.org/web/20230328215814/https://oxenwaldt.com/tag/gpt-3/), [gpt-4](http://web.archive.org/web/20230328215814/https://oxenwaldt.com/tag/gpt-4/)
-
 ---
-*Originally published on [oxenwaldt.com](https://oxenwaldt.com/2023/03/14/a-dive-into-the-future-my-first-experience-with-gpt-4/) on 2023-03-14* (recovered from web archive).
+*Originally published on oxenwaldt.com on 2023-03-14. [Archived copy](https://web.archive.org/web/20230328215814/https://oxenwaldt.com/2023/03/14/a-dive-into-the-future-my-first-experience-with-gpt-4/).*

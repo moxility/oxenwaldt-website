@@ -1,24 +1,19 @@
 ---
 title: 'One customer journey – One Solution – Thousands of connectors.'
-description: 'One customer journey – One Solution – Thousands of connectors. **Most Connectors win!** Microsoft announced recently that they surpassed 1000 connectors. This might not mean much t…'
+description: 'Most Connectors win! Microsoft announced recently that they surpassed 1000 connectors. This might not mean much to many, but successful digital transformation projects are…'
 pubDate: 2023-02-03
 ---
-One customer journey – One Solution – Thousands of connectors. 
-
- 
- 
-
 **Most Connectors win!**
 
 Microsoft announced recently that they surpassed 1000 connectors. This might not mean much to many, but successful digital transformation projects are oftentimes riddled with non-working integrations, especially during transitional architectures. To have access to vendor-supported cross-application integration connectors is oftentimes not only a selling point long-term but also what is required to meet the demand of time to market. No one around today wants to invest in their own bespoke integrations unless it is necessary.
 
-Dynamics 365 and the rest of the Microsoft Application stack connect today to any known application. Either by an application-specific connector or via a more generic connector. 
+Dynamics 365 and the rest of the Microsoft Application stack connect today to any known application. Either by an application-specific connector or via a more generic connector.
 
 What is a connector?
 
-There are heaps and heaps again of different types of connectors. But within Microsoft, we commonly refer to the Azure or power platform connectors. 
+There are heaps and heaps again of different types of connectors. But within Microsoft, we commonly refer to the Azure or power platform connectors.
 
-The integration of Microsoft Dynamics 365 with connectors provides businesses with a powerful platform to automate their business processes, streamline their workflows, and enhance their overall productivity. The combination of Dynamics 365 and connectors allows businesses to seamlessly integrate their cloud-based and on-premise applications and enables data exchange between these systems in real time. 
+The integration of Microsoft Dynamics 365 with connectors provides businesses with a powerful platform to automate their business processes, streamline their workflows, and enhance their overall productivity. The combination of Dynamics 365 and connectors allows businesses to seamlessly integrate their cloud-based and on-premise applications and enables data exchange between these systems in real time.
 
 What are Azure Connectors?
 
@@ -38,7 +33,7 @@ What are the benefits of using Azure Connectors with Dynamics 365?
 
 - **Customizable Workflows**: Azure Connectors allow businesses to automate workflows, streamline processes, and enhance the overall efficiency of their organization. The connectors can be configured to meet the specific needs of each business, providing a tailored solution optimized for their unique requirements.
 
-- **Enterprise Support:** Whenever you need a supporting hand – Microsoft has 24/7 support for all connectors. 
+- **Enterprise Support:** Whenever you need a supporting hand – Microsoft has 24/7 support for all connectors.
 
 - **Monitoring**: Built-in monitoring is a click away and with no extra costs. Get alerts and track trends in the usage of your connectors.
 
@@ -50,22 +45,5 @@ In conclusion, integrating Microsoft Dynamics 365 with Azure Connectors gives bu
 
 Become an expert using these connectors, and you will be a valuable resource going forward in any size digital transformation project!
 
-### Share this:
-
-- [Twitter](http://web.archive.org/web/20230328214541/https://oxenwaldt.com/2023/02/03/one-customer-journey-one-solution-thousands-of-connectors/?share=twitter)
-- [Facebook](http://web.archive.org/web/20230328214541/https://oxenwaldt.com/2023/02/03/one-customer-journey-one-solution-thousands-of-connectors/?share=facebook)
-- 
-
-### Like this:
-
-Like Loading...
-
- 
- 
-
- 
- 
- Posted on [February 3, 2023February 3, 2023](http://web.archive.org/web/20230328214541/https://oxenwaldt.com/2023/02/03/one-customer-journey-one-solution-thousands-of-connectors/)Author [Magnus Oxenwaldt](http://web.archive.org/web/20230328214541/https://oxenwaldt.com/author/magnus248a42c4e5/)Categories [Uncategorized](http://web.archive.org/web/20230328214541/https://oxenwaldt.com/category/uncategorized/)
-
 ---
-*Originally published on [oxenwaldt.com](https://oxenwaldt.com/2023/02/03/one-customer-journey-one-solution-thousands-of-connectors/) on 2023-02-03* (recovered from web archive).
+*Originally published on oxenwaldt.com on 2023-02-03. [Archived copy](https://web.archive.org/web/20230328214541/https://oxenwaldt.com/2023/02/03/one-customer-journey-one-solution-thousands-of-connectors/).*

@@ -1,13 +1,8 @@
 ---
 title: '‘DevOps’ + ‘ChatGPT/AI’  == ‘TRUE’'
-description: '‘DevOps’ + ‘ChatGPT/AI’ == ‘TRUE’ OpenAI’s GPT models are a powerful tool that can be used in many different applications. But one of the areas where it made the most sense to me w…'
+description: 'OpenAI’s GPT models are a powerful tool that can be used in many different applications. But one of the areas where it made the most sense to me was within the DevOps platform…'
 pubDate: 2023-03-01
 ---
-‘DevOps’ + ‘ChatGPT/AI’ == ‘TRUE’ 
-
- 
- 
-
 OpenAI’s GPT models are a powerful tool that can be used in many different applications. But one of the areas where it made the most sense to me was within the DevOps platform. For those who doesn’t know what DevOps is – it can shortly be defined as a combination of software development and IT operations that aims to automate and streamline the software delivery process.
 
 In this blog post, we will explore how to exploit OpenAI GPT models within DevOps to improve the software development process.
@@ -70,22 +65,5 @@ OpenAI GPT models are a powerful tool that can be exploited within DevOps to imp
 
 If you have other cool ideas on using GPT-3 within your DevOps process, please let me know!
 
-### Share this:
-
-- [Twitter](http://web.archive.org/web/20230328203342/https://oxenwaldt.com/2023/03/01/devops-chatgpt-ai-true/?share=twitter)
-- [Facebook](http://web.archive.org/web/20230328203342/https://oxenwaldt.com/2023/03/01/devops-chatgpt-ai-true/?share=facebook)
-- 
-
-### Like this:
-
-Like Loading...
-
- 
- 
-
- 
- 
- Posted on [March 1, 2023](http://web.archive.org/web/20230328203342/https://oxenwaldt.com/2023/03/01/devops-chatgpt-ai-true/)Author [Magnus Oxenwaldt](http://web.archive.org/web/20230328203342/https://oxenwaldt.com/author/magnus248a42c4e5/)Categories [Devops](http://web.archive.org/web/20230328203342/https://oxenwaldt.com/category/devops/), [Uncategorized](http://web.archive.org/web/20230328203342/https://oxenwaldt.com/category/uncategorized/)Tags [Azure](http://web.archive.org/web/20230328203342/https://oxenwaldt.com/tag/azure/), [ChatGPT](http://web.archive.org/web/20230328203342/https://oxenwaldt.com/tag/chatgpt/), [CI/CD](http://web.archive.org/web/20230328203342/https://oxenwaldt.com/tag/ci-cd/), [Devops](http://web.archive.org/web/20230328203342/https://oxenwaldt.com/tag/devops/), [Dynamics 365](http://web.archive.org/web/20230328203342/https://oxenwaldt.com/tag/dynamics-365/), [GPT-3](http://web.archive.org/web/20230328203342/https://oxenwaldt.com/tag/gpt-3/)
-
 ---
-*Originally published on [oxenwaldt.com](https://oxenwaldt.com/2023/03/01/devops-chatgpt-ai-true/) on 2023-03-01* (recovered from web archive).
+*Originally published on oxenwaldt.com on 2023-03-01. [Archived copy](https://web.archive.org/web/20230328203342/https://oxenwaldt.com/2023/03/01/devops-chatgpt-ai-true/).*
