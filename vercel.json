@@ -1,5 +1,82 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/2022/01/18/in-devops-we-trust{/}?",
+      "destination": "/blog/2022-01-18-in-devops-we-trust/",
+      "permanent": true
+    },
+    {
+      "source": "/2022/04/28/dynamics-365-ce-99-9-enterprise-support{/}?",
+      "destination": "/blog/2022-04-28-dynamics-365-ce-99-9-enterprise-support/",
+      "permanent": true
+    },
+    {
+      "source": "/2022/04/29/d365-ce-fo-large-transactional-volumes{/}?",
+      "destination": "/blog/2022-04-29-d365-ce-fo-large-transactional-volumes/",
+      "permanent": true
+    },
+    {
+      "source": "/2022/05/21/a-morning-like-any-other-morning{/}?",
+      "destination": "/blog/2022-05-21-a-morning-like-any-other-morning/",
+      "permanent": true
+    },
+    {
+      "source": "/2023/02/03/one-customer-journey-one-solution-thousands-of-connectors{/}?",
+      "destination": "/blog/2023-02-03-one-customer-journey-one-solution-thousands-of-connectors/",
+      "permanent": true
+    },
+    {
+      "source": "/2023/02/07/r-i-p-lcs-long-live-ppac{/}?",
+      "destination": "/blog/2023-02-07-r-i-p-lcs-long-live-ppac/",
+      "permanent": true
+    },
+    {
+      "source": "/2023/02/11/chatgpt-plus-turbo-mode{/}?",
+      "destination": "/blog/2023-02-11-chatgpt-plus-turbo-mode/",
+      "permanent": true
+    },
+    {
+      "source": "/2023/02/25/coding-viagra-for-oldtimers{/}?",
+      "destination": "/blog/2023-02-25-coding-viagra-for-oldtimers/",
+      "permanent": true
+    },
+    {
+      "source": "/2023/03/01/devops-chatgpt-ai-true{/}?",
+      "destination": "/blog/2023-03-01-devops-chatgpt-ai-true/",
+      "permanent": true
+    },
+    {
+      "source": "/2023/03/13/chatgpt-monitored-microsoft-teams-chats{/}?",
+      "destination": "/blog/2023-03-13-chatgpt-monitored-microsoft-teams-chats/",
+      "permanent": true
+    },
+    {
+      "source": "/2023/03/14/a-dive-into-the-future-my-first-experience-with-gpt-4{/}?",
+      "destination": "/blog/2023-03-14-a-dive-into-the-future-my-first-experience-with-gpt-4/",
+      "permanent": true
+    },
+    {
+      "source": "/author/:path*{/}?",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/category/:path*{/}?",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/:path*{/}?",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/feed{/}?",
+      "destination": "/rss.xml",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/azureai/app/:path*",
