@@ -286,6 +286,21 @@ export const BOOKS = [
 				verifiedAt: '2026-10-06T15:05:00+00:00',
 			}],
 			ebook: [{
+				store: 'Amazon Kindle',
+				href: 'https://www.amazon.com/dp/B0HN2BFQPR',
+				market: 'United States',
+				verifiedAt: '2026-10-23T08:05:00+00:00',
+			}, {
+				store: 'Amazon Kindle',
+				href: 'https://www.amazon.co.uk/dp/B0HN2BFQPR',
+				market: 'United Kingdom',
+				verifiedAt: '2026-10-23T08:05:00+00:00',
+			}, {
+				store: 'Amazon Kindle',
+				href: 'https://www.amazon.de/dp/B0HN2BFQPR',
+				market: 'Germany',
+				verifiedAt: '2026-10-23T08:05:00+00:00',
+			}, {
 				store: 'Apple Books',
 				href: 'https://books.apple.com/se/book/ai-dont-make-you-smarter/id6822691587',
 				market: 'Sweden',
