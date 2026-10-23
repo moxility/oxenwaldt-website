@@ -108,19 +108,19 @@ export const BOOKS = [
 			}],
 			ebook: [{
 				store: 'Amazon Kindle',
-				href: 'https://www.amazon.com/dp/B0HKV8Z7D4',
+				href: 'https://www.amazon.com/dp/B0HNWNR4GF',
 				market: 'United States',
-				verifiedAt: '2026-10-06T15:05:00+00:00',
+				verifiedAt: '2026-10-23T07:52:00+00:00',
 			}, {
 				store: 'Amazon Kindle',
-				href: 'https://www.amazon.co.uk/dp/B0HKV8Z7D4',
+				href: 'https://www.amazon.co.uk/dp/B0HNWNR4GF',
 				market: 'United Kingdom',
-				verifiedAt: '2026-10-06T15:05:00+00:00',
+				verifiedAt: '2026-10-23T07:52:00+00:00',
 			}, {
 				store: 'Amazon Kindle',
-				href: 'https://www.amazon.de/dp/B0HKV8Z7D4',
+				href: 'https://www.amazon.de/dp/B0HNWNR4GF',
 				market: 'Germany',
-				verifiedAt: '2026-10-06T15:05:00+00:00',
+				verifiedAt: '2026-10-23T07:52:00+00:00',
 			}, {
 				store: 'Apple Books',
 				href: 'https://books.apple.com/se/book/ai-dont-fix-stupidity/id6815501318',
@@ -310,6 +310,12 @@ export const BOOKS = [
 				href: 'https://books.apple.com/de/book/ai-dont-make-you-smarter/id6822691587',
 				market: 'Germany',
 				verifiedAt: '2026-10-15T07:30:00+00:00',
+			}, {
+				store: 'Google Play Books',
+				href: 'https://play.google.com/store/books/details/Magnus_Oxenwaldt_AI_Don_t_Make_You_Smarter?id=Z_UaEgAAQBAJ&gl=SE&hl=en',
+				market: 'Sweden',
+				isbn: '9789168594279',
+				verifiedAt: '2026-10-21T22:25:37.157839+00:00',
 			}, {
 				store: 'BoD Bokshop',
 				href: 'https://bokshop.bod.se/ai-dont-make-you-smarter-magnus-oxenwaldt-9789168594279',
