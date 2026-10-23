@@ -10,7 +10,8 @@
     "apps:build": "node scripts/build-app-pages.mjs",
     "apps:check-links": "node scripts/check-links.mjs",
     "apps:check-store": "node scripts/check-store-links.mjs",
-    "episodes:sync": "python scripts/sync-episodes.py"
+    "episodes:sync": "python scripts/sync-episodes.py",
+    "newsletter:sync": "node scripts/sync-newsletter.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.10",

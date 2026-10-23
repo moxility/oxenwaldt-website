@@ -1,0 +1,167 @@
+{
+	"source": "future-bytes-governance-portal data/linkedin-newsletter.json",
+	"syncedAt": "2026-10-23T14:46:06.343Z",
+	"editions": [
+		{
+			"episodeNumber": 81,
+			"headline": "Access is not permission",
+			"url": "https://www.linkedin.com/pulse/access-permission-columbusglobal-5tswe",
+			"publishedOn": "October 20, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/2yyVzKGuSjrOaCGbMqdbwV"
+		},
+		{
+			"episodeNumber": 80,
+			"headline": "Open, but not yet: Europe's AI catch-up and the agents nobody could name",
+			"url": "https://www.linkedin.com/pulse/open-yet-europes-ai-catch-up-agents-nobody-could-name-xhvte",
+			"publishedOn": "October 16, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/6sa3RU3HIUMuLslPZ2eLX9"
+		},
+		{
+			"episodeNumber": 78,
+			"headline": "It works, and it's not under control",
+			"url": "https://www.linkedin.com/pulse/works-its-under-control-columbusglobal-pzt7e",
+			"publishedOn": "September 30, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/0kzjnrj3mHehfQlJCVUfAg"
+		},
+		{
+			"episodeNumber": 76,
+			"headline": "The AI pacing debate & the number nobody can measure",
+			"url": "https://www.linkedin.com/pulse/ai-pacing-debate-number-nobody-can-measure-columbusglobal-udnle",
+			"publishedOn": "September 23, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/5MjoDw7bTz62YPm9qrtlqr"
+		},
+		{
+			"episodeNumber": 75,
+			"headline": "It works, and it's not under control",
+			"url": "https://www.linkedin.com/pulse/works-its-under-control-columbusglobal-wn6ve",
+			"publishedOn": "September 16, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/0XhJqw0MfC5uDwVZn2Xe5p"
+		},
+		{
+			"episodeNumber": 74,
+			"headline": "The shortcuts broke",
+			"url": "https://www.linkedin.com/pulse/shortcuts-broke-columbusglobal-xsmme",
+			"publishedOn": "September 9, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/4vrCVKV86gMUM5XY1DT1sS"
+		},
+		{
+			"episodeNumber": 72,
+			"headline": "Software isn't dying, it's being repriced",
+			"url": "https://www.linkedin.com/pulse/software-isnt-dying-its-being-repriced-columbusglobal-fpabe",
+			"publishedOn": "September 2, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/4YqQkEe955EcHOVUOc9CzQ"
+		},
+		{
+			"episodeNumber": 71,
+			"headline": "The agent got a wallet",
+			"url": "https://www.linkedin.com/pulse/agent-got-wallet-columbusglobal-hza3e",
+			"publishedOn": "August 26, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/6F7RL1Jacqm6mF6RTUY5m1"
+		},
+		{
+			"episodeNumber": 70,
+			"headline": "The escape hatch got smaller",
+			"url": "https://www.linkedin.com/pulse/escape-hatch-got-smaller-columbusglobal-2k1ce",
+			"publishedOn": "August 19, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/7ez0aKjnpfh4lFuD1hQQPt"
+		},
+		{
+			"episodeNumber": 67,
+			"headline": "The sandbox didn't hold",
+			"url": "https://www.linkedin.com/pulse/sandbox-didnt-hold-columbusglobal-gvlzf",
+			"publishedOn": "July 30, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/60mQWD5p9qmnSE2g4B4APy"
+		},
+		{
+			"episodeNumber": 66,
+			"headline": "The frontier just opened",
+			"url": "https://www.linkedin.com/pulse/frontier-just-opened-columbusglobal-hm6ce",
+			"publishedOn": "July 29, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/5V5ZhQBf2uMviC11GrX0yR"
+		},
+		{
+			"episodeNumber": 65,
+			"headline": "Stop betting on the model",
+			"url": "https://www.linkedin.com/pulse/stop-betting-model-columbusglobal-bpotf",
+			"publishedOn": "July 28, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/2JXPfr9orKORQG0eoRW7qE"
+		},
+		{
+			"episodeNumber": 64,
+			"headline": "Enterprise AI deployment & the Microsoft Frontier bet",
+			"url": "https://www.linkedin.com/pulse/enterprise-ai-deployment-microsoft-frontier-bet-columbusglobal-fjkue",
+			"publishedOn": "July 8, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/0eXCr5J8shrnkGUjOr2mVV"
+		},
+		{
+			"episodeNumber": 62,
+			"headline": "The AI gating regime",
+			"url": "https://www.linkedin.com/pulse/ai-gating-regime-columbusglobal-4uiie",
+			"publishedOn": "July 1, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/0H69UTsydXH51Q0V1jXzhn"
+		},
+		{
+			"episodeNumber": 61,
+			"headline": "Microsoft and Anthropic are now competitors",
+			"url": "https://www.linkedin.com/pulse/microsoft-anthropic-now-competitors-columbusglobal-ggu5e",
+			"publishedOn": "June 24, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/0qGOk7IJwrE6k6Lj3S69HP"
+		},
+		{
+			"episodeNumber": 60,
+			"headline": "AI sovereignty risk is now real",
+			"url": "https://www.linkedin.com/pulse/ai-sovereignty-risk-now-real-columbusglobal-dhbxe",
+			"publishedOn": "June 17, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/2NQ7tiyqCHYzAVRH7Zsrp4"
+		},
+		{
+			"episodeNumber": 59,
+			"headline": "The week Microsoft became a frontier lab",
+			"url": "https://www.linkedin.com/pulse/week-microsoft-became-frontier-lab-columbusglobal-jhuwe",
+			"publishedOn": "June 10, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/2LVdBxQ5xa7tFN13clUQIN"
+		},
+		{
+			"episodeNumber": 58,
+			"headline": "When AI runs your business, who’s responsible?",
+			"url": "https://www.linkedin.com/pulse/when-ai-runs-your-business-whos-responsible-columbusglobal-dujle",
+			"publishedOn": "June 5, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/2Pyis1nl8Vub9gV7X5HRpN"
+		},
+		{
+			"episodeNumber": 57,
+			"headline": "The week AI went from gated to global",
+			"url": "https://www.linkedin.com/pulse/week-ai-went-from-gated-global-columbusglobal-g0cre",
+			"publishedOn": "June 3, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/7xf3QDCP4pu7IKTtqKaj15"
+		},
+		{
+			"episodeNumber": 56,
+			"headline": "The week AI went from smarter to cheaper",
+			"url": "https://www.linkedin.com/pulse/week-ai-went-from-smarter-cheaper-columbusglobal-q7ope",
+			"publishedOn": "May 27, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/0DBbDLA5ffOlv1hozMq5Mr"
+		},
+		{
+			"episodeNumber": 55,
+			"headline": "Two AI timelines just became one",
+			"url": "https://www.linkedin.com/pulse/two-ai-timelines-just-became-one-columbusglobal-5m5xe",
+			"publishedOn": "May 20, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/2G92mu73ouGlDz0rgvSjtO"
+		},
+		{
+			"episodeNumber": 54,
+			"headline": "Enterprise AI infrastructure & the new vendor map",
+			"url": "https://www.linkedin.com/pulse/enterprise-ai-infrastructure-new-vendor-map-columbusglobal-ymmte",
+			"publishedOn": "May 13, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/2soeUXHRQqiwzpokOk5Ja7"
+		},
+		{
+			"episodeNumber": 53,
+			"headline": "Frontier AI: The gap becomes measurable",
+			"url": "https://www.linkedin.com/pulse/frontier-ai-gap-becomes-measurable-columbusglobal-saale",
+			"publishedOn": "May 6, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/0OknfcB5NMiBdl9JmKqz7B"
+		}
+	]
+}

@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import { NEWSLETTER_URL, PODCAST, SITE_TITLE } from '../consts';
+import newsletter from '../data/newsletter-editions.json';
 
 // The newsletter and the weekly AI News episode are the same stories. The LinkedIn
 // newsletter "Weekly AI news for business" (published from the Columbus page, and
@@ -16,6 +17,12 @@ const aiNews = (await getCollection('episodes'))
 	.sort((a, b) => b.data.episodeNumber - a.data.episodeNumber);
 const [latest, ...earlier] = aiNews;
 const recent = earlier.slice(0, 5);
+
+// Each week's LinkedIn article, joined by episode number (npm run newsletter:sync).
+// A week with no article (week 41 never went into the newsletter) keeps its episode.
+const editions = new Map(newsletter.editions.map((e) => [e.episodeNumber, e]));
+const edition = (ep) => editions.get(ep.data.episodeNumber);
+const listenUrl = (ep) => edition(ep)?.spotifyEpisodeUrl ?? ep.data.spotifyUrl ?? PODCAST.spotifyUrl;
 ---
 
 <!doctype html>
@@ -56,11 +63,16 @@ const recent = earlier.slice(0, 5);
 							<time><FormattedDate date={latest.data.pubDate} /></time>
 							<span>· #{latest.data.episodeNumber} · {latest.data.duration}</span>
 						</p>
-						<h3>{latest.data.title}</h3>
+						<h3>{edition(latest)?.headline ?? latest.data.title}</h3>
+						{edition(latest)?.headline && <p class="week-episode">{latest.data.title}</p>}
 						<p>{latest.data.description}</p>
 						<div class="week-links">
-							<a href={NEWSLETTER_URL} target="_blank" rel="noopener noreferrer" class="week-read">Read it on LinkedIn</a>
-							<a href={latest.data.spotifyUrl ?? PODCAST.spotifyUrl} target="_blank" rel="noopener noreferrer" class="week-listen">Listen on Spotify</a>
+							{edition(latest) ? (
+								<a href={edition(latest).url} target="_blank" rel="noopener noreferrer" class="week-read">Read it on LinkedIn</a>
+							) : (
+								<a href={NEWSLETTER_URL} target="_blank" rel="noopener noreferrer" class="week-read">The newsletter on LinkedIn</a>
+							)}
+							<a href={listenUrl(latest)} target="_blank" rel="noopener noreferrer" class="week-listen">Listen on Spotify</a>
 						</div>
 					</article>
 				</section>
@@ -93,11 +105,18 @@ const recent = earlier.slice(0, 5);
 					<div class="issues">
 						{recent.map((e) => (
 							<article class="issue">
-								<a href={e.data.spotifyUrl ?? PODCAST.spotifyUrl} target="_blank" rel="noopener noreferrer">
-									<time><FormattedDate date={e.data.pubDate} /></time>
-									<h3>{e.data.title}</h3>
-									<p>{e.data.description}</p>
-								</a>
+								<time><FormattedDate date={e.data.pubDate} /></time>
+								<h3>
+									<a href={edition(e)?.url ?? listenUrl(e)} target="_blank" rel="noopener noreferrer">
+										{edition(e)?.headline ?? e.data.title}
+									</a>
+								</h3>
+								{edition(e)?.headline && <p class="issue-episode">{e.data.title}</p>}
+								<p>{e.data.description}</p>
+								<p class="issue-links">
+									{edition(e) && <a href={edition(e).url} target="_blank" rel="noopener noreferrer">Read on LinkedIn</a>}
+									<a href={listenUrl(e)} target="_blank" rel="noopener noreferrer">Listen on Spotify</a>
+								</p>
 							</article>
 						))}
 					</div>
@@ -250,14 +269,8 @@ const recent = earlier.slice(0, 5);
 			.recent-issues { padding: 3rem 0; border-bottom: 1px solid var(--rule); }
 			.recent-issues h2 { font-size: 1.6rem; margin: 0 0 2rem; color: var(--ink); }
 			.issues { display: flex; flex-direction: column; }
-			.issue { border-bottom: 1px solid var(--rule); }
+			.issue { border-bottom: 1px solid var(--rule); padding: 1.25rem 0; }
 			.issue:last-child { border-bottom: none; }
-			.issue a {
-				display: block;
-				padding: 1.25rem 0;
-				text-decoration: none;
-				color: inherit;
-			}
 			.issue time {
 				font-size: 0.78rem;
 				color: var(--text-muted);
@@ -267,12 +280,23 @@ const recent = earlier.slice(0, 5);
 			}
 			.issue h3 {
 				font-size: 1.25rem;
-				color: var(--ink);
 				margin: 0.4rem 0 0.4rem;
-				transition: color 0.2s;
 			}
-			.issue a:hover h3 { color: var(--accent); }
+			.issue h3 a { color: var(--ink); text-decoration: none; transition: color 0.2s; }
+			.issue h3 a:hover { color: var(--accent); }
 			.issue p { color: var(--text-muted); font-size: 0.95rem; margin: 0; line-height: 1.55; }
+			.issue .issue-episode, .week-card .week-episode {
+				font-size: 0.85rem;
+				color: var(--text-muted);
+				margin: -0.2rem 0 0.5rem;
+			}
+			.issue-links {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.4rem 1.25rem;
+				margin-top: 0.6rem !important;
+			}
+			.issue-links a { font-size: 0.9rem; font-weight: 500; text-decoration: none; }
 
 			.closing-cta { padding: 4rem 0; text-align: center; }
 			.closing-cta h2 { font-size: 1.8rem; color: var(--ink); margin: 0 0 0.75rem; }
