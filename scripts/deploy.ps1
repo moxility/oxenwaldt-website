@@ -5,7 +5,7 @@
 #   .\scripts\deploy.ps1 -WhatIf    # build and check only, never deploys
 #
 # THE THING TO KNOW: `vercel --prod` uploads the WORKING TREE, not HEAD, and this
-# repo is not connected to GitHub — pushing to main deploys nothing. So whatever
+# repo is not connected to GitHub: pushing to main deploys nothing. So whatever
 # is on disk right now is what goes live, committed or not. That is why this
 # script warns on a dirty tree instead of silently shipping it.
 
@@ -25,13 +25,13 @@ function Fail($msg) { Write-Host $msg -ForegroundColor Red; exit 1 }
 $dirty = @(git status --porcelain)
 if ($dirty.Count -gt 0) {
     Write-Host ""
-    Write-Host "$($dirty.Count) uncommitted change(s) — these WILL go live:" -ForegroundColor Yellow
+    Write-Host "$($dirty.Count) uncommitted change(s). These WILL go live:" -ForegroundColor Yellow
     $dirty | Select-Object -First 15 | ForEach-Object { Write-Host "   $_" -ForegroundColor DarkYellow }
     if ($dirty.Count -gt 15) { Write-Host "   ... and $($dirty.Count - 15) more" -ForegroundColor DarkYellow }
     Write-Host "   Commit first if you want git to record what is in production." -ForegroundColor DarkYellow
     Write-Host ""
 } else {
-    Write-Host "Working tree clean — production will match HEAD." -ForegroundColor Green
+    Write-Host "Working tree clean, so production will match HEAD." -ForegroundColor Green
 }
 
 # --- build ------------------------------------------------------------------

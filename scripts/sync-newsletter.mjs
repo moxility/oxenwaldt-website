@@ -10,12 +10,18 @@
  * Usage:
  *     npm run newsletter:sync                 # read the portal's default file
  *     npm run newsletter:sync -- <path.json>  # read another copy
+ *     npm run newsletter:sync -- --additive   # unattended: new editions only
+ *
+ * The file is left untouched when the editions have not changed, so an unchanged
+ * sync never shows up as a diff. With --additive (the episode auto-publish uses
+ * it) the sync refuses, exit 3, if an edition already on the site would be
+ * removed or point somewhere else: that is a correction for a person to look at.
  *
  * The site links to each article and never carries its text: the text is
  * Columbus's, and copying it would put new material in front of marketing.
  */
 
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -24,7 +30,9 @@ const SOURCE_DEFAULT =
 const SITE_ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const TARGET = join(SITE_ROOT, 'src', 'data', 'newsletter-editions.json');
 
-const source = process.argv[2] ?? SOURCE_DEFAULT;
+const args = process.argv.slice(2);
+const additive = args.includes('--additive');
+const source = args.find((a) => !a.startsWith('--')) ?? process.env.NEWSLETTER_SOURCE ?? SOURCE_DEFAULT;
 const raw = JSON.parse(readFileSync(source, 'utf8'));
 const editions = Array.isArray(raw) ? raw : raw.editions;
 if (!Array.isArray(editions)) throw new Error(`${source}: no editions[] array`);
@@ -61,12 +69,31 @@ for (const e of editions) {
 	if (!held || when(row) < when(held)) byEpisode.set(n, row);
 }
 
+const fresh = [...byEpisode.values()].sort((a, b) => b.episodeNumber - a.episodeNumber);
+if (skipped.length) console.log(`Skipped ${skipped.length} without an episode number or article link:`, skipped);
+
+const current = existsSync(TARGET) ? JSON.parse(readFileSync(TARGET, 'utf8')).editions : [];
+if (JSON.stringify(current) === JSON.stringify(fresh)) {
+	console.log(`Unchanged: ${fresh.length} editions, newest #${fresh[0]?.episodeNumber}.`);
+	process.exit(0);
+}
+
+if (additive) {
+	const next = new Map(fresh.map((e) => [e.episodeNumber, e]));
+	const altered = current.filter((e) => JSON.stringify(next.get(e.episodeNumber)) !== JSON.stringify(e));
+	if (altered.length) {
+		console.log(`Refused (--additive): ${altered.length} edition(s) already on the site would be removed or changed:`);
+		for (const e of altered) console.log(`  #${e.episodeNumber}  ${e.url}  ->  ${next.get(e.episodeNumber)?.url ?? '(gone)'}`);
+		process.exit(3);
+	}
+}
+
 const out = {
 	source: 'future-bytes-governance-portal data/linkedin-newsletter.json',
 	syncedAt: new Date().toISOString(),
-	editions: [...byEpisode.values()].sort((a, b) => b.episodeNumber - a.episodeNumber),
+	editions: fresh,
 };
 writeFileSync(TARGET, JSON.stringify(out, null, '\t') + '\n');
-console.log(`Wrote ${out.editions.length} editions to src/data/newsletter-editions.json`);
-for (const e of out.editions) console.log(`  #${e.episodeNumber}  ${e.headline}  ${e.url}`);
-if (skipped.length) console.log(`Skipped ${skipped.length} without an episode number or article link:`, skipped);
+const known = new Set(current.map((e) => e.episodeNumber));
+console.log(`Wrote ${fresh.length} editions to src/data/newsletter-editions.json`);
+for (const e of fresh) console.log(`  ${known.has(e.episodeNumber) ? ' ' : '+'}#${e.episodeNumber}  ${e.headline}  ${e.url}`);
