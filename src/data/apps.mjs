@@ -252,6 +252,9 @@ export const APPS = [
 	{
 		slug: 'archimate',
 		name: 'ArchiMate 3.2 Practice',
+		webApp: '/archimate/app/',
+		webAppAccount: true,
+		extraLinks: [['Open the web app', '/archimate/app/']],
 		tagline: 'Learn the notation properly. Then pass the exam.',
 		category: 'Certification',
 		state: 'live',

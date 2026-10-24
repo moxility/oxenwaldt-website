@@ -79,6 +79,10 @@
   ],
   "rewrites": [
     {
+      "source": "/archimate/app/:path*",
+      "destination": "/archimate/app/index.html"
+    },
+    {
       "source": "/azureai/app/:path*",
       "destination": "/azureai/app/index.html"
     },
