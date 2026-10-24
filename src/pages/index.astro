@@ -3,7 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import NewsletterSubscribe from '../components/NewsletterSubscribe.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { SITE_DESCRIPTION, SITE_TITLE, HOME_META_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 
@@ -35,7 +35,7 @@ const appIcon = (app: { accent: string; glyph: string }) =>
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} pageType="profile" />
+		<BaseHead title={SITE_TITLE} description={HOME_META_DESCRIPTION} pageType="profile" />
 	</head>
 	<body>
 		<Header />

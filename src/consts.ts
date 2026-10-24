@@ -3,6 +3,9 @@
 
 export const SITE_TITLE = 'Magnus Oxenwaldt';
 export const SITE_DESCRIPTION = 'AI and digital transformation leader with nearly thirty years in technology leadership. Author of AI Don’t Fix Stupidity and AI Don’t Make You Smarter, host of the Future Bytes podcast. Practical insight on AI strategy and making technology deliver real business results.';
+// Search-snippet length (under 160) for the home and blog pages; SITE_DESCRIPTION stays the long bio.
+export const HOME_META_DESCRIPTION = 'Magnus Oxenwaldt on AI strategy and leadership. Author of AI Don’t Fix Stupidity and AI Don’t Make You Smarter, and host of the Future Bytes podcast.';
+export const BLOG_META_DESCRIPTION = 'Essays, weekly AI news and podcast notes from Magnus Oxenwaldt on AI strategy, leadership and making technology deliver real business results.';
 export const SITE_URL = 'https://www.oxenwaldt.com';
 
 // Identity graph for entity disambiguation in search engines and LLMs.

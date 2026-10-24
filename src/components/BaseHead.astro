@@ -29,6 +29,25 @@ const {
 	noindex = false,
 } = Astro.props;
 
+// Search results cut titles at about 60 characters and descriptions at about 160.
+// Posts imported from LinkedIn carry their opening sentence as both, so clamp at a
+// word boundary for the search snippet; og:title keeps the full text for sharing.
+const clampWords = (text: string, max: number) => {
+	const clean = text.replace(/\s+/g, ' ').trim();
+	if (clean.length <= max) return clean;
+	const cut = clean.slice(0, max - 1);
+	const space = cut.lastIndexOf(' ');
+	return `${(space > max * 0.6 ? cut.slice(0, space) : cut).replace(/[\s,;:.\-–—'"“‘(]+$/, '')}…`;
+};
+const metaDescription = clampWords(description.replace(/\s+\d+(\s+\d+)?\s+Comments?\s*$/i, ''), 158);
+const brandSuffix = ` | ${SITE_TITLE}`;
+const metaTitle =
+	title.length <= 65
+		? title
+		: pageType === 'article'
+			? `${clampWords(title.replace(/^["“]|["”]$/g, ''), 65 - brandSuffix.length)}${brandSuffix}`
+			: clampWords(title, 65);
+
 const ogImageSrc =
 	typeof image === 'string'
 		? image
@@ -158,9 +177,9 @@ if (pageType === 'article') {
 <meta name="google-site-verification" content="kq_r5z53LhplUUrA2rWtfwn3QQi-gMZsGqPzNKlCIzQ" />
 
 <!-- Primary Meta Tags -->
-<title>{title}</title>
-<meta name="title" content={title} />
-<meta name="description" content={description} />
+<title>{metaTitle}</title>
+<meta name="title" content={metaTitle} />
+<meta name="description" content={metaDescription} />
 {tags && <meta name="keywords" content={tags.join(', ')} />}
 
 <!-- Open Graph / Facebook -->
@@ -168,7 +187,7 @@ if (pageType === 'article') {
 <meta property="og:site_name" content={SITE_TITLE} />
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
+<meta property="og:description" content={metaDescription} />
 <meta property="og:image" content={ogImageURL} />
 <meta property="og:image:alt" content={title} />
 <meta property="og:locale" content="en_US" />
@@ -181,7 +200,7 @@ if (pageType === 'article') {
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
+<meta property="twitter:description" content={metaDescription} />
 <meta property="twitter:image" content={ogImageURL} />
 <meta property="twitter:creator" content="@magnusoxenwaldt" />
 
