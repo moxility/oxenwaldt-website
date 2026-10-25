@@ -57,7 +57,20 @@ const appTile = (app) =>
 	`<path fill="none" stroke="${app.accent}" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" d="${app.glyph}"/>` +
 	`</svg>`;
 
-function head(app, { title, description, pageUrl, jsonld }) {
+// Search results show about 65 title and 158 description characters, so those two
+// are cut at a word boundary; og:title keeps the full text for link previews.
+// Same rule as src/components/BaseHead.astro.
+function clampWords(text, max) {
+	const clean = String(text).replace(/\s+/g, ' ').trim();
+	if (clean.length <= max) return clean;
+	const cut = clean.slice(0, max - 1);
+	const space = cut.lastIndexOf(' ');
+	return `${(space > max * 0.6 ? cut.slice(0, space) : cut).replace(/[\s,;:.\-–—'"“‘(]+$/, '')}…`;
+}
+
+function head(app, { title: fullTitle, description: fullDescription, pageUrl, jsonld }) {
+	const title = clampWords(fullTitle, 65);
+	const description = clampWords(fullDescription, 158);
 	return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,7 +82,7 @@ function head(app, { title, description, pageUrl, jsonld }) {
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="${esc(app.name)}">
 <meta property="og:url" content="${OWNER.site}${pageUrl}">
-<meta property="og:title" content="${esc(title)}">
+<meta property="og:title" content="${esc(fullTitle)}">
 <meta property="og:description" content="${esc(description)}">
 <meta name="twitter:card" content="summary">${
 		app.unlisted ? '\n<meta name="robots" content="noindex, follow">' : ''
