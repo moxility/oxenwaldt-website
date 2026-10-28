@@ -16,6 +16,8 @@
  * sync never shows up as a diff. With --additive (the episode auto-publish uses
  * it) the sync refuses, exit 3, if an edition already on the site would be
  * removed or point somewhere else: that is a correction for a person to look at.
+ * A declared partial snapshot may omit older editions. Keep those existing rows
+ * unchanged; absence from an incomplete listing is not evidence of removal.
  *
  * The site links to each article and never carries its text: the text is
  * Columbus's, and copying it would put new material in front of marketing.
@@ -69,10 +71,20 @@ for (const e of editions) {
 	if (!held || when(row) < when(held)) byEpisode.set(n, row);
 }
 
-const fresh = [...byEpisode.values()].sort((a, b) => b.episodeNumber - a.episodeNumber);
+let fresh = [...byEpisode.values()].sort((a, b) => b.episodeNumber - a.episodeNumber);
 if (skipped.length) console.log(`Skipped ${skipped.length} without an episode number or article link:`, skipped);
 
 const current = existsSync(TARGET) ? JSON.parse(readFileSync(TARGET, 'utf8')).editions : [];
+const reportedTotal = raw?.newsletter?.editions;
+const partialSnapshot = Number.isInteger(reportedTotal) && editions.length > 0 && reportedTotal > editions.length;
+if (additive && partialSnapshot) {
+	// Retain only rows absent from the source itself. An observed URL with a
+	// missing/reassigned episode number must still reach the refusal below.
+	const observedUrls = new Set(editions.map((e) => String(e.url ?? '').split('?')[0]));
+	const retained = current.filter((e) => !byEpisode.has(e.episodeNumber) && !observedUrls.has(e.url));
+	fresh = [...fresh, ...retained].sort((a, b) => b.episodeNumber - a.episodeNumber);
+	if (retained.length) console.log(`Partial snapshot (${editions.length}/${reportedTotal}): retained ${retained.length} unobserved existing edition(s) unchanged.`);
+}
 if (JSON.stringify(current) === JSON.stringify(fresh)) {
 	console.log(`Unchanged: ${fresh.length} editions, newest #${fresh[0]?.episodeNumber}.`);
 	process.exit(0);
