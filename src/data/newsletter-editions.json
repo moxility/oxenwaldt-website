@@ -1,7 +1,14 @@
 {
 	"source": "future-bytes-governance-portal data/linkedin-newsletter.json",
-	"syncedAt": "2026-10-23T14:46:06.343Z",
+	"syncedAt": "2026-10-29T08:00:16.161Z",
 	"editions": [
+		{
+			"episodeNumber": 83,
+			"headline": "Capability is not enough",
+			"url": "https://www.linkedin.com/pulse/capability-enough-columbusglobal-tnpee",
+			"publishedOn": "October 27, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/7v5dvUQURxbNVO3l4R1pYq"
+		},
 		{
 			"episodeNumber": 81,
 			"headline": "Access is not permission",
