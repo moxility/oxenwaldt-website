@@ -90,6 +90,17 @@ const appIcon = (app: { accent: string; glyph: string }) =>
 						</a>
 					))}
 				</div>
+				{BOOKS.filter((book) => book.course).map((book) => (
+					<a href={book.course.href} class="course-chip" target="_blank" rel="noopener noreferrer"
+						aria-label={`${book.course.title}, video course on ${book.course.platform} (opens in a new tab)`}>
+						<span class="book-status">New course</span>
+						<span class="course-text">
+							<b>{book.course.title}</b>
+							<span class="book-sub" set:html={book.course.summary} />
+						</span>
+						<span class="course-go">On {book.course.platform}<span aria-hidden="true"> ↗</span></span>
+					</a>
+				))}
 			</div>
 		</section>
 
@@ -343,6 +354,32 @@ const appIcon = (app: { accent: string; glyph: string }) =>
 				line-height: 1.2;
 				margin: 0.35rem 0 0.2rem;
 			}
+			.course-chip {
+				display: flex;
+				gap: 1.25rem;
+				align-items: center;
+				margin-top: 1.25rem;
+				padding: 1rem 1.25rem;
+				background: var(--cream-soft);
+				border: 1px solid var(--rule);
+				border-radius: 12px;
+				text-decoration: none;
+				color: var(--text);
+				transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+			}
+			.course-chip:hover { border-color: var(--accent); box-shadow: var(--box-shadow-lg); transform: translateY(-2px); color: var(--text); }
+			.course-chip .course-text { flex: 1; min-width: 0; }
+			.course-chip b {
+				display: block;
+				font-family: 'Newsreader', Georgia, serif;
+				font-size: 1.25rem;
+				color: var(--ink);
+				line-height: 1.2;
+				margin: 0 0 0.15rem;
+			}
+			.course-chip .book-sub { display: block; font-size: 0.9rem; color: var(--text-muted); line-height: 1.4; }
+			.course-chip .course-go { flex: none; font-size: 0.9rem; font-weight: 600; color: var(--accent); }
+			.course-chip .book-status,
 			.book-chip .book-status {
 				display: inline-block;
 				background: var(--accent);
@@ -475,6 +512,7 @@ const appIcon = (app: { accent: string; glyph: string }) =>
 				.hero-cta { justify-content: center; }
 				.cards { grid-template-columns: 1fr; gap: 1.25rem; }
 				.book-strip { grid-template-columns: 1fr; }
+				.course-chip { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
 				.hero-inner { grid-template-columns: 1fr; gap: 2rem; }
 				.hero-id { justify-content: center; }
 				.hero-books { height: 17.5rem; max-width: 15rem; margin: 0 auto; width: 100%; }

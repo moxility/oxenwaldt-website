@@ -40,6 +40,15 @@ export const GET: APIRoute = async () => {
 		).join('');
 		lines.push(`- [${fullTitle(b)}](${SITE_URL}/books/#${b.slug}) by ${PERSON.name}. ${b.headline}. ${facts}.${buy}`);
 	}
+	const courses = BOOKS.filter((b) => b.course);
+	if (courses.length) {
+		lines.push('');
+		lines.push('## Courses');
+		for (const b of courses) {
+			const c = b.course;
+			lines.push(`- [${c.title}](${c.href}), a video course on ${c.platform} by ${PERSON.name}. ${c.summary.replace(/<[^>]+>/g, '')} ${c.facts.join('; ')}.`);
+		}
+	}
 	lines.push('');
 	lines.push('## Podcast');
 	lines.push(`- ${PODCAST.name} (${PODCAST.tagline})`);

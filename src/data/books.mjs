@@ -194,6 +194,24 @@ export const BOOKS = [
 			title: 'New book challenges leaders to rethink organisations for the AI era',
 			href: 'https://www.columbusglobal.com/news/new-book-challenges-leaders-to-rethink-organisations-for-the-ai-era/15207639/',
 		}],
+		// The video course taught from this book. Title, summary, audience and length are
+		// quoted from the live Udemy listing, loaded signed out. The price is the euro
+		// buyer price read from the course itself; Udemy sets a local price per market,
+		// so name the market with it and re-check it whenever the Udemy price tier changes.
+		course: {
+			title: 'Lead an AI Transformation That Works',
+			platform: 'Udemy',
+			href: 'https://www.udemy.com/course/lead-an-ai-transformation-that-works/',
+			summary:
+				'A governed, evidence-led method for your first 90 days of AI, taught step by step from <em>AI Don’t Fix Stupidity</em>.',
+			audience:
+				'Business leaders asked to deliver results with AI, not just experiments; transformation owners and AI enablement leads; function heads who will carry AI into their own teams; and consultants who need a method they can defend in front of a client’s board.',
+			facts: ['12 sections', '63 lectures', '17 h 18 min of video', 'English'],
+			price: '€89.99',
+			priceMarket: 'for buyers in the euro area',
+			note: 'No need to own the book, and no coding. Every exercise comes with a supplied case if you can’t use your own organisation’s.',
+			verifiedAt: '2026-10-30T11:40:00+00:00',
+		},
 		companions: ['aidfs', 'aidfsgame'],
 	},
 	{
