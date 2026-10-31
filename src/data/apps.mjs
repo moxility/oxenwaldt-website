@@ -171,6 +171,10 @@ export const APPS = [
 			['Study in the gaps', 'Built for the ten minutes before a meeting, not for a desk. Every session is resumable.'],
 		],
 		privacy: 'account-study',
+		// Session Replay records every session in the shipped iOS app (lib/analytics.ts,
+		// replaysSessionSampleRate 1.0, already in 1.3.x); the policy only said crash reporting.
+		// Added 31 Oct 2026, split out of the Play-launch branch (cdb4ed5) because it is not Play-specific.
+		sessionReplay: true,
 		pricing: [
 			{ name: 'Free', amount: 'Free', per: '30 practice questions a day', points: ['Foundation question bank', 'Explanations on every answer', 'Progress tracking', 'Streak reminder'] },
 			{ name: 'Pro', amount: '$19.99', per: 'per month, or $99.99/year — auto-renewing', pro: true, points: ['Unlimited practice', 'Practitioner level', 'Timed mock exams', 'Full explanations and AI tutor', 'Offline mode'] },
@@ -227,6 +231,10 @@ export const APPS = [
 			['Offline mode', 'Pro downloads the bank for practice with no network at all.'],
 		],
 		privacy: 'account-study',
+		// Session Replay records every session in the shipped iOS app (lib/analytics.ts,
+		// replaysSessionSampleRate 1.0, already in 1.3.x); the policy only said crash reporting.
+		// Added 31 Oct 2026, split out of the Play-launch branch (cdb4ed5) because it is not Play-specific.
+		sessionReplay: true,
 		pricing: [
 			{ name: 'Free', amount: 'Free', per: '10 questions a day', points: ['All six domains', 'Explanations on every answer', 'Progress tracking'] },
 			{ name: 'Pro', amount: '$19.99', per: 'per month, or $99.99/year — auto-renewing', pro: true, points: ['Unlimited questions', 'Timed mock exams', 'Full explanations and AI tutor', 'Offline mode', '7-day free trial'] },

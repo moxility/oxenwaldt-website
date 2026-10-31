@@ -184,7 +184,7 @@
 <div class="doc">
   <div class="wrap narrow">
     <h1>Privacy Policy</h1>
-    <p class="updated">Azure AI Exam Prep &middot; Last updated 2026-08-31</p>
+    <p class="updated">Azure AI Exam Prep &middot; Last updated 2026-10-31</p>
 <p>This Privacy Policy describes how the iOS app <strong>Azure AI Exam Prep</strong> (the &ldquo;App&rdquo;), developed by Magnus Oxenwaldt (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;), collects, uses and shares information.</p>
 <h2>What we collect</h2>
 <h3>Account information</h3>
@@ -204,8 +204,10 @@
   <li><strong>Support tickets</strong> — if you contact support from inside the App, we store what you wrote along with your app version and device model.</li>
 </ul>
 <p>We use this to show you progress statistics, surface your weakest topics, and improve the App over time.</p>
-<h3>Diagnostics</h3>
+<h3>Diagnostics and session recording</h3>
 <p>We use <a href="https://sentry.io">Sentry</a> for crash reporting. A crash report includes the stack trace, device model and OS version.</p>
+<p><strong>Please read this part carefully.</strong> During the App&rsquo;s early-launch period, Sentry&rsquo;s Session Replay feature is enabled and records <strong>every session</strong>, not only sessions that crash. A replay is a reconstruction of what appeared on your screen and where you tapped, played back like a video. Images are masked; <strong>on-screen text is not masked</strong>, so a replay can show the question you were reading and the answer you selected. Replays are stored by Sentry and are used only to diagnose bugs and layout problems. We intend to reduce this to error-only recording once the App is stable, and we will update this policy and the date above when we do.</p>
+<p>If you would rather not be recorded, do not use the App while this notice stands.</p>
 <h3>Product analytics</h3>
 <p>We use <a href="https://posthog.com">PostHog</a> to understand which screens you visit and which features you use, so we can improve the App. PostHog events are linked to a randomly generated app-install identifier, not to your email address. You can opt out by deleting the App.</p>
 <h3>Reminders</h3>
@@ -213,7 +215,7 @@
 <h3>AI Tutor</h3>
 <p>The AI Tutor runs entirely on your iPhone via Apple Foundation Models, which requires iPhone 15 Pro or newer with Apple Intelligence enabled. <strong>Your tutor questions never leave your device.</strong> We do not collect, store or have any access to what you type into the Tutor. On devices that do not support Apple Intelligence, the Tutor reports that it is unavailable rather than falling back to a server.</p>
 <h2>Data storage</h2>
-<p>Account and practice data are stored in Supabase (Postgres) in the EU (Frankfurt, <code>eu-central-1</code>). Crash reports are stored by Sentry. Product analytics are stored by PostHog in its US region.</p>
+<p>Account and practice data are stored in Supabase (Postgres) in the EU (Frankfurt, <code>eu-central-1</code>). Crash reports and session replays are stored by Sentry. Product analytics are stored by PostHog in its US region.</p>
 <h2>What we do not do</h2>
 <ul>
   <li>We do not sell your data to third parties.</li>
