@@ -1,6 +1,8 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
@@ -13,8 +15,12 @@ type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
 const { Content } = await render(post);
+// Link previews (LinkedIn, X, Teams) use the post's own card art at 1200x630 when
+// scripts/make-share-images.mjs has built it; otherwise BaseHead falls back as before.
+const shareFile = `/og/blog/${post.id}.jpg`;
+const shareImage = existsSync(join(process.cwd(), 'public', shareFile)) ? shareFile : undefined;
 ---
 
-<BlogPost {...post.data}>
+<BlogPost {...post.data} shareImage={shareImage}>
 	<Content />
 </BlogPost>

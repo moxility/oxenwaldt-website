@@ -9,15 +9,15 @@ import NewsletterSubscribe from '../components/NewsletterSubscribe.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
 import BookPromo from '../components/BookPromo.astro';
 
-type Props = CollectionEntry<'blog'>['data'] & { slug?: string };
+type Props = CollectionEntry<'blog'>['data'] & { slug?: string; shareImage?: string };
 
-const { title, description, pubDate, updatedDate, heroImage, hidden } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, hidden, shareImage } = Astro.props;
 const slug = (Astro.params as any).slug ?? '';
 ---
 
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} image={heroImage} pageType="article" pubDate={pubDate} updatedDate={updatedDate} noindex={hidden} />
+		<BaseHead title={title} description={description} image={shareImage ?? heroImage} pageType="article" pubDate={pubDate} updatedDate={updatedDate} noindex={hidden} />
 		<style>
 			main {
 				width: calc(100% - 2em);
