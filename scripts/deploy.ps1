@@ -63,4 +63,8 @@ if ($LASTEXITCODE -ne 0) { Fail "Deployment failed." }
 
 Write-Host ""
 Write-Host "Live at https://www.oxenwaldt.com" -ForegroundColor Green
-Write-Host "Consider: python scripts/indexnow-submit.py   (ping search engines)" -ForegroundColor DarkGray
+# Tell Bing/IndexNow about every page (approved by Magnus, card oxw-indexnow-ping-20261101).
+# A failed ping never fails the deploy: the site is already live.
+Write-Host "Pinging IndexNow..." -ForegroundColor Cyan
+python scripts/indexnow-submit.py
+if ($LASTEXITCODE -ne 0) { Write-Host "IndexNow ping failed; run python scripts/indexnow-submit.py by hand." -ForegroundColor Yellow }
