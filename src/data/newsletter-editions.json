@@ -1,7 +1,14 @@
 {
 	"source": "future-bytes-governance-portal data/linkedin-newsletter.json",
-	"syncedAt": "2026-10-29T08:00:16.161Z",
+	"syncedAt": "2026-11-03T04:30:36.869Z",
 	"editions": [
+		{
+			"episodeNumber": 84,
+			"headline": "Read the prospectus",
+			"url": "https://www.linkedin.com/pulse/read-prospectus-columbusglobal-x7dre",
+			"publishedOn": "November 2, 2026",
+			"spotifyEpisodeUrl": "https://open.spotify.com/episode/4F12yjOg6KtpcoMbibxwOf"
+		},
 		{
 			"episodeNumber": 83,
 			"headline": "Capability is not enough",
