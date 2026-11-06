@@ -121,7 +121,8 @@ export const BOOKS = [
 				href: 'https://www.amazon.de/dp/B0HNWNR4GF',
 				market: 'Germany',
 				verifiedAt: '2026-10-23T07:52:00+00:00',
-			}, {
+			}, /* Held 6 November 2026: Book 1 is not on Apple Books; all six URLs return 404. Restore this block when the listing is back.
+{
 				store: 'Apple Books',
 				href: 'https://books.apple.com/se/book/ai-dont-fix-stupidity/id6815501318',
 				market: 'Sweden',
@@ -157,7 +158,7 @@ export const BOOKS = [
 				market: 'Canada',
 				isbn: '9789181505238',
 				verifiedAt: '2026-10-06T15:05:00+00:00',
-			}, {
+			}, */ {
 				store: 'Google Play Books',
 				href: 'https://play.google.com/store/books/details/Magnus_Oxenwaldt_AI_Don_t_Fix_Stupidity?id=lisQEgAAQBAJ',
 				market: 'Sweden, Norway',
