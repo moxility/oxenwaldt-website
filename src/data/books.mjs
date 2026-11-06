@@ -176,6 +176,20 @@ export const BOOKS = [
 				edition: 'Narrated by a digital voice · Norway availability unconfirmed',
 				verifiedAt: '2026-10-06T00:00:00+00:00',
 			}, {
+				store: 'Storytel',
+				href: 'https://www.storytel.com/se/books/ai-don-t-fix-stupidity-transforming-your-business-into-an-ai-first-operation-15423602',
+				market: 'Sweden',
+				edition: 'Narrated by a digital voice',
+				isbn: '6610001445119',
+				verifiedAt: '2026-11-06T13:55:00+00:00',
+			}, {
+				store: 'Storytel',
+				href: 'https://www.storytel.com/no/books/ai-don-t-fix-stupidity-transforming-your-business-into-an-ai-first-operation-15423602',
+				market: 'Norway',
+				edition: 'Narrated by a digital voice',
+				isbn: '6610001445119',
+				verifiedAt: '2026-11-06T13:55:00+00:00',
+			}, {
 				store: 'Google Play Books',
 				href: 'https://play.google.com/store/audiobooks/details/Magnus_Oxenwaldt_AI_Don_t_Fix_Stupidity?id=AQAAAEBGIltiDM&gl=SE&hl=en',
 				market: 'Sweden',
