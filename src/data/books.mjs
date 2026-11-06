@@ -164,10 +164,10 @@ export const BOOKS = [
 				verifiedAt: '2026-10-06T22:50:00+00:00',
 			}, {
 				store: 'BoD Bokshop',
-				href: 'https://bokshop.bod.se/ai-dont-fix-stupidity-magnus-oxenwaldt-9789181505238',
+				href: 'https://bokshop.bod.se/ai-dont-fix-stupidity-magnus-oxenwaldt-9789168594927',
 				market: 'Sweden',
-				isbn: '9789181505238',
-				verifiedAt: '2026-10-09T08:08:23.050765+00:00',
+				isbn: '9789168594927',
+				verifiedAt: '2026-11-04T08:05:14.165902+00:00',
 			}],
 			audiobook: [{
 				store: 'Spotify',
