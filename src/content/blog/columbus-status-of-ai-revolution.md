@@ -4,7 +4,7 @@ description: "A deep dive into the current state of AI, its evolution since the 
 pubDate: 2023-04-25
 ---
 
-*Originally published on [Columbus Global](https://www.columbusglobal.com/en/blog/status-of-the-ai-revolution)*
+*Originally published on Columbus Global ([archived copy](https://web.archive.org/web/20230425124644/https://www.columbusglobal.com/en/blog/status-of-the-ai-revolution))*
 
 This blog series dives deep into the most relevant and fascinating AI topics to help businesses achieve great results. Lately, AI has been dominating the headlines, creating a whirlwind of buzz.
 
@@ -22,4 +22,4 @@ Organizations need to understand where AI stands today to make informed decision
 
 ---
 
-*Read the full article on [Columbus Global](https://www.columbusglobal.com/en/blog/status-of-the-ai-revolution)*
+*Read the full article in the [archived Columbus Global original](https://web.archive.org/web/20230425124644/https://www.columbusglobal.com/en/blog/status-of-the-ai-revolution)*

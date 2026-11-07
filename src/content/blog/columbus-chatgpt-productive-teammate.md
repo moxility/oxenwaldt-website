@@ -4,7 +4,7 @@ description: "Practical insights on maximizing productivity and creativity with 
 pubDate: 2023-06-13
 ---
 
-*Originally published on [Columbus Global](https://www.columbusglobal.com/en/blog/how-i-made-chatgpt-a-great-and-productive-teammate)*
+*Originally published on Columbus Global ([archived copy](https://web.archive.org/web/20230921084137/https://www.columbusglobal.com/en/blog/how-i-made-chatgpt-a-great-and-productive-teammate))*
 
 This article shares practical experiences on how to maximize productivity and creativity by integrating ChatGPT into your daily workflow.
 
@@ -22,4 +22,4 @@ By refining my approach to working with AI, I've been able to double my producti
 
 ---
 
-*Read the full article on [Columbus Global](https://www.columbusglobal.com/en/blog/how-i-made-chatgpt-a-great-and-productive-teammate)*
+*Read the full article in the [archived Columbus Global original](https://web.archive.org/web/20230921084137/https://www.columbusglobal.com/en/blog/how-i-made-chatgpt-a-great-and-productive-teammate)*

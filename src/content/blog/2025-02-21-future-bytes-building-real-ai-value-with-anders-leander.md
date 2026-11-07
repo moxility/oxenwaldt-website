@@ -19,7 +19,7 @@ This podcast cuts through the AI hype to deliver actionable insights from a succ
 #AIImplementation #GenerativeAI #HumanInTheLoop #BusinessTransformation #FutureBytes
 
 You can listen here: 
-https://lnkd.in/gU_Zw-p7
+https://www.oxenwaldt.com/podcast/
 
 #AI #FutureBytes #GenAI #Azure
 
