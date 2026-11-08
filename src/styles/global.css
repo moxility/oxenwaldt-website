@@ -59,12 +59,19 @@ body {
 }
 
 main {
-	/* min(), not a bare 720px. Most pages override max-width with something larger
-	   (56rem, 72rem), which removed the only cap on the fixed width: on a phone
-	   <main> stayed 720px wide and those pages scrolled sideways. This keeps the
-	   cap when max-width is overridden, and changes nothing on a desktop. */
-	width: min(720px, 100%);
-	max-width: calc(100% - 2em);
+	/* The 720px cap belongs on max-width, NOT on width. It used to be
+	   `width: min(720px, 100%)`, and a page that overrides only max-width can
+	   never grow past that width - so /about/, /podcast/, /speaking/ and
+	   /newsletter/ declared 56rem containers and /blog/ declared 72rem, and all
+	   five rendered at 720px on every screen wider than that. Measured 8 Nov 2026
+	   at a 1440 viewport: /blog/ declared 1152px and rendered 720px.
+	   The phone behaviour the old comment was protecting is unchanged: width
+	   resolves to 100% there either way, box-sizing is border-box site-wide, and a
+	   page that replaces this max-width keeps its own padding inside that 100%.
+	   That is already how /frameworks/ and /books/ work, which is why they were
+	   the only wide pages on the site. */
+	width: 100%;
+	max-width: min(720px, calc(100% - 2em));
 	margin: auto;
 	padding: 3em 1em;
 }
