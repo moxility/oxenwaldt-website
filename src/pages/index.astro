@@ -10,6 +10,7 @@ import FormattedDate from '../components/FormattedDate.astro';
 import { PUBLIC_APPS } from '../data/apps.mjs';
 import { BOOKS } from '../data/books.mjs';
 import { isEssay } from '../data/posts.mjs';
+import { thumb } from '../data/images.mjs';
 
 const posts = (await getCollection('blog')).filter(isEssay).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -45,7 +46,7 @@ const appIcon = (app: { accent: string; glyph: string }) =>
 			<div class="hero-inner">
 				<div class="hero-text">
 					<div class="hero-id">
-						<img src="/images/magnus_portrait_casual.png" alt="Magnus Oxenwaldt" class="portrait" />
+						<img src={thumb("/images/magnus_portrait_casual.png")} alt="Magnus Oxenwaldt" class="portrait" width="400" height="400" />
 						<p class="kicker">AI &amp; Digital Transformation</p>
 					</div>
 					<h1>Magnus Oxenwaldt</h1>

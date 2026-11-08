@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import { SITE_TITLE } from '../consts';
+import { thumb } from '../data/images.mjs';
 
 const episodes = (await getCollection('episodes')).sort(
 	(a, b) => b.data.episodeNumber - a.data.episodeNumber,
@@ -26,7 +27,7 @@ const episodes = (await getCollection('episodes')).sort(
 		<section class="podcast-hero">
 			<div class="podcast-hero-inner">
 				<div class="podcast-cover">
-					<img src="/images/future_bytes_cover.jpg" alt="Future Bytes Podcast" />
+					<img src={thumb("/images/future_bytes_cover.jpg")} alt="Future Bytes Podcast" width="400" height="400" />
 				</div>
 				<div class="podcast-text">
 					<p class="kicker">The Podcast</p>

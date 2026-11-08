@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_TITLE } from '../consts';
 import { BOOKS } from '../data/books.mjs';
+import { thumb } from '../data/images.mjs';
 
 const speakingEvents = (await getCollection('speaking')).sort(
 	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
@@ -85,7 +86,7 @@ const speakingEvents = (await getCollection('speaking')).sort(
 						{speakingEvents.map((event) => (
 							<article class="event">
 								{event.data.heroImage && (
-									<div class="event-image"><img src={event.data.heroImage} alt={event.data.title} /></div>
+									<div class="event-image"><img src={thumb(event.data.heroImage)} alt={event.data.title} loading="lazy" decoding="async" /></div>
 								)}
 								<div class="event-body">
 									<div class="event-meta">
@@ -129,8 +130,8 @@ const speakingEvents = (await getCollection('speaking')).sort(
 					</div>
 					<div class="photos">
 						<h3>Photos</h3>
-						<a href="/images/magnus-oxenwaldt-2024-columbus.jpg" download><img src="/images/magnus-oxenwaldt-2024-columbus.jpg" alt="Magnus Oxenwaldt, portrait" loading="lazy" /><span>Portrait ↓</span></a>
-						<a href="/images/magnus_portrait_casual.png" download><img src="/images/magnus_portrait_casual.png" alt="Magnus Oxenwaldt, casual portrait" loading="lazy" /><span>Casual ↓</span></a>
+						<a href="/images/magnus-oxenwaldt-2024-columbus.jpg" download><img src={thumb("/images/magnus-oxenwaldt-2024-columbus.jpg")} alt="Magnus Oxenwaldt, portrait" loading="lazy" /><span>Portrait ↓</span></a>
+						<a href="/images/magnus_portrait_casual.png" download><img src={thumb("/images/magnus_portrait_casual.png")} alt="Magnus Oxenwaldt, casual portrait" loading="lazy" /><span>Casual ↓</span></a>
 						<h3>Book covers</h3>
 						{BOOKS.map((b) => (<a href={b.cover} download class="cover-dl">{b.title} ↓</a>))}
 					</div>
