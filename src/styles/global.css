@@ -14,7 +14,11 @@
 	--text: #2a3548;
 	--text-muted: #5b6478;
 	--rule: #e7e3da;
-	--accent: #b8612a;
+	/* Copper accent, darkened 8 Nov 2026 from #b8612a so accent text passes
+	   WCAG 2.1 AA (4.5:1) on every background the site uses. #b8612a measured
+	   4.39 on #fff, 4.20 on --cream and 3.96 on --cream-soft, which failed on
+	   496 rendered nodes across 12 pages. #a25525 measures 5.44 / 5.20 / 4.90. */
+	--accent: #a25525;
 	--accent-dark: #8f4a1f;
 	--accent-light: #d97a3f;
 
