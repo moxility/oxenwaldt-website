@@ -105,7 +105,7 @@ const episodes = (await getCollection('episodes')).sort(
 				border: 1px solid var(--rule);
 			}
 			.kicker {
-				font-family: 'Inter', sans-serif;
+				font-family: 'Inter', 'Inter Fallback', sans-serif;
 				font-size: 0.78rem;
 				letter-spacing: 0.18em;
 				text-transform: uppercase;
@@ -120,7 +120,7 @@ const episodes = (await getCollection('episodes')).sort(
 				line-height: 1.05;
 			}
 			.tagline {
-				font-family: 'Newsreader', Georgia, serif;
+				font-family: 'Newsreader', 'Newsreader Fallback', Georgia, serif;
 				color: var(--accent);
 				font-style: italic;
 				margin: 0 0 1rem;
@@ -182,7 +182,7 @@ const episodes = (await getCollection('episodes')).sort(
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				font-family: 'Newsreader', Georgia, serif;
+				font-family: 'Newsreader', 'Newsreader Fallback', Georgia, serif;
 				color: var(--accent);
 				font-weight: 600;
 				font-size: 1rem;

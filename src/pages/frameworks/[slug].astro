@@ -89,9 +89,9 @@ const jsonLd = {
 			.crumb a { color: var(--accent); }
 			h1 { font-size: clamp(2.2rem, 5vw, 3.1rem); line-height: 1.08; margin: 0 0 0.5rem; }
 			.aka { color: var(--text-muted); margin: 0 0 1rem; }
-			blockquote { margin: 1.5rem 0 2rem; padding: 0.25rem 0 0.25rem 1.25rem; border-left: 3px solid var(--accent); font-family: 'Newsreader', Georgia, serif; font-size: 1.35rem; line-height: 1.45; color: var(--ink); }
+			blockquote { margin: 1.5rem 0 2rem; padding: 0.25rem 0 0.25rem 1.25rem; border-left: 3px solid var(--accent); font-family: 'Newsreader', 'Newsreader Fallback', Georgia, serif; font-size: 1.35rem; line-height: 1.45; color: var(--ink); }
 			.levels { margin: 0 0 2rem; display: grid; gap: 1rem; }
-			.level-group h2, .monday h2, .more h2 { font-family: 'Inter', sans-serif; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.6rem; }
+			.level-group h2, .monday h2, .more h2 { font-family: 'Inter', 'Inter Fallback', sans-serif; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.6rem; }
 			.level-group ol { list-style: none; counter-reset: step; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
 			.level-group li { counter-increment: step; padding: 0.55rem 0.9rem; border-radius: 6px; background: var(--ink); color: var(--cream); font-weight: 600; font-size: 0.95rem; }
 			.level-group ol:not(.unnumbered) li::before { content: counter(step); color: var(--accent-light); margin-right: 0.5rem; font-weight: 700; }

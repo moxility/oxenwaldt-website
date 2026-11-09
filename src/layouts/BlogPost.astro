@@ -65,7 +65,7 @@ const slug = (Astro.params as any).slug ?? '';
 				text-align: center;
 			}
 			.linkedin-cta .cta-label {
-				font-family: 'Inter', sans-serif;
+				font-family: 'Inter', 'Inter Fallback', sans-serif;
 				color: var(--accent);
 				font-size: 0.78rem;
 				letter-spacing: 0.18em;
@@ -75,7 +75,7 @@ const slug = (Astro.params as any).slug ?? '';
 			}
 			.linkedin-cta .cta-heading {
 				color: var(--ink);
-				font-family: 'Newsreader', Georgia, serif;
+				font-family: 'Newsreader', 'Newsreader Fallback', Georgia, serif;
 				font-size: 1.5rem;
 				font-weight: 600;
 				margin: 0 0 0.75rem 0;

@@ -62,9 +62,9 @@ const firstSentence = (s: string) => (s.match(/^.*?[.!?](\s|$)/)?.[0] ?? s).trim
 			.fw-hero { background: var(--cream-soft); border-bottom: 1px solid var(--rule); padding: 4rem 1.5rem 3rem; }
 			.inner, .fw-main { max-width: 64rem; margin: 0 auto; }
 			.fw-main { padding: 3rem 1.5rem 2rem; width: 100%; max-width: 64rem; box-sizing: border-box; }
-			.kicker { font-family: 'Inter', sans-serif; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin: 0 0 0.85rem; }
+			.kicker { font-family: 'Inter', 'Inter Fallback', sans-serif; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin: 0 0 0.85rem; }
 			h1 { font-size: clamp(2.4rem, 5vw, 3.4rem); margin: 0 0 1rem; line-height: 1.05; }
-			.lede { font-family: 'Newsreader', Georgia, serif; font-size: 1.35rem; line-height: 1.45; color: var(--ink-soft); max-width: 40rem; margin: 0; }
+			.lede { font-family: 'Newsreader', 'Newsreader Fallback', Georgia, serif; font-size: 1.35rem; line-height: 1.45; color: var(--ink-soft); max-width: 40rem; margin: 0; }
 			.lead { display: block; padding: 1.75rem; border-radius: 10px; background: var(--ink); color: var(--cream); text-decoration: none; margin-bottom: 3rem; }
 			.lead .label { font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-light); font-weight: 600; }
 			.lead h2 { color: var(--cream); margin: 0.35rem 0 0.5rem; }

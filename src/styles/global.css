@@ -47,8 +47,57 @@
 	font-display: swap;
 }
 
+/* Metric-matched fallbacks, 9 November 2026. Measured, not guessed.
+
+   The home page shifted 0.1999 - CLS 0.2, the same to four figures on three runs - in ONE
+   layout shift at 742 ms, as Inter and Newsreader swapped in and the hero text re-measured:
+   section.band moved y=595 -> 657 while its own height dropped 305 -> 243 px. Google Fonts is
+   loaded with display=swap, so a fallback always renders first. Rather than try to beat the
+   swap, make the fallback occupy exactly the same box, so there is nothing to re-measure.
+
+   The numbers come from the font binaries themselves - Google Inter v20 and Newsreader v26
+   latin subsets, and this machine's arial.ttf and times.ttf - parsed with fontkit:
+     ratio = (target mean advance / upem) / (fallback mean advance / upem), over the letters of
+     English prose weighted by frequency, which an unweighted a-z average gets ~1% wrong.
+     Inter 0.473564 em vs Arial 0.441126 -> 107.35%. Ascent 1984/2048 / that ratio -> 90.24%.
+     Newsreader 0.401624 em vs Times New Roman 0.399761 -> 100.47%.
+   Raw metrics and the script: review/font-cls-20261109/.
+
+   An override applies to whatever physical font the src resolves to, so the box is right on any
+   platform that has Arial or Times New Roman. THESE MUST STAY IMMEDIATELY AFTER the real family
+   in every stack, ahead of the OS fonts, or the browser picks Segoe UI (Windows) or San
+   Francisco (macOS) instead and the shift comes straight back. */
+@font-face {
+	font-family: "Inter Fallback";
+	src: local("Arial");
+	size-adjust: 107.35%;
+	ascent-override: 90.24%;
+	descent-override: 22.47%;
+	line-gap-override: 0%;
+	/* Only where the real font applies. Google serves Inter and Newsreader as subsets, and the
+	   latin subset carries U+2191 and U+2193 but NOT U+2192 - the arrow in every "Read more ->"
+	   link on the site. Without this range the fallback captured that arrow too and rendered it
+	   in Arial at 107.35%, which measured 3-4 px wider than Segoe UI on 14 of 24 page/viewport
+	   combinations and re-wrapped two pages. Caught by comparing final geometry, not by eye. */
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD, U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+	font-family: "Newsreader Fallback";
+	src: local("Times New Roman");
+	size-adjust: 100.47%;
+	ascent-override: 73.16%;
+	descent-override: 26.38%;
+	line-gap-override: 0%;
+	/* Only where the real font applies. Google serves Inter and Newsreader as subsets, and the
+	   latin subset carries U+2191 and U+2193 but NOT U+2192 - the arrow in every "Read more ->"
+	   link on the site. Without this range the fallback captured that arrow too and rendered it
+	   in Arial at 107.35%, which measured 3-4 px wider than Segoe UI on 14 of 24 page/viewport
+	   combinations and re-wrapped two pages. Caught by comparing final geometry, not by eye. */
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD, U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 body {
-	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+	font-family: 'Inter', 'Inter Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
 	margin: 0;
 	padding: 0;
 	text-align: left;
@@ -84,7 +133,7 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0 0 0.5rem 0;
 	color: var(--ink);
 	line-height: 1.15;
-	font-family: 'Newsreader', 'Source Serif Pro', Georgia, 'Times New Roman', serif;
+	font-family: 'Newsreader', 'Newsreader Fallback', 'Source Serif Pro', Georgia, 'Times New Roman', serif;
 	font-weight: 600;
 	letter-spacing: -0.01em;
 }

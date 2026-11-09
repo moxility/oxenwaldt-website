@@ -25,7 +25,7 @@ const other = BOOKS.find((b) => b !== book);
 	.book-promo { display: grid; grid-template-columns: 5rem 1fr; gap: 1.25rem; align-items: center; margin: 2.5rem 0; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--cream-soft); }
 	.cover img { width: 5rem; height: auto; display: block; border-radius: 2px; box-shadow: var(--box-shadow-lg); }
 	p { margin: 0; }
-	.label { font-family: 'Inter', sans-serif; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+	.label { font-family: 'Inter', 'Inter Fallback', sans-serif; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
 	.title { font-size: 1.25rem; font-weight: 600; margin: 0.2rem 0; }
 	.title a { color: var(--ink); text-decoration: none; }
 	.hook { font-size: 0.95rem; color: var(--text-muted); }
