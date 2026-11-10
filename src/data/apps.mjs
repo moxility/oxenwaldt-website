@@ -582,7 +582,7 @@ export const APPS = [
 		bundleId: 'com.moxapps.dynamics365',
 		version: '1.0',
 		generated: true,
-		accent: '#0078D4',
+		accent: '#2B88D8', // was #0078D4: 4.13:1 on the page background and 4.10:1 under button text; this is 5.01:1 for both (WCAG AA)
 		accent2: '#FFC81E',
 		glyph: 'M30,32 L50,24 L70,32 V68 L50,76 L30,68 Z M50,24 V76 M30,50 H70',
 		lede:
