@@ -152,7 +152,7 @@ export const APPS = [
 		accent2: '#FFC81E',
 		glyph: 'M50,18 L78,34 V66 L50,82 L22,66 V34 Z M50,32 L36,40 V56 L50,64 L64,56 V40 Z',
 		lede:
-			'Practice questions for the TOGAF 10 Foundation and Practitioner exams, with an ' +
+			'Practice questions for the TOGAF Enterprise Architecture Foundation and Practitioner exams (Part 1 and Part 2, on the TOGAF Standard, 10th Edition), with an ' +
 			'explanation behind every answer and a tutor that runs on the phone rather than ' +
 			'in someone else\u2019s data centre.',
 		sub: 'Free tier gives you 30 practice questions a day. Pro unlocks Practitioner, mock exams and unlimited practice.',
@@ -191,7 +191,7 @@ export const APPS = [
 	{
 		slug: 'azureai',
 		name: 'Azure AI Exam Prep',
-		tagline: 'Pass the Microsoft AI Engineer exam. In your browser or on your iPhone.',
+		tagline: 'Pass the Microsoft AI exams. In your browser or on your iPhone.',
 		category: 'Certification',
 		state: 'live',
 		ascId: '6792709057',
@@ -212,20 +212,20 @@ export const APPS = [
 		accent2: '#8FD14F',
 		glyph: 'M50,20 L74,64 H60 L50,44 L40,64 H26 Z M32,72 H68 L64,80 H36 Z',
 		lede:
-			'Practice questions, explanations and timed mock exams for AI-102 — plan and manage ' +
-			'Azure AI, generative AI, agentic solutions, computer vision, natural language and ' +
-			'knowledge mining.',
+			'Practice questions, explanations and timed mock exams for Microsoft\u2019s 2026 AI ' +
+			'certifications: AI-103, the successor to the retired AI-102, plus AI-901, AI-300, ' +
+			'DP-600 and DP-700.',
 		sub: 'Free tier gives you 10 questions a day. Pro unlocks unlimited practice, mock exams and offline mode.',
 		stats: [
-			['6', 'AI-102 domains covered'],
+			['5', 'Microsoft AI and Fabric exams'],
 			['10', 'free questions a day'],
 			['∞', 'Pro practice and timed mocks'],
 			['0', 'tutor questions leave your device'],
 		],
 		features: [
-			['Every AI-102 domain', 'Plan and manage an Azure AI solution, generative AI, agentic solutions, computer vision, natural language processing, knowledge mining and document intelligence.'],
+			['The 2026 Microsoft AI exams', 'AI-103 Azure AI Apps and Agents Developer, which replaced AI-102 when Microsoft retired it on 30 June 2026. Also AI-901 Azure AI Fundamentals, AI-300 for running machine learning and generative AI in production, and the Fabric exams DP-600 and DP-700.'],
 			['Explanations, not just answers', 'Every question carries the reasoning — which service, why that one, and what the distractors get wrong.'],
-			['Timed mock exams', 'The real format and the real clock, so the first timed exam you sit is not the one that counts.'],
+			['Timed mock exams', 'One for each exam track, so the first timed exam you sit is not the one that counts.'],
 			['On-device AI tutor', 'Ask anything about the material. Runs on your iPhone via Apple Intelligence — your questions never leave the device.'],
 			['Weakest-topic surfacing', 'Accuracy and pace tracked per topic, so revision goes where it is actually needed.'],
 			['Offline mode', 'Pro downloads the bank for practice with no network at all.'],
@@ -236,12 +236,13 @@ export const APPS = [
 		// Added 31 Oct 2026, split out of the Play-launch branch (cdb4ed5) because it is not Play-specific.
 		sessionReplay: true,
 		pricing: [
-			{ name: 'Free', amount: 'Free', per: '10 questions a day', points: ['All six domains', 'Explanations on every answer', 'Progress tracking'] },
-			{ name: 'Pro', amount: '$19.99', per: 'per month, or $99.99/year — auto-renewing', pro: true, points: ['Unlimited questions', 'Timed mock exams', 'Full explanations and AI tutor', 'Offline mode', '7-day free trial'] },
+			{ name: 'Free', amount: 'Free', per: '10 questions a day', points: ['Daily practice', 'Explanations on every answer', 'Progress tracking'] },
+			{ name: 'Pro', amount: '$19.99', per: 'per month, or $99.99/year — auto-renewing', pro: true, points: ['Every exam track and every question', 'Unlimited questions', 'Timed mock exams', 'Full explanations and AI tutor', 'Offline mode', '7-day free trial'] },
 		],
 		faq: [
 			['Is this a Microsoft product?', 'No. It is an independent study aid, not affiliated with or endorsed by Microsoft.'],
-			['Which exam does it cover?', 'Microsoft Certified: Azure AI Engineer Associate (AI-102).'],
+			['Which exam does it cover?', 'AI-103, Azure AI Apps and Agents Developer Associate: the successor to AI-102, which Microsoft retired on 30 June 2026. It also covers AI-901, AI-300, DP-600 and DP-700.'],
+			['I studied for AI-102. Is that wasted?', 'Mostly not. Most of what AI-102 tested carries over to AI-103, and the app takes you the rest of the way.'],
 			['Does the tutor work offline?', 'Yes, on iPhone 15 Pro and newer with Apple Intelligence. It runs on the device.'],
 		],
 		trademark:
@@ -273,7 +274,7 @@ export const APPS = [
 			'is second nature, with an explanation behind every answer.',
 		sub: 'Business, application, technology, motivation and strategy layers, plus the relationship rules people actually get wrong.',
 		stats: [
-			['3.2', 'the current specification'],
+			['3.2', 'the version the certification tests'],
 			['5', 'layers plus motivation and strategy'],
 			['∞', 'Pro practice and timed mocks'],
 			['0', 'tutor questions leave your device'],
@@ -297,7 +298,7 @@ export const APPS = [
 		],
 		faq: [
 			['Is this an official Open Group product?', 'No. It is an independent study aid, not affiliated with or endorsed by The Open Group.'],
-			['Which version?', 'ArchiMate 3.2, the current specification.'],
+			['Which version?', 'ArchiMate 3.2, the version the ArchiMate certification still tests. The Open Group published ArchiMate 4 in April 2026; no ArchiMate 4 exam has been announced.'],
 		],
 		trademark:
 			'ArchiMate is a registered trademark of The Open Group. ArchiMate 3.2 Practice is an ' +
@@ -448,7 +449,7 @@ export const APPS = [
 		accent2: '#F2A65A',
 		glyph: 'M30,26 H62 L70,34 V74 H30 Z M38,44 H62 M38,54 H62 M38,64 H54',
 		lede:
-			'Practice questions across the full PMP exam content outline — people, process and ' +
+			'Practice questions across the PMP exam content outline — people, process and ' +
 			'business environment — with an explanation behind every answer and a tutor that ' +
 			'runs on the phone.',
 		sub: 'Predictive, agile and hybrid approaches, the way the current exam actually tests them.',
@@ -459,7 +460,7 @@ export const APPS = [
 			['EU', 'data stored in Frankfurt'],
 		],
 		features: [
-			['The full content outline', 'People, Process and Business Environment — with predictive, agile and hybrid approaches weighted the way the current exam weights them.'],
+			['The July 2026 content outline', 'People, Process and Business Environment, weighted 33, 41 and 26 per cent as the current exam weights them, across predictive, agile and hybrid approaches.'],
 			['Situational questions', 'The PMP tests judgement, not recall. The bank is written as scenarios, and the explanation says why the best answer beats the merely-correct one.'],
 			['Timed mock exams', 'Exam format, exam clock, exam fatigue.'],
 			['On-device AI tutor', 'Ask why an answer is right. Runs on your iPhone via Apple Intelligence — your questions never leave the device.'],
@@ -585,26 +586,26 @@ export const APPS = [
 		accent2: '#FFC81E',
 		glyph: 'M30,32 L50,24 L70,32 V68 L50,76 L30,68 Z M50,24 V76 M30,50 H70',
 		lede:
-			'Practice questions, explanations and timed mock exams for the Microsoft Dynamics 365 ' +
-			'certification track — from the same study engine behind the TOGAF, ArchiMate and ' +
-			'Azure AI apps.',
+			'Practice questions, explanations and timed mock exams for Microsoft Dynamics 365 ' +
+			'certification, starting with MB-800, Business Central Functional Consultant. Built on the ' +
+			'same study engine as the TOGAF, ArchiMate and Azure AI apps.',
 		sub: 'In development. No release date yet.',
 		stats: [
-			['—', 'exam coverage being scoped'],
+			['MB-800', 'Business Central Functional Consultant, first'],
 			['∞', 'Pro practice and timed mocks, at launch'],
 			['0', 'tutor questions will leave your device'],
 			['Soon', 'no date committed'],
 		],
 		features: [
 			['The same study engine', 'The one already carrying TOGAF 10, ArchiMate 3.2, Azure AI and PMP: explanations on every answer, weakest-topic surfacing, timed mocks, and per-topic stars that survive reinstalling.'],
-			['Written by a practitioner', 'Two decades of Dynamics 365 delivery behind the question bank, not a scrape of an exam dump.'],
+			['Written by a practitioner', 'Written from Dynamics delivery experience, not a scrape of an exam dump.'],
 			['On-device AI tutor', 'Ask why an answer is right. Runs on the phone via Apple Intelligence — questions never leave the device.'],
 			['Study in the gaps', 'Built for the ten minutes before a meeting, not for a desk.'],
 		],
 		privacy: 'account-study',
 		pricing: [{ name: 'Not yet on sale', amount: 'In development', per: 'no release date committed', pro: true, points: ['Expected to match the rest of the range: free daily allowance, Pro at $19.99/mo or $99.99/yr'] }],
 		faq: [
-			['Which exams?', 'The scope is still being set. Tell me which one you need and it moves up the list.'],
+			['Which exams?', 'MB-800, Microsoft Dynamics 365 Business Central Functional Consultant, comes first, and you can practise it in the browser now. Tell me which exam you need next and it moves up the list.'],
 			['Is this a Microsoft product?', 'No. It is an independent study aid, not affiliated with or endorsed by Microsoft.'],
 		],
 		trademark:
