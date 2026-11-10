@@ -13,7 +13,7 @@ One Dynamics – One Platform
 
 If you wish to view the entire sessions, please check out below urls.
 
-[https://community.dynamics.com/365/dynamics-365-fasttrack/b/techtalks/posts/one-admin—lcs-ppac-integration-december-7-2022](https://web.archive.org/web/20230328222146/https://community.dynamics.com/365/dynamics-365-fasttrack/b/techtalks/posts/one-admin—lcs-ppac-integration-december-7-2022)
+[https://community.dynamics.com/365/dynamics-365-fasttrack/b/techtalks/posts/one-admin---lcs-ppac-integration-december-7-2022](https://web.archive.org/web/20221228000418/https://community.dynamics.com/365/dynamics-365-fasttrack/b/techtalks/posts/one-admin---lcs-ppac-integration-december-7-2022)
 
 ---
 *Originally published on oxenwaldt.com on 2023-02-07. [Archived copy](https://web.archive.org/web/20230328222146/https://oxenwaldt.com/2023/02/07/r-i-p-lcs-long-live-ppac/).*
