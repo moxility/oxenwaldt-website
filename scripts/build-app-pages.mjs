@@ -232,6 +232,8 @@ function css(app) {
   .doc ul { padding-left: 22px; }
   .doc li { margin-bottom: 7px; }
   .doc code { background: rgba(255,255,255,0.06); border: 1px solid var(--line); padding: 1px 6px; border-radius: 5px; font-size: 14px; }
+  /* A link inside a sentence must not rely on colour alone (WCAG 1.4.1, axe link-in-text-block). */
+  .doc p a, .doc li a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
   .callout { border: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
              background: color-mix(in srgb, var(--accent) 7%, transparent);
              border-radius: 12px; padding: 16px 20px; margin: 22px 0; }
