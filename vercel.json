@@ -95,6 +95,10 @@
       "destination": "/aidfsgame/app/index.html"
     },
     {
+      "source": "/aidfs/app/:path*",
+      "destination": "/aidfs/app/index.html"
+    },
+    {
       "source": "/togaf10/app/:path*",
       "destination": "/togaf10/app/index.html"
     },

@@ -196,6 +196,6 @@ export default {
 	],
 	practice: {
 		heading: 'Practise it, not just read it',
-		body: `<p>The free companion app puts the book on your iPhone and turns its first steps into something you do. Elena's twelve months at Norvik are there chapter by chapter, to read or to listen to, with every framework in the book one tap away. The eight-dimension assessment scores your own organisation and gives you a specific next step. The ninety-day plan runs from Week 1 to Month 3, and you mark what you have done as you go. An on-device Advisor, grounded in the book and the field, answers questions on your phone through Apple Intelligence (it needs iOS 26), so your conversations never leave the device. There is no account to create, no ads, no upsell and no leaderboards.</p>`,
+		body: `<p>The free companion app puts the book on your iPhone and turns its first steps into something you do. Elena's twelve months at Norvik are there chapter by chapter, to read or to listen to, with every framework in the book one tap away. The eight-dimension assessment scores your own organisation and gives you a specific next step. The ninety-day plan runs from Week 1 to Month 3, and you mark what you have done as you go. An on-device Advisor, grounded in the book and the field, answers questions on your phone through Apple Intelligence (it needs iOS 26), so your conversations never leave the device. The rest of the app also runs <a href="/aidfs/app/">in your browser</a>, no install needed. There is no account to create, no ads, no upsell and no leaderboards.</p>`,
 	},
 };

@@ -306,6 +306,12 @@ export const APPS = [
 	},
 	{
 		slug: 'aidfs',
+		// Static expo-router export of moxapps/app-the-shift 1d07408 (the 0.14.4 tree) plus the
+		// build-only app.config.js and scripts/build-web.mjs, built in review/the-shift-web-20261110;
+		// served from public/aidfs/app/, deep links via the vercel.json rewrite. The session is
+		// anonymous, as in the iPhone app, so "no account to start" is true.
+		webApp: '/aidfs/app/',
+		extraLinks: [['Open the web app', '/aidfs/app/']],
 		name: "AI Don't Fix Stupidity",
 		tagline: 'The mobile companion to the book. The move from apps to agents, in ninety days.',
 		category: 'The book',
