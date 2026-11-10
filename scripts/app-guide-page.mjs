@@ -157,7 +157,11 @@ export function guideJsonLd({ app, guide, OWNER }) {
 			inLanguage: 'en',
 			author,
 			publisher: author,
-			about: { '@type': 'SoftwareApplication', name: app.name, url: `${OWNER.site}/${app.slug}/index.html` },
+			// A guide may be about something other than the app (a book guide whose app is only a
+			// prototype); `guide.about` then names it, with the author filled in.
+			about: guide.about
+				? { ...guide.about, ...(guide.about['@type'] === 'Book' ? { author } : {}) }
+				: { '@type': 'SoftwareApplication', name: app.name, url: `${OWNER.site}/${app.slug}/index.html` },
 		},
 		{
 			'@type': 'BreadcrumbList',
@@ -227,7 +231,7 @@ ${guide.sections
     <div class="practice" id="practise">
       <h2>${esc(guide.practice.heading)}</h2>
       ${guide.practice.body}
-      ${ctaBlock(app)}
+      ${guide.cta ? guideCta(guide.cta, esc) : ctaBlock(app)}
     </div>
 ${
 	guide.faq?.length
@@ -263,6 +267,20 @@ ${
 </article>
 ${siteFooter(app)}
 `;
+}
+
+/**
+ * Call to action for a guide whose funnel is not the app, e.g. a book guide while the app is
+ * only a prototype: `cta: { primary: [label, href], secondary?: [label, href], note? }`.
+ */
+function guideCta(cta, esc) {
+	const [pl, ph] = cta.primary;
+	const sec = cta.secondary ? `\n        <a class="btn btn-ghost" href="${esc(cta.secondary[1])}">${esc(cta.secondary[0])}</a>` : '';
+	const note = cta.note ? `\n        <span class="cta-note">${esc(cta.note)}</span>` : '';
+	return `
+      <div class="cta">
+        <a class="btn btn-primary" href="${esc(ph)}">${esc(pl)}</a>${sec}${note}
+      </div>`;
 }
 
 /** Teaser on the app's landing page, so the landing links its own reference. */

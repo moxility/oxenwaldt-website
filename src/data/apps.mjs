@@ -494,7 +494,8 @@ export const APPS = [
 		name: 'The Partnership',
 		tagline: 'Becoming a better partner to AI. By voice, one drill at a time.',
 		category: 'The book',
-		state: 'prep',
+		// Stage 0 prototype, not in the launch train (moxapps, 10 Nov 2026): not "preparing for submission".
+		state: 'building',
 		ascId: '6798724590',
 		bundleId: 'com.moxapps.partnership',
 		version: '1.0',
@@ -525,10 +526,10 @@ export const APPS = [
 			['An honest gate', 'The prototype records its own evidence — score, whether the tester agreed, time to catch, whether the plant leaked — and exports a go/no-go report. If the scoring is arbitrary, the project stops.'],
 		],
 		privacy: 'on-device-only',
-		pricing: [{ name: 'Prototype', amount: 'Not yet on sale', per: 'Stage 0 gate in progress', pro: true, points: ['Requires iPhone 15 Pro or newer on iOS 26', 'Apple Intelligence must be enabled', 'Foundation Models does not run on simulators'] }],
+		pricing: [{ name: 'Prototype', amount: 'Not yet on sale', per: 'Stage 0 prototype', pro: true, points: ['Requires iPhone 15 Pro or newer on iOS 26', 'Apple Intelligence must be enabled', 'Foundation Models does not run on simulators'] }],
 		faq: [
-			['Can I try it?', 'Not yet. It is a prototype being run against a small number of testers to decide whether the concept survives.'],
-			['What is the book?', "AI Don't Make You Smarter — The Partnership Does, Magnus's second book."],
+			['Can I try it?', 'Not yet, and there is no release date. It is a prototype, and nothing more gets built until it passes a test with real users.'],
+			['What is the book?', "AI Don't Make You Smarter — The Partnership Does, Magnus's second book. There is a <a href=\"/partnership/guide.html\">free reader's guide</a> to it, chapter by chapter."],
 		],
 	},
 	{
