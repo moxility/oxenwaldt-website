@@ -9,6 +9,7 @@
     "astro": "astro",
     "apps:build": "node scripts/build-app-pages.mjs",
     "blog:share-images": "node scripts/make-share-images.mjs",
+    "blog:card-images": "node scripts/make-card-images.mjs",
     "apps:check-links": "node scripts/check-links.mjs",
     "apps:check-store": "node scripts/check-store-links.mjs",
     "episodes:sync": "python scripts/sync-episodes.py",

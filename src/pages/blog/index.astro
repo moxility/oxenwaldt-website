@@ -37,6 +37,25 @@ const placeholderFor = (id: string) => {
 	return `/blog-placeholder-${(hash % 5) + 1}.jpg`;
 };
 
+// Right-sized WebP thumbnails, built by scripts/make-card-images.mjs. The card is
+// never wider than 358 CSS px — measured on the live grid: 358 below 600px, 320 in
+// the two-column band, and 203 in the three-column one while <main> is capped at
+// 720px (345 once that cap is lifted) — but the index was serving each
+// one the 1536-wide PNG master. 89 cards at about 2.2 MB made this page 193 MB of
+// images for a reader who scrolled to the end of it.
+// A post with no derivative (the eleven placeholder cards) keeps its single src.
+const CARD_WIDTHS = [400, 800];
+const cardSourcesFor = (id: string) => {
+	const found = CARD_WIDTHS
+		.map((w) => ({ w, path: `/blog-images/cards/${id}-${w}.webp` }))
+		.filter((f) => existsSync(join(process.cwd(), 'public', f.path)));
+	if (!found.length) return { src: null, srcset: undefined };
+	return {
+		src: found[found.length - 1].path,
+		srcset: found.map((f) => `${f.path} ${f.w}w`).join(', '),
+	};
+};
+
 const postsWithCategories = await Promise.all(posts.map(async (post) => {
 	const generated = `/blog-images/${post.id}.png`;
 	// Resolve against the project root, NOT import.meta.url: Astro compiles this
@@ -57,7 +76,8 @@ const postsWithCategories = await Promise.all(posts.map(async (post) => {
 		.replace(/\n+/g, ' ')
 		.toLowerCase()
 		.slice(0, 1000) : '';
-	return { ...post, kind: isEssay(post) ? 'essay' : 'short', category: categorizePost(post.data.title, post.data.description), generatedImage: imagePath, searchableContent: bodyText };
+	const card = cardSourcesFor(post.id);
+	return { ...post, kind: isEssay(post) ? 'essay' : 'short', category: categorizePost(post.data.title, post.data.description), generatedImage: imagePath, cardSrc: card.src, cardSrcset: card.srcset, searchableContent: bodyText };
 }));
 
 const categories = [...new Set(postsWithCategories.map(p => p.category))];
@@ -107,7 +127,17 @@ const categories = [...new Set(postsWithCategories.map(p => p.category))];
 					<article class="post-card" data-kind={post.kind} style={post.kind === 'essay' ? undefined : 'display:none'} data-category={post.category} data-year={post.data.pubDate.getFullYear()} data-title={post.data.title.toLowerCase()} data-description={post.data.description.toLowerCase()} data-content={post.searchableContent}>
 						<a href={`/blog/${post.id}/`}>
 							<div class="post-image">
-								<img src={post.generatedImage} alt={post.data.title} loading="lazy" onerror="this.style.display='none'" />
+								<img
+									src={post.cardSrc ?? post.generatedImage}
+									srcset={post.cardSrcset}
+									sizes="(max-width: 600px) calc(100vw - 2rem), (max-width: 960px) 320px, 345px"
+									alt={post.data.title}
+									width="800"
+									height="500"
+									loading="lazy"
+									decoding="async"
+									onerror="this.style.display='none'"
+								/>
 							</div>
 							<div class="post-content">
 								<div class="post-meta">
