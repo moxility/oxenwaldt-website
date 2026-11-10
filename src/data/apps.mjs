@@ -506,7 +506,7 @@ export const APPS = [
 		glyph: 'M42,50 m-16,0 a16,16 0 1,0 32,0 a16,16 0 1,0 -32,0 M58,50 m-16,0 a16,16 0 1,0 32,0 a16,16 0 1,0 -32,0',
 		lede:
 			'A voice training journey built on Magnus\u2019s second book, <em>AI Don\u2019t Make You ' +
-			'Smarter — The Partnership Does</em>. You talk to an AI counterpart, it makes a case, ' +
+			'Smarter: The Partnership Does</em>. You talk to an AI counterpart, it makes a case, ' +
 			'and exactly one thing it says is wrong. Your job is to catch it.',
 		sub:
 			'Currently the Stage 0 prototype — one unit, three difficulty bands, scored on verification. ' +
@@ -529,7 +529,7 @@ export const APPS = [
 		pricing: [{ name: 'Prototype', amount: 'Not yet on sale', per: 'Stage 0 prototype', pro: true, points: ['Requires iPhone 15 Pro or newer on iOS 26', 'Apple Intelligence must be enabled', 'Foundation Models does not run on simulators'] }],
 		faq: [
 			['Can I try it?', 'Not yet, and there is no release date. It is a prototype, and nothing more gets built until it passes a test with real users.'],
-			['What is the book?', "AI Don't Make You Smarter — The Partnership Does, Magnus's second book. There is a <a href=\"/partnership/guide.html\">free reader's guide</a> to it, chapter by chapter."],
+			['What is the book?', "AI Don't Make You Smarter: The Partnership Does, Magnus's second book. There is a <a href=\"/partnership/guide.html\">free reader's guide</a> to it, chapter by chapter."],
 		],
 	},
 	{

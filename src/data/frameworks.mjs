@@ -480,7 +480,7 @@ export const FRAMEWORKS = [
 		"chapter": "Part Two, \"The Partnership\"",
 		"original": false,
 		"definition": "\"Roughly twenty percent of the effort on any piece of work that matters is mine, at the start\"",
-		"summary": "A rule for dividing effort inside the partnership. About twenty percent is the human's at the start: giving the coworker context, guidelines, intent, what good looks like and who it is for. About seventy percent is the coworker's: producing the artefact. About ten percent is the human's again at the end: reading, judging, changing what is not right, checking the claim you do not recognise. \"So about thirty percent of the effort inside the partnership is mine, and I get the whole result.\" It is a share of effort, not of hours; the example given is a forty-hour fact-finding task that became a two-hour one.",
+		"summary": "A rule for dividing effort inside the partnership. About twenty percent is the human's at the start: giving the coworker context, guidelines, intent, what good looks like and who it is for. About seventy percent is the coworker's: producing the artefact. About ten percent is the human's again at the end: reading, judging, changing what is not right, checking the claim you do not recognise. \"So I spend about thirty percent of the effort, and I get the whole result.\" It is a share of effort, not of hours; the example given is a forty-hour fact-finding task that became a two-hour one.",
 		"levelsLabel": "Split",
 		"levels": [
 			{
