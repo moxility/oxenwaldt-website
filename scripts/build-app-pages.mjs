@@ -20,6 +20,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { APPS, GENERATED_APPS, OWNER, STATES, appStoreUrl, bySlug } from '../src/data/apps.mjs';
+import { GUIDE_FILE, guideHref, guidePage, guideTeaser, guideWords, loadGuides } from './app-guide-page.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = path.join(HERE, '..', 'public');
@@ -30,6 +31,9 @@ const ONLY = argv.includes('--only') ? argv[argv.indexOf('--only') + 1] : null;
 
 /** ISO date used as the "last updated" stamp on the legal pages. */
 const TODAY = new Date().toISOString().slice(0, 10);
+
+/** Free reference guides, one per app that has src/data/guides/<slug>.mjs. */
+const GUIDES = await loadGuides();
 
 // ───────────────────────────────────────────────────────────────── helpers ──
 
@@ -68,7 +72,7 @@ function clampWords(text, max) {
 	return `${(space > max * 0.6 ? cut.slice(0, space) : cut).replace(/[\s,;:.\-–—'"“‘(]+$/, '')}…`;
 }
 
-function head(app, { title: fullTitle, description: fullDescription, pageUrl, jsonld }) {
+function head(app, { title: fullTitle, description: fullDescription, pageUrl, jsonld, ogType = 'website', ogTitle, ogDescription, extraCss = '' }) {
 	const title = clampWords(fullTitle, 65);
 	const description = clampWords(fullDescription, 158);
 	return `<!DOCTYPE html>
@@ -79,11 +83,11 @@ function head(app, { title: fullTitle, description: fullDescription, pageUrl, js
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${OWNER.site}${pageUrl}">
-<meta property="og:type" content="website">
+<meta property="og:type" content="${ogType}">
 <meta property="og:site_name" content="${esc(app.name)}">
 <meta property="og:url" content="${OWNER.site}${pageUrl}">
-<meta property="og:title" content="${esc(fullTitle)}">
-<meta property="og:description" content="${esc(description)}">
+<meta property="og:title" content="${esc(ogTitle ?? fullTitle)}">
+<meta property="og:description" content="${esc(ogDescription ?? description)}">
 <meta name="twitter:card" content="summary">${
 		app.unlisted ? '\n<meta name="robots" content="noindex, follow">' : ''
 	}
@@ -91,7 +95,7 @@ function head(app, { title: fullTitle, description: fullDescription, pageUrl, js
 		jsonld ? `
 <script type="application/ld+json">${JSON.stringify(jsonld).replace(/</g, '\u003c')}</script>` : ''
 	}
-<style>${css(app)}</style>
+<style>${css(app)}${extraCss}</style>
 </head>
 <body>`;
 }
@@ -253,6 +257,7 @@ function css(app) {
 function siteHeader(app, current) {
 	const nav = [
 		['Overview', `/${app.slug}/index.html`, 'overview'],
+		...(GUIDES[app.slug] ? [[GUIDES[app.slug].nav, guideHref(app.slug), 'guide']] : []),
 		...(app.extraLinks ?? []).map(([label, href]) => [label, href, href]),
 		['Support', `/${app.slug}/support.html`, 'support'],
 		['Privacy', `/${app.slug}/privacy.html`, 'privacy'],
@@ -533,7 +538,7 @@ ${
 
 `
 		: ''
-}<section class="band">
+}${GUIDES[app.slug] ? guideTeaser({ app, guide: GUIDES[app.slug], esc }) : ''}<section class="band">
   <div class="wrap">
     <p class="kicker">Privacy</p>
     <h2>Built so there is nothing to leak</h2>
@@ -603,14 +608,28 @@ ${siteFooter(app)}
 
 // ─────────────────────────────────────────────────────────── legal + support ──
 
+/**
+ * The date a legal page was last materially changed. A rebuild that only touches the
+ * shared header or footer (a new nav link, say) keeps the committed date, so it does not
+ * claim a policy changed when it did not; a changed body gets today's date.
+ */
+function lastUpdated(app, current, body) {
+	const target = path.join(PUBLIC_DIR, app.slug, `${current}.html`);
+	if (!fs.existsSync(target)) return TODAY;
+	const existing = fs.readFileSync(target, 'utf8').replace(/\r\n/g, '\n');
+	const date = existing.match(/Last updated (\d{4}-\d{2}-\d{2})/)?.[1];
+	return date && existing.includes(body) ? date : TODAY;
+}
+
 function docShell(app, { current, title, heading, body }) {
 	const url = `/${app.slug}/${current}.html`;
+	const updated = lastUpdated(app, current, body);
 	return `${head(app, { title, description: `${title} for ${app.name}.`, pageUrl: url })}
 ${siteHeader(app, current)}
 <div class="doc">
   <div class="wrap narrow">
     <h1>${esc(heading)}</h1>
-    <p class="updated">${esc(app.name)} &middot; Last updated ${TODAY}</p>
+    <p class="updated">${esc(app.name)} &middot; Last updated ${updated}</p>
 ${body}
   </div>
 </div>
@@ -963,7 +982,8 @@ let unchanged = 0;
 function emit(slug, file, contents) {
 	const dir = path.join(PUBLIC_DIR, slug);
 	const target = path.join(dir, file);
-	const existing = fs.existsSync(target) ? fs.readFileSync(target, 'utf8') : null;
+	// core.autocrlf checks these out with CRLF; the generator writes LF. Compare the text, not the line endings.
+	const existing = fs.existsSync(target) ? fs.readFileSync(target, 'utf8').replace(/\r\n/g, '\n') : null;
 	if (existing === contents) {
 		unchanged++;
 		return;
@@ -992,7 +1012,13 @@ for (const app of targets) {
 	emit(app.slug, 'privacy.html', docShell(app, { current: 'privacy', title: `Privacy Policy — ${app.name}`, heading: 'Privacy Policy', body: privacyBody(app) }));
 	emit(app.slug, 'terms.html', docShell(app, { current: 'terms', title: `Terms of Use — ${app.name}`, heading: 'Terms of Use', body: termsBody(app) }));
 	emit(app.slug, 'support.html', docShell(app, { current: 'support', title: `Support — ${app.name}`, heading: 'Support', body: supportBody(app) }));
+	if (GUIDES[app.slug]) {
+		emit(app.slug, GUIDE_FILE, guidePage({ app, guide: GUIDES[app.slug], OWNER, shell: { head, siteHeader, siteFooter, ctaBlock, esc } }));
+		console.log(`  guide: ${guideWords(GUIDES[app.slug])} words, ${GUIDES[app.slug].sources.length} sources`);
+	}
 }
 
 console.log(`\n${written} file(s) ${DRY ? 'would change' : 'written'}, ${unchanged} unchanged.`);
+const orphans = Object.keys(GUIDES).filter((slug) => !GENERATED_APPS.some((a) => a.slug === slug));
+if (orphans.length) console.log(`Guide modules with no generated app (not written): ${orphans.join(', ')}`);
 console.log(`Hand-authored, left untouched: ${APPS.filter((a) => !a.generated).map((a) => a.slug).join(', ') || 'none'}`);

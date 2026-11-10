@@ -4,6 +4,14 @@ import { SITE_URL, PERSON, PODCAST } from '../consts';
 import { PUBLIC_APPS, STATES, appStoreUrl } from '../data/apps.mjs';
 import { BOOKS, bookFormats, fullTitle } from '../data/books.mjs';
 
+// The free reference guides (scripts/build-app-pages.mjs writes /<slug>/guide.html from these).
+const GUIDES: Record<string, { title: string }> = Object.fromEntries(
+	Object.entries(import.meta.glob('../data/guides/*.mjs', { eager: true })).map(([file, mod]) => [
+		file.replace(/^.*\/(.+)\.mjs$/, '$1'),
+		(mod as { default: { title: string } }).default,
+	]),
+);
+
 // Emerging convention: /llms.txt is a short, machine-readable index that
 // LLM crawlers (OpenAI, Anthropic, Perplexity, Google AI Overviews) can use
 // to understand a site's purpose and key content. See https://llmstxt.org/
@@ -74,8 +82,9 @@ export const GET: APIRoute = async () => {
 	lines.push(`- Index: ${SITE_URL}/apps/`);
 	for (const app of PUBLIC_APPS) {
 		const store = appStoreUrl(app);
+		const guide = app.generated ? GUIDES[app.slug] : undefined;
 		lines.push(
-			`- [${app.name}](${SITE_URL}/${app.slug}/index.html) — ${app.tagline} Status: ${STATES[app.state].label}.${store ? ` App Store: ${store}` : ''}${app.webApp ? ` Playable in a browser, no install: ${SITE_URL}${app.webApp}` : ''}`,
+			`- [${app.name}](${SITE_URL}/${app.slug}/index.html) — ${app.tagline} Status: ${STATES[app.state].label}.${store ? ` App Store: ${store}` : ''}${app.webApp ? ` Playable in a browser, no install: ${SITE_URL}${app.webApp}` : ''}${guide ? ` Free reference: [${guide.title}](${SITE_URL}/${app.slug}/guide.html)` : ''}`,
 		);
 	}
 	lines.push('');
