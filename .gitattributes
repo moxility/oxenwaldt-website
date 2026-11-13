@@ -1,0 +1,14 @@
+# Built browser-app bundles are deployment artefacts, not source.
+#
+# Vercel is not wired to GitHub here: a deploy uploads the working tree, so the
+# bytes on disk are the bytes served. core.autocrlf is true on this machine, so
+# without this rule a fresh checkout rewrites these bundles with CRLF and the
+# repo can no longer reproduce the live site byte for byte. That is how the
+# AI Act app drifted untracked from 7 October to 13 November 2026 without
+# anything noticing.
+#
+# -text means: store and check out exactly these bytes, never translate.
+# Scoped to public/*/app/ on purpose - the hand-authored pages one level up
+# (index.html, privacy.html, support.html, terms.html) are source and stay
+# under normal handling.
+public/**/app/** -text
