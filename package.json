@@ -14,6 +14,7 @@
     "apps:check-store": "node scripts/check-store-links.mjs",
     "site:images": "node scripts/make-site-images.mjs",
     "apps:check-external": "node scripts/check-external-links.mjs",
+    "apps:check-reproducible": "node scripts/check-reproducible.mjs",
     "episodes:sync": "python scripts/sync-episodes.py",
     "newsletter:sync": "node scripts/sync-newsletter.mjs"
   },
